@@ -35,7 +35,7 @@
                 <div class="col-12 h-100">
                     <div class="header-content h-100 d-flex align-items-center justify-content-between">
                         <div class="academy-logo">
-                            <a href="index.html"><img src="{{asset('storage/img/core-img/logo.png')}}" alt=""></a>
+                            <a href="{{route('index')}}"><img src="{{asset('storage/img/core-img/logo.png')}}" alt=""></a>
                         </div>
                         <div class="login-content">
                             <a href="#">Register / Login</a>
@@ -69,14 +69,14 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="{{route('index')}}">Home</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about-us.html">About Us</a></li>
+                                        <li><a href="{{route('index')}}">Home</a></li>
+                                        <li><a href="{{route('about')}}">About Us</a></li>
                                         <li><a href="course.html">Course</a></li>
                                         <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="{{route('contact')}}">Contact</a></li>
                                         <li><a href="elements.html">Elements</a></li>
                                     </ul>
                                 </li>
@@ -108,9 +108,9 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="course.html">Course</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{route('contact')}}">Contact</a></li>
                             </ul>
                         </div>
                         <!-- Nav End -->
@@ -232,6 +232,9 @@
 <script src="{{asset('storage/js/plugins/plugins.js')}}"></script>
 <!-- Active js -->
 <script src="{{asset('storage/js/active.js')}}"></script>
+
+<!-- Profile js -->
+<script src="{{asset('storage/js/profile.js')}}"></script>
 </body>
 
 </html>
