@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\Repositories\Eloquent\UserRepositoryEloquent;
+use App\Http\Repositories\UserRepositoryInterface;
+use App\Http\Services\Impl\UserServiceImpl;
+use App\Http\Services\UserServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(UserRepositoryInterface::class, UserRepositoryEloquent::class);
+        $this->app->singleton(UserServiceInterface::class, UserServiceImpl::class);
     }
 
     /**
