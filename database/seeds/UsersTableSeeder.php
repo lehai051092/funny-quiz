@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
         $user->name = 'Admin';
         $user->email = 'admin@gmail.com';
         $user->gender = 1;
+        $user->role = 1;
         $user->password = Hash::make('1');
         $user->save();
 
@@ -24,6 +25,7 @@ class UsersTableSeeder extends Seeder
         $user->name = 'Guest';
         $user->email = 'guest@gmail.com';
         $user->gender = 0;
+        $user->role = 0;
         $user->password = Hash::make('1');
         $user->save();
     }
