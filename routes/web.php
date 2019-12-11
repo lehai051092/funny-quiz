@@ -26,6 +26,10 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::get('/profile', function () {
+    return view('user.profile');
+})->name('profile');
+
 
 Auth::routes();
 

@@ -232,6 +232,9 @@
 <script src="{{asset('storage/js/plugins/plugins.js')}}"></script>
 <!-- Active js -->
 <script src="{{asset('storage/js/active.js')}}"></script>
+
+<!-- Profile js -->
+<script src="{{asset('storage/js/profile.js')}}"></script>
 </body>
 
 </html>
