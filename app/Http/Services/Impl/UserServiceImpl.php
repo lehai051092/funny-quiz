@@ -15,4 +15,28 @@ class UserServiceImpl implements UserServiceInterface
     {
         $this->userRepository = $userRepository;
     }
+
+    function findById($id)
+    {
+        return $this->userRepository->findById($id);
+    }
+
+    function update($request, $id)
+    {
+        $user = $this->userRepository->findById($id);
+
+        $user->name = $request->name;
+        $user->dob = $request->dob;
+        $user->gender = $request->gender;
+        $user->role = $request->role;
+
+        if ($request->image) {
+            $image = $request->file('image');
+            $path = $image->store("img", "public");
+            Storage::delete('public/' . $user->image);
+            $user->image = $path;
+        }
+
+        $user->save();
+    }
 }

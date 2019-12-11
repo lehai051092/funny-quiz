@@ -33,8 +33,20 @@ class UserController extends Controller
 
         User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
 
-        $message = 'Change Password Success';
-
         return view('users.success', compact('message'));
     }
+
+    public function profile($id) {
+        $user = $this->userService->findById($id);
+
+        return view('users.profile', compact('user'));
+    }
+
+    public function update(Request $request, $id) {
+        $this->userService->update($request, $id);
+
+        return redirect()->route('users.profile');
+    }
+
+
 }

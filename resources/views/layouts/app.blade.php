@@ -39,20 +39,20 @@
                         </div>
                         <div class="login-content">
                             @guest
-                                <a href="{{ route('login') }}"><i class="fa fa-user"
-                                                                  aria-hidden="true" style="color: black">Login</i></a><br>
+                                <a href="{{ route('login') }}"><h4><i class="fa fa-user"
+                                                                      aria-hidden="true" style="color: black">Login</i></h4></a>
                                 @if (Route::has('register'))
                                     <a class="nav-link"
-                                       href="{{ route('register') }}"><i class="fa fa-user-plus" style="color: black" aria-hidden="true">Register</i></a>
+                                       href="{{ route('register') }}"><h4><i class="fa fa-user-plus" style="color: black" aria-hidden="true">Register</i></h4></a>
                                 @endif @else
                                 <ul style="list-style: none">
                                     <li class="nav-item dropdown"><a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
                                                                      role="button" data-toggle="dropdown"><img
-                                                src="https://img.icons8.com/ios-filled/50/000000/user.png"><br>&nbsp;&nbsp;&nbsp;&nbsp;{{ Auth::user()->name}}
+                                                src="https://img.icons8.com/ios-filled/50/000000/user.png"><br>{{ Auth::user()->name}}
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <ul style="list-style: none">
+                                            <ul style="list-style: none" class="">
                                                 <li>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a>
@@ -62,14 +62,8 @@
                                                           style="display: none;"> @csrf </form>
                                                 </li>
                                                 <li>
-                                                    <a class="dropdown-item"
-                                                       href="{{route('users.information', Auth::user()->id)}}">Profile</a>
+                                                    <a href="{{route('users.profile', Auth::user()->id)}}" class="dropdown-item">Profile</a>
                                                 </li>
-                                                @can('crud-users')
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{route('users.list')}}">List User</a>
-                                                    </li>
-                                                @endcan
                                             </ul>
                                         </div>
                                     </li>
