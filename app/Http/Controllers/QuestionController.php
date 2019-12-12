@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
 use Illuminate\Http\Request;
@@ -10,19 +11,23 @@ class QuestionController extends Controller
 {
     protected $questionService;
     protected $quizService;
+    protected $answerService;
 
     public function __construct(QuestionServiceInterface $questionService,
-                                QuizServiceInterface $quizService)
+                                QuizServiceInterface $quizService,
+                                AnswerServiceInterface $answerService)
     {
         $this->questionService = $questionService;
         $this->quizService = $quizService;
+        $this->answerService=$answerService;
     }
 
     public function questionsInQuiz($id)
     {
         $quiz = $this->quizService->findById($id);
         $questions = $quiz->questions;
-        return view('question.list', compact('quiz', 'questions'));
+        $answers=$this->answerService->getAll();
+        return view('question.list', compact('quiz', 'questions','answers'));
     }
 
     public function create($id)

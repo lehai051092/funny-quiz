@@ -8,14 +8,16 @@
                     @foreach($questions as $question)
                         <ul class="list-group">
                             <li class="list-group-item active">{{$question->title}}</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
+                            @foreach($answers as $answer)
+                                @if($answer->question_id==$question->id)
+                            <li class="list-group-item">{{$answer->title}}</li>
+                                    <a href="{{route('answers.delete',$answer->id)}}">Delete</a>
+                                @endif
+                           @endforeach
                         </ul>
+                <a href="{{route('answers.create',$question->id)}}">Thêm câu trả lời</a><br>
                 <a href="{{route('questions.delete',$question->id)}}" class="btn btn-danger">Delete</a>
                 <a href="{{route('questions.edit',$question->id)}}" class="btn btn-primary">Edit</a>
-                        <br>
                     @endforeach
 
 
