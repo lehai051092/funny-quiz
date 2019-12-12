@@ -25,10 +25,10 @@ class TestController extends Controller
         return view('test.list', compact('category', 'tests'));
     }
 
-    public function create()
+    public function create($id)
     {
-        $categories = $this->categoryService->getAll();
-        return view('test.createForm', compact('categories'));
+        $category = $this->categoryService->findById($id);
+        return view('test.createForm', compact('category'));
     }
 
     public function store(Request $request)

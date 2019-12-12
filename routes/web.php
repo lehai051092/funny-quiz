@@ -34,3 +34,10 @@ Route::prefix('tests')->group(function (){
    Route::get('{id}/edit','TestController@edit')->name('tests.edit');
    Route::post('{id}/update','TestController@update')->name('tests.update');
 });
+
+Route::prefix('quizzes')->group(function (){
+    Route::get('{id}/','QuizController@QuizzesInTest')->name('quizzes.list');
+    Route::get('{id}/create','QuizController@create')->name('quizzes.create');
+    Route::post('{id}/create','QuizController@store')->name('quizzes.store');
+    Route::get('{id}/delete','QuizController@delete')->name('quizzes.delete');
+});
