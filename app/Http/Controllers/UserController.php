@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\ProfileUserRequest;
 use App\Http\Services\Impl\UserServiceImpl;
 use App\Rules\MatchOldPassword;
 use App\User;
@@ -18,22 +20,12 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
-    public function changePassword()
-    {
-        return view('users.changePassword');
-    }
 
-    public function updatePassword(Request $request)
+    public function updatePassword(ChangePasswordRequest $request)
     {
-        $request->validate([
-            'current_password' => ['required', new MatchOldPassword],
-            'new_password' => ['required'],
-            'new_confirm_password' => ['same:new_password'],
-        ]);
-
         User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
 
-        return view('users.success', compact('message'));
+        return back()->with('success', 'Change Password Success');
     }
 
     public function profile($id) {
@@ -42,10 +34,16 @@ class UserController extends Controller
         return view('users.profile', compact('user'));
     }
 
-    public function update(Request $request, $id) {
+    public function update(ProfileUserRequest $request, $id) {
         $this->userService->update($request, $id);
 
-        return redirect()->route('users.profile');
+        return back()->with('success', 'User Update Success');
+    }
+
+    public function updateImage(Request $request, $id) {
+        $this->userService->updateImage($request, $id);
+
+        return back()->with('success', 'Change Image Success');
     }
 
 
