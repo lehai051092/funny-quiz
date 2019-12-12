@@ -27,7 +27,9 @@ Route::prefix('categories')->group(function () {
 });
 
 Route::prefix('tests')->group(function (){
-   Route::get('{id}/','TestController@TestsInCategory')->name('tests.list');
+   Route::get('{id?}/','TestController@TestsInCategory')->name('tests.list');
    Route::get('{id}/create','TestController@create')->name('tests.create');
    Route::post('{id}/create','TestController@store')->name('tests.store');
+   Route::get('{id}/delete','TestController@delete')->name('tests.delete');
+   Route::get('{id}/edit','TestController@edit')->name('tests.edit');
 });

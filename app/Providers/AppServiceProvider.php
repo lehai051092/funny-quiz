@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Category;
 use App\Http\Repositories\CategoryRepositoryInterface;
 use App\Http\Repositories\Eloquent\CategoryRepositoryEloquent;
 use App\Http\Repositories\Eloquent\TestRepositoryEloquent;
@@ -14,6 +15,7 @@ use App\Http\Services\Impl\TestServiceImpl;
 use App\Http\Services\Impl\UserServiceImpl;
 use App\Http\Services\TestServiceInterface;
 use App\Http\Services\UserServiceInterface;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -40,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $categories = Category::all();
+        View::share('categories',$categories);
     }
 }

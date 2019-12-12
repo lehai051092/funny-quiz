@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{$test->name}}</h5>
                             <p class="card-text">{{$test->desc}}</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="{{route('tests.delete',$test->id)}}" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                         @endforeach

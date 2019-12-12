@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\TestServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class TestController extends Controller
 {
@@ -34,6 +35,19 @@ class TestController extends Controller
     {
         $this->testService->store($request);
         return redirect()->route('categories.list');
+    }
+
+    public function delete($id)
+    {
+        $this->testService->delete($id);
+        return redirect()->route('categories.list');
+    }
+
+    public function edit($id)
+    {
+        $test = $this->testService->findById($id);
+        $categories = $this->testService->getAll();
+        return view('test.editForm', compact('test', 'categories'));
     }
 
 }

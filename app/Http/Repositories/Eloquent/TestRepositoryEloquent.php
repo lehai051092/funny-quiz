@@ -33,7 +33,7 @@ class TestRepositoryEloquent implements TestRepositoryInterface
 
     function delete($obj)
     {
-        // TODO: Implement delete() method.
+       return $obj->delete();
     }
 
     function update($obj)

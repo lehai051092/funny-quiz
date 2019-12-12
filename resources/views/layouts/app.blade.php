@@ -70,14 +70,14 @@
                         <div class="classynav">
                             <ul>
                                 <li><a href="index.html">Home</a></li>
-                                <li><a href="#">Pages</a>
+                                <li><a href="#">Categories</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="course.html">Course</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="elements.html">Elements</a></li>
+                                        <a href="{{route('categories.create')}}">Thêm mới</a>
+                                        @foreach($categories as $category)
+                                        <li><a href="{{route('tests.list',$category->id)}}">{{$category->name}}</a></li>
+                                           <li> <a href="{{route('categories.delete',$category->id)}}" class="btb btn-danger">Delete</a></li>
+
+                                            @endforeach
                                     </ul>
                                 </li>
                                 <li><a href="#">Mega Menu</a>
