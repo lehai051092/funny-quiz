@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <label>Question</label>
-                            <select name="question_id">
+                            <select class="form-control"  name="question_id">
                                 <option
 
                                     @if($answer->question_id==$question->id)

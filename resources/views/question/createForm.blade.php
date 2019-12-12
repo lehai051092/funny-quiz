@@ -14,7 +14,7 @@
 
                             <label>Quiz</label>
 
-                            <select name="quiz_id">
+                            <select class="form-control"  name="quiz_id">
                                 <option value="{{$quiz->id}}">{{$quiz->name}}</option>
                             </select>
 

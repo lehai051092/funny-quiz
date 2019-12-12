@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label>Test</label>
-                            <select name="test_id">
+                            <select class="form-control"  name="test_id">
                                 <option value="{{$test->id}}">{{$test->name}}</option>
                             </select>
                         </div>

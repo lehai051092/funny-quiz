@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label>Test</label>
-                            <select name="test_id">
+                            <select class="form-control"  name="test_id">
                                 <option
                                     @if($quiz->test_id==$test->id)
                                         selected
