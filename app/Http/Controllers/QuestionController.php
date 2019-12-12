@@ -31,13 +31,27 @@ class QuestionController extends Controller
         return view('question.createForm', compact('quiz'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->questionService->store($request);
         return redirect()->route('categories.list');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $this->questionService->delete($id);
+        return redirect()->route('categories.list');
+    }
+
+    public function edit($id)
+    {
+        $question = $this->questionService->findById($id);
+        $quiz = $this->quizService->findById($id);
+        return view('question.editForm', compact('question', 'quiz'));
+    }
+
+    public function update(Request $request,$id){
+        $this->questionService->update($request,$id);
         return redirect()->route('categories.list');
     }
 }

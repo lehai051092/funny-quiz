@@ -4,22 +4,23 @@
         <div class="col-12 m-5">
             <div class="row m-5">
                 <div class="col-8 m-5">
-                    <form method="post" action="{{route('questions.store',$quiz->id)}}" >
+                    <form method="post" action="{{route('questions.update',$question->id)}}" >
                         @csrf
                         <div class="form-group">
                             <label>Name Question</label>
-                            <input type="text" class="form-control" placeholder="Enter Name Test" name="title">
+                            <input type="text" class="form-control" placeholder="Enter Name Test" name="title" value="{{$question->title}}">
                         </div>
                         <div class="form-group">
-
                             <label>Quiz</label>
-
                             <select name="quiz_id">
-                                <option value="{{$quiz->id}}">{{$quiz->name}}</option>
+                                <option
+                                    @if($question->quiz_id==$quiz->id)
+                                        selected
+                                    @endif
+                                    value="{{$quiz->id}}">{{$quiz->name}}</option>
                             </select>
-
                         </div>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>
             </div>

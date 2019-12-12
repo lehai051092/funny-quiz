@@ -14,6 +14,7 @@
                             <li class="list-group-item">Vestibulum at eros</li>
                         </ul>
                 <a href="{{route('questions.delete',$question->id)}}" class="btn btn-danger">Delete</a>
+                <a href="{{route('questions.edit',$question->id)}}" class="btn btn-primary">Edit</a>
                         <br>
                     @endforeach
 

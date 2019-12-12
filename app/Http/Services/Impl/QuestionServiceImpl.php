@@ -43,6 +43,8 @@ class QuestionServiceImpl implements QuestionServiceInterface
 
     function update($request, $id)
     {
-        // TODO: Implement update() method.
+       $question=$this->questionRepository->findById($id);
+       $question->title=$request->title;
+       return $this->questionRepository->update($question);
     }
 }
