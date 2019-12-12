@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function getAll()
     {
         $categories = $this->categoryService->getAll();
-        return view('layouts.app', compact('categories'));
+        return view('categories.list', compact('categories'));
     }
 
     public function create()

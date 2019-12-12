@@ -8,7 +8,7 @@
                         @csrf
                         <div class="form-group">
                             <label>Name Answer</label>
-                            <input type="text" class="form-control" placeholder="Enter Name Test" name="title">
+                            <input type="text" class="form-control" placeholder="Enter Name Answer" name="title">
                         </div>
                         <div class="form-group">
                             <label>Status</label>
