@@ -32,4 +32,5 @@ Route::prefix('tests')->group(function (){
    Route::post('{id}/create','TestController@store')->name('tests.store');
    Route::get('{id}/delete','TestController@delete')->name('tests.delete');
    Route::get('{id}/edit','TestController@edit')->name('tests.edit');
+   Route::post('{id}/update','TestController@update')->name('tests.update');
 });

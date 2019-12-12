@@ -12,6 +12,7 @@
                             <h5 class="card-title">{{$test->name}}</h5>
                             <p class="card-text">{{$test->desc}}</p>
                             <a href="{{route('tests.delete',$test->id)}}" class="btn btn-danger">Delete</a>
+                            <a href="{{route('tests.edit',$test->id)}}" class="btn btn-primary">Edit</a>
                         </div>
                     </div>
                         @endforeach

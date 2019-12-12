@@ -46,8 +46,14 @@ class TestController extends Controller
     public function edit($id)
     {
         $test = $this->testService->findById($id);
-        $categories = $this->testService->getAll();
-        return view('test.editForm', compact('test', 'categories'));
+        $category = $this->testService->findById($id);
+        return view('test.editForm', compact('test', 'category'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->testService->update($request, $id);
+        return redirect()->route('categories.list');
     }
 
 }

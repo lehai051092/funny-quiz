@@ -56,6 +56,13 @@ class TestServiceImpl implements TestServiceInterface
 
     function update($request, $id)
     {
-        // TODO: Implement update() method.
+        $test = $this->testRepository->findById($id);
+        if (file_exists(storage_path("/app/pubplic/$test->image"))) {
+            File::delete(storage_path("/app/pubplic/$test->image"));
+        }
+        $test->name = $request->name;
+        $test->desc = $request->desc;
+        $test->image = $request->image;
+        return $this->testRepository->update($test);
     }
 }
