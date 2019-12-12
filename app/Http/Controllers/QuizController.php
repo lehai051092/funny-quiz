@@ -46,7 +46,7 @@ class QuizController extends Controller
     public function edit($id)
     {
         $quiz = $this->quizService->findById($id);
-        $test = $this->testService->findById($id);
+        $test = $quiz->test;
         return view('quiz.editForm', compact('quiz', 'test'));
     }
 

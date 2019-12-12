@@ -57,4 +57,6 @@ Route::prefix('answers')->group(function (){
    Route::get('{id}/create','AnswerController@create')->name('answers.create');
    Route::post('{id}/create','AnswerController@store')->name('answers.store');
    Route::get('{id}/delete','AnswerController@delete')->name('answers.delete');
+   Route::get('{id}/edit','AnswerController@edit')->name('answers.edit');
+   Route::post('{id}/edit','AnswerController@update')->name('answers.update');
 });

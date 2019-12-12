@@ -37,6 +37,6 @@ class AnswerRepositoryEloquent implements AnswerRepositoryInterface
 
     function update($obj)
     {
-        // TODO: Implement update() method.
+      $obj->save();
     }
 }

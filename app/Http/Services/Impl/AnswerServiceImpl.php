@@ -44,6 +44,9 @@ class AnswerServiceImpl implements AnswerServiceInterface
 
     function update($request, $id)
     {
-        // TODO: Implement update() method.
+        $answer=$this->answerRepository->findById($id);
+        $answer->title=$request->title;
+        $answer->status=$request->status;
+        return $this->answerRepository->update($answer);
     }
 }

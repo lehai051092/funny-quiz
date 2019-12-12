@@ -39,19 +39,19 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $this->questionService->store($request);
-        return redirect()->route('categories.list');
+        return back();
     }
 
     public function delete($id)
     {
         $this->questionService->delete($id);
-        return redirect()->route('categories.list');
+        return back();
     }
 
     public function edit($id)
     {
         $question = $this->questionService->findById($id);
-        $quiz = $this->quizService->findById($id);
+        $quiz = $question->quiz;
         return view('question.editForm', compact('question', 'quiz'));
     }
 

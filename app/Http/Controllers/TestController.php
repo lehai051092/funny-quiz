@@ -46,7 +46,7 @@ class TestController extends Controller
     public function edit($id)
     {
         $test = $this->testService->findById($id);
-        $category = $this->testService->findById($id);
+        $category = $test->category;
         return view('test.editForm', compact('test', 'category'));
     }
 

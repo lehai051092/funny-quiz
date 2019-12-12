@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\QuestionServiceInterface;
 use Illuminate\Http\Request;
@@ -25,19 +26,35 @@ class AnswerController extends Controller
 //        return view('question.list', compact('question', 'answers'));
 //    }
 
-public function create($id){
-        $question=$this->questionService->findById($id);
-        $answers=$question->answers;
-        return view('answer.createForm',compact('question','answers'));
-}
+    public function create($id)
+    {
+        $question = $this->questionService->findById($id);
+        $answers = $question->answers;
+        return view('answer.createForm', compact('question', 'answers'));
+    }
 
-public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->answerService->store($request);
         return redirect()->route('categories.list');
-}
+    }
 
-public function delete($id){
+    public function delete($id)
+    {
         $this->answerService->delete($id);
         return redirect()->route('categories.list');
-}
+    }
+
+    public function edit($id)
+    {
+        $answer = $this->answerService->findById($id);
+        $question = $answer->question;
+        return view('answer.editForm', compact('answer', 'question'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->answerService->update($request, $id);
+        return redirect()->route('categories.list');
+    }
 }

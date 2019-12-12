@@ -11,7 +11,10 @@
                             @foreach($answers as $answer)
                                 @if($answer->question_id==$question->id)
                             <li class="list-group-item">{{$answer->title}}</li>
+                                <div>
                                     <a href="{{route('answers.delete',$answer->id)}}">Delete</a>
+                                    <a href="{{route('answers.edit',$answer->id)}}">Edit</a>
+                                </div>
                                 @endif
                            @endforeach
                         </ul>
