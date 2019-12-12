@@ -14,6 +14,9 @@
     <!-- Favicon -->
     <link rel="icon" href="{{asset('storage/img/core-img/favicon.ico')}}">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{{asset('storage/style.css')}}">
 
@@ -35,10 +38,46 @@
                 <div class="col-12 h-100">
                     <div class="header-content h-100 d-flex align-items-center justify-content-between">
                         <div class="academy-logo">
-                            <a href="{{route('index')}}"><img src="{{asset('storage/img/core-img/logo.png')}}" alt=""></a>
+                            <a href="{{route('index')}}"><img src="{{asset('storage/img/core-img/logo.png')}}"
+                                                              alt=""></a>
                         </div>
                         <div class="login-content">
-                            <a href="#">Register / Login</a>
+                            @guest
+                                <a href="{{ route('login') }}"><h4><i class="fa fa-user"
+                                                                      aria-hidden="true" style="color: black">Login</i>
+                                    </h4></a>
+                                @if (Route::has('register'))
+                                    <a class="nav-link"
+                                       href="{{ route('register') }}"><h4><i class="fa fa-user-plus"
+                                                                             style="color: black" aria-hidden="true">Register</i>
+                                        </h4></a>
+                                @endif @else
+                                <ul style="list-style: none">
+                                    <li class="nav-item dropdown"><a id="navbarDropdown"
+                                                                     class="nav-link dropdown-toggle" href="#"
+                                                                     role="button" data-toggle="dropdown"><img
+                                                src="{{asset('storage/'.Auth::user()->image)}}" style="width: 75px; height: 75px">{{ Auth::user()->name}}
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <ul style="list-style: none" class="">
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a>
+                                                </li>
+                                                <li>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                          style="display: none;"> @csrf </form>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('users.profile', Auth::user()->id)}}"
+                                                       class="dropdown-item">Profile</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            @endguest
                         </div>
                     </div>
                 </div>
@@ -119,7 +158,8 @@
                     <!-- Calling Info -->
                     <div class="calling-info">
                         <div class="call-center">
-                            <a href="tel:+654563325568889"><i class="icon-telephone-2"></i> <span>(+65) 456 332 5568 889</span></a>
+                            <a href="tel:+654563325568889"><i class="icon-telephone-2"></i>
+                                <span>(+65) 456 332 5568 889</span></a>
                         </div>
                     </div>
                 </nav>
@@ -142,7 +182,8 @@
                         <div class="widget-title">
                             <a href="#"><img src="{{asset('storage/img/core-img/logo2.png')}}" alt=""></a>
                         </div>
-                        <p>Cras vitae turpis lacinia, lacinia lacus non, fermentum nisi. Donec et sollicitudin est, in euismod erat. Ut at erat et arcu pulvinar cursus a eget.</p>
+                        <p>Cras vitae turpis lacinia, lacinia lacus non, fermentum nisi. Donec et sollicitudin est, in
+                            euismod erat. Ut at erat et arcu pulvinar cursus a eget.</p>
                         <div class="footer-social-info">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -175,12 +216,24 @@
                             <h6>Gallery</h6>
                         </div>
                         <div class="gallery-list d-flex justify-content-between flex-wrap">
-                            <a href="{{asset('storage/img/bg-img/gallery1.jpg')}}" class="gallery-img" title="Gallery Image 1"><img src="{{asset('storage/img/bg-img/gallery1.jpg')}}" alt=""></a>
-                            <a href="{{asset('storage/img/bg-img/gallery2.jpg')}}" class="gallery-img" title="Gallery Image 2"><img src="{{asset('storage/img/bg-img/gallery2.jpg')}}" alt=""></a>
-                            <a href="{{asset('storage/img/bg-img/gallery3.jpg')}}" class="gallery-img" title="Gallery Image 3"><img src="{{asset('storage/img/bg-img/gallery3.jpg')}}" alt=""></a>
-                            <a href="{{asset('storage/img/bg-img/gallery4.jpg')}}" class="gallery-img" title="Gallery Image 4"><img src="{{asset('storage/img/bg-img/gallery4.jpg')}}" alt=""></a>
-                            <a href="{{asset('storage/img/bg-img/gallery5.jpg')}}" class="gallery-img" title="Gallery Image 5"><img src="{{asset('storage/img/bg-img/gallery5.jpg')}}" alt=""></a>
-                            <a href="{{asset('storage/img/bg-img/gallery6.jpg')}}" class="gallery-img" title="Gallery Image 6"><img src="{{asset('storage/img/bg-img/gallery6.jpg')}}" alt=""></a>
+                            <a href="{{asset('storage/img/bg-img/gallery1.jpg')}}" class="gallery-img"
+                               title="Gallery Image 1"><img src="{{asset('storage/img/bg-img/gallery1.jpg')}}"
+                                                            alt=""></a>
+                            <a href="{{asset('storage/img/bg-img/gallery2.jpg')}}" class="gallery-img"
+                               title="Gallery Image 2"><img src="{{asset('storage/img/bg-img/gallery2.jpg')}}"
+                                                            alt=""></a>
+                            <a href="{{asset('storage/img/bg-img/gallery3.jpg')}}" class="gallery-img"
+                               title="Gallery Image 3"><img src="{{asset('storage/img/bg-img/gallery3.jpg')}}"
+                                                            alt=""></a>
+                            <a href="{{asset('storage/img/bg-img/gallery4.jpg')}}" class="gallery-img"
+                               title="Gallery Image 4"><img src="{{asset('storage/img/bg-img/gallery4.jpg')}}"
+                                                            alt=""></a>
+                            <a href="{{asset('storage/img/bg-img/gallery5.jpg')}}" class="gallery-img"
+                               title="Gallery Image 5"><img src="{{asset('storage/img/bg-img/gallery5.jpg')}}"
+                                                            alt=""></a>
+                            <a href="{{asset('storage/img/bg-img/gallery6.jpg')}}" class="gallery-img"
+                               title="Gallery Image 6"><img src="{{asset('storage/img/bg-img/gallery6.jpg')}}"
+                                                            alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -212,7 +265,10 @@
             <div class="row">
                 <div class="col-12">
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                        All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                                                            aria-hidden="true"></i> by <a
+                            href="https://colorlib.com" target="_blank">Colorlib</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                 </div>
             </div>

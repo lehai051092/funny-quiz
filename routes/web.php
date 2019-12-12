@@ -11,7 +11,9 @@
 |
 */
 
+
 use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,16 +23,18 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
-
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
-
-Route::get('/profile', function () {
-    return view('user.profile');
-})->name('profile');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('users')->group(function () {
+    Route::get('{id}/profile', 'UserController@profile')->name('users.profile');
+    Route::post('{id}/profile', 'UserController@update')->name('users.update');
+    Route::post('{id}/profileImage', 'UserController@updateImage')->name('users.updateImage');
+    Route::post('{id}/change-password', 'UserController@updatePassword')->name('users.updatePassword');
+});
