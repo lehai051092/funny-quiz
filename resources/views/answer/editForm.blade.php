@@ -13,8 +13,18 @@
                         </div>
                         <div class="form-group">
                             <label>Status</label>
-                            <input type="text" class="form-control" placeholder="Enter Name Test" name="status"
-                                   value="{{$answer->status}}">
+                            <select class="form-control" name="status">
+
+                                    <option @if($answer->status===\App\StatusInterface::ISRIGHT)
+                                            selected
+                                            @endif
+                                            value="1">Đúng</option>
+                                    <option @if($answer->status===\App\StatusInterface::ISWRONG)
+                                            selected
+                                            @endif
+                                            value="2">Sai</option>
+
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Question</label>
