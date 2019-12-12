@@ -11,4 +11,6 @@ interface UserServiceInterface
     function update($request, $id);
 
     function updateImage($request, $id);
+
+    function getAll();
 }

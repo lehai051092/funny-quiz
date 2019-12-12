@@ -20,6 +20,9 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{{asset('storage/style.css')}}">
 
+{{--    list users--}}
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -72,6 +75,10 @@
                                                 <li>
                                                     <a href="{{route('users.profile', Auth::user()->id)}}"
                                                        class="dropdown-item">Profile</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('users.list')}}"
+                                                       class="dropdown-item">List User</a>
                                                 </li>
                                             </ul>
                                         </div>
