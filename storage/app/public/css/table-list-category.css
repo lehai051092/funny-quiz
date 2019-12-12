@@ -1,0 +1,24 @@
+.wrap {
+    width: 100%;
+}
+.wrap table {
+    table-layout: fixed;
+    width: 100%;
+}
+.wrap table.head {
+    width: calc(100% - 15px);
+}
+.wrap table.head tr td {
+    background: #eee;
+}
+
+table tr td {
+    border: 1px solid #eee;
+    padding: 5px;
+    word-wrap: break-word;
+}
+
+.scroll-table {
+    height: 300px;
+    overflow-y: auto;
+}
