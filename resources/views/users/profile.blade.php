@@ -177,13 +177,13 @@
                                                 <div class="col-md-8 col-6">
                                                     <input type="password" class="form-control"
                                                            name="current_password"
-                                                    @if($errors->has('current_password'))
-                                                        style="border: solid red"
+                                                           @if($errors->has('current_password'))
+                                                           style="border: solid red"
                                                         @endif
                                                     >
                                                     @if($errors->has('current_password'))
                                                         <p class="text-danger">{{$errors->first('current_password')}}</p>
-                                                        @endif
+                                                    @endif
                                                 </div>
                                             </div>
                                             <hr/>

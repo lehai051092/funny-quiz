@@ -116,7 +116,7 @@
                         <div class="classynav">
                             <ul>
                                 <li><a href="{{route('index')}}">Home</a></li>
-                                <li><a href="#">Pages</a>
+                                <li><a href="{{route('categories.list')}}">Categories</a>
                                     <ul class="dropdown">
                                         <li><a href="{{route('index')}}">Home</a></li>
                                         <li><a href="{{route('about')}}">About Us</a></li>
@@ -155,7 +155,6 @@
                                     </div>
                                 </li>
                                 <li><a href="{{route('about')}}">About Us</a></li>
-                                <li><a href="course.html">Course</a></li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
                             </ul>
                         </div>

@@ -27,6 +27,11 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::get('/categories/list', function () {
+    return view('categories.list');
+})->name('categories.list');
+
+
 
 Auth::routes();
 
