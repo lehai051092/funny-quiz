@@ -35,7 +35,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="main-container">
         <!--header-->
         <div class="header-w3l">
-            <h1>Funny </h1>
+            <h1>Funny Quiz</h1>
         </div>
         <!--//header-->
         <!--main-->
@@ -77,6 +77,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         @endif
                         <div class="clear"></div>
                     </div>
+                   <div class="m-5">
+                       <p style="color:burlywood;">
+                           If you do not already have an account, please
+                           <a style="color: aqua" href="{{ route('register') }}">{{ __('Register') }}</a>
+                           now.
+                       </p>
+                   </div>
+                    <br>
                     <div class="social-icons">
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -86,7 +94,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                     <input type="submit" value="">
                 </form>
+
             </div>
+
         </div>
         <!--//main-->
         <!--footer-->
