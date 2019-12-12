@@ -18,3 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('categories')->group(function () {
+    Route::get('/', 'CategoryController@getAll')->name('categories.list');
+    Route::get('create', 'CategoryController@create')->name('categories.create');
+    Route::post('create', 'CategoryController@store')->name('categories.store');
+    Route::get('{id}/delete', 'CategoryController@delete')->name('categories.delete');
+});
+
+Route::prefix('tests')->group(function (){
+   Route::get('{id}/','TestController@TestsInCategory')->name('tests.list');
+   Route::get('{id}/create','TestController@create')->name('tests.create');
+   Route::post('{id}/create','TestController@store')->name('tests.store');
+});
