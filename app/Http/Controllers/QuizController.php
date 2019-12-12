@@ -22,13 +22,13 @@ class QuizController extends Controller
     {
         $test = $this->testService->findById($id);
         $quizzes = $test->quizzes;
-        return view('quiz.list', compact('test', 'quizzes'));
+        return view('quizzes.list', compact('test', 'quizzes'));
     }
 
     public function create($id)
     {
         $test = $this->testService->findById($id);
-        return view('quiz.createForm', compact('test'));
+        return view('quizzes.createForm', compact('test'));
     }
 
     public function store(Request $request)
@@ -47,7 +47,7 @@ class QuizController extends Controller
     {
         $quiz = $this->quizService->findById($id);
         $test = $quiz->test;
-        return view('quiz.editForm', compact('quiz', 'test'));
+        return view('quizzes.editForm', compact('quiz', 'test'));
     }
 
     public function update(Request $request,$id){

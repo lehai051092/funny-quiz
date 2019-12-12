@@ -12,7 +12,7 @@ class QuestionsTableSeeder extends Seeder
     public function run()
     {
         $question=new \App\Question();
-        $question->title='Mark your answer on your answer sheet.';
+        $question->title='Mark your answers on your answers sheet.';
         $question->quiz_id=1;
         $question->save();
 

@@ -21,16 +21,16 @@ class AnswerController extends Controller
 
 //    public function answersInQuestion($id)
 //    {
-//        $question = $this->questionService->findById($id);
-//        $answers = $question->answers;
-//        return view('question.list', compact('question', 'answers'));
+//        $questions = $this->questionService->findById($id);
+//        $answers = $questions->answers;
+//        return view('questions.list', compact('questions', 'answers'));
 //    }
 
     public function create($id)
     {
         $question = $this->questionService->findById($id);
         $answers = $question->answers;
-        return view('answer.createForm', compact('question', 'answers'));
+        return view('answers.createForm', compact('question', 'answers'));
     }
 
     public function store(Request $request)
@@ -49,7 +49,7 @@ class AnswerController extends Controller
     {
         $answer = $this->answerService->findById($id);
         $question = $answer->question;
-        return view('answer.editForm', compact('answer', 'question'));
+        return view('answers.editForm', compact('answer', 'question'));
     }
 
     public function update(Request $request, $id)
