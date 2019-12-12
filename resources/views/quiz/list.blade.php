@@ -8,7 +8,7 @@
                     @foreach($quizzes as $quiz)
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
-                                <h5 class="card-title">{{$quiz->name}}</h5>
+                               <a href="{{route('questions.list',$quiz->id)}}"> <h5 class="card-title">{{$quiz->name}}</h5></a>
                                 <p class="card-text">{{$quiz->desc}}</p>
                                 <a href="{{route('quizzes.delete',$quiz->id)}}" class="card-link">Delete</a>
                                 <a href="{{route('quizzes.edit',$quiz->id)}}" class="card-link">Edit</a>

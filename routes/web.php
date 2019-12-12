@@ -43,3 +43,9 @@ Route::prefix('quizzes')->group(function (){
     Route::get('{id}/edit','QuizController@edit')->name('quizzes.edit');
     Route::post('{id}/edit','QuizController@update')->name('quizzes.update');
 });
+
+Route::prefix('questions')->group(function (){
+   Route::get('{id}/','QuestionController@questionsInQuiz') ->name('questions.list');
+   Route::get('{id}/create','QuestionController@create') ->name('questions.create');
+   Route::post('{id}/create','QuestionController@store') ->name('questions.store');
+});
