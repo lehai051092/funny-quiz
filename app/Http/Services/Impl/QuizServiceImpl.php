@@ -40,7 +40,8 @@ class QuizServiceImpl implements QuizServiceInterface
 
     function delete($id)
     {
-       $
+        $quiz = $this->quizRepository->findById($id);
+        return $this->quizRepository->delete($quiz);
     }
 
     function update($request, $id)

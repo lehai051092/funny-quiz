@@ -18,19 +18,28 @@ class QuizController extends Controller
         $this->testService = $testService;
     }
 
-    public function QuizzesInTest($id){
-        $test=$this->testService->findById($id);
-        $quizzes=$test->quizzes;
-        return view('quiz.list',compact('test','quizzes'));
+    public function QuizzesInTest($id)
+    {
+        $test = $this->testService->findById($id);
+        $quizzes = $test->quizzes;
+        return view('quiz.list', compact('test', 'quizzes'));
     }
 
-    public function create($id){
-        $test=$this->testService->findById($id);
-        return view('quiz.createForm',compact('test'));
+    public function create($id)
+    {
+        $test = $this->testService->findById($id);
+        return view('quiz.createForm', compact('test'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->quizService->store($request);
+        return redirect()->route('categories.list');
+    }
+
+    public function delete($id)
+    {
+        $this->quizService->delete($id);
         return redirect()->route('categories.list');
     }
 }
