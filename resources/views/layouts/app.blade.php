@@ -15,12 +15,12 @@
     <link rel="icon" href="{{asset('storage/img/core-img/favicon.ico')}}">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{{asset('storage/style.css')}}">
 
-{{--    list users--}}
+    {{--    list users--}}
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 </head>
@@ -59,7 +59,8 @@
                                     <li class="nav-item dropdown"><a id="navbarDropdown"
                                                                      class="nav-link dropdown-toggle" href="#"
                                                                      role="button" data-toggle="dropdown"><img
-                                                src="{{asset('storage/'.Auth::user()->image)}}" style="width: 50px; height: 50px">&nbsp;{{ Auth::user()->name}}
+                                                src="{{asset('storage/'.Auth::user()->image)}}"
+                                                style="width: 50px; height: 50px">&nbsp;{{ Auth::user()->name}}
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -76,12 +77,12 @@
                                                     <a href="{{route('users.profile', Auth::user()->id)}}"
                                                        class="dropdown-item">Profile</a>
                                                 </li>
-                                               @can('crud-users')
+                                                @can('crud-users')
                                                     <li>
                                                         <a href="{{route('users.list')}}"
                                                            class="dropdown-item">List User</a>
                                                     </li>
-                                                   @endcan
+                                                @endcan
                                             </ul>
                                         </div>
                                     </li>
@@ -120,41 +121,11 @@
                                 <li><a href="{{route('index')}}">Home</a></li>
                                 <li><a href="{{route('categories.list')}}">Categories</a>
                                     <ul class="dropdown">
-                                        <li><a href="{{route('index')}}">Home</a></li>
-                                        <li><a href="{{route('about')}}">About Us</a></li>
-                                        <li><a href="course.html">Course</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="{{route('contact')}}">Contact</a></li>
-                                        <li><a href="elements.html">Elements</a></li>
+                                        @foreach($categories as $category)
+                                            <li><a href="{{route('tests.list',$category->id)}}">{{$category->name}}</a>
+                                            </li>
+                                        @endforeach
                                     </ul>
-                                </li>
-                                <li><a href="#">Mega Menu</a>
-                                    <div class="megamenu">
-                                        <ul class="single-mega cn-col-4">
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">Services &amp; Features</a></li>
-                                            <li><a href="#">Accordions and tabs</a></li>
-                                            <li><a href="#">Menu ideas</a></li>
-                                            <li><a href="#">Students Gallery</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">Services &amp; Features</a></li>
-                                            <li><a href="#">Accordions and tabs</a></li>
-                                            <li><a href="#">Menu ideas</a></li>
-                                            <li><a href="#">Students Gallery</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">Services &amp; Features</a></li>
-                                            <li><a href="#">Accordions and tabs</a></li>
-                                            <li><a href="#">Menu ideas</a></li>
-                                            <li><a href="#">Students Gallery</a></li>
-                                        </ul>
-                                        <div class="single-mega cn-col-4">
-                                            <img src="{{asset('storage/img/bg-img/bg-1.jpg')}}" alt="">
-                                        </div>
-                                    </div>
                                 </li>
                                 <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
