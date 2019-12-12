@@ -25,4 +25,8 @@ class UserRepositoryEloquent implements UserRepositoryInterface
     {
        $user->save();
     }
+
+    function getAll() {
+        return $this->user->all();
+    }
 }
