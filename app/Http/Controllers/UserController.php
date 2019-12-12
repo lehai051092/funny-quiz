@@ -7,6 +7,7 @@ use App\Http\Requests\ProfileUserRequest;
 use App\Http\Services\Impl\UserServiceImpl;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -46,9 +47,12 @@ class UserController extends Controller
     }
 
     public function getAll() {
-        $users = $this->userService->getAll();
+       if (Gate::allows('crud-users')) {
+           $users = $this->userService->getAll();
 
-        return view('users.list', compact('users'));
+           return view('users.list', compact('users'));
+       }
+       abort(403, 'You are not authorized to access');
     }
 
 

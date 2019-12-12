@@ -59,7 +59,7 @@
                                     <li class="nav-item dropdown"><a id="navbarDropdown"
                                                                      class="nav-link dropdown-toggle" href="#"
                                                                      role="button" data-toggle="dropdown"><img
-                                                src="{{asset('storage/'.Auth::user()->image)}}" style="width: 75px; height: 75px">{{ Auth::user()->name}}
+                                                src="{{asset('storage/'.Auth::user()->image)}}" style="width: 50px; height: 50px">&nbsp;{{ Auth::user()->name}}
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -76,10 +76,12 @@
                                                     <a href="{{route('users.profile', Auth::user()->id)}}"
                                                        class="dropdown-item">Profile</a>
                                                 </li>
-                                                <li>
-                                                    <a href="{{route('users.list')}}"
-                                                       class="dropdown-item">List User</a>
-                                                </li>
+                                               @can('crud-users')
+                                                    <li>
+                                                        <a href="{{route('users.list')}}"
+                                                           class="dropdown-item">List User</a>
+                                                    </li>
+                                                   @endcan
                                             </ul>
                                         </div>
                                     </li>
