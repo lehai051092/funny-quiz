@@ -11,7 +11,7 @@
                                 <h5 class="card-title">{{$quiz->name}}</h5>
                                 <p class="card-text">{{$quiz->desc}}</p>
                                 <a href="{{route('quizzes.delete',$quiz->id)}}" class="card-link">Delete</a>
-                                <a href="#" class="card-link">Edit</a>
+                                <a href="{{route('quizzes.edit',$quiz->id)}}" class="card-link">Edit</a>
                             </div>
                         </div>
                     @endforeach

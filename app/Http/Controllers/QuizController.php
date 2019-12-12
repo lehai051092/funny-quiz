@@ -42,4 +42,16 @@ class QuizController extends Controller
         $this->quizService->delete($id);
         return redirect()->route('categories.list');
     }
+
+    public function edit($id)
+    {
+        $quiz = $this->quizService->findById($id);
+        $test = $this->testService->findById($id);
+        return view('quiz.editForm', compact('quiz', 'test'));
+    }
+
+    public function update(Request $request,$id){
+        $this->quizService->update($request,$id);
+        return redirect()->route('categories.list');
+    }
 }

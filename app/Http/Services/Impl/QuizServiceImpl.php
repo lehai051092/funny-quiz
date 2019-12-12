@@ -46,6 +46,9 @@ class QuizServiceImpl implements QuizServiceInterface
 
     function update($request, $id)
     {
-        // TODO: Implement update() method.
+        $quiz=$this->quizRepository->findById($id);
+        $quiz->name=$request->name;
+        $quiz->desc=$request->desc;
+        return $this->quizRepository->update($quiz);
     }
 }

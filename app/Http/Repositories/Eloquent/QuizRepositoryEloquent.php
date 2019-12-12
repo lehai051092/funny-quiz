@@ -38,6 +38,6 @@ class QuizRepositoryEloquent implements QuizRepositoryInterface
 
     function update($obj)
     {
-        // TODO: Implement update() method.
+        $obj->save();
     }
 }
