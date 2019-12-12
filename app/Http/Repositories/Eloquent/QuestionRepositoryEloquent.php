@@ -32,7 +32,7 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
 
     function delete($obj)
     {
-        // TODO: Implement delete() method.
+        return $obj->delete();
     }
 
     function update($obj)

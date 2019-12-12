@@ -48,4 +48,5 @@ Route::prefix('questions')->group(function (){
    Route::get('{id}/','QuestionController@questionsInQuiz') ->name('questions.list');
    Route::get('{id}/create','QuestionController@create') ->name('questions.create');
    Route::post('{id}/create','QuestionController@store') ->name('questions.store');
+   Route::get('{id}/delete','QuestionController@delete') ->name('questions.delete');
 });

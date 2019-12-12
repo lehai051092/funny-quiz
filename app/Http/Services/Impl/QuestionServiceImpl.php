@@ -37,7 +37,8 @@ class QuestionServiceImpl implements QuestionServiceInterface
 
     function delete($id)
     {
-        // TODO: Implement delete() method.
+        $question=$this->questionRepository->findById($id);
+        return $this->questionRepository->delete($question);
     }
 
     function update($request, $id)

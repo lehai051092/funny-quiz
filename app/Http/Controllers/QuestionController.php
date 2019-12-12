@@ -35,4 +35,9 @@ class QuestionController extends Controller
         $this->questionService->store($request);
         return redirect()->route('categories.list');
     }
+
+    public function delete($id){
+        $this->questionService->delete($id);
+        return redirect()->route('categories.list');
+    }
 }

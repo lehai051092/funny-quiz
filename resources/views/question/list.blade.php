@@ -13,6 +13,7 @@
                             <li class="list-group-item">Porta ac consectetur ac</li>
                             <li class="list-group-item">Vestibulum at eros</li>
                         </ul>
+                <a href="{{route('questions.delete',$question->id)}}" class="btn btn-danger">Delete</a>
                         <br>
                     @endforeach
 
