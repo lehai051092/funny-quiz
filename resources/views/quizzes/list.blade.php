@@ -7,6 +7,7 @@
                 <div class="row">
                     @foreach($quizzes as $quiz)
                         <div class="card" style="width: 18rem;">
+                            <img src="{{$quiz->image}}" class="card-img-top" alt="...">
                             <div class="card-body">
                                <a href="{{route('quizzes.view',$quiz->id)}}"> <h5 class="card-title">{{$quiz->name}}</h5></a>
                                 <p class="card-text">{{$quiz->desc}}</p>

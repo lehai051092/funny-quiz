@@ -22,10 +22,10 @@
                                     @endforeach
                             </select>
                         </div>
-{{--                        <div class="form-group">--}}
-{{--                            <label>Quiz photos</label>--}}
-{{--                            <input type="file" class="form-control-file" name="image">--}}
-{{--                        </div>--}}
+                        <div class="form-group">
+                            <label>Quiz photos</label>
+                            <input type="file" class="form-control-file" name="image">
+                        </div>
                         <button type="submit" class="btn btn-primary">Create</button>
                     </form>
                 </div>

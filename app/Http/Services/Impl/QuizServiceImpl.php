@@ -36,35 +36,35 @@ class QuizServiceImpl implements QuizServiceInterface
         $quiz->name = $request->name;
         $quiz->desc = $request->desc;
         $quiz->category_id = $request->category_id;
-//        if (!$request->hasFile('image')) {
-//            $quiz->image = $request->image;
-//        } else {
-//            $image = $request->file('image');
-//            $path = $image->store('image', 'public');
-//            $quiz->image = $path;
-//        }
+        if (!$request->hasFile('image')) {
+            $quiz->image = $request->image;
+        } else {
+            $image = $request->file('image');
+            $path = $image->store('image', 'public');
+            $quiz->image = $path;
+        }
         $this->quizRepository->store($quiz);
     }
 
     function delete($id)
     {
         $quiz = $this->quizRepository->findById($id);
-//        if (file_exists(storage_path("/app/pubplic/$quiz->image"))) {
-//            File::delete(storage_path("/app/pubplic/$quiz->image"));
-//        }
+        if (file_exists(storage_path("/app/pubplic/$quiz->image"))) {
+            File::delete(storage_path("/app/pubplic/$quiz->image"));
+        }
         return $this->quizRepository->delete($quiz);
     }
 
     function update($request, $id)
     {
         $quiz = $this->quizRepository->findById($id);
-//        if (file_exists(storage_path("/app/pubplic/$quiz->image"))) {
-//            File::delete(storage_path("/app/pubplic/$quiz->image"));
-//        }
+        if (file_exists(storage_path("/app/pubplic/$quiz->image"))) {
+            File::delete(storage_path("/app/pubplic/$quiz->image"));
+        }
         $quiz->name = $request->name;
         $quiz->desc = $request->desc;
         $quiz->category_id = $request->category_id;
-//        $quiz->image = $request->image;
+        $quiz->image = $request->image;
         return $this->quizRepository->update($quiz);
     }
 }

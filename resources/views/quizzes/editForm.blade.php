@@ -24,6 +24,12 @@
                                     value="{{$category->id}}">{{$category->name}}</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <img src="{{asset('storage/'.$quiz->image)}}" alt=""
+                                 style="width: 150px">
+                            <input type="file" class="form-control" name="image">
+                        </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>
