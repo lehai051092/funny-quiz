@@ -11,4 +11,6 @@ interface UserRepositoryInterface
     function save($user);
 
     function getAll();
+
+    function delete($user);
 }
