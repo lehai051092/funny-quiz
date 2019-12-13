@@ -121,7 +121,7 @@ body {
     font-family: 'Snippet', sans-serif;
 }
 
-.sub-main-w3ls input[type="password"],  .sub-main-w3ls input[type="text"] {
+.sub-main-w3ls input[type="password"],  .sub-main-w3ls input[type="text"],  .sub-main-w3ls input[type="email"]{
     margin-top: 1.5em;
 }
 

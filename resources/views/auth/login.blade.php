@@ -47,7 +47,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <!--email-->
-                    <input id="email" type="email"
+                    <input id="email" type="email" placeholder="Enter your Email"
                            class="form-control @error('email') is-invalid @enderror" name="email"
                            value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -59,7 +59,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <span class="icon1"><span toggle="#password-field" class="fa fa-envelope" aria-hidden="true"></span></span>
 
                     <!--password-->
-                    <input id="password" type="password"
+                    <input id="password" type="password" placeholder="Enter your Password"
                            class="form-control @error('password') is-invalid @enderror"
                            name="password"
                            required autocomplete="current-password">
@@ -88,7 +88,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="social-icons">
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>

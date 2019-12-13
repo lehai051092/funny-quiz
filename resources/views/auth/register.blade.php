@@ -1,132 +1,142 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login V13</title>
-    <meta charset="UTF-8">
+    <title>Funny Quiz Login</title>
+    <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{{asset('storage/sign-up-form/images/icons/favicon.ico')}}"/>
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('storage/sign-up-form/vendor/bootstrap/css/bootstrap.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('storage/sign-up-form/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('storage/sign-up-form/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('storage/sign-up-form/fonts/iconic/css/material-design-iconic-font.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('storage/sign-up-form/vendor/animate/animate.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('storage/sign-up-form/vendor/css-hamburgers/hamburgers.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('storage/sign-up-form/vendor/animsition/css/animsition.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('storage/sign-up-form/vendor/select2/select2.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('storage/sign-up-form/vendor/daterangepicker/daterangepicker.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('storage/sign-up-form/css/util.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('storage/sign-up-form/css/main.css')}}">
-    <!--===============================================================================================-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords"
+          content="Modern Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        } </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+    <link rel="stylesheet" href="{{asset('storage/login-form/css/style.css')}}" type="text/css" media="all"/>
+    <!-- Style-CSS -->
+    <link rel="stylesheet" href="{{asset('storage/login-form/css/font-awesome.css')}}"> <!-- Font-Awesome-Icons-CSS -->
+    <!-- //css files -->
+    <!-- web-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Snippet" rel="stylesheet"><!--online fonts-->
+    <!-- //web-fonts -->
 </head>
-<body style="background-color: #999999;">
-
-<div class="limiter">
-    <div class="container-login100">
-        <div class="login100-more" style="background-image: url('{{asset('storage/sign-up-form/images/bg-01.jpg')}}');"></div>
-
-        <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-            <form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
+<body>
+<div data-vide-bg="{{asset('storage/login-form/video/keyboard')}}">
+    <div class="main-container">
+        <!--header-->
+        <div class="header-w3l">
+            <h1>Funny Quiz</h1>
+        </div>
+        <!--//header-->
+        <!--main-->
+        <div class="main-content-agile">
+            <div class="w3ls-pro">
+                <h2>Login Now</h2>
+            </div>
+            <div class="sub-main-w3ls">
+                <form action="{{ route('register') }}" method="POST">
                 @csrf
-					<span class="login100-form-title p-b-59">
-						{{ __('Register') }}
-					</span>
-
-                <div class="wrap-input100 validate-input" data-validate="Name is required">
-                    <span class="label-input100">{{ __('Name') }}</span>
-                    <input id="name" type="text" class=" @error('name') is-invalid @enderror input100" name="name" placeholder="Name..." value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <!--username-->
+                    <input id="name" placeholder="Username..." type="text"
+                           class="form-control @error('name') is-invalid @enderror"
+                           name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                     @enderror
-                    <span class="focus-input100"></span>
-                </div>
+                    <span class="icon1"><span toggle="#password-field" class="fa fa-envelope" aria-hidden="true"></span></span>
 
-                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <span class="label-input100">{{ __('E-Mail Address') }}</span>
-                    <input id="email" type="email" placeholder="Email address..." class="input100 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                    <!--email-->
+                    <input id="email" type="email" placeholder="Enter your Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                     @enderror
-                    <span class="focus-input100"></span>
-                </div>
+                    <span class="icon1"><span toggle="#password-field" class="fa fa-envelope" aria-hidden="true"></span></span>
 
-                <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                    <span class="label-input100">{{ __('Password') }}</span>
-                    <input id="password" placeholder="*************" type="password" class="input100 @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                    <!--password-->
+                    <input id="password" type="password" placeholder="Enter your Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                     @error('password')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                     @enderror
-                    <span class="focus-input100"></span>
-                </div>
+                    <span class="icon2"><i class="fa fa-fw fa-eye field_icon toggle-password"
+                                           aria-hidden="true"></i></span>
+                    <!--confirmPassword-->
 
-                <div class="wrap-input100 validate-input" data-validate = "Repeat Password is required">
-                    <span class="label-input100">{{ __('Confirm Password') }}</span>
-                    <input id="password-confirm" type="password" class="input100" placeholder="*************" name="password_confirmation" required autocomplete="new-password">
+                    <input id="password-confirm" type="password" placeholder="Confirm your Password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                    <span class="icon2"><i class="fa fa-fw fa-eye field_icon toggle-password"
+                                           aria-hidden="true"></i></span>
 
-                    <span class="focus-input100"></span>
-                </div>
 
-                <div class="container-login100-form-btn">
-                    <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn" type="submit">
-                            {{ __('Register') }}
-                        </button>
+                    <div class="checkbox-w3">
+                        <span class="check-w3"> <input class="form-check-input" type="checkbox" name="remember"
+                                                       id="remember" {{ old('remember') ? 'checked' : '' }}>{{ __('Remember me') }}
+                        </span>
+                        @if (Route::has('password.request'))
+                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
+                        @endif
+                        <div class="clear"></div>
                     </div>
+                    <div class="m-5">
+                        <p style="color:burlywood;">
+                            If you do not already have an account, please
+                            <a style="color: aqua" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            now.
+                        </p>
+                    </div>
+                    <br>
+                    <div class="social-icons">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Register') }}
+                    </button>
+                </form>
 
-                    <a href="{{ route('login') }}   " class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
-                        Sign in
-                        <i class="fa fa-long-arrow-right m-l-5"></i>
-                    </a>
-                </div>
-            </form>
+            </div>
+
         </div>
+        <!--//main-->
+        <!--footer-->
+        <div class="footer">
+
+        </div>
+        <!--//footer-->
     </div>
 </div>
+<!-- js -->
+<script type="text/javascript" src="{{asset('storage/login-form/js/jquery-2.1.4.min.js')}}"></script><!--common-js-->
+<script src="{{asset('storage/login-form/js/jquery.vide.min.js')}}"></script><!--video-js-->
+<!-- //js -->
 
-<!--===============================================================================================-->
-<script src="{{asset('storage/sign-up-form/vendor/jquery/jquery-3.2.1.min.j')}}s"></script>
-<!--===============================================================================================-->
-<script src="{{asset('storage/sign-up-form/vendor/animsition/js/animsition.min.j')}}s"></script>
-<!--===============================================================================================-->
-<script src="{{asset('storage/sign-up-form/vendor/bootstrap/js/popper.j')}}s"></script>
-<script src="{{asset('storage/sign-up-form/vendor/bootstrap/js/bootstrap.min.j')}}s"></script>
-<!--===============================================================================================-->
-<script src="{{asset('storage/sign-up-form/vendor/select2/select2.min.j')}}s"></script>
-<!--===============================================================================================-->
-<script src="{{asset('storage/sign-up-form/vendor/daterangepicker/moment.min.j')}}s"></script>
-<script src="{{asset('storage/sign-up-form/vendor/daterangepicker/daterangepicker.j')}}s"></script>
-<!--===============================================================================================-->
-<script src="{{asset('storage/sign-up-form/vendor/countdowntime/countdowntime.j')}}s"></script>
-<!--===============================================================================================-->
-<script src="{{asset('storage/sign-up-form/js/main.js')}}"></script>
+<script>
+    $(document).on('click', '.toggle-password', function () {
 
+        $(this).toggleClass("fa-eye fa-eye-slash");
+
+        let input = $("#password");
+        input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password')
+    });
+</script>
 </body>
 </html>
-
-
-
-
 
 
 
