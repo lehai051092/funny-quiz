@@ -11,7 +11,7 @@
                         <div class="card-body">
                            <a href="{{route('quizzes.list',$test->id)}}"> <h5 class="card-title">{{$test->name}}</h5></a>
                             <p class="card-text">{{$test->desc}}</p>
-                            <a href="{{route('tests.delete',$test->id)}}" class="btn btn-danger">Delete</a>
+                            <a href="{{route('tests.delete',$test->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure delete???')">Delete</a>
                             <a href="{{route('tests.edit',$test->id)}}" class="btn btn-primary">Edit</a>
                         </div>
                     </div>
