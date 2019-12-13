@@ -22,13 +22,13 @@ class TestController extends Controller
     {
         $category = $this->categoryService->findById($id);
         $tests = $category->tests;
-        return view('test.list', compact('category', 'tests'));
+        return view('tests.list', compact('category', 'tests'));
     }
 
     public function create($id)
     {
         $category = $this->categoryService->findById($id);
-        return view('test.createForm', compact('category'));
+        return view('tests.createForm', compact('category'));
     }
 
     public function store(Request $request)
@@ -47,7 +47,7 @@ class TestController extends Controller
     {
         $test = $this->testService->findById($id);
         $category = $test->category;
-        return view('test.editForm', compact('test', 'category'));
+        return view('tests.editForm', compact('test', 'category'));
     }
 
     public function update(Request $request, $id)

@@ -49,12 +49,13 @@
                                 <a href="{{ route('login') }}"><h4><i class="fa fa-user"
                                                                       aria-hidden="true" style="color: black">Login</i>
                                     </h4></a>
-                                @if (Route::has('register'))
-                                    <a class="nav-link"
-                                       href="{{ route('register') }}"><h4><i class="fa fa-user-plus"
-                                                                             style="color: black" aria-hidden="true">Register</i>
-                                        </h4></a>
-                                @endif @else
+{{--                                @if (Route::has('register'))--}}
+{{--                                    <a class="nav-link"--}}
+{{--                                       href="{{ route('register') }}"><h4><i class="fa fa-user-plus"--}}
+{{--                                                                             style="color: black" aria-hidden="true">Register</i>--}}
+{{--                                        </h4></a>--}}
+{{--                                @endif --}}
+                            @else
                                 <ul style="list-style: none">
                                     <li class="nav-item dropdown"><a id="navbarDropdown"
                                                                      class="nav-link dropdown-toggle" href="#"
@@ -262,7 +263,7 @@
 <!-- Popper js -->
 <script src="{{asset('storage/js/bootstrap/popper.min.js')}}"></script>
 <!-- Bootstrap js -->
-<script src="{{asset('storage/js/bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{asset('storage/js/bootstrap/bootstrap.min.js')}}"></script>
 <!-- All Plugins js -->
 <script src="{{asset('storage/js/plugins/plugins.js')}}"></script>
 <!-- Active js -->
