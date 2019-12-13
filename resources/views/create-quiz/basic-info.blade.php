@@ -12,15 +12,15 @@
                         <div class="card-body">
                             <form>
                                 <div class="form-group">
-                                    <label>Title</label>
+                                    <label><h5>Title</h5></label>
                                     <input type="text" class="form-control">
                                 </div>
                                  <div class="form-group">
-                                    <label>Desc</label>
+                                    <label><h5>Desc</h5></label>
                                      <textarea class="form-control"></textarea>
                                 </div>
                                  <div class="form-group">
-                                    <label>Category</label>
+                                    <label><h5>Category</h5></label>
                                      <select class="form-control">
                                          <option>1</option>
                                          <option>2</option>
@@ -30,7 +30,9 @@
                                      </select>
                                 </div>
                                 <div class="form-group">
-                                    <img src="" class="img-circle" alt="ảnh đại diện cho quiz" width="304" height="236"><br>
+                                    <img src="" id="imgProfile"
+                                         style="width: 150px; height: 150px" class="img-thumbnail"/>
+                                    <br><br>
                                     <input type="file" >
                                 </div>
 
