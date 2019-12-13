@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Funny Quiz Login</title>
+    <title>Funny Quiz Register</title>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -16,16 +16,16 @@
         } </script>
     <!-- Meta tag Keywords -->
     <!-- css files -->
-    <link rel="stylesheet" href="{{asset('storage/login-form/css/style.css')}}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{{asset('storage/sign-up-form/css/style.css')}}" type="text/css" media="all"/>
     <!-- Style-CSS -->
-    <link rel="stylesheet" href="{{asset('storage/login-form/css/font-awesome.css')}}"> <!-- Font-Awesome-Icons-CSS -->
+    <link rel="stylesheet" href="{{asset('storage/sign-up-form/css/font-awesome.css')}}"> <!-- Font-Awesome-Icons-CSS -->
     <!-- //css files -->
     <!-- web-fonts -->
     <link href="//fonts.googleapis.com/css?family=Snippet" rel="stylesheet"><!--online fonts-->
     <!-- //web-fonts -->
 </head>
 <body>
-<div data-vide-bg="{{asset('storage/login-form/video/keyboard')}}">
+<div data-vide-bg="{{asset('storage/sign-up-form/video/keyboard')}}">
     <div class="main-container">
         <!--header-->
         <div class="header-w3l">
@@ -35,7 +35,7 @@
         <!--main-->
         <div class="main-content-agile">
             <div class="w3ls-pro">
-                <h2>Login Now</h2>
+                <h2>Register Now</h2>
             </div>
             <div class="sub-main-w3ls">
                 <form action="{{ route('register') }}" method="POST">
@@ -50,7 +50,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                     @enderror
-                    <span class="icon1"><span toggle="#password-field" class="fa fa-envelope" aria-hidden="true"></span></span>
+                    <span class="icon4"><span toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password" aria-hidden="true"></span></span>
 
                     <!--email-->
                     <input id="email" type="email" placeholder="Enter your Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -60,7 +60,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                     @enderror
-                    <span class="icon1"><span toggle="#password-field" class="fa fa-envelope" aria-hidden="true"></span></span>
+                    <span class="icon3"><span toggle="#password-field" class="fa fa-envelope" aria-hidden="true"></span></span>
 
 
                     <!--password-->
@@ -71,43 +71,14 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                     @enderror
-                    <span class="icon2"><i class="fa fa-fw fa-eye field_icon toggle-password"
+                    <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-password"
                                            aria-hidden="true"></i></span>
                     <!--confirmPassword-->
 
                     <input id="password-confirm" type="password" placeholder="Confirm your Password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                     <span class="icon2"><i class="fa fa-fw fa-eye field_icon toggle-password"
                                            aria-hidden="true"></i></span>
-
-
-                    <div class="checkbox-w3">
-                        <span class="check-w3"> <input class="form-check-input" type="checkbox" name="remember"
-                                                       id="remember" {{ old('remember') ? 'checked' : '' }}>{{ __('Remember me') }}
-                        </span>
-                        @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
-                            </a>
-                        @endif
-                        <div class="clear"></div>
-                    </div>
-                    <div class="m-5">
-                        <p style="color:burlywood;">
-                            If you do not already have an account, please
-                            <a style="color: aqua" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            now.
-                        </p>
-                    </div>
-                    <br>
-                    <div class="social-icons">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('Register') }}
-                    </button>
+                    <input type="submit" value="">
                 </form>
 
             </div>
@@ -122,8 +93,8 @@
     </div>
 </div>
 <!-- js -->
-<script type="text/javascript" src="{{asset('storage/login-form/js/jquery-2.1.4.min.js')}}"></script><!--common-js-->
-<script src="{{asset('storage/login-form/js/jquery.vide.min.js')}}"></script><!--video-js-->
+<script type="text/javascript" src="{{asset('storage/sign-up-form/js/jquery-2.1.4.min.js')}}"></script><!--common-js-->
+<script src="{{asset('storage/sign-up-form/js/jquery.vide.min.js')}}"></script><!--video-js-->
 <!-- //js -->
 
 <script>
