@@ -121,13 +121,13 @@
                                                 <div class="col-md-8 col-6">
                                                     <div class="form-group">
                                                         <select class="form-control" name="gender">
-                                                            <option @if($user->gender === \App\GenderInterface::MALE)
-                                                                    selected
-                                                                    @endif value="1">Male
-                                                            </option>
                                                             <option @if($user->gender === \App\GenderInterface::FEMALE)
                                                                     selected
                                                                     @endif value="0">Female
+                                                            </option>
+                                                            <option @if($user->gender === \App\GenderInterface::MALE)
+                                                                    selected
+                                                                    @endif value="1">Male
                                                             </option>
                                                         </select>
                                                     </div>
