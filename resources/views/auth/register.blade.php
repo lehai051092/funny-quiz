@@ -76,7 +76,7 @@
                     <!--confirmPassword-->
 
                     <input id="password-confirm" type="password" placeholder="Confirm your Password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                    <span class="icon"><i class="fa fa-fw fa-eye field_icon toggle-password"
+                    <span class="icon2"><i class="fa fa-fw fa-eye field_icon toggle-password-confirm"
                                            aria-hidden="true"></i></span>
                     <input type="submit" value="">
                 </form>
@@ -99,16 +99,16 @@
 
 <script>
     $(document).on('click', '.toggle-password', function () {
-
         $(this).toggleClass("fa-eye fa-eye-slash");
-
-        let input = $("#password,#password-confirm");
+        let input = $("#password");
         input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password');
+    });
 
-
-
+    $(document).on('click', '.toggle-password-confirm', function () {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        let input = $("#password-confirm");
+        input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password');
     });
 </script>
 </body>
 </html>
-
