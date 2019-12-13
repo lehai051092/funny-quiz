@@ -85,4 +85,7 @@ Route::prefix('users')->group(function () {
     Route::post('{id}/profileImage', 'UserController@updateImage')->name('users.updateImage');
     Route::post('{id}/change-password', 'UserController@updatePassword')->name('users.updatePassword');
     Route::get('list', 'UserController@getAll')->name('users.list');
+    Route::get('{id}/edit', 'UserController@edit')->name('users.edit');
+    Route::post('{id}/edit', 'UserController@update')->name('users.edit');
+    Route::get('{id}/delete', 'UserController@delete')->name('users.delete');
 });
