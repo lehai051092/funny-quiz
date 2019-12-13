@@ -19,7 +19,13 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="name"><h5>Name</h5></label>
-                                    <input type="text" class="form-control" id="name" value="{{$user->name}}" name="name">
+                                    <input type="text" class="form-control" id="name" value="{{$user->name}}" name="name"
+                                           @if($errors->has('name'))
+                                           style="border: solid red"
+                                        @endif>
+                                    @if($errors->has('name'))
+                                        <p class="text-danger">{{$errors->first('name')}}</p>
+                                    @endif
                                 </div>
 
                                 <div class="form-group">

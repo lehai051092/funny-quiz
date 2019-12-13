@@ -29,4 +29,9 @@ class UserRepositoryEloquent implements UserRepositoryInterface
     function getAll() {
         return $this->user->all();
     }
+
+    function delete($user)
+    {
+        $user->delete();
+    }
 }

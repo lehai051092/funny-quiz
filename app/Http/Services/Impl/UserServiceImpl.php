@@ -52,4 +52,11 @@ class UserServiceImpl implements UserServiceInterface
     {
         return $this->userRepository->getAll();
     }
+
+    function delete($id)
+    {
+        $user = $this->userRepository->findById($id);
+
+        $this->userRepository->delete($user);
+    }
 }
