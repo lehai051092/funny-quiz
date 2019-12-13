@@ -174,12 +174,21 @@
                                                     <label style="font-weight:bold;">Old Password</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    <input type="password" class="form-control"
-                                                           name="current_password"
-                                                           @if($errors->has('current_password'))
-                                                           style="border: solid red"
-                                                        @endif
-                                                    >
+                                                    <div class="input-group mb-2 mr-sm-2">
+                                                        <input id="old-password" type="password" class="form-control"
+                                                               name="current_password"
+                                                               @if($errors->has('current_password'))
+                                                               style="border: solid red"
+                                                            @endif
+                                                        >
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                 <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-old-password"
+                                                                                        aria-hidden="true"></i></span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
                                                     @if($errors->has('current_password'))
                                                         <p class="text-danger">{{$errors->first('current_password')}}</p>
                                                     @endif
@@ -191,13 +200,21 @@
                                                     <label style="font-weight:bold;">New Password</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    <input type="password" class="form-control"
-                                                           value=""
-                                                           name="new_password"
-                                                           @if($errors->has('new_password'))
-                                                           style="border: solid red"
-                                                        @endif
-                                                    >
+                                                    <div class="input-group mb-2 mr-sm-2">
+                                                        <input id="new-password" type="password" class="form-control"
+                                                               value=""
+                                                               name="new_password"
+                                                               @if($errors->has('new_password'))
+                                                               style="border: solid red"
+                                                            @endif
+                                                        >
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                 <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-new-password"
+                                                                                        aria-hidden="true"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     @if($errors->has('new_password'))
                                                         <p class="text-danger">{{$errors->first('new_password')}}</p>
                                                     @endif
@@ -210,13 +227,22 @@
                                                     <label style="font-weight:bold;">Confirm Password</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    <input type="password" class="form-control"
-                                                           value=""
-                                                           name="new_confirm_password"
-                                                           @if($errors->has('new_confirm_password'))
-                                                           style="border: solid red"
-                                                        @endif
-                                                    >
+
+                                                    <div class="input-group mb-2 mr-sm-2">
+                                                        <input id="confirm-password" type="password" class="form-control"
+                                                               value=""
+                                                               name="new_confirm_password"
+                                                               @if($errors->has('new_confirm_password'))
+                                                               style="border: solid red"
+                                                            @endif
+                                                        >
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                 <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-confirm-password"
+                                                                                        aria-hidden="true"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     @if($errors->has('new_confirm_password'))
                                                         <p class="text-danger">{{$errors->first('new_confirm_password')}}</p>
                                                     @endif
@@ -243,5 +269,23 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).on('click', '.toggle-old-password', function () {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            let input = $("#old-password");
+            input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password');
+        });
 
+        $(document).on('click', '.toggle-new-password', function () {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            let input = $("#new-password");
+            input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password');
+        });
+        $(document).on('click', '.toggle-confirm-password', function () {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            let input = $("#confirm-password");
+            input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password');
+        });
+
+    </script>
 @endsection
