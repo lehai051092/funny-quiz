@@ -15,4 +15,18 @@ class UserRepositoryEloquent implements UserRepositoryInterface
     {
         $this->user = $user;
     }
+
+    function findById($id)
+    {
+        return $this->user->findOrFail($id);
+    }
+
+    function save($user)
+    {
+       $user->save();
+    }
+
+    function getAll() {
+        return $this->user->all();
+    }
 }
