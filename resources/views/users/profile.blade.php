@@ -181,16 +181,17 @@
                                                                style="border: solid red"
                                                             @endif
                                                         >
-                                                        @if($errors->has('current_password'))
-                                                            <p class="text-danger">{{$errors->first('current_password')}}</p>
-                                                        @endif
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
                                                                  <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-old-password"
                                                                                         aria-hidden="true"></i></span>
                                                             </div>
                                                         </div>
+
                                                     </div>
+                                                    @if($errors->has('current_password'))
+                                                        <p class="text-danger">{{$errors->first('current_password')}}</p>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <hr/>
@@ -207,9 +208,6 @@
                                                                style="border: solid red"
                                                             @endif
                                                         >
-                                                        @if($errors->has('new_password'))
-                                                            <p class="text-danger">{{$errors->first('new_password')}}</p>
-                                                        @endif
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
                                                                  <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-new-password"
@@ -217,6 +215,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    @if($errors->has('new_password'))
+                                                        <p class="text-danger">{{$errors->first('new_password')}}</p>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <hr/>
@@ -235,9 +236,6 @@
                                                                style="border: solid red"
                                                             @endif
                                                         >
-                                                        @if($errors->has('new_confirm_password'))
-                                                            <p class="text-danger">{{$errors->first('new_confirm_password')}}</p>
-                                                        @endif
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
                                                                  <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-confirm-password"
@@ -245,6 +243,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    @if($errors->has('new_confirm_password'))
+                                                        <p class="text-danger">{{$errors->first('new_confirm_password')}}</p>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <hr/>
