@@ -61,7 +61,7 @@
                                                 <tbody></tbody>
                                                 <tr>
                                                     <td>
-                                                        <a href="{{route('tests.list',$category->id)}}">{{$category->name}}</a>
+                                                        <a href="{{route('quizzes.list',$category->id)}}">{{$category->name}}</a>
                                                     </td>
                                                     <td>
                                                         <a href="{{route('categories.delete',$category->id)}}" class="btn btn-link" style="color: red" onclick="return confirm('Are you sure delete ???')">Delete</a>
