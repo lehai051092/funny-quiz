@@ -12,19 +12,9 @@
                         </div>
                         <div class="form-group">
                             <label>Status</label>
-                            <select class="form-control" name="status">
-                                @foreach($answers as $answer)
-                                    <option @if($answer->status===\App\StatusInterface::ISRIGHT)
-                                            selected
-                                            @endif
-                                            value="1">Đúng
-                                    </option>
-                                    <option @if($answer->status===\App\StatusInterface::ISWRONG)
-                                            selected
-                                            @endif
-                                            value="2">Sai
-                                    </option>
-                                @endforeach
+                            <select class="form-control"  name="status">
+                                <option value="{{\App\StatusInterface::ISRIGHT}}">Đúng</option>
+                                <option value="{{\App\StatusInterface::ISWRONG}}">Sai</option>
                             </select>
                         </div>
                         <div class="form-group">
