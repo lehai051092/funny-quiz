@@ -46,7 +46,7 @@
                                                 <a href="#">{{$user->email}}</a>
                                             </td>
                                             <td style="width: 20%;">
-                                                <a href="#" class="table-link">
+                                                <a href="{{route('users.edit', $user->id)}}" class="table-link">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
