@@ -1262,7 +1262,7 @@ module.exports = (
 /**
  * Determines whether the specified URL is absolute
  *
- * @param {string} url The URL to test
+ * @param {string} url The URL to tests
  * @returns {boolean} True if the specified URL is absolute, otherwise false
  */
 module.exports = function isAbsoluteURL(url) {
@@ -1290,7 +1290,7 @@ var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/util
 module.exports = (
   utils.isStandardBrowserEnv() ?
 
-  // Standard browser envs have full support of the APIs needed to test
+  // Standard browser envs have full support of the APIs needed to tests
   // whether the request URL is of the same origin as current location.
     (function standardBrowserEnv() {
       var msie = /(msie|trident)/i.test(navigator.userAgent);
@@ -1334,7 +1334,7 @@ module.exports = (
       /**
     * Determine if a URL shares the same origin as the current location
     *
-    * @param {String} requestURL The URL to test
+    * @param {String} requestURL The URL to tests
     * @returns {boolean} True if URL shares the same origin, otherwise false
     */
       return function isURLSameOrigin(requestURL) {
@@ -1505,7 +1505,7 @@ var toString = Object.prototype.toString;
 /**
  * Determine if a value is an Array
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is an Array, otherwise false
  */
 function isArray(val) {
@@ -1515,7 +1515,7 @@ function isArray(val) {
 /**
  * Determine if a value is an ArrayBuffer
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is an ArrayBuffer, otherwise false
  */
 function isArrayBuffer(val) {
@@ -1525,7 +1525,7 @@ function isArrayBuffer(val) {
 /**
  * Determine if a value is a FormData
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is an FormData, otherwise false
  */
 function isFormData(val) {
@@ -1535,7 +1535,7 @@ function isFormData(val) {
 /**
  * Determine if a value is a view on an ArrayBuffer
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
  */
 function isArrayBufferView(val) {
@@ -1551,7 +1551,7 @@ function isArrayBufferView(val) {
 /**
  * Determine if a value is a String
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is a String, otherwise false
  */
 function isString(val) {
@@ -1561,7 +1561,7 @@ function isString(val) {
 /**
  * Determine if a value is a Number
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is a Number, otherwise false
  */
 function isNumber(val) {
@@ -1571,7 +1571,7 @@ function isNumber(val) {
 /**
  * Determine if a value is undefined
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if the value is undefined, otherwise false
  */
 function isUndefined(val) {
@@ -1581,7 +1581,7 @@ function isUndefined(val) {
 /**
  * Determine if a value is an Object
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is an Object, otherwise false
  */
 function isObject(val) {
@@ -1591,7 +1591,7 @@ function isObject(val) {
 /**
  * Determine if a value is a Date
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is a Date, otherwise false
  */
 function isDate(val) {
@@ -1601,7 +1601,7 @@ function isDate(val) {
 /**
  * Determine if a value is a File
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is a File, otherwise false
  */
 function isFile(val) {
@@ -1611,7 +1611,7 @@ function isFile(val) {
 /**
  * Determine if a value is a Blob
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is a Blob, otherwise false
  */
 function isBlob(val) {
@@ -1621,7 +1621,7 @@ function isBlob(val) {
 /**
  * Determine if a value is a Function
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is a Function, otherwise false
  */
 function isFunction(val) {
@@ -1631,7 +1631,7 @@ function isFunction(val) {
 /**
  * Determine if a value is a Stream
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is a Stream, otherwise false
  */
 function isStream(val) {
@@ -1641,7 +1641,7 @@ function isStream(val) {
 /**
  * Determine if a value is a URLSearchParams object
  *
- * @param {Object} val The value to test
+ * @param {Object} val The value to tests
  * @returns {boolean} True if value is a URLSearchParams object, otherwise false
  */
 function isURLSearchParams(val) {
@@ -7565,7 +7565,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// Support: IE<10
 	// Check if getElementById returns elements by name
 	// The broken getElementById methods don't pick up programmatically-set names,
-	// so use a roundabout getElementsByName test
+	// so use a roundabout getElementsByName tests
 	support.getById = assert(function( el ) {
 		docElem.appendChild( el ).id = expando;
 		return !document.getElementsByName || !document.getElementsByName( expando ).length;
@@ -7685,7 +7685,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		// Regex strategy adopted from Diego Perini
 		assert(function( el ) {
 			// Select is set to empty string on purpose
-			// This is to test IE's treatment of not explicitly
+			// This is to tests IE's treatment of not explicitly
 			// setting a boolean content attribute,
 			// since its presence should be enough
 			// https://bugs.jquery.com/ticket/12359
@@ -7695,7 +7695,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 			// Support: IE8, Opera 11-12.16
 			// Nothing should be selected when empty strings follow ^= or $= or *=
-			// The test attribute must be unknown in Opera but "safe" for WinRT
+			// The tests attribute must be unknown in Opera but "safe" for WinRT
 			// https://msdn.microsoft.com/en-us/library/ie/hh465388.aspx#attribute_section
 			if ( el.querySelectorAll("[msallowcapture^='']").length ) {
 				rbuggyQSA.push( "[*^$]=" + whitespace + "*(?:''|\"\")" );
@@ -12825,7 +12825,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 				return;
 			}
 
-			// Hook needed; redefine it so that the support test is not executed again.
+			// Hook needed; redefine it so that the support tests is not executed again.
 			return ( this.get = hookFn ).apply( this, arguments );
 		}
 	};
@@ -13215,7 +13215,7 @@ jQuery.each( [ "height", "width" ], function( i, dimension ) {
 			var matches,
 				styles = getStyles( elem ),
 
-				// Only read styles.position if the test has a chance to fail
+				// Only read styles.position if the tests has a chance to fail
 				// to avoid forcing a reflow.
 				scrollboxSizeBuggy = !support.scrollboxSize() &&
 					styles.position === "absolute",
@@ -28583,7 +28583,7 @@ return jQuery;
      * @example
      *
      * function isGreeting(value) {
-     *   return /^h(?:i|ello)$/.test(value);
+     *   return /^h(?:i|ello)$/.tests(value);
      * }
      *
      * function customizer(objValue, othValue) {
@@ -28875,7 +28875,7 @@ return jQuery;
      * @example
      *
      * function isGreeting(value) {
-     *   return /^h(?:i|ello)$/.test(value);
+     *   return /^h(?:i|ello)$/.tests(value);
      * }
      *
      * function customizer(objValue, srcValue) {
@@ -32555,7 +32555,7 @@ return jQuery;
      * // Create custom iteratee shorthands.
      * _.iteratee = _.wrap(_.iteratee, function(iteratee, func) {
      *   return !_.isRegExp(func) ? iteratee(func) : function(string) {
-     *     return func.test(string);
+     *     return func.tests(string);
      *   };
      * });
      *
@@ -32708,7 +32708,7 @@ return jQuery;
      *
      * function vowels(string) {
      *   return _.filter(string, function(v) {
-     *     return /[aeiou]/i.test(v);
+     *     return /[aeiou]/i.tests(v);
      *   });
      * }
      *
@@ -34231,7 +34231,7 @@ var debounce = supportsMicroTasks ? microtaskDebounce : taskDebounce;
  * @method
  * @memberof Popper.Utils
  * @argument {Any} functionToCheck - variable to check
- * @returns {Boolean} answer to: is a function?
+ * @returns {Boolean} answers to: is a function?
  */
 function isFunction(functionToCheck) {
   var getType = {};
@@ -34722,7 +34722,7 @@ function getViewportOffsetRectRelativeToArtbitraryNode(element) {
  * @memberof Popper.Utils
  * @argument {Element} element
  * @argument {Element} customContainer
- * @returns {Boolean} answer to "isFixed?"
+ * @returns {Boolean} answers to "isFixed?"
  */
 function isFixed(element) {
   var nodeName = element.nodeName;
@@ -36781,7 +36781,7 @@ Popper.Defaults = Defaults;
 // shim for using process in browser
 var process = module.exports = {};
 
-// cached from whatever global is present so that test runners that stub it
+// cached from whatever global is present so that tests runners that stub it
 // don't break things.  But we need to wrap it in a try catch in case it is
 // wrapped in strict mode code which doesn't define any globals.  It's inside a
 // function because try/catches deoptimize in certain engines.
@@ -37057,7 +37057,7 @@ process.umask = function() { return 0; };
     }
 
     function canUsePostMessage() {
-        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
+        // The tests against `importScripts` prevents this implementation from being installed inside a web worker,
         // where `global.postMessage` means something completely different and can't be used for this purpose.
         if (global.postMessage && !global.importScripts) {
             var postMessageIsAsynchronous = true;
@@ -37952,7 +37952,7 @@ if (inBrowser) {
         supportsPassive = true;
       }
     })); // https://github.com/facebook/flow/issues/285
-    window.addEventListener('test-passive', null, opts);
+    window.addEventListener('tests-passive', null, opts);
   } catch (e) {}
 }
 
@@ -44597,12 +44597,12 @@ function genAssignmentCode (
  *
  * Possible cases:
  *
- * - test
- * - test[key]
- * - test[test1[key]]
- * - test["a"][key]
- * - xxx.test[a[a].test1[key]]
- * - test.xxx.a["asa"][test1[key]]
+ * - tests
+ * - tests[key]
+ * - tests[test1[key]]
+ * - tests["a"][key]
+ * - xxx.tests[a[a].test1[key]]
+ * - tests.xxx.a["asa"][test1[key]]
  *
  */
 
@@ -49592,8 +49592,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Hai\Desktop\Funny Quiz Project\funny-quiz-project\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Hai\Desktop\Funny Quiz Project\funny-quiz-project\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Hai\Desktop\Funny Quiz Project\funny-quizzes-project\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Hai\Desktop\Funny Quiz Project\funny-quizzes-project\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

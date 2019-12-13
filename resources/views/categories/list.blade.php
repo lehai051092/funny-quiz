@@ -37,7 +37,7 @@
                             <div class="col-8">
                                 <div class="card-body" style="max-width: 100%;">
                                     <h1 class="card-title text-center">List Category</h1>
-                                    <a href="" class="btn btn-link" style="color: blue">Create</a>
+                                    <a href="{{route('categories.create')}}" class="btn btn-link" style="color: blue">Create</a>
 
                                    <div class="m-3">
                                        <form class="form-inline my-2 my-lg-0 ">
@@ -57,74 +57,17 @@
                                         </table>
                                         <div class="scroll-table">
                                             <table>
+                                                @foreach($categories as $category)
                                                 <tbody></tbody>
                                                 <tr>
-                                                    <td>Body 1</td>
                                                     <td>
-                                                        <a href="" class="btn btn-link" style="color: red">Delete</a>
+                                                        <a href="{{route('tests.list',$category->id)}}">{{$category->name}}</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{route('categories.delete',$category->id)}}" class="btn btn-link" style="color: red" onclick="return confirm('Are you sure delete ???')">Delete</a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Body 1</td>
-                                                    <td>
-                                                        <a href="" class="btn btn-link" style="color: red">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Body 1</td>
-                                                    <td>
-                                                        <a href="" class="btn btn-link" style="color: red">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Body 1</td>
-                                                    <td>
-                                                        <a href="" class="btn btn-link" style="color: red">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Body 1</td>
-                                                    <td>
-                                                        <a href="" class="btn btn-link" style="color: red">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Body 1</td>
-                                                    <td>
-                                                        <a href="" class="btn btn-link" style="color: red">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Body 1</td>
-                                                    <td>
-                                                        <a href="" class="btn btn-link" style="color: red">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Body 1</td>
-                                                    <td>
-                                                        <a href="" class="btn btn-link" style="color: red">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Body 1</td>
-                                                    <td>
-                                                        <a href="" class="btn btn-link" style="color: red">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Body 1</td>
-                                                    <td>
-                                                        <a href="" class="btn btn-link" style="color: red">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Body 1</td>
-                                                    <td>
-                                                        <a href="" class="btn btn-link" style="color: red">Delete</a>
-                                                    </td>
-                                                </tr>
-
+                                                    @endforeach
                                             </table>
                                         </div>
                                     </div>
