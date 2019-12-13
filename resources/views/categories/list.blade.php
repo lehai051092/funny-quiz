@@ -39,12 +39,12 @@
                                     <h1 class="card-title text-center">List Category</h1>
                                     <a href="{{route('categories.create')}}" class="btn btn-link" style="color: blue">Create</a>
 
-                                   <div class="m-3">
-                                       <form class="form-inline my-2 my-lg-0 ">
-                                           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                       </form>
+                                    <div class="m-3">
+                                        <form class="form-inline my-2 my-lg-0 ">
+                                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                        </form>
 
-                                   </div>
+                                    </div>
 
                                     <div class="wrap text-center" >
                                         <table class="head">
@@ -58,16 +58,16 @@
                                         <div class="scroll-table">
                                             <table>
                                                 @foreach($categories as $category)
-                                                <tbody></tbody>
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{route('tests.list',$category->id)}}">{{$category->name}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="{{route('categories.delete',$category->id)}}" class="btn btn-link" style="color: red" onclick="return confirm('Are you sure delete ???')">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                    @endforeach
+                                                    <tbody></tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{route('tests.list',$category->id)}}">{{$category->name}}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{route('categories.delete',$category->id)}}" class="btn btn-link" style="color: red" onclick="return confirm('Are you sure delete ???')">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </table>
                                         </div>
                                     </div>
