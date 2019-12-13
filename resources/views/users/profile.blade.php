@@ -175,7 +175,7 @@
                                                 </div>
                                                 <div class="col-md-8 col-6">
                                                     <div class="input-group mb-2 mr-sm-2">
-                                                        <input type="password" class="form-control"
+                                                        <input id="old-password" type="password" class="form-control"
                                                                name="current_password"
                                                                @if($errors->has('current_password'))
                                                                style="border: solid red"
@@ -186,7 +186,7 @@
                                                         @endif
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
-                                                                 <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-password"
+                                                                 <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-old-password"
                                                                                         aria-hidden="true"></i></span>
                                                             </div>
                                                         </div>
@@ -200,7 +200,7 @@
                                                 </div>
                                                 <div class="col-md-8 col-6">
                                                     <div class="input-group mb-2 mr-sm-2">
-                                                        <input type="password" class="form-control"
+                                                        <input id="new-password" type="password" class="form-control"
                                                                value=""
                                                                name="new_password"
                                                                @if($errors->has('new_password'))
@@ -212,7 +212,7 @@
                                                         @endif
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
-                                                                 <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-password"
+                                                                 <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-new-password"
                                                                                         aria-hidden="true"></i></span>
                                                             </div>
                                                         </div>
@@ -228,7 +228,7 @@
                                                 <div class="col-md-8 col-6">
 
                                                     <div class="input-group mb-2 mr-sm-2">
-                                                        <input type="password" class="form-control"
+                                                        <input id="confirm-password" type="password" class="form-control"
                                                                value=""
                                                                name="new_confirm_password"
                                                                @if($errors->has('new_confirm_password'))
@@ -240,7 +240,7 @@
                                                         @endif
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
-                                                                 <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-password"
+                                                                 <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-confirm-password"
                                                                                         aria-hidden="true"></i></span>
                                                             </div>
                                                         </div>
@@ -269,16 +269,22 @@
         </div>
     </div>
     <script>
-        $(document).on('click', '.toggle-password', function () {
+        $(document).on('click', '.toggle-old-password', function () {
             $(this).toggleClass("fa-eye fa-eye-slash");
-            let input = $("#password");
+            let input = $("#old-password");
             input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password');
         });
 
-        $(document).on('click', '.toggle-password-confirm', function () {
+        $(document).on('click', '.toggle-new-password', function () {
             $(this).toggleClass("fa-eye fa-eye-slash");
-            let input = $("#password-confirm");
+            let input = $("#new-password");
             input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password');
         });
+        $(document).on('click', '.toggle-confirm-password', function () {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            let input = $("#confirm-password");
+            input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password');
+        });
+
     </script>
 @endsection
