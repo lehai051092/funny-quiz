@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 
+
 </head>
 
 <body>
@@ -119,7 +120,7 @@
                                     <ul class="dropdown">
                                         <li><a href="{{route('categories.list')}}">List category</a></li>
                                         @foreach($categories as $category)
-                                            <li><a href="{{route('tests.list',$category->id)}}">{{$category->name}}</a>
+                                            <li><a href="{{route('quizzes.list',$category->id)}}">{{$category->name}}</a>
                                             </li>
                                         @endforeach
                                     </ul>
