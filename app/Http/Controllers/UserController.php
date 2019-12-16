@@ -34,6 +34,15 @@ class UserController extends Controller
         return view('users.profile', compact('user'));
     }
 
+    public function edit($id) {
+        if (Gate::allows('crud-users')) {
+            $user = $this->userService->findById($id);
+
+            return view('users.edit', compact('user'));
+        }
+        abort(403, 'You are not authorized to access');
+    }
+
     public function update(ProfileUserRequest $request, $id) {
         $this->userService->update($request, $id);
 
@@ -55,5 +64,12 @@ class UserController extends Controller
        abort(403, 'You are not authorized to access');
     }
 
+    public function delete($id) {
+        if (Gate::allows('crud-users')) {
+            $this->userService->delete($id);
 
+            return back()->with('warning', 'Delete User Success');
+        }
+        abort(403, 'You are not authorized to access');
+    }
 }

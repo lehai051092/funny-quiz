@@ -4,6 +4,10 @@
         <div class="row">
             <div class="col-lg-12 mt-5 mb-5">
                 <div class="card" style="width: 100%;">
+                    <div id="app">
+                        @include('users.flash-message')
+                        @yield('message')
+                    </div>
                     <div class="card-header">
                         <h3><i class="fa">List User</i></h3>
                     </div>
@@ -46,13 +50,13 @@
                                                 <a href="#">{{$user->email}}</a>
                                             </td>
                                             <td style="width: 20%;">
-                                                <a href="#" class="table-link">
+                                                <a href="{{route('users.edit', $user->id)}}" class="table-link">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                                 </a>
-                                                <a href="#" class="table-link danger">
+                                                <a href="{{route('users.delete', $user->id)}}" class="table-link danger" onclick="return confirm('Are you delete?')">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
