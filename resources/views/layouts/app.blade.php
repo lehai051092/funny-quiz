@@ -23,6 +23,7 @@
     {{--    list users--}}
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
+
 </head>
 
 <body>
@@ -267,6 +268,7 @@
 
 <!-- Profile js -->
 <script src="{{asset('storage/js/profile.js')}}"></script>
+<script src="{{asset('storage/js/answer.js')}}"></script>
 </body>
 
 </html>

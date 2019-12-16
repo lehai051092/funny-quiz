@@ -43,8 +43,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(UserServiceInterface::class, UserServiceImpl::class);
         $this->app->singleton(CategoryRepositoryInterface::class, CategoryRepositoryEloquent::class);
         $this->app->singleton(CategoryServiceInteface::class, CategoryServiceImpl::class);
-        $this->app->singleton(TestRepositoryInterface::class,TestRepositoryEloquent::class);
-        $this->app->singleton(TestServiceInterface::class,TestServiceImpl::class);
+//        $this->app->singleton(TestRepositoryInterface::class,TestRepositoryEloquent::class);
+//        $this->app->singleton(TestServiceInterface::class,TestServiceImpl::class);
         $this->app->singleton(QuizRepositoryInterface::class,QuizRepositoryEloquent::class);
         $this->app->singleton(QuizServiceInterface::class,QuizServiceImpl::class);
         $this->app->singleton(QuestionRepositoryInterface::class,QuestionRepositoryEloquent::class);
