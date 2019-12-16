@@ -25,10 +25,10 @@
                                             <div class="backside">
                                                 <div class="card">
                                                     <div class="card-body text-center mt-4">
-                                                       <a href="{{route('quizzes.view',$quiz->id)}}"> <h4 class="card-title">{{$quiz->name}}</h4></a>
+                                                       <a href="{{route('quizzes.detail',$quiz->id)}}"> <h4 class="card-title">{{$quiz->name}}</h4></a>
                                                         <p class="card-text">{{$quiz->desc}}</p>
                                                         <a href="{{route('quizzes.delete',$quiz->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure delete???')"><i class="fa fa-trash-alt"></i>Delete</a>
-                                                        <a href="{{route('quizzes.edit',$quiz->id)}}" class="btn btn-primary">Edit</a>
+                                                        <a href="{{route('quizzes.edit',$quiz->id)}}" >Edit</a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -15,19 +15,19 @@
                                     <label><h5>Title</h5></label>
                                     <input type="text" class="form-control">
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label><h5>Desc</h5></label>
-                                     <textarea class="form-control"></textarea>
+                                    <textarea class="form-control"></textarea>
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label><h5>Category</h5></label>
-                                     <select class="form-control">
-                                         <option>1</option>
-                                         <option>2</option>
-                                         <option>3</option>
-                                         <option>4</option>
-                                         <option>5</option>
-                                     </select>
+                                    <select class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <img src="" id="imgProfile"

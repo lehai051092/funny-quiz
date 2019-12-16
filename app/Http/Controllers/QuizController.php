@@ -4,21 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuizServiceInterface;
-use App\Http\Services\TestServiceInterface;
+
+
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
     protected $quizService;
     protected $categoryService;
-
     public function __construct(QuizServiceInterface $quizService,
                                 CategoryServiceInteface $categoryService)
     {
+        $this->middleware('auth');
         $this->quizService = $quizService;
         $this->categoryService = $categoryService;
     }
-
     public function QuizzesInCategory($id)
     {
         $category = $this->categoryService->findById($id);
@@ -32,10 +32,12 @@ class QuizController extends Controller
         return view('quizzes.quizDetail', compact('quiz'));
     }
 
-    public function create($id)
+    public function createQuizInCategory()
     {
-        $category = $this->categoryService->findById($id);
-        return view('quizzes.createForm', compact('category'));
+
+        $categories = $this->categoryService->getAll();
+
+        return view('quizzes.basic-info', compact('categories'));
     }
 
     public function store(Request $request, $id)
