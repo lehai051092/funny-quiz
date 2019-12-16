@@ -8,7 +8,7 @@
                         @include('users.flash-message')
                         @yield('message')
                     </div>
-                    <div class="card-header text-white bg-success">
+                    <div class="card-header text-white" style="background: linear-gradient(to right, #61ba6d, #83c331)">
                         <h2><i class="fa text-white">Edit User</i></h2>
                     </div>
                     <div class="row">
@@ -67,7 +67,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-success">Update</button>
+                                    <button class="btn text-white" style="background: linear-gradient(to right,#61ba6d, #83c331)">Update</button>
                                     <a class="btn btn-secondary" href="{{route('users.list')}}">Cancel</a>
                                 </div>
                             </form>
