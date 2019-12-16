@@ -6,8 +6,8 @@
             <div class="col-10">
                 <div class="row">
                     <div class="card m-5" style="width: 100%">
-                        <div class="card-header" style="background: linear-gradient(coral,pink,yellow)">
-                            <h1 class="text-center" style="color: brown">Create Quiz - Basic Information</h1>
+                        <div class="card-header" style="background: linear-gradient(to right,#61ba6d, #83c331)">
+                            <h1 class="text-center text-white" >Create Quiz - Basic Information</h1>
                         </div>
                         <div class="card-body">
                             <form>
@@ -38,7 +38,7 @@
                                         <input type="file" style="display: none;" id="profilePicture" name="image"/>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn text-white" style="background: linear-gradient(to right,#61ba6d, #83c331)" >Create</button>
                             </form>
                         </div>
                     </div>
