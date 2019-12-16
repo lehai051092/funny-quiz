@@ -22,7 +22,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return view('category.createForm');
+        return view('categories.createForm');
     }
 
     public function store(Request $request)
