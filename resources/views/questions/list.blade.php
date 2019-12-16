@@ -5,7 +5,9 @@
     <div class="container m-5">
         <div class="row m-5">
             <div class="col-12 m-5">
+                @can('crud-users')
                 <a href="{{route('questions.create',$quiz->id)}}" class="btn btn-link">Thêm mới câu hỏi</a>
+                @endcan
                 @foreach($questions as $key=>$question)
                     <div class="container-fluid" style="background-color: #2fa360">
                     <div class="modal-dialog">
@@ -34,18 +36,21 @@
                                                 <input
                                                     type="radio" name="answer">{{$answer->title}}</label>
                                         </div>
-
+                                        @can('crud-users')
                                             <a href="{{route('answers.delete',$answer->id)}}"
                                                onclick="return confirm('Bạn có chắn chắn muốn đáp án này xóa không?')"> <i
                                                     class="fa fa-trash"></i></a>
                                             <a href="{{route('answers.edit',$answer->id)}}"><i class="fa fa-edit"></i></a><br>
+                                            @endcan
                                     @endif
 
                                 @endforeach
-
+                                @can('crud-users')
                                     <a href="{{route('answers.create',$question->id)}}"><i class="fa fa-plus"></i> Câu trả
                                         lời</a><br>
+                                @endcan
                                     <div style="float: right">
+                                        @can('crud-users')
                                         <a href="{{route('questions.delete', $question->id)}}"
                                            onclick="return confirm('Bạn có muốn xóa câu hỏi này không?')">
                                             <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Câu hỏi
@@ -54,6 +59,7 @@
                                         <a href="{{route('questions.edit', $question->id)}}">
                                             <button type="button" class="btb btn"><i class="fa fa-edit"></i> Câu hỏi</button>
                                         </a>
+                                            @endcan
                                     </div>
 
                             </div>
