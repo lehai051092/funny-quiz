@@ -118,7 +118,9 @@
                                 <li><a href="{{route('index')}}">Home</a></li>
                                 <li><a href="">Categories</a>
                                     <ul class="dropdown">
-                                        <li><a href="{{route('categories.list')}}">List category</a></li>
+                                        @can('crud-users')
+                                            <li><a href="{{route('categories.list')}}">List category</a></li>
+                                            @endcan
                                         @foreach($categories as $category)
                                             <li><a href="{{route('quizzes.list',$category->id)}}">{{$category->name}}</a>
                                             </li>
@@ -127,7 +129,10 @@
                                 </li>
                                 <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
-                                <li><a href="{{route('basic-info')}}">Tạo Quiz</a></li>
+                                @can('crud-users')
+                                    <li><a href="{{route('quizzes.basic')}}">Tạo Quiz</a></li>
+                                @endcan
+
                             </ul>
                         </div>
                         <!-- Nav End -->
