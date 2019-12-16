@@ -23,6 +23,8 @@
     {{--    list users--}}
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
+
+
 </head>
 
 <body>
@@ -116,16 +118,21 @@
                                 <li><a href="{{route('index')}}">Home</a></li>
                                 <li><a href="">Categories</a>
                                     <ul class="dropdown">
-                                        <li><a href="{{route('categories.list')}}">List category</a></li>
+                                        @can('crud-users')
+                                            <li><a href="{{route('categories.list')}}">List category</a></li>
+                                            @endcan
                                         @foreach($categories as $category)
-                                            <li><a href="{{route('tests.list',$category->id)}}">{{$category->name}}</a>
+                                            <li><a href="{{route('quizzes.list',$category->id)}}">{{$category->name}}</a>
                                             </li>
                                         @endforeach
                                     </ul>
                                 </li>
                                 <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
-                                <li><a href="{{route('basic-info')}}">Tạo Quiz</a></li>
+                                @can('crud-users')
+                                    <li><a href="{{route('quizzes.basic')}}">Tạo Quiz</a></li>
+                                @endcan
+
                             </ul>
                         </div>
                         <!-- Nav End -->
@@ -267,6 +274,7 @@
 
 <!-- Profile js -->
 <script src="{{asset('storage/js/profile.js')}}"></script>
+<script src="{{asset('storage/js/answer.js')}}"></script>
 </body>
 
 </html>

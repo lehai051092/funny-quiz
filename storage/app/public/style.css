@@ -12,6 +12,9 @@
 @import url(css/profile.css);
 @import url(css/table-list-category.css);
 @import url(css/list-user.css);
+@import url(css/answer-css.css);
+@import url(css/quizDetail.css);
+@import url(css/quiz-list.css);
 /* :: 3.0 Base CSS */
 * {
   margin: 0;

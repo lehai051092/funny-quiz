@@ -36,10 +36,10 @@ class QuestionController extends Controller
         return view('questions.createForm', compact('quiz'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
         $this->questionService->store($request);
-        return back();
+        return redirect()->route('questions.list',['id'=>$id]);
     }
 
     public function delete($id)
