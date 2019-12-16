@@ -53,7 +53,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                     @error('email')
                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong style="color: red">{{ $message }}</strong>
                                     </span>
                     @enderror
                     <span class="icon1"><span toggle="#password-field" class="fa fa-envelope" aria-hidden="true"></span></span>
