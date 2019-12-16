@@ -10,7 +10,8 @@
                             <h1 class="text-center" style="color: brown">Create Quiz - Basic Information</h1>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form method="post" action="" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label><h5>Title</h5></label>
                                     <input type="text" class="form-control">
@@ -22,18 +23,14 @@
                                 <div class="form-group">
                                     <label><h5>Category</h5></label>
                                     <select class="form-control">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        @foreach($categories as $category)
+                                        <option>{{$category->name}}</option>
+                                            @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <img src="" id="imgProfile"
-                                         style="width: 150px; height: 150px" class="img-thumbnail"/>
-                                    <br><br>
-                                    <input type="file" >
+                                    <label class="form-group"></label>
+                                    <input type="file" name="image" >
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>

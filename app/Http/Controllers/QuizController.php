@@ -36,13 +36,13 @@ class QuizController extends Controller
     {
 
         $categories = $this->categoryService->getAll();
-
         return view('quizzes.basic-info', compact('categories'));
     }
 
     public function store(Request $request, $id)
     {
         $this->quizService->store($request);
+
         return redirect()->route('quizzes.list', ['id' => $id]);
     }
 
