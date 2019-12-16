@@ -40,7 +40,7 @@ class UserServiceImpl implements UserServiceInterface
 
         if ($request->image) {
             $image = $request->file('image');
-            $path = $image->store("img/user", "public");
+            $path = $image->store("img/quiz", "public");
             Storage::delete('public/' . $user->image);
             $user->image = $path;
         }

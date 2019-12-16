@@ -23,7 +23,7 @@
                                 <option value="{{$question->id}}">{{$question->title}}</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-primary" href="{{route('questions.list',$question->id)}}">Create</button>
                     </form>
                 </div>
             </div>
