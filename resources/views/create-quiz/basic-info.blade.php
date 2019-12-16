@@ -5,7 +5,7 @@
         <div class="container pt-5 d-flex justify-content-center ">
             <div class="col-10">
                 <div class="row">
-                    <div class="card m-5" style="width: 100%">
+                    <div class="card m-5" style="width: 100%;background-color: inherit">
                         <div class="card-header" style="background: linear-gradient(coral,pink,yellow)">
                             <h1 class="text-center" style="color: brown">Create Quiz - Basic Information</h1>
                         </div>
@@ -13,7 +13,7 @@
                             <form>
                                 <div class="form-group">
                                     <label><h5>Title</h5></label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control"style="background-color: inherit; color: white">
                                 </div>
                                  <div class="form-group">
                                     <label><h5>Desc</h5></label>
@@ -35,7 +35,6 @@
                                     <br><br>
                                     <input type="file" >
                                 </div>
-
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
