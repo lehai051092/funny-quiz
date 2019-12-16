@@ -8,8 +8,8 @@
                         @include('users.flash-message')
                         @yield('message')
                     </div>
-                    <div class="card-header text-white" style="background: linear-gradient(to right, #61ba6d, #83c331)">
-                        <h2><i class="fa text-white">Edit User</i></h2>
+                    <div class="card-header text-center" style="background: linear-gradient(to right, #61ba6d, #83c331)">
+                        <h1><i class="fa text-white">Edit User</i></h1>
                     </div>
                     <div class="row">
                         <div class="col-2">
