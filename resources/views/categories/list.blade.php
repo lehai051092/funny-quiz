@@ -39,12 +39,12 @@
                                     <h1 class="card-title text-center">List Category</h1>
                                     <a href="{{route('categories.create')}}" class="btn btn-link" style="color: blue">Create</a>
 
-                                   <div class="m-3">
-                                       <form class="form-inline my-2 my-lg-0 ">
-                                           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                       </form>
+                                    <div class="m-3">
+                                        <form class="form-inline my-2 my-lg-0 ">
+                                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                        </form>
 
-                                   </div>
+                                    </div>
 
                                     <div class="wrap text-center" >
                                         <table class="head">

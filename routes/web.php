@@ -23,9 +23,14 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+Route::get('/basic-info', function () {
+    return view('create-quiz.basic-info');
+})->name('basic-info');
 
 
 Auth::routes();

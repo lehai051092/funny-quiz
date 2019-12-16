@@ -3,7 +3,6 @@
     <div class="container m-5">
         <div class="row m-5">
             <div class="col-12 m-5">
-                <a href="{{route('quizzes.create',$category->id)}}" class="btn btn-link">Tạo Quiz</a>
                 <div class="row">
                     <section id="team" class="pb-5">
                         <div class="container">
