@@ -23,6 +23,8 @@
     {{--    list users--}}
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
+
+
 </head>
 
 <body>
@@ -38,7 +40,7 @@
     <div class="top-header">
         <div class="container h-100">
             <div class="row h-100">
-                <div class="col-12 h-100">
+                <div class="col-12 h-100" >
                     <div class="header-content h-100 d-flex align-items-center justify-content-between">
                         <div class="academy-logo">
                             <a href="{{route('index')}}"><img src="{{asset('storage/img/core-img/logo.png')}}"
@@ -49,12 +51,6 @@
                                 <a href="{{ route('login') }}"><h4><i class="fa fa-user"
                                                                       aria-hidden="true" style="color: black">Login</i>
                                     </h4></a>
-{{--                                @if (Route::has('register'))--}}
-{{--                                    <a class="nav-link"--}}
-{{--                                       href="{{ route('register') }}"><h4><i class="fa fa-user-plus"--}}
-{{--                                                                             style="color: black" aria-hidden="true">Register</i>--}}
-{{--                                        </h4></a>--}}
-{{--                                @endif --}}
                             @else
                                 <ul style="list-style: none">
                                     <li class="nav-item dropdown"><a id="navbarDropdown"
@@ -120,16 +116,23 @@
                         <div class="classynav">
                             <ul>
                                 <li><a href="{{route('index')}}">Home</a></li>
-                                <li><a href="{{route('categories.list')}}">Categories</a>
+                                <li><a href="">Categories</a>
                                     <ul class="dropdown">
+                                        @can('crud-users')
+                                            <li><a href="{{route('categories.list')}}">List category</a></li>
+                                            @endcan
                                         @foreach($categories as $category)
-                                            <li><a href="{{route('tests.list',$category->id)}}">{{$category->name}}</a>
+                                            <li><a href="{{route('quizzes.list',$category->id)}}">{{$category->name}}</a>
                                             </li>
                                         @endforeach
                                     </ul>
                                 </li>
                                 <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
+                                @can('crud-users')
+                                    <li><a href="{{route('quizzes.basic')}}">Tạo Quiz</a></li>
+                                @endcan
+
                             </ul>
                         </div>
                         <!-- Nav End -->
@@ -271,6 +274,7 @@
 
 <!-- Profile js -->
 <script src="{{asset('storage/js/profile.js')}}"></script>
+<script src="{{asset('storage/js/answer.js')}}"></script>
 </body>
 
 </html>

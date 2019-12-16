@@ -13,6 +13,9 @@
         <div class="row m-5">
             <div class="col-12 m-5">
                 <div class="card m-5">
+                    <div class="card-header" style="background: linear-gradient(to right,#61ba6d, #83c331)">
+                        <h1 class="text-center text-white" >Profile User</h1>
+                    </div>
                     <div class="card-body">
                         <form enctype="multipart/form-data" method="post" action="{{route('users.updateImage', $user->id)}}">
                             @csrf
@@ -27,14 +30,14 @@
                                             <input type="file" style="display: none;" id="profilePicture" name="image"/>
                                         </div>
                                         <div class="bottom mt-3">
-                                            <input type="submit" class="btn btn-info" value="Change Image">
+                                            <input type="submit" class="btn text-white" value="Change Image" style="background: linear-gradient(to right,#61ba6d, #83c331)">
                                         </div>
                                     </div>
                                     <div class="userData ml-3">
                                         <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"></h2>
                                     </div>
                                     <div class="ml-auto">
-                                        <input type="button" class="btn btn-primary d-none" id="btnDiscard"
+                                        <input type="button" class="btn btn-dark d-none" id="btnDiscard"
                                                value="Discard Changes"/>
                                     </div>
                                 </div>
@@ -121,13 +124,13 @@
                                                 <div class="col-md-8 col-6">
                                                     <div class="form-group">
                                                         <select class="form-control" name="gender">
-                                                            <option @if($user->gender === \App\GenderInterface::MALE)
-                                                                    selected
-                                                                    @endif value="1">Male
-                                                            </option>
                                                             <option @if($user->gender === \App\GenderInterface::FEMALE)
                                                                     selected
                                                                     @endif value="0">Female
+                                                            </option>
+                                                            <option @if($user->gender === \App\GenderInterface::MALE)
+                                                                    selected
+                                                                    @endif value="1">Male
                                                             </option>
                                                         </select>
                                                     </div>
@@ -157,8 +160,8 @@
 
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    <button class="btn btn-info" type="submit">Update</button>
-                                                    <a href="{{route('index')}}" class="btn btn-primary">Cancel</a>
+                                                    <button class="btn text-white" style="background: linear-gradient(to right,#61ba6d, #83c331)" type="submit">Update</button>
+                                                    <a href="{{route('index')}}" class="btn btn-dark">Cancel</a>
                                                 </div>
                                             </div>
                                             <hr/>
@@ -254,7 +257,7 @@
 
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    <button class="btn btn-info" type="submit">Change Password
+                                                    <button class="btn text-white" style="background: linear-gradient(to right,#61ba6d, #83c331)" type="submit">Change Password
                                                     </button>
                                                 </div>
                                             </div>

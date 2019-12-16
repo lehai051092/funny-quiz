@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\CategoryServiceInteface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends Controller
 {
@@ -12,17 +13,24 @@ class CategoryController extends Controller
     public function __construct(CategoryServiceInteface $categoryService)
     {
         $this->categoryService = $categoryService;
+        $this->middleware('auth');
     }
 
     public function getAll()
     {
-        $categories = $this->categoryService->getAll();
-        return view('categories.list', compact('categories'));
+        if (Gate::allows('crud-users')) {
+            $categories = $this->categoryService->getAll();
+            return view('categories.list', compact('categories'));
+        }
+        abort(403, 'You are not authorized to access');
     }
 
     public function create()
     {
-        return view('category.createForm');
+        if (Gate::allows('crud-users')) {
+            return view('categories.createForm');
+        }
+        abort(403, 'You are not authorized to access');
     }
 
     public function store(Request $request)
@@ -32,7 +40,10 @@ class CategoryController extends Controller
     }
 
     public function delete($id){
-        $this->categoryService->delete($id);
-        return redirect()->route('categories.list');
+        if (Gate::allows('crud-users')) {
+            $this->categoryService->delete($id);
+            return redirect()->route('categories.list');
+        }
+        abort(403, 'You are not authorized to access');
     }
 }

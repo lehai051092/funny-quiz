@@ -14,6 +14,7 @@
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,9 +24,11 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
 
 
 Auth::routes();
@@ -33,7 +36,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('categories')->group(function () {
-    Route::get('/', 'CategoryController@getAll')->name('categories.list');
+    Route::get('list', 'CategoryController@getAll')->name('categories.list');
     Route::get('create', 'CategoryController@create')->name('categories.create');
     Route::post('create', 'CategoryController@store')->name('categories.store');
     Route::get('{id}/delete', 'CategoryController@delete')->name('categories.delete');
@@ -49,7 +52,10 @@ Route::prefix('tests')->group(function () {
 });
 
 Route::prefix('quizzes')->group(function () {
-    Route::get('{id}/', 'QuizController@QuizzesInTest')->name('quizzes.list');
+
+    Route::get('basic', 'QuizController@createQuizInCategory')->name('quizzes.basic');
+    Route::get('{id}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
+    Route::get('{id}/detail', 'QuizController@QuizDetail')->name('quizzes.detail');
     Route::get('{id}/create', 'QuizController@create')->name('quizzes.create');
     Route::post('{id}/create', 'QuizController@store')->name('quizzes.store');
     Route::get('{id}/delete', 'QuizController@delete')->name('quizzes.delete');
@@ -80,4 +86,7 @@ Route::prefix('users')->group(function () {
     Route::post('{id}/profileImage', 'UserController@updateImage')->name('users.updateImage');
     Route::post('{id}/change-password', 'UserController@updatePassword')->name('users.updatePassword');
     Route::get('list', 'UserController@getAll')->name('users.list');
+    Route::get('{id}/edit', 'UserController@edit')->name('users.edit');
+    Route::post('{id}/edit', 'UserController@update')->name('users.edit');
+    Route::get('{id}/delete', 'UserController@delete')->name('users.delete');
 });
