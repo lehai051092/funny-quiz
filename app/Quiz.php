@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
 {
-    public function test()
+    public function category()
     {
-        return $this->belongsTo('App\Test');
+        return $this->belongsTo('App\Category');
     }
 
     public function questions(){

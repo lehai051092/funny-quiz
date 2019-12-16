@@ -14,6 +14,7 @@
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,9 +29,6 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/basic-info', function () {
-    return view('create-quiz.basic-info');
-})->name('basic-info');
 
 
 Auth::routes();
@@ -38,7 +36,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('categories')->group(function () {
-    Route::get('/', 'CategoryController@getAll')->name('categories.list');
+    Route::get('list', 'CategoryController@getAll')->name('categories.list');
     Route::get('create', 'CategoryController@create')->name('categories.create');
     Route::post('create', 'CategoryController@store')->name('categories.store');
     Route::get('{id}/delete', 'CategoryController@delete')->name('categories.delete');
@@ -54,6 +52,7 @@ Route::prefix('tests')->group(function () {
 });
 
 Route::prefix('quizzes')->group(function () {
+    Route::get('basic', 'QuizController@createQuizInCategory')->name('quizzes.basic');
     Route::get('{id}/', 'QuizController@QuizzesInTest')->name('quizzes.list');
     Route::get('{id}/create', 'QuizController@create')->name('quizzes.create');
     Route::post('{id}/create', 'QuizController@store')->name('quizzes.store');
