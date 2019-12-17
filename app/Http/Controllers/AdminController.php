@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AdminController extends Controller
 {
@@ -14,7 +15,11 @@ class AdminController extends Controller
 
     public function getIndex()
     {
-        return view('admins.index');
+        if (Gate::allows('crud-users')) {
+            return view('admins.index');
+        }
+        abort(403, 'You are not authorized to access');
+
     }
 
     public function getLogin()
@@ -29,7 +34,11 @@ class AdminController extends Controller
 
     public function getTables()
     {
-        return view('admins.tables');
+        if (Gate::allows('crud-users')) {
+            return view('admins.tables');
+        }
+        abort(403, 'You are not authorized to access');
+
     }
 
 
