@@ -341,7 +341,9 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+              <h6 class="m-0 font-weight-bold text-primary">
+                  <a href="{{route('categories.create')}}" class="btn text-white" style="background: linear-gradient(to right,#61ba6d, #83c331)">Create</a>
+              </h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -365,7 +367,7 @@
                               <a href="{{route('quizzes.list',$category->id)}}"><h5><i class="fa">{{$category->name}}</i></h5></a>
                           </td>
                           <td>
-                              <a href="{{route('categories.delete',$category->id)}}" class="btn btn-danger text-white delete-category" style="color: red" >Delete</a>
+                              <a href="{{route('categories.delete',$category->id)}}" class="btn btn-danger text-white delete-category" style="color: red" onclick="return confirm('Are you want delete ?')">Delete</a>
                           </td>
                       </tr>
                   @endforeach

@@ -125,7 +125,7 @@
           <li class="nav-item">
               <a class="nav-link" href="{{route('admins.getTables')}}">
                   <i class="fas fa-fw fa-table"></i>
-                  <span>Tables</span></a>
+                  <span>List Category</span></a>
           </li>
 
           <!-- Divider -->
