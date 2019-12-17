@@ -20,7 +20,7 @@
 
   <!-- Custom styles for this page -->
   <link href="{{asset('storage/admins/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
 </head>
 
 <body id="page-top">
@@ -42,11 +42,31 @@
           <!-- Divider -->
           <hr class="sidebar-divider my-0">
 
-          <!-- Nav Item - Dashboard -->
-          <li class="nav-item active">
-              <a class="nav-link" href="{{route('admins.index')}}">
-                  <i class="fas fa-fw fa-tachometer-alt"></i>
-                  <span>Dashboard</span></a>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none d-lg-inline text-white-600 small">Valerie Luna</span>
+                  <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow " aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="#">
+                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Profile
+                  </a>
+                  <a class="dropdown-item" href="#">
+                      <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Settings
+                  </a>
+                  <a class="dropdown-item" href="#">
+                      <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Activity Log
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Logout
+                  </a>
+              </div>
           </li>
 
           <!-- Divider -->
@@ -422,6 +442,7 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="{{asset('storage/admins/vendor/jquery/jquery.min.js')}}"></script>
@@ -439,7 +460,7 @@
 
   <!-- Page level custom scripts -->
   <script src="{{asset('storage/admins/js/demo/datatables-demo.js')}}"></script>
-
+  {!! toastr()->render() !!}
 </body>
 
 </html>

@@ -43,7 +43,9 @@ class CategoryController extends Controller
     {
         if (Gate::allows('crud-users')) {
             $this->categoryService->delete($id);
-            return back()->with('success', 'You Delete Success');
+            toastr()->success('delete thành công');
+            return back();
+//                ->with('success', 'You Delete Success');
         }
         abort(403, 'You are not authorized to access');
     }
