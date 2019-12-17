@@ -18,20 +18,14 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th scope="col">Question</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    @foreach($questions as $key=>$question)
-                                        @if($question->category_id==null)
-                                        <tr>
-                                                <td>{{$question->title}}</td>
-                                            @can('crud-users')
-                                            <td><a href="{{route('questions.edit',$question->id)}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Thêm vào danh mục</a></td>
-                                                @endcan
-                                        </tr>
-                                        @endif
+                                    @foreach($quizzes as $quiz)
+                                            <tr>
+                                                <td><a href="{{route('quizzes.add',$quiz->id)}}">{{$quiz->name}}</a></td>
+                                            </tr>
                                     @endforeach
 
                                     </tbody>

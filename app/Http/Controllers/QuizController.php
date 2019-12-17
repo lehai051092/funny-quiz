@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BacsicInfoRequest;
 use App\Http\Services\CategoryServiceInteface;
+use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
 
 
@@ -13,18 +14,37 @@ class QuizController extends Controller
 {
     protected $quizService;
     protected $categoryService;
+    protected $questionService;
+
     public function __construct(QuizServiceInterface $quizService,
-                                CategoryServiceInteface $categoryService)
+                                CategoryServiceInteface $categoryService, QuestionServiceInterface $questionService)
     {
         $this->middleware('auth');
         $this->quizService = $quizService;
         $this->categoryService = $categoryService;
+        $this->questionService = $questionService;
     }
+
     public function QuizzesInCategory($id)
     {
         $category = $this->categoryService->findById($id);
         $quizzes = $category->quizzes;
         return view('quizzes.list', compact('quizzes', 'category'));
+    }
+
+    public function getAll()
+    {
+        $quizzes = $this->quizService->getAll();
+        return view('quizzes.list-basic', compact('quizzes'));
+    }
+
+    public function addQuestionToQuiz($id)
+    {
+        $quiz = $this->quizService->findById($id);
+        $questions = $quiz->questions;
+        $listQuestion=$this->questionService->getAll();
+        return view('actions.addQuestionToQuiz', compact('quiz', 'questions','listQuestion'));
+
     }
 
     public function QuizDetail($id)

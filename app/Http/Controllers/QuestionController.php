@@ -30,14 +30,18 @@ class QuestionController extends Controller
     {
         $quiz = $this->quizService->findById($id);
         $questions = $quiz->questions;
-        $answers = $this->answerService->getAll();
-        return view('questions.list', compact('quiz', 'questions', 'answers'));
+//        $answers = $this->answerService->getAll();
+        return view('actions.addQuestionToQuiz', compact('quiz', 'questions'));
     }
 
     public function getAll()
     {
         $questions = $this->questionService->getAll();
-        return view('questions.list-basic',compact('questions'));
+        return view('actions.addQuestionToQuiz',compact('questions'));
+    }
+
+    public function createQuestion(){
+        return view('questions.basic-info');
     }
 
 
@@ -72,5 +76,11 @@ class QuestionController extends Controller
     {
         $this->questionService->update($request, $id);
         return redirect()->route('questions.basic');
+    }
+
+    public function updateQuiz(Request $request, $id){
+
+        $this->questionService->updateQuiz($request,$id);
+        return redirect()->back();
     }
 }

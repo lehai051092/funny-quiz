@@ -5,7 +5,7 @@
         <div class="container pt-5 d-flex justify-content-center ">
             <div class="col-10">
                 <div class="row">
-                    <div class="card m-5" style="width: 100%">
+                    <div class="card m-5" style="width: 100%" >
                         <div class="card-header" style="background: linear-gradient(to right,#61ba6d, #83c331)">
                             <h1 class="text-center text-white" >Create Quiz - Basic Information</h1>
                         </div>
