@@ -16,4 +16,5 @@ interface CategoryServiceInteface
 
     function update($request, $id);
 
+    function search($keyword);
 }

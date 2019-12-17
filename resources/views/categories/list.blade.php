@@ -33,6 +33,10 @@
                         <div class="card-header" style="background: linear-gradient(to right,#61ba6d, #83c331)">
                             <h1 class="text-white text-center">List Category</h1>
                         </div>
+                        <div id="app" class="mt-5">
+                            @include('users.flash-message')
+                            @yield('message')
+                        </div>
                         <div class="row no-gutters mt-5">
                             <div class="col-3 mr-1" style="max-width: 100%;">
                                 <img src="{{asset('storage/img/user/anh1.jpg')}}" class="card-img" alt="...">
@@ -47,7 +51,7 @@
                                             <div class="col-3">
                                                 <form class="form-inline my-2 my-lg-0 " style="max-width: 100%" >
                                                     @csrf
-                                                    <input class="form-control " type="search" placeholder="Search" aria-label="Search" name="search">
+                                                    <input class="form-control " type="search" placeholder="Search" aria-label="Search" id="search">
                                                 </form>
                                             </div>
                                         </div>
@@ -65,17 +69,20 @@
                                         </table>
                                         <div class="scroll-table">
                                             <table>
+                                                <tbody id="list-categories">
                                                 @foreach($categories as $category)
-                                                <tbody></tbody>
-                                                <tr>
+
+                                                <tr class="category-{{$category->id}}">
                                                     <td>
                                                         <a href="{{route('quizzes.list',$category->id)}}"><h5><i class="fa">{{$category->name}}</i></h5></a>
                                                     </td>
                                                     <td>
-                                                        <a href="{{route('categories.delete',$category->id)}}" class="btn btn-danger text-white" style="color: red" onclick="return confirm('Are you sure delete ???')">Delete</a>
+                                                        <a href="{{route('categories.delete',$category->id)}}" class="btn btn-danger text-white delete-category" style="color: red" >Delete</a>
                                                     </td>
                                                 </tr>
+
                                                     @endforeach
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>

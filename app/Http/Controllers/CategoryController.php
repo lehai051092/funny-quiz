@@ -39,11 +39,21 @@ class CategoryController extends Controller
         return redirect()->route('categories.list');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         if (Gate::allows('crud-users')) {
             $this->categoryService->delete($id);
-            return redirect()->route('categories.list');
+            return back()->with('success', 'You Delete Success');
         }
         abort(403, 'You are not authorized to access');
+    }
+
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $keyword = $request->keyword;
+            $categories = $this->categoryService->search($keyword);
+            return response()->json($categories);
+        }
     }
 }
