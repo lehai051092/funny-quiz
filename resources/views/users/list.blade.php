@@ -8,8 +8,8 @@
                         @include('users.flash-message')
                         @yield('message')
                     </div>
-                    <div class="card-header">
-                        <h3><i class="fa">List User</i></h3>
+                    <div class="card-header text-center" style="background: linear-gradient(to right, #61ba6d, #83c331)">
+                        <h3><i class="fa text-white">List User</i></h3>
                     </div>
                     <hr>
                     <div class="main-box no-header clearfix">
