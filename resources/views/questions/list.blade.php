@@ -2,9 +2,9 @@
 @section('content')
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-    <div class="container m-5">
+    <div class="container p-5">
         <div class="row m-5">
-            <div class="col-12 m-5">
+            <div class="col-12">
                 <a href="{{route('questions.create',$quiz->id)}}" class="btn btn-link">Thêm mới câu hỏi</a>
                 @foreach($questions as $key=>$question)
                     <div class="container-fluid" style="background-color: #2fa360">
