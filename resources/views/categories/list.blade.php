@@ -71,16 +71,14 @@
                                             <table>
                                                 <tbody id="list-categories">
                                                 @foreach($categories as $category)
-
                                                 <tr class="category-{{$category->id}}">
                                                     <td>
                                                         <a href="{{route('quizzes.list',$category->id)}}"><h5><i class="fa">{{$category->name}}</i></h5></a>
                                                     </td>
                                                     <td>
-                                                        <a href="{{route('categories.delete',$category->id)}}" class="btn btn-danger text-white delete-category" style="color: red" >Delete</a>
+                                                        <a href=""  class="btn btn-danger text-white delete-category" style="color: red" data-id="{{$category->id}}" onclick="return confirm('Are you delete???')">Delete</a>
                                                     </td>
                                                 </tr>
-
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -95,3 +93,4 @@
         </div>
     </div>
 @endsection
+
