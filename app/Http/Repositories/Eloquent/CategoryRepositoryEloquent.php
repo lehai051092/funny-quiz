@@ -40,4 +40,9 @@ class CategoryRepositoryEloquent implements CategoryRepositoryInterface
     {
         // TODO: Implement update() method.
     }
+
+    function search($keyword)
+    {
+        return $this->category->where('name', 'LIKE', "%$keyword%")->get();
+    }
 }

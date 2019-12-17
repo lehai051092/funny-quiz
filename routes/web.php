@@ -37,6 +37,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('categories')->group(function () {
     Route::get('list', 'CategoryController@getAll')->name('categories.list');
+    Route::get('search', 'CategoryController@search')->name('categories.search');
     Route::get('create', 'CategoryController@create')->name('categories.create');
     Route::post('create', 'CategoryController@store')->name('categories.store');
     Route::get('{id}/delete', 'CategoryController@delete')->name('categories.delete');

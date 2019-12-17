@@ -55,4 +55,9 @@ class CategoryServiceImpl implements CategoryServiceInteface
     {
         // TODO: Implement update() method.
     }
+
+    function search($keyword)
+    {
+        return $this->categoryRepository->search($keyword);
+    }
 }

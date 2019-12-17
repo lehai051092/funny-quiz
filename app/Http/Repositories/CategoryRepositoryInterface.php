@@ -16,4 +16,6 @@ interface CategoryRepositoryInterface
 
     function update($obj);
 
+    function search($keyword);
+
 }
