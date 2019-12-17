@@ -71,41 +71,14 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Category
       </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="{{route('admins.getButtons')}}">Buttons</a>
-            <a class="collapse-item" href="{{route('admins.getCards')}}">Cards</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="{{route('admins.getUtilitiesColor')}}">Colors</a>
-            <a class="collapse-item" href="{{route('admins.getUtilitiesBorder')}}">Borders</a>
-            <a class="collapse-item" href="{{route('admins.getUtilitiesAnimation')}}">Animations</a>
-            <a class="collapse-item" href="{{route('admins.getUtilitiesOther')}}">Other</a>
-          </div>
-        </div>
-      </li>
-
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('admins.getTables')}}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>List Category</span></a>
+        </li>
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -126,26 +99,8 @@
             <a class="collapse-item" href="{{route('admins.getLogin')}}">Login</a>
             <a class="collapse-item" href="{{route('admins.getRegister')}}">Register</a>
             <a class="collapse-item" href="{{route('admins.getForgotPassword')}}">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="{{route('admins.get404')}}">404 Page</a>
-            <a class="collapse-item" href="{{route('admins.getBlank')}}">Blank Page</a>
           </div>
         </div>
-      </li>
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('admins.getCharts')}}">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('admins.getTables')}}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>List Category</span></a>
       </li>
 
       <!-- Divider -->

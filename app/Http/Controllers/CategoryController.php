@@ -36,7 +36,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->categoryService->store($request);
-        return redirect()->route('categories.list');
+        toastr()->success('Thêm danh mục thành công');
+        return redirect()->route('admins.getTables');
     }
 
     public function delete($id)
