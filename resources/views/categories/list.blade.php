@@ -26,32 +26,40 @@
 
     <div class="container">
         <div class="col-12">
-            <div class="row m-5">
+            <div class="row mb-5">
                 <div class="col-12">
 
-                    <div class="card mb-3" style="max-width: 100%;">
-                        <div class="row no-gutters">
-                            <div class="col-4" style="max-width: 100%;">
+                    <div class="card" style="max-width: 100%;">
+                        <div class="card-header" style="background: linear-gradient(to right,#61ba6d, #83c331)">
+                            <h1 class="text-white text-center">List Category</h1>
+                        </div>
+                        <div class="row no-gutters mt-5">
+                            <div class="col-3 mr-1" style="max-width: 100%;">
                                 <img src="{{asset('storage/img/user/anh1.jpg')}}" class="card-img" alt="...">
                             </div>
                             <div class="col-8">
                                 <div class="card-body" style="max-width: 100%;">
-                                    <h1 class="card-title text-center">List Category</h1>
-                                    <a href="{{route('categories.create')}}" class="btn btn-link" style="color: blue">Create</a>
-
-                                    <div class="m-3">
-                                        <form class="form-inline my-2 my-lg-0 ">
-                                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                        </form>
-
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <a href="{{route('categories.create')}}" class="btn text-white" style="background: linear-gradient(to right,#61ba6d, #83c331)">Create</a>
+                                            </div>
+                                            <div class="col-3">
+                                                <form class="form-inline my-2 my-lg-0 " style="max-width: 100%" >
+                                                    @csrf
+                                                    <input class="form-control " type="search" placeholder="Search" aria-label="Search" name="search">
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
 
+<hr/>
                                     <div class="wrap text-center" >
                                         <table class="head">
                                             <tbody>
                                             <tr>
-                                                <td><h5>Name Category</h5></td>
-                                                <td><h5>Action</h5></td>
+                                                <td><h4>Name Category</h4></td>
+                                                <td><h4>Action</h4></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -61,10 +69,10 @@
                                                 <tbody></tbody>
                                                 <tr>
                                                     <td>
-                                                        <a href="{{route('quizzes.list',$category->id)}}">{{$category->name}}</a>
+                                                        <a href="{{route('quizzes.list',$category->id)}}"><h5><i class="fa">{{$category->name}}</i></h5></a>
                                                     </td>
                                                     <td>
-                                                        <a href="{{route('categories.delete',$category->id)}}" class="btn btn-link" style="color: red" onclick="return confirm('Are you sure delete ???')">Delete</a>
+                                                        <a href="{{route('categories.delete',$category->id)}}" class="btn btn-danger text-white" style="color: red" onclick="return confirm('Are you sure delete ???')">Delete</a>
                                                     </td>
                                                 </tr>
                                                     @endforeach

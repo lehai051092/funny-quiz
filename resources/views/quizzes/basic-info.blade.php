@@ -65,6 +65,7 @@
                                     @endif
                                 </div>
                                 <button type="submit" class="btn text-white" style="background: linear-gradient(to right,#61ba6d, #83c331)" >Create</button>
+                                <a class="btn btn-secondary" href="{{route('index')}}">Cancel</a>
                             </form>
                         </div>
                     </div>
