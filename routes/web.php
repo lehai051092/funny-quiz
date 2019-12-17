@@ -97,7 +97,19 @@ Route::prefix('users')->group(function () {
 });
 
 Route::prefix('admins')->group(function () {
-    Route::get('/', function () {
-        return view('admins.index');
-    })->name('admins.index');
+    Route::get('/', 'AdminController@getIndex')->name('admins.index');
+    Route::get('/404', 'AdminController@get404')->name('admins.get404');
+    Route::get('/blank', 'AdminController@getBlank')->name('admins.getBlank');
+    Route::get('/buttons', 'AdminController@getButtons')->name('admins.getButtons');
+    Route::get('/cards', 'AdminController@getCards')->name('admins.getCards');
+    Route::get('/charts', 'AdminController@getCharts')->name('admins.getCharts');
+    Route::get('/forgot-password', 'AdminController@getForgotPassword')->name('admins.getForgotPassword');
+    Route::get('/login', 'AdminController@getLogin')->name('admins.getLogin');
+    Route::get('/register', 'AdminController@getRegister')->name('admins.getRegister');
+    Route::get('/tables', 'AdminController@getTables')->name('admins.getTables');
+    Route::get('/utilities-animation', 'AdminController@getUtilitiesAnimation')->name('admins.getUtilitiesAnimation');
+    Route::get('/utilities-border', 'AdminController@getUtilitiesBorder')->name('admins.getUtilitiesBorder');
+    Route::get('/utilities-color', 'AdminController@getUtilitiesColor')->name('admins.getUtilitiesColor');
+    Route::get('/utilities-other', 'AdminController@getUtilitiesOther')->name('admins.getUtilitiesOther');
+
 });
