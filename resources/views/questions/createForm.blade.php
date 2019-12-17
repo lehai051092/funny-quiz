@@ -141,7 +141,7 @@
                 <div class="card shadow mb-4 col-6 d-flex justify-content-center">
                     <div class="card-header py-3">
                         <h1 class="m-0 font-weight-bold text-primary">
-                            Create Category
+                            Create Question
                         </h1>
                     </div>
                     <div class="card-body">
@@ -200,7 +200,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.blade.php">Logout</a>
+                <a class="btn btn-primary" href="{{route('admins.getLogin')}}">Logout</a>
             </div>
         </div>
     </div>
