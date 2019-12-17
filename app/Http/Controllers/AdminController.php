@@ -43,12 +43,12 @@ class AdminController extends Controller
 
     public function getLogin()
     {
-        return view('admins.login');
+        return view('auth.login');
     }
 
     public function getRegister()
     {
-        return view('admins.register');
+        return view('auth.register');
     }
 
     public function getTables()
