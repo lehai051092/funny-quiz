@@ -28,7 +28,20 @@
 
 
 </head>
-
+<style>
+    .parent{
+        width: 500px;
+        /*height: 2000px;*/
+        height: 100%;
+    }
+    .child{
+        height: 300px;
+        margin-top: 30px;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 100px;
+    }
+</style>
 <body>
 <!-- ##### Preloader ##### -->
 <div id="preloader">
