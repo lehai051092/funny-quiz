@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BacsicInfoRequest;
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuizServiceInterface;
 
@@ -36,14 +37,14 @@ class QuizController extends Controller
     {
 
         $categories = $this->categoryService->getAll();
-
         return view('quizzes.basic-info', compact('categories'));
     }
 
-    public function store(Request $request, $id)
+    public function store(BacsicInfoRequest $request)
     {
         $this->quizService->store($request);
-        return redirect()->route('quizzes.list', ['id' => $id]);
+
+        return view('index');
     }
 
     public function delete($id)

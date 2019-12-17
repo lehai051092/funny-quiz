@@ -3,7 +3,7 @@
     <div class="container m-5">
         <div class="row m-5">
             <div class="col-12 m-5">
-                <div class="row">
+                <div class="container">
                     <section id="team" class="pb-5">
                         <div class="container">
                             <h5 class="section-title h1">List Quizzes</h5>
@@ -16,7 +16,7 @@
                                             <div class="frontside">
                                                 <div class="card">
                                                     <div class="card-body text-center">
-                                                        <p><img class=" img-fluid" src="{{$quiz->image}}" alt="card image"></p>
+                                                        <img class=" img-fluid" src="{{asset('storage/'.$quiz->image)}}" alt="card image">
                                                         <h4 class="card-title">{{$quiz->name}}</h4>
                                                         <p class="card-text">{{$quiz->desc}}</p>
                                                     </div>

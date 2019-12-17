@@ -45,7 +45,7 @@ class QuestionController extends Controller
     public function delete($id)
     {
         $this->questionService->delete($id);
-        return back();
+        return redirect()->back();
     }
 
     public function edit($id)

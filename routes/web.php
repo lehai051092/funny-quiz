@@ -54,10 +54,10 @@ Route::prefix('tests')->group(function () {
 Route::prefix('quizzes')->group(function () {
 
     Route::get('basic', 'QuizController@createQuizInCategory')->name('quizzes.basic');
-    Route::get('{id}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
+    Route::get('{id?}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
     Route::get('{id}/detail', 'QuizController@QuizDetail')->name('quizzes.detail');
-    Route::get('{id}/create', 'QuizController@create')->name('quizzes.create');
-    Route::post('{id}/create', 'QuizController@store')->name('quizzes.store');
+//    Route::get('{id}/create', 'QuizController@create')->name('quizzes.create');
+    Route::post('create', 'QuizController@store')->name('quizzes.store');
     Route::get('{id}/delete', 'QuizController@delete')->name('quizzes.delete');
     Route::get('{id}/edit', 'QuizController@edit')->name('quizzes.edit');
     Route::post('{id}/edit', 'QuizController@update')->name('quizzes.update');
