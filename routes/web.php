@@ -95,3 +95,9 @@ Route::prefix('users')->group(function () {
     Route::post('{id}/edit', 'UserController@update')->name('users.edit');
     Route::get('{id}/delete', 'UserController@delete')->name('users.delete');
 });
+
+Route::prefix('admins')->group(function () {
+    Route::get('/', function () {
+        return view('admins.index');
+    })->name('admins.index');
+});

@@ -15,7 +15,7 @@
                                 <label class="col-sm-2 col-form-label"><h5>Quiz</h5></label>
                                 <div class="col-sm-10">
                                     <h3><input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                               value="{{$quiz->name}}">
+                                               value="">{{$quiz->name}}
                                     </h3>
                                 </div>
                             </div>
@@ -23,7 +23,7 @@
                                 <label class="col-sm-2 col-form-label"><h5>Desc</h5></label>
                                 <div class="col-sm-10">
                                     <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                           value="{{$quiz->desc}}">
+                                           value="">{{$quiz->desc}}
                                 </div>
                             </div>
                             <h5>Các câu hỏi đã có trong Quiz :</h5>
