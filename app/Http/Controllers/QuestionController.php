@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\AnswerServiceInterface;
+use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
 use Illuminate\Http\Request;
@@ -12,34 +13,49 @@ class QuestionController extends Controller
     protected $questionService;
     protected $quizService;
     protected $answerService;
+    protected $categoryService;
 
     public function __construct(QuestionServiceInterface $questionService,
                                 QuizServiceInterface $quizService,
-                                AnswerServiceInterface $answerService)
+                                AnswerServiceInterface $answerService,
+                                CategoryServiceInteface $categoryService)
     {
         $this->questionService = $questionService;
         $this->quizService = $quizService;
-        $this->answerService=$answerService;
+        $this->answerService = $answerService;
+        $this->categoryService=$categoryService;
     }
 
     public function questionsInQuiz($id)
     {
         $quiz = $this->quizService->findById($id);
         $questions = $quiz->questions;
-        $answers=$this->answerService->getAll();
-        return view('questions.list', compact('quiz', 'questions','answers'));
+//        $answers = $this->answerService->getAll();
+        return view('actions.addQuestionToQuiz', compact('quiz', 'questions'));
     }
 
-    public function create($id)
+    public function getAll()
     {
-        $quiz = $this->quizService->findById($id);
-        return view('questions.createForm', compact('quiz'));
+        $questions = $this->questionService->getAll();
+        return view('actions.addQuestionToQuiz',compact('questions'));
     }
 
-    public function store(Request $request,$id)
+    public function createQuestion(){
+        return view('questions.basic-info');
+    }
+
+
+    public function create()
+    {
+//        $quiz = $this->quizService->findById($id);
+        return view('questions.createForm');
+    }
+
+
+    public function store(Request $request)
     {
         $this->questionService->store($request);
-        return redirect()->route('questions.list',['id'=>$id]);
+        return redirect()->route('questions.basic');
     }
 
     public function delete($id)
@@ -51,12 +67,20 @@ class QuestionController extends Controller
     public function edit($id)
     {
         $question = $this->questionService->findById($id);
-        $quiz = $question->quiz;
-        return view('questions.editForm', compact('question', 'quiz'));
+        $categories=$this->categoryService->getAll();
+
+        return view('questions.editForm', compact('question', 'categories'));
     }
 
-    public function update(Request $request,$id){
-        $this->questionService->update($request,$id);
-        return redirect()->route('categories.list');
+    public function update(Request $request, $id)
+    {
+        $this->questionService->update($request, $id);
+        return redirect()->route('questions.basic');
+    }
+
+    public function updateQuiz(Request $request, $id){
+
+        $this->questionService->updateQuiz($request,$id);
+        return redirect()->back();
     }
 }

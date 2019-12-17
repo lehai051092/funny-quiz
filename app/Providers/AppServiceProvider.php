@@ -27,6 +27,7 @@ use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
 use App\Http\Services\TestServiceInterface;
 use App\Http\Services\UserServiceInterface;
+use App\Quiz;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 

@@ -15,4 +15,6 @@ interface QuestionServiceInterface
     function delete($id);
 
     function update($request, $id);
+
+    function updateQuiz($request, $id);
 }

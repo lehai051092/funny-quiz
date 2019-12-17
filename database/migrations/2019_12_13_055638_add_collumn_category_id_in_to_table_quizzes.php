@@ -14,8 +14,10 @@ class AddCollumnCategoryIdInToTableQuizzes extends Migration
     public function up()
     {
         Schema::table('quizzes', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->unsignedBigInteger('category_id')->nullable()->index();
+            $table->foreign('category_id')->references('id')
+                ->on('categories')->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 

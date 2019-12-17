@@ -4,7 +4,7 @@
         <div class="col-12 m-5">
             <div class="row m-5">
                 <div class="col-8 m-5">
-                    <form method="post" action="{{route('questions.store')}}" >
+                    <form method="post" action="" >
                         @csrf
                         <div class="form-group">
                             <label>Name Question</label>
@@ -13,11 +13,9 @@
 {{--                        <div class="form-group">--}}
 
 {{--                            <label>Quiz</label>--}}
-
 {{--                            <select class="form-control"  name="quiz_id">--}}
 {{--                                <option value="{{$quiz->id}}">{{$quiz->name}}</option>--}}
 {{--                            </select>--}}
-
 {{--                        </div>--}}
                         <button type="submit" class="btn btn-primary">Create</button>
                     </form>

@@ -30,7 +30,6 @@ Route::get('/contact', function () {
 })->name('contact');
 
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -53,8 +52,9 @@ Route::prefix('tests')->group(function () {
 });
 
 Route::prefix('quizzes')->group(function () {
+    Route::get('basic', 'QuizController@getAll')->name('quizzes.basic');
+    Route::get('{id}/add', 'QuizController@addQuestionToQuiz')->name('quizzes.add');
 
-    Route::get('basic', 'QuizController@createQuizInCategory')->name('quizzes.basic');
     Route::get('{id?}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
     Route::get('{id}/detail', 'QuizController@QuizDetail')->name('quizzes.detail');
 //    Route::get('{id}/create', 'QuizController@create')->name('quizzes.create');
@@ -65,9 +65,13 @@ Route::prefix('quizzes')->group(function () {
 });
 
 Route::prefix('questions')->group(function () {
-    Route::get('{id}/', 'QuestionController@questionsInQuiz')->name('questions.list');
-    Route::get('{id}/create', 'QuestionController@create')->name('questions.create');
-    Route::post('{id}/create', 'QuestionController@store')->name('questions.store');
+    Route::get('basic', 'QuestionController@getAll')->name('questions.basic');
+    Route::get('create', 'QuestionController@createQuestion')->name('questions.createQuestion');
+    Route::get('create', 'QuestionController@create')->name('questions.create');
+    Route::post('create', 'QuestionController@store')->name('questions.store');
+    Route::post('{id}/update', 'QuestionController@updateQuiz')->name('questions.updateQuiz');
+    Route::get('{id}', 'QuestionController@questionsInQuiz')->name('questions.list');
+
     Route::get('{id}/delete', 'QuestionController@delete')->name('questions.delete');
     Route::get('{id}/edit', 'QuestionController@edit')->name('questions.edit');
     Route::post('{id}/edit', 'QuestionController@update')->name('questions.update');

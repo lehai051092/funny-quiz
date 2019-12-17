@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
+
+    protected $table = 'questions';
+    protected $fillable = [
+    'quiz_id','title'
+    ];
     public function quiz()
     {
         return $this->belongsTo('App\Quiz');

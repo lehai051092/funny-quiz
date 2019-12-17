@@ -26,15 +26,15 @@
     {{--    Ajax--}}
     <script src="{{asset("js/category.js")}}"></script>
 
-
 </head>
 <style>
-    .parent{
+    .parent {
         width: 500px;
         /*height: 2000px;*/
         height: 100%;
     }
-    .child{
+
+    .child {
         height: 300px;
         margin-top: 30px;
         position: -webkit-sticky;
@@ -146,7 +146,13 @@
                                 <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
                                 @can('crud-users')
-                                    <li><a href="{{route('quizzes.basic')}}">Tạo Quiz</a></li>
+                                    <li><a href="{{route('quizzes.basic')}}">Tạo Quiz</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{{route('questions.create')}}">Tạo câu hỏi</a></li>
+                                            <li ><a href="{{route('quizzes.basic')}}">Gắn câu hỏi vào danh mục</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 @endcan
 
                             </ul>
