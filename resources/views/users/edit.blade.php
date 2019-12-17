@@ -11,6 +11,7 @@
                     <div class="card-header text-center" style="background: linear-gradient(to right, #61ba6d, #83c331)">
                         <h1><i class="fa text-white">Edit User</i></h1>
                     </div>
+                    <hr/>
                     <div class="row">
                         <div class="col-2">
                         </div>
