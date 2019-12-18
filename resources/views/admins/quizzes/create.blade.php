@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-center">
         <div class="card shadow mb-4 col-6 d-flex justify-content-center">
             <div class="card-header py-3" style="background: linear-gradient(to right,#61ba6d, #83c331)">
-                    <h1 class="text-center text-white" >Create Quiz</h1>
+                <h1 class="text-center text-white" >Create Quiz</h1>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

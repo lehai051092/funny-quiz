@@ -52,7 +52,6 @@ Route::prefix('tests')->group(function () {
 });
 
 Route::prefix('quizzes')->group(function () {
-    Route::get('basic', 'QuizController@getAll')->name('quizzes.basic');
     Route::get('{id}/add', 'QuestionController@addQuestionToQuiz')->name('quizzes.add');
 
     Route::get('{id?}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
@@ -105,4 +104,7 @@ Route::prefix('admins')->group(function () {
     Route::get('/login', 'AdminController@getLogin')->name('admins.getLogin');
     Route::get('/register', 'AdminController@getRegister')->name('admins.getRegister');
     Route::get('/tables', 'AdminController@getTables')->name('admins.getTables');
+    Route::get('create', 'QuizController@createQuizInCategory')->name('admins.quizCreate');
+    Route::get('list-quiz', 'QuizController@getAll')->name('admins.quizList');
+    Route::get('list-question', 'QuestionController@listAllQuestion')->name('admins.questionList');
 });

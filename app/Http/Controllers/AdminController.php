@@ -40,10 +40,7 @@ class AdminController extends Controller
         }
         abort(403, 'You are not authorized to access');
 
-
     }
-
-
 
 
 }

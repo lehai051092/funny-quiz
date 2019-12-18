@@ -40,6 +40,13 @@ class QuestionController extends Controller
         return view('actions.addQuestionToQuiz', compact('questions'));
     }
 
+    public function listAllQuestion()
+    {
+        $questions = $this->questionService->getAll();
+        return view('admins.questions.list', compact('questions'));
+    }
+
+
     public function addQuestionToQuiz($id)
     {
         $quiz = $this->quizService->findById($id);
@@ -65,12 +72,14 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $this->questionService->store($request);
-        return redirect()->route('quizzes.basic');
+        toastr()->success('Create Question Success');
+        return redirect()->route('admins.questionList');
     }
 
     public function delete($id)
     {
         $this->questionService->delete($id);
+        toastr()->success('delete Question success');
         return redirect()->back();
     }
 
@@ -85,12 +94,12 @@ class QuestionController extends Controller
     public function update(Request $request, $id)
     {
         $this->questionService->update($request, $id);
-        return redirect()->route('questions.basic');
+        toastr()->success('Edit Question success');
+        return redirect()->route('admins.questionList');
     }
 
     public function updateQuiz(Request $request, $id)
     {
-
         $this->questionService->addQuestionToQuiz($request, $id);
         toastr()->success('thêm câu hỏi thành công');
         return redirect()->back();
