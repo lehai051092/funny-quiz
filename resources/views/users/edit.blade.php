@@ -204,7 +204,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn text-white" style="background: linear-gradient(to right,#61ba6d, #83c331)">Update</button>
+                                        <button type="submit" class="btn text-white" style="background: linear-gradient(to right,#61ba6d, #83c331)">Update</button>
                                         <a class="btn btn-secondary" href="{{route('users.list')}}">Cancel</a>
                                     </div>
                                 </form>

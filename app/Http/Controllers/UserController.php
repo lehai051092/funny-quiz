@@ -46,8 +46,9 @@ class UserController extends Controller
 
     public function update(ProfileUserRequest $request, $id) {
         $this->userService->update($request, $id);
+        toastr()->success('Edit Success');
 
-        return back()->with('success', 'User Update Success');
+        return redirect()->route('users.list');
     }
 
     public function updateImage(Request $request, $id) {

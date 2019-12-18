@@ -81,6 +81,12 @@
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a>
                                                 </li>
+                                                @can('crud-users')
+                                                    <li>
+                                                        <a href="{{route('admins.index')}}"
+                                                           class="dropdown-item">Admins</a>
+                                                    </li>
+                                                @endcan
                                                 <li>
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                                           style="display: none;"> @csrf </form>
@@ -89,12 +95,6 @@
                                                     <a href="{{route('users.profile', Auth::user()->id)}}"
                                                        class="dropdown-item">Profile</a>
                                                 </li>
-                                                @can('crud-users')
-                                                    <li>
-                                                        <a href="{{route('users.list')}}"
-                                                           class="dropdown-item">List User</a>
-                                                    </li>
-                                                @endcan
                                             </ul>
                                         </div>
                                     </li>
@@ -133,9 +133,6 @@
                                 <li><a href="{{route('index')}}">Home</a></li>
                                 <li><a href="">Categories</a>
                                     <ul class="dropdown">
-                                        @can('crud-users')
-                                            <li><a href="{{route('categories.list')}}">List category</a></li>
-                                        @endcan
                                         @foreach($categories as $category)
                                             <li>
                                                 <a href="{{route('quizzes.list',$category->id)}}">{{$category->name}}</a>
@@ -145,15 +142,6 @@
                                 </li>
                                 <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
-                                @can('crud-users')
-                                    <li><a href="{{route('quizzes.basic')}}">Tạo Quiz</a>
-                                        <ul class="dropdown">
-                                            <li><a href="{{route('questions.create')}}">Tạo câu hỏi</a></li>
-                                            <li ><a href="{{route('quizzes.basic')}}">Gắn câu hỏi vào danh mục</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                @endcan
 
                             </ul>
                         </div>
