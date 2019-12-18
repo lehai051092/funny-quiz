@@ -68,6 +68,7 @@ class QuizController extends Controller
     public function store(BacsicInfoRequest $request)
     {
         $this->quizService->store($request);
+        toastr()->success('ok');
 
         return view('index');
     }

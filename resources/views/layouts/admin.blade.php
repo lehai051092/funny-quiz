@@ -74,19 +74,19 @@
                 <span>List Category</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('quizzes.basic')}}">
+            <a class="nav-link" href="{{route('admins.quizCreate')}}">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Tạo Quiz</span></a>
+                <span>Create Quiz</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('questions.create')}}">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Tạo câu hỏi</span></a>
+                <span>Create Question</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('quizzes.basic')}}">
+            <a class="nav-link" href="">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Gắn câu hỏi vào Quiz</span></a>
+                <span>Add Question Into Quiz</span></a>
         </li>
 
         <!-- Divider -->
