@@ -23,7 +23,7 @@ class QuestionController extends Controller
         $this->questionService = $questionService;
         $this->quizService = $quizService;
         $this->answerService = $answerService;
-        $this->categoryService=$categoryService;
+        $this->categoryService = $categoryService;
     }
 
     public function questionsInQuiz($id)
@@ -37,10 +37,20 @@ class QuestionController extends Controller
     public function getAll()
     {
         $questions = $this->questionService->getAll();
-        return view('actions.addQuestionToQuiz',compact('questions'));
+        return view('actions.addQuestionToQuiz', compact('questions'));
     }
 
-    public function createQuestion(){
+    public function addQuestionToQuiz($id)
+    {
+        $quiz = $this->quizService->findById($id);
+        $questions = $quiz->questions;
+        $listQuestion = $this->questionService->getAll();
+        return view('actions.addQuestionToQuiz', compact('quiz', 'questions', 'listQuestion'));
+
+    }
+
+    public function createQuestion()
+    {
         return view('questions.basic-info');
     }
 
@@ -55,7 +65,7 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $this->questionService->store($request);
-        return redirect()->route('questions.basic');
+        return redirect()->route('quizzes.basic');
     }
 
     public function delete($id)
@@ -67,7 +77,7 @@ class QuestionController extends Controller
     public function edit($id)
     {
         $question = $this->questionService->findById($id);
-        $categories=$this->categoryService->getAll();
+        $categories = $this->categoryService->getAll();
 
         return view('questions.editForm', compact('question', 'categories'));
     }
@@ -78,9 +88,16 @@ class QuestionController extends Controller
         return redirect()->route('questions.basic');
     }
 
-    public function updateQuiz(Request $request, $id){
+    public function updateQuiz(Request $request, $id)
+    {
 
-        $this->questionService->updateQuiz($request,$id);
+        $this->questionService->addQuestionToQuiz($request, $id);
+        return redirect()->back();
+    }
+
+    public function removeQuestion(Request $request, $id)
+    {
+        $this->questionService->removeQuestionInQuiz($request, $id);
         return redirect()->back();
     }
 }

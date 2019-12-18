@@ -49,13 +49,21 @@ class QuestionServiceImpl implements QuestionServiceInterface
         return $this->questionRepository->update($question);
     }
 
-    public function updateQuiz($request, $id)
+    public function addQuestionToQuiz($request, $id)
     {
-        $id = $request->id;
+        $id = $request->question;
         $question = $this->questionRepository->findById($id);
-        $question->quiz_id = $request->question;
-        $question->title = $request->title;
+        $question->quiz_id = $request->id;
+//        $question->title = $request->title;
         $this->questionRepository->update($question);
 
+    }
+
+    public function removeQuestionInQuiz($request,$id){
+        $id = $request->quiz_id;
+        $question=$this->questionRepository->findById($id);
+//        $question->title=$request->title;
+        $question->quiz_id=null;
+        $this->questionRepository->update($question);
     }
 }

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +13,9 @@
 
     <!-- Custom fonts for this template -->
     <link href="{{asset('storage/admins/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{{asset('storage/admins/css/sb-admin-2.min.css')}}" rel="stylesheet">
@@ -44,7 +45,8 @@
         <hr class="sidebar-divider my-0">
 
         <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-white-600 small">{{ Auth::user()->name}}</span>
                 <img class="img-profile rounded-circle" src="{{asset('storage/'.Auth::user()->image)}}">
             </a>
@@ -58,7 +60,8 @@
                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                     List User
                 </a>
-                <a class="dropdown-item" href="{{route('admins.getLogin')}}" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="{{route('admins.getLogin')}}" data-toggle="modal"
+                   data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                 </a>
@@ -101,7 +104,8 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+               aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Pages</span>
             </a>
@@ -139,6 +143,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
                                 <div class="col-12">
                                     <div class="row p-5">
                                         <div class="col-6">
@@ -147,32 +152,40 @@
                                                     <h3 class="text-center">Add question to Quiz</h3>
                                                 </div>
                                                 <div class="card-body">
-                                                    <form>
+                                                    <form method="post"
+                                                          action="{{route('questions.removeQuestion',$quiz->id)}}">
+                                                        @csrf
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label"><h5>Quiz</h5></label>
                                                             <div class="col-sm-10">
-                                                                <h3><input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                                           value="">{{$quiz->name}}
+                                                                <h3><input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticEmail"
+                                                                           value="{{$quiz->name}}">
                                                                 </h3>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label"><h5>Desc</h5></label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                                       value="">{{$quiz->desc}}
+                                                                <input type="text" readonly
+                                                                       class="form-control-plaintext" id="staticEmail"
+                                                                       value="{{$quiz->desc}}">
                                                             </div>
                                                         </div>
                                                         <h5>Các câu hỏi đã có trong Quiz :</h5>
                                                         <div class="p-3 ">
                                                             @foreach($questions as $question)
-                                                                @if($question->quiz_id === $quiz->id)
-                                                                    <div class="form-group form-check pl-5">
-                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                                        <label class="form-check-label"
-                                                                               for="exampleCheck1">{{$question->title}}</label>
-                                                                    </div>
-                                                                @endif
+                                                                {{--                                        <input type="text" class="form-check-input" id="exampleCheck1"--}}
+                                                                {{--                                               style="display: none" name="title" value="{{$question->title}}">--}}
+                                                                <div class="form-group form-check pl-5">
+                                                                    {{--                                            <input name="id" value="{{$quiz->id}}" style="display: none">--}}
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                           id="exampleCheck1" name="quiz_id"
+                                                                           value="{{$question->id}}">
+                                                                    <label class="form-check-label"
+                                                                           for="exampleCheck1">{{$question->title}}</label>
+                                                                </div>
                                                             @endforeach
                                                         </div>
                                                         <div class="pull-right">
@@ -189,23 +202,29 @@
                                                 </div>
                                                 <div class="card-body parent">
                                                     <form class="form-inline my-2 my-lg-0">
-                                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                                        <input class="form-control mr-sm-2" type="search"
+                                                               placeholder="Search" aria-label="Search">
                                                     </form>
 
 
-                                                    <form method="post" action="{{route('questions.updateQuiz',$quiz->id)}}">
+                                                    <form method="post"
+                                                          action="{{route('questions.addQuestion',$quiz->id)}}">
                                                         @csrf
                                                         <div class="p-3 ">
                                                             @foreach($listQuestion as $question)
                                                                 @if($question->quiz_id==null)
-                                                                    <input type="text" class="form-check-input" id="exampleCheck1"
-                                                                           style="display: none" name="title" value="{{$question->title}}">
+                                                                    {{--                                        <input type="text" class="form-check-input" id="exampleCheck1"--}}
+                                                                    {{--                                               style="display: block" name="title" value="{{$question->title}}">--}}
                                                                     <div class="form-group form-check pl-5">
-                                                                        <input name="id" value="{{$question->id}}">
-                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1"
-                                                                               name="question" value="{{$quiz->id}}">
+                                                                        <input name="id" value="{{$quiz->id}}"
+                                                                               style="display: none">
+                                                                        <input type="checkbox" class="form-check-input"
+                                                                               id="exampleCheck1"
+                                                                               name="question"
+                                                                               value="{{$question->id}}">
                                                                         <label class="form-check-label"
                                                                                for="exampleCheck1">{{$question->title}}</label>
+
                                                                     </div>
                                                                 @endif
                                                             @endforeach
@@ -256,7 +275,8 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

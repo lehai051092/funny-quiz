@@ -17,9 +17,9 @@ class CreateTableAnswers extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->integer('status');
-            $table->unsignedBigInteger('question_id')->nullable()->index();
+            $table->unsignedBigInteger('question_id')->nullable();
             $table->foreign('question_id')->references('id')
-                ->on('questions')->onDelete('restrict')->onUpdate('restrict');
+                ->on('questions')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

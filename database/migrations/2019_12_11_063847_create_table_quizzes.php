@@ -17,9 +17,9 @@ class CreateTableQuizzes extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('desc');
-            $table->unsignedBigInteger('test_id')->nullable()->index();
+            $table->unsignedBigInteger('test_id')->nullable();
             $table->foreign('test_id')->references('id')
-                ->on('tests')->onDelete('restrict')->onUpdate('restrict');
+                ->on('tests')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -41,7 +41,7 @@
                                         </div>
                                         <p class="product-description">{{$quiz->desc}}</p>
                                         <div class="action">
-                                           <a href="{{route('questions.list',$quiz->id)}}"><button class="add-to-cart btn btn-danger" type="button">Làm Quiz!
+                                           <a href="{{route('questions.basic.list',$quiz->id)}}"><button class="add-to-cart btn btn-danger" type="button">Làm Quiz!
                                             </button></a>
                                         </div>
                                     </div>
