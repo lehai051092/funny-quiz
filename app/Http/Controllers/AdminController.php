@@ -20,6 +20,7 @@ class AdminController extends Controller
         }
         abort(403, 'You are not authorized to access');
 
+
     }
 
     public function getLogin()
@@ -38,6 +39,7 @@ class AdminController extends Controller
             return view('admins.tables');
         }
         abort(403, 'You are not authorized to access');
+
 
     }
 
