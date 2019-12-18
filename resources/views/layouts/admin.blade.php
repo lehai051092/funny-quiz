@@ -83,7 +83,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Quiz Screens:</h6>
                     <a class="collapse-item" href="{{route('admins.quizCreate')}}">Create Quiz</a>
-                    <a class="collapse-item" href="">Add Question Into Quiz</a>
+                    <a class="collapse-item" href="{{route('admins.quizList')}}">Add Question Into Quiz</a>
                 </div>
             </div>
         </li>
@@ -91,35 +91,6 @@
             <a class="nav-link" href="{{route('questions.create')}}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Create Question</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Add Question Into Quiz</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Addons
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="{{route('admins.getLogin')}}">Login</a>
-                    <a class="collapse-item" href="{{route('admins.getRegister')}}">Register</a>
-                    <a class="collapse-item" href="{{route('admins.getForgotPassword')}}">Forgot Password</a>
-                </div>
-            </div>
         </li>
 
         <!-- Divider -->
