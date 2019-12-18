@@ -100,7 +100,6 @@ class QuestionController extends Controller
 
     public function updateQuiz(Request $request, $id)
     {
-
         $this->questionService->addQuestionToQuiz($request, $id);
         toastr()->success('thêm câu hỏi thành công');
         return redirect()->back();

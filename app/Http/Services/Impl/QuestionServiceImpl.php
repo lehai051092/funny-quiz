@@ -51,19 +51,24 @@ class QuestionServiceImpl implements QuestionServiceInterface
 
     public function addQuestionToQuiz($request, $id)
     {
-        $id = $request->question;
-        $question = $this->questionRepository->findById($id);
-        $question->quiz_id = $request->id;
+        $item = $request->question;
+        foreach ($item as $id) {
+            $question = $this->questionRepository->findById($id);
+            $question->quiz_id = $request->id;
+            $this->questionRepository->update($question);
+        }
 //        $question->title = $request->title;
-        $this->questionRepository->update($question);
 
     }
 
     public function removeQuestionInQuiz($request,$id){
-        $id = $request->quiz_id;
-        $question=$this->questionRepository->findById($id);
-//        $question->title=$request->title;
-        $question->quiz_id=null;
-        $this->questionRepository->update($question);
+        $item = $request->quiz_id;
+        foreach ($item as $id) {
+            $question = $this->questionRepository->findById($id);
+            $question->quiz_id=null;
+            $this->questionRepository->update($question);
+        }
+
+
     }
 }

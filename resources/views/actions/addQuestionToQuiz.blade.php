@@ -42,7 +42,7 @@
                                                     <div class="form-group form-check pl-5">
                                                         {{--                                            <input name="id" value="{{$quiz->id}}" style="display: none">--}}
                                                         <input type="checkbox" class="form-check-input"
-                                                               id="exampleCheck1" name="quiz_id"
+                                                               id="exampleCheck1" name="quiz_id[]"
                                                                value="{{$question->id}}">
                                                         <label class="form-check-label"
                                                                for="exampleCheck1">{{$question->title}}</label>
@@ -81,7 +81,7 @@
                                                                    style="display: none">
                                                             <input type="checkbox" class="form-check-input"
                                                                    id="exampleCheck1"
-                                                                   name="question"
+                                                                   name="question[]"
                                                                    value="{{$question->id}}">
                                                             <label class="form-check-label"
                                                                    for="exampleCheck1">{{$question->title}}</label>
