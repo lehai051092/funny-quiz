@@ -23,10 +23,8 @@
     <link href="{{asset('storage/admins/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="{{asset('storage/style.css')}}">
 
     {{--    list users--}}
-    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 </head>
 
@@ -145,8 +143,7 @@
             <div class="container-fluid pt-4">
 
                 <!-- Page Heading -->
-                <h1 class="h1 mb-2 text-gray-800">List Category</h1>
-                <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+                <h1 class="h1 mb-2 text-gray-800">List User</h1>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -189,13 +186,13 @@
                                         <td style="width: 20%;">
                                             <a href="{{route('users.edit', $user->id)}}" class="table-link">
                                             <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-square fa-stack-2x" style="color: green"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                             </a>
                                             <a href="{{route('users.delete', $user->id)}}" class="table-link danger" onclick="return confirm('Are you delete?')">
                                             <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-square fa-stack-2x" style="color: red"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
                                             </span>
                                             </a>
