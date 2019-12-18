@@ -18,7 +18,8 @@ class CreateTableQuizzes extends Migration
             $table->string('name');
             $table->text('desc');
             $table->unsignedBigInteger('test_id')->nullable();
-            $table->foreign('test_id')->references('id')->on('tests')->onDelete('cascade');
+            $table->foreign('test_id')->references('id')
+                ->on('tests')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateTableQuizzes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quizs');
+        Schema::dropIfExists('quizzes');
     }
 }

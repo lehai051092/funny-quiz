@@ -42,7 +42,7 @@ class AnswerController extends Controller
     public function delete($id)
     {
         $this->answerService->delete($id);
-        return redirect()->route('categories.list');
+        return redirect()->back();
     }
 
     public function edit($id)

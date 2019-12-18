@@ -36,14 +36,27 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->categoryService->store($request);
-        return redirect()->route('categories.list');
+        toastr()->success('Thêm danh mục thành công');
+        return redirect()->route('admins.getTables');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         if (Gate::allows('crud-users')) {
             $this->categoryService->delete($id);
-            return redirect()->route('categories.list');
+            toastr()->success('delete thành công');
+            return back();
+//                ->with('success', 'You Delete Success');
         }
         abort(403, 'You are not authorized to access');
+    }
+
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $keyword = $request->keyword;
+            $categories = $this->categoryService->search($keyword);
+            return response()->json($categories);
+        }
     }
 }

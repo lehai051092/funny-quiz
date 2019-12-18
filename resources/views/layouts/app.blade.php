@@ -23,10 +23,25 @@
     {{--    list users--}}
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
-
+    {{--    Ajax--}}
+    <script src="{{asset("js/category.js")}}"></script>
 
 </head>
+<style>
+    .parent {
+        width: 500px;
+        /*height: 2000px;*/
+        height: 100%;
+    }
 
+    .child {
+        height: 300px;
+        margin-top: 30px;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 100px;
+    }
+</style>
 <body>
 <!-- ##### Preloader ##### -->
 <div id="preloader">
@@ -40,7 +55,7 @@
     <div class="top-header">
         <div class="container h-100">
             <div class="row h-100">
-                <div class="col-12 h-100" >
+                <div class="col-12 h-100">
                     <div class="header-content h-100 d-flex align-items-center justify-content-between">
                         <div class="academy-logo">
                             <a href="{{route('index')}}"><img src="{{asset('storage/img/core-img/logo.png')}}"
@@ -120,9 +135,10 @@
                                     <ul class="dropdown">
                                         @can('crud-users')
                                             <li><a href="{{route('categories.list')}}">List category</a></li>
-                                            @endcan
+                                        @endcan
                                         @foreach($categories as $category)
-                                            <li><a href="{{route('quizzes.list',$category->id)}}">{{$category->name}}</a>
+                                            <li>
+                                                <a href="{{route('quizzes.list',$category->id)}}">{{$category->name}}</a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -130,7 +146,13 @@
                                 <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="{{route('contact')}}">Contact</a></li>
                                 @can('crud-users')
-                                    <li><a href="{{route('quizzes.basic')}}">Tạo Quiz</a></li>
+                                    <li><a href="{{route('quizzes.basic')}}">Tạo Quiz</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{{route('questions.create')}}">Tạo câu hỏi</a></li>
+                                            <li ><a href="{{route('quizzes.basic')}}">Gắn câu hỏi vào danh mục</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 @endcan
 
                             </ul>
@@ -266,7 +288,7 @@
 <!-- Popper js -->
 <script src="{{asset('storage/js/bootstrap/popper.min.js')}}"></script>
 <!-- Bootstrap js -->
-    <script src="{{asset('storage/js/bootstrap/bootstrap.min.js')}}"></script>
+<script src="{{asset('storage/js/bootstrap/bootstrap.min.js')}}"></script>
 <!-- All Plugins js -->
 <script src="{{asset('storage/js/plugins/plugins.js')}}"></script>
 <!-- Active js -->

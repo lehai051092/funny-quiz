@@ -11,14 +11,18 @@
                             <input type="text" class="form-control" placeholder="Enter Name Test" name="title" value="{{$question->title}}">
                         </div>
                         <div class="form-group">
-                            <label>Quiz</label>
-                            <select class="form-control"  name="quiz_id">
+                            <label>Category</label>
+                            <select class="form-control"  name="category_id">
+                              @foreach($categories as $category)
                                 <option
-                                    @if($question->quiz_id==$quiz->id)
-                                        selected
-                                    @endif
-                                    value="{{$quiz->id}}">{{$quiz->name}}</option>
+                                    value="{{$category->id}}">{{$category->name}}
+                                </option>
+                                  @endforeach
                             </select>
+                        </div>
+                        <div class="form-group" style="display: none">
+                            <label>Quiz</label>
+                            <input value="{{$question->quiz_id}}">
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>

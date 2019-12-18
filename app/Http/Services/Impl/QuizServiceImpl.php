@@ -9,6 +9,7 @@ use App\Http\Repositories\TestRepositoryInterface;
 use App\Http\Services\QuizServiceInterface;
 use App\Quiz;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class QuizServiceImpl implements QuizServiceInterface
 {
@@ -33,14 +34,13 @@ class QuizServiceImpl implements QuizServiceInterface
     function store($request)
     {
         $quiz = new Quiz();
-        $quiz->name = $request->name;
+        $quiz->name = $request->title;
         $quiz->desc = $request->desc;
-        $quiz->category_id = $request->category_id;
-        if (!$request->hasFile('image')) {
-            $quiz->image = $request->image;
-        } else {
+        $quiz->category_id = $request->categories;
+        if ($request->image) {
             $image = $request->file('image');
-            $path = $image->store('image', 'public');
+            $path = $image->store("img/quiz", "public");
+            Storage::delete('public/' . $quiz->image);
             $quiz->image = $path;
         }
         $this->quizRepository->store($quiz);
@@ -49,8 +49,8 @@ class QuizServiceImpl implements QuizServiceInterface
     function delete($id)
     {
         $quiz = $this->quizRepository->findById($id);
-        if (file_exists(storage_path("/app/pubplic/$quiz->image"))) {
-            File::delete(storage_path("/app/pubplic/$quiz->image"));
+        if (file_exists(storage_path("/app/public/$quiz->image"))) {
+            File::delete(storage_path("/app/public/$quiz->image"));
         }
         return $this->quizRepository->delete($quiz);
     }
@@ -58,13 +58,18 @@ class QuizServiceImpl implements QuizServiceInterface
     function update($request, $id)
     {
         $quiz = $this->quizRepository->findById($id);
-        if (file_exists(storage_path("/app/pubplic/$quiz->image"))) {
-            File::delete(storage_path("/app/pubplic/$quiz->image"));
+        if (file_exists(storage_path("/app/public/$quiz->image"))) {
+            File::delete(storage_path("/app/public/$quiz->image"));
         }
         $quiz->name = $request->name;
         $quiz->desc = $request->desc;
         $quiz->category_id = $request->category_id;
-        $quiz->image = $request->image;
+        if ($request->image) {
+            $image = $request->file('image');
+            $path = $image->store("img/quiz", "public");
+            Storage::delete('public/' . $quiz->image);
+            $quiz->image = $path;
+        }
         return $this->quizRepository->update($quiz);
     }
 }
