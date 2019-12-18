@@ -17,8 +17,12 @@
                             <div class="form-group">
                                 <label>Category</label>
                                 <select class="form-control"  name="category_id">
+                                    <option value="">Select Category</option>
                                     @foreach($categories as $category)
                                         <option
+                                            @if($question->category_id==$category->id)
+                                            selected
+                                            @endif
                                             value="{{$category->id}}">{{$category->name}}
                                         </option>
                                     @endforeach

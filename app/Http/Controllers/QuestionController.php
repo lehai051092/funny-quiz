@@ -73,7 +73,7 @@ class QuestionController extends Controller
     {
         $this->questionService->store($request);
         toastr()->success('Create Question Success');
-        return redirect()->route('admins.index');
+        return redirect()->route('admins.questionList');
     }
 
     public function delete($id)
