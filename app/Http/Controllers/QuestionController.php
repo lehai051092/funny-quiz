@@ -92,12 +92,14 @@ class QuestionController extends Controller
     {
 
         $this->questionService->addQuestionToQuiz($request, $id);
+        toastr()->success('thêm câu hỏi thành công');
         return redirect()->back();
     }
 
     public function removeQuestion(Request $request, $id)
     {
         $this->questionService->removeQuestionInQuiz($request, $id);
+        toastr()->success('bỏ câu hỏi thành công ');
         return redirect()->back();
     }
 }
