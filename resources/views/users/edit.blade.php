@@ -13,7 +13,9 @@
 
     <!-- Custom fonts for this template -->
     <link href="{{asset('storage/admins/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 
     <!-- Custom styles for this template-->
@@ -50,7 +52,8 @@
         <hr class="sidebar-divider my-0">
 
         <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-white-600 small">Valerie Luna</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
             </a>
@@ -111,7 +114,8 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+               aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Pages</span>
             </a>
@@ -156,7 +160,8 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="name"><h5>Name</h5></label>
-                                        <input type="text" class="form-control" id="name" value="{{$user->name}}" name="name"
+                                        <input type="text" class="form-control" id="name" value="{{$user->name}}"
+                                               name="name"
                                                @if($errors->has('name'))
                                                style="border: solid red"
                                             @endif>
@@ -168,16 +173,29 @@
                                     <div class="form-group">
                                         <label for="email"><h5>Email</h5></label>
                                         <input type="email" class="form-control" id="email"
-                                               placeholder="name@example.com" disabled value="{{$user->email}}" name="email">
+                                               placeholder="name@example.com" disabled value="{{$user->email}}"
+                                               name="email">
                                     </div>
                                     <div class="form-group">
                                         <label for="dob"><h5>Birthday</h5></label>
                                         <input type="date" class="form-control" id="dob"
-                                               value="{{$user->dob}}" name="dob">
+                                               value="{{$user->dob}}" name="dob"
+                                               @if($errors->has('dob'))
+                                               style="border: solid red"
+                                            @endif>
+                                        @if($errors->has('dob'))
+                                            <p class="text-danger">{{$errors->first('dob')}}</p>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="gender"><h5>Gender</h5></label>
-                                        <select class="form-control" id="gender" name="gender">
+                                        <select class="form-control" id="gender" name="gender"
+                                                @if($errors->has('gender'))
+                                                style="border: solid red"
+                                            @endif>
+                                            @if($errors->has('gender'))
+                                                <p class="text-danger">{{$errors->first('gender')}}</p>
+                                            @endif
                                             <option value="">Select your gender</option>
                                             <option @if($user->gender === \App\GenderInterface::FEMALE)
                                                     selected
@@ -191,7 +209,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="role"><h5>Role</h5></label>
-                                        <select class="form-control" id="role" name="role">
+                                        <select class="form-control" id="role" name="role"
+                                                @if($errors->has('role'))
+                                                style="border: solid red"
+                                            @endif>
+                                            @if($errors->has('role'))
+                                                <p class="text-danger">{{$errors->first('role')}}</p>
+                                            @endif
                                             <option value="">Select your role</option>
                                             <option @if($user->role === \App\RoleInterface::ADMIN)
                                                     selected
@@ -204,7 +228,9 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn text-white" style="background: linear-gradient(to right,#61ba6d, #83c331)">Update</button>
+                                        <button type="submit" class="btn text-white"
+                                                style="background: linear-gradient(to right,#3498db, #007bff)">Update
+                                        </button>
                                         <a class="btn btn-secondary" href="{{route('users.list')}}">Cancel</a>
                                     </div>
                                 </form>
@@ -242,7 +268,8 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
