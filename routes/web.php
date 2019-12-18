@@ -106,4 +106,5 @@ Route::prefix('admins')->group(function () {
     Route::get('/tables', 'AdminController@getTables')->name('admins.getTables');
     Route::get('create', 'QuizController@createQuizInCategory')->name('admins.quizCreate');
     Route::get('list-quiz', 'QuizController@getAll')->name('admins.quizList');
+    Route::get('list-question', 'QuestionController@listAllQuestion')->name('admins.questionList');
 });

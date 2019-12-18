@@ -83,10 +83,16 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Quiz Screens:</h6>
                     <a class="collapse-item" href="{{route('admins.quizCreate')}}">Create Quiz</a>
-                    <a class="collapse-item" href="{{route('admins.quizList')}}">Add Question Into Quiz</a>
+                    <a class="collapse-item" href="{{route('admins.quizList')}}">List Quiz</a>
                 </div>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('admins.questionList')}}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>List Question</span></a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{route('questions.create')}}">
                 <i class="fas fa-fw fa-table"></i>

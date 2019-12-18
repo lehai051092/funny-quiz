@@ -68,9 +68,9 @@ class QuizController extends Controller
     public function store(BacsicInfoRequest $request)
     {
         $this->quizService->store($request);
-        toastr()->success('ok');
+        toastr()->success('Create QUIZ success');
 
-        return view('index');
+        return redirect()->route('admins.quizList');
     }
 
     public function delete($id)
@@ -90,6 +90,8 @@ class QuizController extends Controller
     public function update(Request $request, $id)
     {
         $this->quizService->update($request, $id);
-        return redirect()->route('categories.list');
+        toastr()->success('Edit  QUIZ success');
+
+        return redirect()->route('admins.quizList');
     }
 }
