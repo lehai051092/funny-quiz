@@ -10,7 +10,8 @@
                         <h3 class="text-center">Add question to Quiz</h3>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="post" action="{{route('questions.removeQuestion',$quiz->id)}}">
+                            @csrf
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label"><h5>Quiz</h5></label>
                                 <div class="col-sm-10">
@@ -29,13 +30,15 @@
                             <h5>Các câu hỏi đã có trong Quiz :</h5>
                             <div class="p-3 ">
                                 @foreach($questions as $question)
-                                    @if($question->quiz_id === $quiz->id)
+{{--                                        <input type="text" class="form-check-input" id="exampleCheck1"--}}
+{{--                                               style="display: none" name="title" value="{{$question->title}}">--}}
                                         <div class="form-group form-check pl-5">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+{{--                                            <input name="id" value="{{$quiz->id}}" style="display: none">--}}
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="quiz_id"
+                                                   value="{{$question->id}}">
                                             <label class="form-check-label"
                                                    for="exampleCheck1">{{$question->title}}</label>
                                         </div>
-                                    @endif
                                 @endforeach
                             </div>
                             <div class="pull-right">
@@ -56,17 +59,17 @@
                         </form>
 
 
-                        <form method="post" action="{{route('questions.updateQuiz',$quiz->id)}}">
+                        <form method="post" action="{{route('questions.addQuestion',$quiz->id)}}">
                             @csrf
                             <div class="p-3 ">
                                 @foreach($listQuestion as $question)
                                     @if($question->quiz_id==null)
-                                        <input type="text" class="form-check-input" id="exampleCheck1"
-                                               style="display: none" name="title" value="{{$question->title}}">
+{{--                                        <input type="text" class="form-check-input" id="exampleCheck1"--}}
+{{--                                               style="display: block" name="title" value="{{$question->title}}">--}}
                                         <div class="form-group form-check pl-5">
-                                            <input name="id" value="{{$question->id}}">
+                                            <input name="id" value="{{$quiz->id}}" style="display: none" >
                                             <input type="checkbox" class="form-check-input" id="exampleCheck1"
-                                                   name="question" value="{{$quiz->id}}">
+                                                   name="question" value="{{$question->id}}">
                                             <label class="form-check-label"
                                                    for="exampleCheck1">{{$question->title}}</label>
                                         </div>

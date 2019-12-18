@@ -4,7 +4,7 @@
 
     <div class="container p-5">
         <div class="row m-5">
-                <a href="{{route('questions.create',$quiz->id)}}" class="btn btn-link">Thêm mới câu hỏi</a>
+{{--                <a href="{{route('questions.create',$quiz->id)}}" class="btn btn-link">Thêm mới câu hỏi</a>--}}
                 @foreach($questions as $key=>$question)
                     <div class="container-fluid" style="background-color: #2fa360">
                     <div class="modal-dialog">

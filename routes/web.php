@@ -52,7 +52,7 @@ Route::prefix('tests')->group(function () {
 
 Route::prefix('quizzes')->group(function () {
     Route::get('basic', 'QuizController@getAll')->name('quizzes.basic');
-    Route::get('{id}/add', 'QuizController@addQuestionToQuiz')->name('quizzes.add');
+    Route::get('{id}/add', 'QuestionController@addQuestionToQuiz')->name('quizzes.add');
 
     Route::get('{id?}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
     Route::get('{id}/detail', 'QuizController@QuizDetail')->name('quizzes.detail');
@@ -65,10 +65,13 @@ Route::prefix('quizzes')->group(function () {
 
 Route::prefix('questions')->group(function () {
     Route::get('basic', 'QuestionController@getAll')->name('questions.basic');
+
     Route::get('create', 'QuestionController@createQuestion')->name('questions.createQuestion');
     Route::get('create', 'QuestionController@create')->name('questions.create');
     Route::post('create', 'QuestionController@store')->name('questions.store');
-    Route::post('{id}/update', 'QuestionController@updateQuiz')->name('questions.updateQuiz');
+    Route::get('{id}/list', 'QuizController@getAllQuestionsInCategory')->name('questions.basic.list');
+    Route::post('{id}/add', 'QuestionController@updateQuiz')->name('questions.addQuestion');
+    Route::post('{id}/remove', 'QuestionController@removeQuestion')->name('questions.removeQuestion');
     Route::get('{id}', 'QuestionController@questionsInQuiz')->name('questions.list');
 
     Route::get('{id}/delete', 'QuestionController@delete')->name('questions.delete');

@@ -4,7 +4,7 @@
         <div class="col-12 m-5">
             <div class="row m-5">
                 <div class="col-8 m-5">
-                    <form method="post" action="" >
+                    <form method="post" action="{{route('questions.store')}}" >
                         @csrf
                         <div class="form-group">
                             <label>Name Question</label>
