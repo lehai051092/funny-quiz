@@ -101,14 +101,14 @@ class QuestionController extends Controller
     public function updateQuiz(Request $request, $id)
     {
         $this->questionService->addQuestionToQuiz($request, $id);
-        toastr()->success('thêm câu hỏi thành công');
+        toastr()->success('Add question to Quiz success');
         return redirect()->back();
     }
 
     public function removeQuestion(Request $request, $id)
     {
         $this->questionService->removeQuestionInQuiz($request, $id);
-        toastr()->success('bỏ câu hỏi thành công ');
+        toastr()->success('Remove question success');
         return redirect()->back();
     }
 }
