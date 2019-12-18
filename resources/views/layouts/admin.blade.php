@@ -56,9 +56,9 @@
                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                     List User
                 </a>
-                <a class="dropdown-item" href="{{route('admins.getLogin')}}" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="{{route('index')}}" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
+                    Funny Quiz Home
                 </a>
             </div>
         </li>
@@ -73,10 +73,19 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>List Category</span></a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" href="{{route('admins.quizCreate')}}">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Create Quiz</span></a>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Quiz</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Quiz Screens:</h6>
+                    <a class="collapse-item" href="{{route('admins.quizCreate')}}">Create Quiz</a>
+                    <a class="collapse-item" href="">Add Question Into Quiz</a>
+                </div>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('questions.create')}}">
@@ -171,10 +180,10 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body">Select "Back To Home" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="{{route('admins.getLogin')}}">Logout</a>
+                <a class="btn btn-primary" href="{{route('index')}}">Back To Home</a>
             </div>
         </div>
     </div>
