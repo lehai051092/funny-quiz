@@ -62,19 +62,21 @@ class QuizController extends Controller
     {
 
         $categories = $this->categoryService->getAll();
-        return view('quizzes.basic-info', compact('categories'));
+        return view('admins.quizzes.create', compact('categories'));
     }
 
     public function store(BacsicInfoRequest $request)
     {
         $this->quizService->store($request);
+        toastr()->success('Create QUIZ success');
 
-        return view('index');
+        return redirect()->route('admins.quizList');
     }
 
     public function delete($id)
     {
         $this->quizService->delete($id);
+        toastr()->success('delete success');
         return redirect()->back();
     }
 
@@ -88,6 +90,8 @@ class QuizController extends Controller
     public function update(Request $request, $id)
     {
         $this->quizService->update($request, $id);
-        return redirect()->route('categories.list');
+        toastr()->success('Edit  QUIZ success');
+
+        return redirect()->route('admins.quizList');
     }
 }

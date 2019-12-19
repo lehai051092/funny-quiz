@@ -36,7 +36,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->categoryService->store($request);
-        toastr()->success('Thêm danh mục thành công');
+        toastr()->success('Add category success');
         return redirect()->route('admins.getTables');
     }
 
@@ -44,7 +44,7 @@ class CategoryController extends Controller
     {
         if (Gate::allows('crud-users')) {
             $this->categoryService->delete($id);
-            toastr()->success('delete thành công');
+            toastr()->success('delete success');
             return back();
 //                ->with('success', 'You Delete Success');
         }

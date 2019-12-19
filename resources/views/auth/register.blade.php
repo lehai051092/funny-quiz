@@ -47,7 +47,7 @@
 
                     @error('name')
                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong style="color: red" >{{ $message }}</strong>
                                     </span>
                     @enderror
                     <span class="icon4"><span toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password" aria-hidden="true"></span></span>
@@ -57,7 +57,7 @@
 
                     @error('email')
                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong style="color: red">{{ $message }}</strong>
                                     </span>
                     @enderror
                     <span class="icon3"><span toggle="#password-field" class="fa fa-envelope" aria-hidden="true"></span></span>
@@ -68,7 +68,7 @@
 
                     @error('password')
                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong style="color: red">{{ $message }}</strong>
                                     </span>
                     @enderror
                     <span class="icon1"><i class="fa fa-fw fa-eye field_icon toggle-password"

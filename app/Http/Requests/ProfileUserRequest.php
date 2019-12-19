@@ -24,9 +24,9 @@ class ProfileUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
-            'dob' => ['required'],
-            'gender' => ['required']
+            'name' => 'required',
+            'dob' => 'required',
+            'gender' => 'required',
         ];
     }
 }
