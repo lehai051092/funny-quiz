@@ -75,13 +75,15 @@
                         <div class="form-group">
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-2"></div>
+                                    <div class="col-2"><h4><i class="fa">Answer</i></h4></div>
                                     <div class="col-9">
-                                        <a id="insertAnswer" class="btn btn-link"><i class="fa fa-plus" aria-hidden="true"></i> Add Answer</a>
-                                                <div class="" id="dynamic_field">
+                                        <div class="col-12">
+                                            <div class="" id="dynamic_field">
 
-                                                </div>
-
+                                            </div>
+                                        </div>
+                                        <a id="insertAnswer" class="btn btn-link"><i class="fa fa-plus"
+                                                                                     aria-hidden="true"></i> Add Answer</a>
                                     </div>
                                 </div>
                             </div>
