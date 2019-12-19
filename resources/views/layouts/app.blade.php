@@ -26,6 +26,7 @@
     {{--    Ajax--}}
     <script src="{{asset("js/category.js")}}"></script>
 
+
 </head>
 <style>
     .parent {

@@ -1,9 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="d-flex justify-content-center">
-        <div class="card shadow mb-4 col-6 d-flex justify-content-center">
+        <div class="card shadow mb-4 d-flex">
             <div class="card-header py-3">
-                <h1 class="m-0 font-weight-bold text-primary">
+                <h1 class="m-0 font-weight-bold">
                     Create Question
                 </h1>
             </div>
@@ -13,15 +12,22 @@
                         <form method="post" action="{{route('questions.store')}}">
                             @csrf
                             <div class="form-group">
-                                <label>Name Question</label>
-                                <input type="text" class="form-control" placeholder="Enter Name Test" name="title">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <label class="col-2"><h4><i class="fa">Name Question</i></h4></label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control" name="title">
+                                        </div>
+                                        <div class="col-2">
+                                            <button type="submit" class="btn btn-success text-center ">Create</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Create</button>
                         </form>
                     </table>
                 </div>
             </div>
         </div>
 
-    </div>
 @endsection
