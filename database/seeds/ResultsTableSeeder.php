@@ -12,5 +12,15 @@ class ResultsTableSeeder extends Seeder
     public function run()
     {
         $result = new \App\Result();
+        $result->user_id=1;
+        $result->save();
+
+        $result = new \App\Result();
+        $result->user_id=2;
+        $result->save();
+
+        $result = new \App\Result();
+        $result->user_id=3;
+        $result->save();
     }
 }
