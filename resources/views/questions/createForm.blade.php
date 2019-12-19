@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+
     <div class="card shadow mb-4 d-flex">
         <div class="card-header py-3">
             <h1 class="m-0 font-weight-bold">
@@ -56,7 +57,7 @@
                                 </div>
                             </div>
                         </div>
-                       <div class="form-group">
+                        <div class="form-group">
                             <div class="col-12">
                                 <div class="row">
                                     <label class="col-2"><h4><i class="fa">Type</i></h4></label>
@@ -74,16 +75,20 @@
                         <div class="form-group">
                             <div class="col-12">
                                 <div class="row">
-                                    <label class="col-2"><h4><i class="fa">Answer</i></h4></label>
-                                    <div class="col-9">
-                                        <input type="text" class="form-control" name="">
-                                    </div>
+                                    <a  id="insertAnswer" class="btn btn-link">Add Answer</a>
                                     <div class="col-1">
                                         <a href=""><i class="fa fa-check" aria-hidden="true"></i></a>&nbsp;
                                         <a href=""><i class="fa fa-trash" style="color: red" aria-hidden="true"></i></a>
                                     </div>
-                                    <a href=""><h5><i class="fa fa-plus" aria-hidden="true"> Answer one more</i></h5></a>
-
+                                    <div class="form-group">
+                                            <div class="table-responsive">
+                                                <table class="" id="dynamic_field">
+                                                    <tr>
+                                                        <td><input type="text" name="name[]"  class="form-control name_list" /></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
