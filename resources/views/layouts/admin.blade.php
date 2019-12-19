@@ -21,6 +21,11 @@
     <link href="{{asset('storage/admins/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+
+    {{--    Ajax--}}
+
+{{--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--}}
+{{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>--}}
 </head>
 
 <body id="page-top">
@@ -168,9 +173,10 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
+<script src="{{asset('storage/admins/vendor/jquery/jquery.min.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 
-<script src="{{asset('storage/admins/vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('storage/admins/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
 <!-- Core plugin JavaScript-->
@@ -192,6 +198,8 @@
 
 <!-- Page level custom scripts -->
 <script src="{{asset('storage/admins/js/demo/datatables-demo.js')}}"></script>
+
+<script src="{{asset("js/answerInput.js")}}"></script>
 {!! toastr()->render() !!}
 
 </body>
