@@ -34,8 +34,7 @@
                     @foreach($categories as $category)
                         <tr class="category-{{$category->id}}">
                             <td>
-                                <a href="{{route('quizzes.list',$category->id)}}"><h5><i
-                                            class="fa">{{$category->name}}</i></h5></a>
+                                <h5><i class="fa" style="color: black">{{$category->name}}</i></h5>
                             </td>
                             <td>
                                 <a href="{{route('categories.delete',$category->id)}}"

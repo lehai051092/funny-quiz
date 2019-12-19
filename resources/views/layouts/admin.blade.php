@@ -20,6 +20,7 @@
     <!-- Custom styles for this page -->
     <link href="{{asset('storage/admins/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 </head>
 
 <body id="page-top">
@@ -49,15 +50,15 @@
             <!-- Dropdown - User Information -->
             <div class=" dropdown-menu-right shadow " aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="{{route('users.profile', Auth::user()->id)}}">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-white-400"></i>
                     Profile
                 </a>
                 <a class="dropdown-item" href="{{route('users.list')}}">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-white-400"></i>
                     List User
                 </a>
                 <a class="dropdown-item" href="{{route('index')}}" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-white-400"></i>
                     Funny Quiz Home
                 </a>
             </div>
