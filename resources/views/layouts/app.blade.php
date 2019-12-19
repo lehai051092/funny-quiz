@@ -70,9 +70,11 @@
                                 <ul style="list-style: none">
                                     <li class="nav-item dropdown"><a id="navbarDropdown"
                                                                      class="nav-link dropdown-toggle" href="#"
-                                                                     role="button" data-toggle="dropdown"><img
-                                                src="{{asset('storage/'.Auth::user()->image)}}"
-                                                style="width: 50px; height: 50px">&nbsp;{{ Auth::user()->name}}
+                                                                     role="button" data-toggle="dropdown">@if(Auth::user()->image !== null)
+                                                <img
+                                                    src="{{asset('storage/'.Auth::user()->image)}}"
+                                                    style="width: 50px; height: 50px">
+                                                &nbsp;@endif{{ Auth::user()->name}}
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
