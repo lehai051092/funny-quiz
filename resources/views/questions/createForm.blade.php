@@ -75,26 +75,23 @@
                         <div class="form-group">
                             <div class="col-12">
                                 <div class="row">
-                                    <a  id="insertAnswer" class="btn btn-link">Add Answer</a>
-                                    <div class="col-1">
-                                        <a href=""><i class="fa fa-check" aria-hidden="true"></i></a>&nbsp;
-                                        <a href=""><i class="fa fa-trash" style="color: red" aria-hidden="true"></i></a>
-                                    </div>
-                                    <div class="form-group">
-                                            <div class="table-responsive">
-                                                <table class="" id="dynamic_field">
-                                                    <tr>
-                                                        <td><input type="text" name="name[]"  class="form-control name_list" /></td>
-                                                    </tr>
-                                                </table>
+                                    <div class="col-2"><h4><i class="fa">Answer</i></h4></div>
+                                    <div class="col-9">
+                                        <div class="col-12">
+                                            <div class="" id="dynamic_field">
+
                                             </div>
+                                        </div>
+                                        <a id="insertAnswer" class="btn btn-link"><i class="fa fa-plus"
+                                                                                     aria-hidden="true"></i> Add Answer</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="pl-3">
+                        <div class="pb-3 pl-5">
                             <button type="submit" class="btn btn-success text-center ">Create</button>
                         </div>
+
                     </form>
                 </table>
             </div>
