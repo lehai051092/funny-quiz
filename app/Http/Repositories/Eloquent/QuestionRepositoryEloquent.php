@@ -39,4 +39,9 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
     {
         $obj->save();
     }
+
+    function saveQ($question)
+    {
+        $question->save();
+    }
 }

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
@@ -110,5 +112,37 @@ class QuestionController extends Controller
         $this->questionService->removeQuestionInQuiz($request, $id);
         toastr()->success('Remove question success');
         return redirect()->back();
+    }
+
+    public function addQuestionAndAnswer(Request $request)
+    {
+        if ($request->ajax()) {
+            if ($request->title) {
+                $question = [
+                    $this->questionService->addQuestionAndAnswer($request),
+                ];
+                $id_now = DB::getPdo()->lastInsertId();
+                return response()->json($question);
+            }
+
+            dd($request->title_answer);
+            if ($request->title_answer) {
+                $title_answer = $request->title_answer;
+                $status = $request->status;
+
+                for ($count = 0; $count < count($title_answer); $count++) {
+                    $data = array(
+                      'title' => $title_answer[$count],
+                        'status' => $status[$count]
+                    );
+                    $insert_data[] = $data;
+                }
+                Answer::create($insert_data);
+
+                return response()->json([
+                    'message' =>  toastr()->success('Remove question success')
+                ]);
+            }
+        }
     }
 }
