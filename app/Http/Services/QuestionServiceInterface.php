@@ -19,4 +19,6 @@ interface QuestionServiceInterface
     function addQuestionToQuiz($request, $id);
 
     function removeQuestionInQuiz($request,$id);
+
+    function addQuestionAndAnswer($request);
 }

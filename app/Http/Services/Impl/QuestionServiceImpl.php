@@ -4,17 +4,24 @@
 namespace App\Http\Services\Impl;
 
 
+use App\Answer;
+use App\Http\Repositories\AnswerRepositoryInterface;
 use App\Http\Repositories\QuestionRepositoryInterface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Question;
+use Illuminate\Support\Facades\DB;
 
 class QuestionServiceImpl implements QuestionServiceInterface
 {
     protected $questionRepository;
+    protected $answerRepository;
 
-    public function __construct(QuestionRepositoryInterface $questionRepository)
+    public function __construct(QuestionRepositoryInterface $questionRepository,
+                                AnswerRepositoryInterface $answerRepository
+)
     {
         $this->questionRepository = $questionRepository;
+        $this->answerRepository = $answerRepository;
     }
 
     function getAll()
@@ -70,5 +77,19 @@ class QuestionServiceImpl implements QuestionServiceInterface
         }
 
 
+    }
+
+    function addQuestionAndAnswer($request)
+    {
+        if ($request->title) {
+            $question = new Question();
+            $question->title = $request->title;
+            $question->desc = $request->desc;
+            $question->content = $request->contentQ;
+            $question->type = $request->type;
+
+
+            $this->questionRepository->saveQ($question);
+        }
     }
 }
