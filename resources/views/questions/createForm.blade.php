@@ -91,7 +91,7 @@
                                                         <input type="checkbox" id="myCheck" class="status" value="2"/>
 
                                                         <input type="text"
-                                                               value="{{\Illuminate\Support\Facades\DB::table('questions')->max('id')}}"
+                                                               value="{{\Illuminate\Support\Facades\DB::table('questions')->max('id') + 1}}"
                                                                class="questionId" style="display: none"/>
                                                         <i name="remove" id="' + i + '" class="fa fa-trash btn_remove"
                                                            style="color: red" aria-hidden="true"></i>
@@ -106,7 +106,7 @@
                                 </div>
                             </div>
                             <button style="display: none" id="display_answer" class="btn btn-primary text-center create"
-                                    type="submit">Create Answers Of Question
+                                    type="button">Create Answers Of Question
                             </button>
                         </form>
                     </div>

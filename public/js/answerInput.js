@@ -7,7 +7,7 @@ $(document).ready(function () {
             '<div id="row' + i + '" class="row">' +
             '<input type="text" class="form-control name_list col-9 answer"/>&nbsp;&nbsp;' +
             '<input type="checkbox" value="2" class="status" id="myCheck"/> ' +
-            '<input type="text" value="{{\\Illuminate\\Support\\Facades\\DB::table(\'questions\')->max(\'id\')}}" class="questionsId" style="display: none"/>' +
+            '<input type="text" value="{{\\Illuminate\\Support\\Facades\\DB::table(\'questions\')->max(\'id\') + 1}}" class="questionsId" style="display: none"/>' +
             '<i name="remove" id="' + i + '" class="fa fa-trash btn_remove"  style="color: red" aria-hidden="true">' +
             '</i>' +
             '</div>');
@@ -54,8 +54,8 @@ $(document).ready(function () {
     });
 
    // Add Answer
-    $(document).on('click', '.create', function (e) {
-        e.preventDefault();
+    $(document).on('click', '.create', function () {
+        // e.preventDefault();
         let title = document.querySelectorAll('.answer');
         let status = document.querySelectorAll('.status');
         let questionId = document.querySelectorAll('.questionId');
@@ -72,24 +72,27 @@ $(document).ready(function () {
             });
         }
         console.log(listAnswers);
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        // $.ajax({
-        //     url: 'http://127.0.0.1:8000/questions/create',
-        //     method: 'POST',
-        //     dataType: 'json',
-        //     data: {
-        //         title_answer: ,
-        //         status: status,
-        //         question_id: questionId
-        //     },
-        //     success: function (result) {
-        //         result.message;
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         //     }
         // });
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/answers/create',
+            method: 'POST',
+            dataType: 'json',
+            data: { listAnswers: listAnswers
+                // title_answer: ,
+                // status: status,
+                // question_id: questionId
+            },
+            success: function (result) {
+                result.message;
+            },
+            error: function (error) {
+                alert(error.message);
+            }
+        });
     });
 });

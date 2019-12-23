@@ -15,4 +15,6 @@ interface AnswerServiceInterface
     function delete($id);
 
     function update($request, $id);
+
+    function save($answer);
 }
