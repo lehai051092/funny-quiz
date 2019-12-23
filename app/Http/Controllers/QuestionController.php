@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
@@ -65,6 +67,7 @@ class QuestionController extends Controller
     public function create()
     {
 //        $quiz = $this->quizService->findById($id);
+
         return view('questions.createForm');
     }
 
@@ -110,5 +113,24 @@ class QuestionController extends Controller
         $this->questionService->removeQuestionInQuiz($request, $id);
         toastr()->success('Remove question success');
         return redirect()->back();
+    }
+
+    public function addQuestionAndAnswer(Request $request)
+    {
+        if ($request->ajax()) {
+            if ($request->title) {
+                $question = [
+                    $this->questionService->addQuestionAndAnswer($request),
+                ];
+                return response()->json($question);
+            }
+        }
+    }
+
+    public function addAnswer(Request $request)
+    {
+           $this->questionService->addAnswers($request);
+           toastr()->success('Add Question && Answers Success');
+           return redirect()->route('admins.questionList');
     }
 }

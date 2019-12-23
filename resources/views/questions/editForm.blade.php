@@ -10,7 +10,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <form method="post" action="{{route('questions.store')}}">
+                    <form>
                         @csrf
                         <div class="form-group">
                             <div class="col-12">
@@ -62,7 +62,7 @@
                                 <div class="row">
                                     <label class="col-2"><h4><i class="fa">Type</i></h4></label>
                                     <div class="col-9">
-                                        <select class="form-control" name="">
+                                        <select class="form-control" name="type">
                                             <option value="">Select Type</option>
                                             <option value="">1</option>
                                             <option value="">2</option>
@@ -91,7 +91,6 @@
                         <div class="pb-3 pl-4">
                             <button type="submit" class="btn btn-success text-center ">Edit</button>
                         </div>
-
                     </form>
                 </table>
             </div>
@@ -101,54 +100,3 @@
 @endsection
 
 
-
-
-
-
-
-
-
-{{--@extends('layouts.admin')--}}
-{{--@section('content')--}}
-{{--    <div class="d-flex justify-content-center">--}}
-{{--        <div class="card shadow mb-4 col-6 d-flex justify-content-center">--}}
-{{--            <div class="card-header py-3" style="background: linear-gradient(to right,#61ba6d, #83c331)">--}}
-{{--                <h1 class="text-center text-white" >Edit Question</h1>--}}
-{{--            </div>--}}
-{{--            <div class="card-body">--}}
-{{--                <div class="table-responsive">--}}
-{{--                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">--}}
-{{--                        <form method="post" action="{{route('questions.update',$question->id)}}" >--}}
-{{--                            @csrf--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label>Name Question</label>--}}
-{{--                                <input type="text" class="form-control" placeholder="Enter Name Test" name="title" value="{{$question->title}}">--}}
-{{--                            </div>--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label>Category</label>--}}
-{{--                                <select class="form-control"  name="category_id">--}}
-{{--                                    <option value="">Select Category</option>--}}
-{{--                                    @foreach($categories as $category)--}}
-{{--                                        <option--}}
-{{--                                            @if($question->category_id==$category->id)--}}
-{{--                                            selected--}}
-{{--                                            @endif--}}
-{{--                                            value="{{$category->id}}">{{$category->name}}--}}
-{{--                                        </option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                            <div class="form-group" style="display: none">--}}
-{{--                                <label>Quiz</label>--}}
-{{--                                <input value="{{$question->quiz_id}}">--}}
-{{--                            </div>--}}
-{{--                            <button type="submit" class="btn btn-primary">Update</button>--}}
-{{--                        </form>--}}
-
-{{--                    </table>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--    </div>--}}
-{{--@endsection--}}

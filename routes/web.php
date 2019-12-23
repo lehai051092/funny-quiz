@@ -67,8 +67,13 @@ Route::prefix('questions')->group(function () {
     Route::get('basic', 'QuestionController@getAll')->name('questions.basic');
 
     Route::get('create', 'QuestionController@createQuestion')->name('questions.createQuestion');
+
     Route::get('create', 'QuestionController@create')->name('questions.create');
-    Route::post('create', 'QuestionController@store')->name('questions.store');
+//    add question and answer
+    Route::post('create', 'QuestionController@addQuestionAndAnswer')->name('questions.createQuestion');
+    Route::post('createDemo', 'QuestionController@addAnswer')->name('answers.addAnswer');
+//    ...................
+//    Route::post('create', 'QuestionController@store')->name('questions.store');
     Route::get('{id}/list', 'QuizController@getAllQuestionsInCategory')->name('questions.basic.list');
     Route::post('{id}/add', 'QuestionController@updateQuiz')->name('questions.addQuestion');
     Route::post('{id}/remove', 'QuestionController@removeQuestion')->name('questions.removeQuestion');
@@ -80,6 +85,7 @@ Route::prefix('questions')->group(function () {
 });
 
 Route::prefix('answers')->group(function () {
+
     Route::get('{id}/create', 'AnswerController@create')->name('answers.create');
     Route::post('{id}/create', 'AnswerController@store')->name('answers.store');
     Route::get('{id}/delete', 'AnswerController@delete')->name('answers.delete');

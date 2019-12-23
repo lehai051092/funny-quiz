@@ -15,4 +15,6 @@ interface AnswerRepositoryInterface
     function delete($obj);
 
     function update($obj);
+
+    function saveA($answer);
 }
