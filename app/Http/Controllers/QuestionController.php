@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Http\Requests\ProfileUserRequest;
 use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuestionServiceInterface;
@@ -129,8 +130,16 @@ class QuestionController extends Controller
 
     public function addAnswer(Request $request)
     {
-           $this->questionService->addAnswers($request);
-           toastr()->success('Add Question && Answers Success');
-           return redirect()->route('admins.questionList');
+          if ($request->ajax()) {
+              foreach ($request->listAnswers as $key => $value) {
+                  Answer::create($value);
+              }
+              $answers = [
+                  toastr()->success('Add Question && Answers Success')
+              ];
+              return response()->json($answers);
+          }
+//           toastr()->success('Add Question && Answers Success');
+//           return redirect()->route('admins.questionList');
     }
 }
