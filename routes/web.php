@@ -71,7 +71,7 @@ Route::prefix('questions')->group(function () {
     Route::get('create', 'QuestionController@create')->name('questions.create');
 //    add question and answer
     Route::post('create', 'QuestionController@addQuestionAndAnswer')->name('questions.createQuestion');
-    Route::post('create', 'QuestionController@addQuestionAndAnswer')->name('answers.createQuestion');
+    Route::post('createDemo', 'QuestionController@addAnswer')->name('answers.addAnswer');
 //    ...................
 //    Route::post('create', 'QuestionController@store')->name('questions.store');
     Route::get('{id}/list', 'QuizController@getAllQuestionsInCategory')->name('questions.basic.list');

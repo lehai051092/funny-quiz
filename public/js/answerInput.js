@@ -1,17 +1,26 @@
 $(document).ready(function () {
-    let i = 1;
+    let i = 0;
     $("#insertAnswer").click(function () {
 
-        // i++;
-        $('#dynamic_field').append('<br><div id="row' + i + ' title_answer[]" class="row"><input type="text" name="answer[]" id="title_answer[]" class="form-control name_list col-9 " />&nbsp;&nbsp;' +
-            '<input type="checkbox" value="1" name="status[]" id="status_answer[]"/> ' +
-            '<i name="remove" id="' + i + '" class="fa fa-trash btn_remove"  style="color: red" aria-hidden="true"></i></div>');
+        i++;
+        $('#dynamic_field').append('<br>' +
+            '<div id="row' + i + '" class="row">' +
+            '<input type="text" class="form-control name_list col-9 answer"/>&nbsp;&nbsp;' +
+            '<input type="checkbox" value="2" class="status" id="myCheck"/> ' +
+            '<input type="text" value="{{\\Illuminate\\Support\\Facades\\DB::table(\'questions\')->max(\'id\')}}" class="questionsId" style="display: none"/>' +
+            '<i name="remove" id="' + i + '" class="fa fa-trash btn_remove"  style="color: red" aria-hidden="true">' +
+            '</i>' +
+            '</div>');
     });
     $(document).on('click', '.btn_remove', function () {
         if (confirm('Are your sure???')) {
             let button_id = $(this).attr("id");
             $('#row' + button_id + '').remove();
         }
+    });
+
+    $(document).on('click', '#myCheck', function () {
+        $(this).val(1);
     });
 
 //    Add Question
@@ -44,23 +53,43 @@ $(document).ready(function () {
         });
     });
 
-//    Add Answer
-    $(document).on('click', '.create', function () {
+   // Add Answer
+    $(document).on('click', '.create', function (e) {
+        e.preventDefault();
+        let title = document.querySelectorAll('.answer');
+        let status = document.querySelectorAll('.status');
+        let questionId = document.querySelectorAll('.questionId');
+        let listQuestionId = Array.prototype.slice.call(questionId);
 
-        // $.ajaxSetup({
-        //     headers: {
-        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //     }
-        // });
 
-        $.ajax({
-            url: 'http://127.0.0.1:8000/questions/create',
-            type: 'POST',
-            dataType: 'json',
-            data: {value: $('#add_name').serialize()},
-            success:function (result) {
-                result.message;
+        let listAnswers = [];
+
+        for (let i = 0; i < title.length; i++) {
+            listAnswers.push({
+               'title': title[i].value,
+               'status': status[i].value,
+               'question_id': listQuestionId[0].value,
+            });
+        }
+        console.log(listAnswers);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
+        // $.ajax({
+        //     url: 'http://127.0.0.1:8000/questions/create',
+        //     method: 'POST',
+        //     dataType: 'json',
+        //     data: {
+        //         title_answer: ,
+        //         status: status,
+        //         question_id: questionId
+        //     },
+        //     success: function (result) {
+        //         result.message;
+        //     }
+        // });
     });
 });

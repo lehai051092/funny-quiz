@@ -18,7 +18,7 @@ class QuestionServiceImpl implements QuestionServiceInterface
 
     public function __construct(QuestionRepositoryInterface $questionRepository,
                                 AnswerRepositoryInterface $answerRepository
-)
+    )
     {
         $this->questionRepository = $questionRepository;
         $this->answerRepository = $answerRepository;
@@ -59,6 +59,7 @@ class QuestionServiceImpl implements QuestionServiceInterface
     public function addQuestionToQuiz($request, $id)
     {
         $item = $request->question;
+
         foreach ($item as $id) {
             $question = $this->questionRepository->findById($id);
             $question->quiz_id = $request->id;
@@ -68,11 +69,12 @@ class QuestionServiceImpl implements QuestionServiceInterface
 
     }
 
-    public function removeQuestionInQuiz($request,$id){
+    public function removeQuestionInQuiz($request, $id)
+    {
         $item = $request->quiz_id;
         foreach ($item as $id) {
             $question = $this->questionRepository->findById($id);
-            $question->quiz_id=null;
+            $question->quiz_id = null;
             $this->questionRepository->update($question);
         }
 
@@ -88,8 +90,21 @@ class QuestionServiceImpl implements QuestionServiceInterface
             $question->content = $request->contentQ;
             $question->type = $request->type;
 
-
             $this->questionRepository->saveQ($question);
+        }
+
+
+    }
+
+    function addAnswers($request)
+    {
+        $item = $request->addAnswer;
+        dd($item);
+        foreach ($item as $key => $value) {
+            $answer = new Answer();
+            $answer->title = $value->title_answer;
+
+            $this->answerRepository->saveA($answer);
         }
     }
 }

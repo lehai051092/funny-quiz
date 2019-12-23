@@ -67,6 +67,7 @@ class QuestionController extends Controller
     public function create()
     {
 //        $quiz = $this->quizService->findById($id);
+
         return view('questions.createForm');
     }
 
@@ -121,28 +122,15 @@ class QuestionController extends Controller
                 $question = [
                     $this->questionService->addQuestionAndAnswer($request),
                 ];
-                $id_now = DB::getPdo()->lastInsertId();
                 return response()->json($question);
             }
-
-            dd($request->title_answer);
-            if ($request->title_answer) {
-                $title_answer = $request->title_answer;
-                $status = $request->status;
-
-                for ($count = 0; $count < count($title_answer); $count++) {
-                    $data = array(
-                      'title' => $title_answer[$count],
-                        'status' => $status[$count]
-                    );
-                    $insert_data[] = $data;
-                }
-                Answer::create($insert_data);
-
-                return response()->json([
-                    'message' =>  toastr()->success('Remove question success')
-                ]);
-            }
         }
+    }
+
+    public function addAnswer(Request $request)
+    {
+           $this->questionService->addAnswers($request);
+           toastr()->success('Add Question && Answers Success');
+           return redirect()->route('admins.questionList');
     }
 }
