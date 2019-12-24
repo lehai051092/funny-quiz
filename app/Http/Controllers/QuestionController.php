@@ -88,7 +88,7 @@ class QuestionController extends Controller
         toastr()->success('delete Question success');
         return redirect()->back();
     }
-
+//  Edit up date Question & Answers
     public function edit($id)
     {
         $question = $this->questionService->findById($id);
@@ -99,12 +99,28 @@ class QuestionController extends Controller
         return view('questions.editForm', compact('question', 'categories', 'types', 'answers'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $this->questionService->update($request, $id);
-        toastr()->success('Edit Question success');
-        return redirect()->route('admins.questionList');
+        if ($request->ajax()) {
+            $question = [
+                $this->questionService->update($request),
+            ];
+            return response()->json($question);
+        }
     }
+
+    public function updateAnswers(Request $request) {
+        if ($request->ajax()) {
+            dd($request->listAnswersOld);
+            $messages =[
+                $this->questionService->updateAnswers($request),
+                'message' => toastr()->success('Add Question && Answers Success')
+            ];
+            return response()->json($messages);
+        }
+    }
+
+//    ....................................................................
 
     public function updateQuiz(Request $request, $id)
     {
