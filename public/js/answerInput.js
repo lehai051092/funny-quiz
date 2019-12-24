@@ -57,9 +57,8 @@ $(document).ready(function () {
         });
     });
 
-   // Add Answer
+    // Add Answer
     $(document).on('click', '.create', function () {
-        // e.preventDefault();
         let title = document.querySelectorAll('.answer');
         let status = document.querySelectorAll('.status');
         let questionId = document.querySelectorAll('.questionId');
@@ -70,12 +69,13 @@ $(document).ready(function () {
 
         for (let i = 0; i < title.length; i++) {
             listAnswers.push({
-               'title': title[i].value,
-               'status': status[i].value,
-               'question_id': listQuestionId[0].value,
+                'title': title[i].value,
+                'status': status[i].value,
+                'question_id': listQuestionId[0].value,
             });
         }
         console.log(listAnswers);
+
         // $.ajaxSetup({
         //     headers: {
         //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -86,10 +86,8 @@ $(document).ready(function () {
             url: 'http://127.0.0.1:8000/answers/create',
             method: 'POST',
             dataType: 'json',
-            data: { listAnswers: listAnswers
-                // title_answer: ,
-                // status: status,
-                // question_id: questionId
+            data: {
+                listAnswers: listAnswers
             },
             success: function (result) {
                 result.message;

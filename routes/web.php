@@ -68,10 +68,10 @@ Route::prefix('questions')->group(function () {
 
     Route::get('create', 'QuestionController@createQuestion')->name('questions.createQuestion');
 
-    Route::get('create', 'QuestionController@create')->name('questions.create');
-//    add question and answer
-    Route::post('create', 'QuestionController@addQuestionAndAnswer')->name('questions.createQuestion');
 
+//    add question and answer ajax
+    Route::get('create', 'QuestionController@create')->name('questions.create');
+    Route::post('create', 'QuestionController@addQuestionAndAnswer')->name('questions.createQuestion');
 //    ...................
 //    Route::post('create', 'QuestionController@store')->name('questions.store');
     Route::get('{id}/list', 'QuizController@getAllQuestionsInCategory')->name('questions.basic.list');
@@ -85,7 +85,9 @@ Route::prefix('questions')->group(function () {
 });
 
 Route::prefix('answers')->group(function () {
+//    add question and answer ajax
     Route::post('create', 'QuestionController@addAnswer')->name('answers.addAnswer');
+//    ............................
     Route::get('{id}/create', 'AnswerController@create')->name('answers.create');
     Route::post('{id}/create', 'AnswerController@store')->name('answers.store');
     Route::get('{id}/delete', 'AnswerController@delete')->name('answers.delete');

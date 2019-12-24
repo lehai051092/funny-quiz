@@ -200,6 +200,7 @@
 <script src="{{asset('storage/admins/js/demo/datatables-demo.js')}}"></script>
 
 <script src="{{asset("js/answerInput.js")}}"></script>
+<script src="{{asset("js/editAnswer.js")}}"></script>
 {!! toastr()->render() !!}
 
 </body>
