@@ -18,7 +18,9 @@ class CreateTableQuestions extends Migration
             $table->string('title');
             $table->text('desc')->nullable();
             $table->text('content')->nullable();
-            $table->integer('type');
+            $table->unsignedBigInteger('type_id')->nullable();
+            $table->foreign('type_id')->references('id')->on('types')
+                ->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('quiz_id')->nullable();
             $table->foreign('quiz_id')->references('id')->on('quizzes')
                 ->onDelete('cascade')->onUpdate('cascade');
