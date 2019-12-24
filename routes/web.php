@@ -113,4 +113,5 @@ Route::prefix('admins')->group(function () {
     Route::get('create', 'QuizController@createQuizInCategory')->name('admins.quizCreate');
     Route::get('list-quiz', 'QuizController@getAll')->name('admins.quizList');
     Route::get('list-question', 'QuestionController@listAllQuestion')->name('admins.questionList');
+    Route::post('filter-question', 'QuestionController@filter')->name('admins.filter');
 });

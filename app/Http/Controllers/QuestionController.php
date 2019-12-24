@@ -8,6 +8,7 @@ use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
+use App\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -141,5 +142,21 @@ class QuestionController extends Controller
           }
 //           toastr()->success('Add Question && Answers Success');
 //           return redirect()->route('admins.questionList');
+    }
+
+    public function filter(Request $request)
+    {
+        $query = Question::all();
+        if ($request->has('title') && $request->get('title') != '-1') {
+            $query = $query->where('id', $request->get('title'));
+        }
+        if ($request->has('type_id') && $request->get('type_id') != '-1') {
+            $query = $query->where('type_id', $request->get('type_id'));
+        }
+        if ($request->has('category_id') && $request->get('category_id') != '-1') {
+            $query = $query->where('category_id', $request->get('category_id'));
+        }
+        $questions = $query->all();
+        return view('admins.questions.list', compact('questions'));
     }
 }
