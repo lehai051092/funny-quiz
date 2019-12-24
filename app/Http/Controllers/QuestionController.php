@@ -93,8 +93,10 @@ class QuestionController extends Controller
     {
         $question = $this->questionService->findById($id);
         $categories = $this->categoryService->getAll();
+        $types = Type::all();
+        $answers = $question->answers;
 
-        return view('questions.editForm', compact('question', 'categories'));
+        return view('questions.editForm', compact('question', 'categories', 'types', 'answers'));
     }
 
     public function update(Request $request, $id)

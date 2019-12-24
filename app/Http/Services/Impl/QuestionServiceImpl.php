@@ -38,7 +38,6 @@ class QuestionServiceImpl implements QuestionServiceInterface
     {
         $question = new Question();
         $question->title = $request->title;
-//        $question->quiz_id=$request->quiz_id;
         return $this->questionRepository->store($question);
     }
 
@@ -65,8 +64,6 @@ class QuestionServiceImpl implements QuestionServiceInterface
             $question->quiz_id = $request->id;
             $this->questionRepository->update($question);
         }
-//        $question->title = $request->title;
-
     }
 
     public function removeQuestionInQuiz($request, $id)
@@ -93,7 +90,5 @@ class QuestionServiceImpl implements QuestionServiceInterface
 
             $this->questionRepository->saveQ($question);
         }
-
-
     }
 }
