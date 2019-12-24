@@ -141,8 +141,6 @@ class QuestionController extends Controller
               ];
               return response()->json($answers);
           }
-//           toastr()->success('Add Question && Answers Success');
-//           return redirect()->route('admins.questionList');
     }
 
     public function filter(Request $request)

@@ -31,9 +31,10 @@ $(document).ready(function () {
         let title = $('#title').val();
         let desc = $('#desc').val();
         let contentQ = $('#contentQuestion').val();
+        let category = $('#category').val();
         let type = $('#type').val();
 
-        console.log(type)
+        console.log(category, type)
 
         $.ajaxSetup({
             headers: {
@@ -48,6 +49,7 @@ $(document).ready(function () {
                 title: title,
                 desc: desc,
                 contentQ: contentQ,
+                category: category,
                 type: type
             },
             success: function (result) {
