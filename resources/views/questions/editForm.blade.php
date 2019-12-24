@@ -91,6 +91,7 @@
                         <button type="button" class="btn btn-primary text-center editQuestion" id="editQuestion">Edit
                             Question
                         </button>
+                        <a href="{{route('admins.questionList')}}" class="btn btn-secondary cancel1">Cancel</a>
                     </div>
 
 
@@ -107,27 +108,29 @@
                                         <div class="col-12">
                                             <div class="" id="dynamic_edit">
                                                 @foreach($answers as $answer)
-                                                    <div class="row">
-                                                        <input type="text" class="idOld" value="{{$answer['id']}}"
-                                                               style="display: none">
-                                                        <input type="text" class="form-control  col-9 titleOld"
-                                                               value="{{$answer['title']}}"/>&nbsp;&nbsp;
+                                                    @if($answer['question_id'] === $question->id)
+                                                        <div class="row">
+                                                            <input type="text" class="idOld" value="{{$answer['id']}}"
+                                                                   style="display: none">
+                                                            <input type="text" class="form-control  col-9 titleOld"
+                                                                   value="{{$answer['title']}}"/>&nbsp;&nbsp;
 
-                                                        <input type="checkbox" id="myCheckEdit" class="statusOld"
-                                                               value="{{$answer['status']}}"
-                                                               @if($answer['status'] === 1)
-                                                               checked
-                                                            @endif
-                                                        />
-                                                        <input type="text"
-                                                               value="{{$answer['question_id']}}"
-                                                               class="questionIdOld" style="display: none"/>
-                                                        <a href="{{route('questions.deleteAnswer', $answer['id'])}}"
-                                                           onclick="return confirm('Are You Sure Delete???')"><i
-                                                                name="remove" id="' + i + '"
-                                                                class="fa fa-trash btn_remove"
-                                                                style="color: red" aria-hidden="true"></i></a>
-                                                    </div><br>
+                                                            <input type="checkbox" id="myCheckEdit" class="statusOld"
+                                                                   value="{{$answer['status']}}"
+                                                                   @if($answer['status'] === 1)
+                                                                   checked
+                                                                @endif
+                                                            />
+                                                            <input type="text"
+                                                                   value="{{$answer['question_id']}}"
+                                                                   class="questionIdOld" style="display: none"/>
+                                                            <a href="{{route('questions.deleteAnswer', $answer['id'])}}"
+                                                               onclick="return confirm('Are You Sure Delete???')"><i
+                                                                    name="remove" id="' + i + '"
+                                                                    class="fa fa-trash btn_remove"
+                                                                    style="color: red" aria-hidden="true"></i></a>
+                                                        </div><br>
+                                                    @endif
                                                 @endforeach
                                             </div>
                                         </div>
@@ -144,7 +147,7 @@
                             <div class="pb-3 pl-4 ml-5">
                                 <button type="button" class="btn btn-primary text-center editAnswers">Edit Answers
                                 </button>
-                                <a href="{{route('admins.questionList')}}" class="btn btn-secondary done"
+                                <a href="{{route('admins.questionList')}}" class="btn btn-warning done"
                                    style="display: none">Done</a>
                             </div>
 
