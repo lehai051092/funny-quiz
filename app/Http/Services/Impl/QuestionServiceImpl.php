@@ -60,19 +60,19 @@ class QuestionServiceImpl implements QuestionServiceInterface
         $this->questionRepository->saveQ($question);
     }
 
-    function updateAnswers($request)
-    {
-        foreach ($request->listAnswersOld as $key => $value) {
-            $id = $value->id;
-            $answer = $this->answerRepository->findById($id);
-            $answer->title = $value->title;
-            $answer->status = $value->status;
-            $answer->question_id = $value->question_id;
-
-            $this->answerRepository->saveA($answer);
-        }
-
-    }
+//    function updateAnswers($request)
+//    {
+//        foreach ($request->listAnswersOld as $key => $value) {
+//            $id = $value->id;
+//            $answer = $this->answerRepository->findById($id);
+//            $answer->title = $value->title;
+//            $answer->status = $value->status;
+//            $answer->question_id = $value->question_id;
+//
+//            $this->answerRepository->saveA($answer);
+//        }
+//
+//    }
 
     public function addQuestionToQuiz($request, $id)
     {

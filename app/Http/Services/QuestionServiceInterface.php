@@ -22,5 +22,5 @@ interface QuestionServiceInterface
 
     function addQuestionAndAnswer($request);
 
-    function updateAnswers($request);
+//    function updateAnswers($request);
 }

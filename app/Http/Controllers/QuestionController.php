@@ -88,6 +88,7 @@ class QuestionController extends Controller
         toastr()->success('delete Question success');
         return redirect()->back();
     }
+
 //  Edit up date Question & Answers
     public function edit($id)
     {
@@ -109,14 +110,13 @@ class QuestionController extends Controller
         }
     }
 
-    public function updateAnswers(Request $request) {
+    public function updateAnswers(Request $request)
+    {
         if ($request->ajax()) {
-            dd($request->listAnswersOld);
-            $messages =[
-                $this->questionService->updateAnswers($request),
-                'message' => toastr()->success('Add Question && Answers Success')
-            ];
-            return response()->json($messages);
+            foreach ($request->listAnswersOld as $item) {
+                DB::table('answers')->where('id', $item['id'])->update($item);
+            }
+            return response()->json(['message' => toastr()->success('Add question to Quiz success')]);
         }
     }
 
@@ -150,15 +150,15 @@ class QuestionController extends Controller
 
     public function addAnswer(Request $request)
     {
-          if ($request->ajax()) {
-              foreach ($request->listAnswers as $key => $value) {
-                  Answer::create($value);
-              }
-              $answers = [
-                  toastr()->success('Add Question && Answers Success')
-              ];
-              return response()->json($answers);
-          }
+        if ($request->ajax()) {
+            foreach ($request->listAnswers as $key => $value) {
+                Answer::create($value);
+            }
+            $answers = [
+                toastr()->success('Add Question && Answers Success')
+            ];
+            return response()->json($answers);
+        }
     }
 
     public function filter(Request $request)

@@ -83,13 +83,13 @@ Route::prefix('questions')->group(function () {
 //    Edit question and answer ajax
     Route::get('{id}/edit', 'QuestionController@edit')->name('questions.edit');
     Route::post('{id}/edit', 'QuestionController@update')->name('questions.update');
+    Route::post('{id}/editAnswers', 'QuestionController@updateAnswers')->name('answers.update');
 //    ...........................
 });
 
 Route::prefix('answers')->group(function () {
 //    add question and answer ajax
     Route::post('create', 'QuestionController@addAnswer')->name('answers.addAnswer');
-    Route::post('{id}/edit', 'QuestionController@updateAnswers')->name('answers.update');
 //    ............................
     Route::get('{id}/create', 'AnswerController@create')->name('answers.create');
     Route::post('{id}/create', 'AnswerController@store')->name('answers.store');

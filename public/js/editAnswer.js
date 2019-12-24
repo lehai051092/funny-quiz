@@ -19,9 +19,15 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('click', '#myCheckEdit', function () {
-        $(this).val(1);
+
+    $('.statusOld').on('change', function () {
+        if ($(this).prop("checked")) {
+            this.value = 1
+        } else {
+            this.value = 2
+        }
     });
+
 
     //    Add Question
     $(document).on('click', '.editQuestion', function () {
@@ -82,14 +88,14 @@ $(document).ready(function () {
         }
         console.log(listAnswersOld);
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     }
+        // });
 
         $.ajax({
-            url: 'http://127.0.0.1:8000/answers/' + id + '/edit',
+            url: 'http://127.0.0.1:8000/questions/' + id + '/editAnswers',
             method: 'POST',
             dataType: 'json',
             data: {
