@@ -29,10 +29,11 @@ $(document).ready(function () {
     });
 
 
-    //    Add Question
+    //    Edit Question
     $(document).on('click', '.editQuestion', function () {
         $('#editQuestion').hide();
         $('#editAnswers').show();
+        $('.cancel1').hide();
         let titleEdit = $('#titleEdit').val();
         let descEdit = $('#descEdit').val();
         let contentQuestionEdit = $('#contentQuestionEdit').val();
