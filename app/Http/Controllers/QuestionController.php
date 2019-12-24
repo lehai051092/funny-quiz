@@ -9,6 +9,7 @@ use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
 use App\Question;
+use App\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -68,9 +69,9 @@ class QuestionController extends Controller
 
     public function create()
     {
-//        $quiz = $this->quizService->findById($id);
-
-        return view('questions.createForm');
+        $types = Type::all();
+        $categories = $this->categoryService->getAll();
+        return view('questions.createForm', compact('types', 'categories'));
     }
 
 

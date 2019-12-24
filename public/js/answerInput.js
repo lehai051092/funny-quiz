@@ -33,6 +33,8 @@ $(document).ready(function () {
         let contentQ = $('#contentQuestion').val();
         let type = $('#type').val();
 
+        console.log(type)
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

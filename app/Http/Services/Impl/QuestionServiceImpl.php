@@ -95,18 +95,4 @@ class QuestionServiceImpl implements QuestionServiceInterface
 
 
     }
-
-
-
-//    function addAnswers($request)
-//    {
-//        $item = $request->listAnswers;
-//        dd($item);
-//        foreach ($item as $key => $value) {
-//            $answer = new Answer();
-//            $answer->title = $value->title_answer;
-//
-//            $this->answerRepository->saveA($answer);
-//        }
-//    }
 }
