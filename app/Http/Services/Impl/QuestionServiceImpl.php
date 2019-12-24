@@ -88,6 +88,7 @@ class QuestionServiceImpl implements QuestionServiceInterface
             $question->title = $request->title;
             $question->desc = $request->desc;
             $question->content = $request->contentQ;
+            $question->category_id = $request->category;
             $question->type_id = $request->type;
 
             $this->questionRepository->saveQ($question);
