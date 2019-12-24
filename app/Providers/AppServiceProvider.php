@@ -62,11 +62,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $categories = Category::all();
-        View::share('categories',$categories);
-
-        $types = Type::all();
-        View::share('types',$types);
+//        $categories = Category::all();
+//        View::share('categories',$categories);
+//
+//        $types = Type::all();
+//        View::share('types',$types);
 
     }
 }
