@@ -1,7 +1,7 @@
 $(document).ready(function () {
     let i = 0;
     $("#editAnswer").click(function () {
-
+        $('.save').show();
         i++;
         $('#dynamic_edit').append('<br>' +
             '<div id="row' + i + '" class="row">' +
@@ -13,7 +13,7 @@ $(document).ready(function () {
             '</div>');
     });
     $(document).on('click', '.btn_remove_edit', function () {
-        if (confirm('Are your sure???')) {
+        if (confirm('Are you Remove???')) {
             let button_id = $(this).attr("id");
             $('#row' + button_id + '').remove();
         }
@@ -66,8 +66,10 @@ $(document).ready(function () {
         });
     });
 
-    // Add Answers
+    // update Answers
     $(document).on('click', '.editAnswers', function () {
+        $('.done').show();
+        $(this).hide();
         let idOld = document.querySelectorAll('.idOld');
         let titleOld = document.querySelectorAll('.titleOld');
         let statusOld = document.querySelectorAll('.statusOld');
@@ -86,13 +88,6 @@ $(document).ready(function () {
                 'question_id': listQuestionIdOld[0].value,
             });
         }
-        console.log(listAnswersOld);
-
-        // $.ajaxSetup({
-        //     headers: {
-        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //     }
-        // });
 
         $.ajax({
             url: 'http://127.0.0.1:8000/questions/' + id + '/editAnswers',
@@ -110,4 +105,38 @@ $(document).ready(function () {
         });
     });
 
+// // Add Answer
+//     $(document).on('click', '.create', function () {
+//         let title = document.querySelectorAll('.answer');
+//         let status = document.querySelectorAll('.status');
+//         let questionId = document.querySelectorAll('.questionId');
+//         let listQuestionId = Array.prototype.slice.call(questionId);
+//
+//
+//         let listAnswers = [];
+//
+//         for (let i = 0; i < title.length; i++) {
+//             listAnswers.push({
+//                 'title': title[i].value,
+//                 'status': status[i].value,
+//                 'question_id': listQuestionId[0].value,
+//             });
+//         }
+//         console.log(listAnswers);
+//
+//         $.ajax({
+//             url: 'http://127.0.0.1:8000/answers/create',
+//             method: 'POST',
+//             dataType: 'json',
+//             data: {
+//                 listAnswers: listAnswers
+//             },
+//             success: function (result) {
+//                 result.message;
+//             },
+//             error: function (error) {
+//                 alert(error.message);
+//             }
+//         });
+//     });
 });
