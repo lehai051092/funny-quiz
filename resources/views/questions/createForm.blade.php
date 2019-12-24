@@ -45,27 +45,13 @@
                     <div class="form-group">
                         <div class="col-12">
                             <div class="row">
-                                <label class="col-2"><h4><i class="fa">Category</i></h4></label>
-                                <div class="col-9">
-                                    <select class="form-control" name="category_id">
-                                        <option value="">Select Category</option>
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-12">
-                            <div class="row">
                                 <label class="col-2"><h4><i class="fa">Type</i></h4></label>
                                 <div class="col-9">
-                                    <select class="form-control" name="type" id="type">
+                                    <select class="form-control" name="types" id="type">
                                         <option value="">Select Type</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
+                                        @foreach($types as $type)
+                                            <option value="{{$type->id}}">{{$type->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
