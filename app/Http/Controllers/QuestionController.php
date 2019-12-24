@@ -120,6 +120,13 @@ class QuestionController extends Controller
         }
     }
 
+    public function deleteAnswer($id)
+    {
+        $this->answerService->delete($id);
+        toastr()->success('delete Question success');
+        return redirect()->back();
+    }
+
 //    ....................................................................
 
     public function updateQuiz(Request $request, $id)
