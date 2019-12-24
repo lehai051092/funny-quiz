@@ -16,8 +16,9 @@
                             <div class="row">
                                 <label class="col-2"><h4><i class="fa">Title Question</i></h4></label>
                                 <div class="col-9">
+                                    <input style="display: none" id="id" value="{{$question->id}}" data-id="{{$question->id}}">
                                     <input type="text" class="form-control" name="title"
-                                           value="{{$question->title}}">
+                                           value="{{$question->title}}" id="titleEdit">
                                 </div>
                             </div>
                         </div>
@@ -28,7 +29,7 @@
                                 <label class="col-2"><h4><i class="fa">Desc Question</i></h4></label>
                                 <div class="col-9">
                                         <textarea type="text" class="form-control"
-                                                  name="desc">{{$question->desc}}</textarea>
+                                                  name="desc" id="descEdit">{{$question->desc}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +40,7 @@
                                 <label class="col-2"><h4><i class="fa">Content Question</i></h4></label>
                                 <div class="col-9">
                                         <textarea type="text" class="form-control"
-                                                  name="contentQuestion">{{$question->content}}</textarea>
+                                                  name="contentQuestion" id="contentQuestionEdit">{{$question->content}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +50,7 @@
                             <div class="row">
                                 <label class="col-2"><h4><i class="fa">Category</i></h4></label>
                                 <div class="col-9">
-                                    <select class="form-control" name="category_id">
+                                    <select class="form-control" name="category_id" id="category_id">
                                         <option value="">Select Category</option>
                                         @foreach($categories as $category)
                                             <option value="{{$category->id}}"
@@ -70,7 +71,7 @@
                             <div class="row">
                                 <label class="col-2"><h4><i class="fa">Type</i></h4></label>
                                 <div class="col-9">
-                                    <select class="form-control" name="type">
+                                    <select class="form-control" name="type" id="type_id">
                                         <option value="">Select Type</option>
                                         @foreach($types as $type)
                                             <option value="{{$type->id}}"
@@ -85,13 +86,13 @@
                     </div>
 
                     <div class="pb-3 pl-4 ml-5">
-                        <button type="button" class="btn btn-success text-center editQuestion">Edit Question</button>
+                        <button type="button" class="btn btn-success text-center editQuestion" id="editQuestion">Edit Question</button>
                     </div>
 
 
-                    <form >
+                    <form method="post">
                         @csrf
-                        <div class="form-group" style="display: none">
+                        <div class="form-group" style="display: none" id="editAnswers">
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-2"><h4><i class="fa">Answer</i></h4></div>
@@ -100,10 +101,11 @@
                                             <div class="" id="dynamic_edit">
                                                 @foreach($answers as $answer)
                                                     <div class="row">
-                                                        <input type="text" class="form-control  col-9 answerEdit"
+                                                        <input type="text" class="idOld" value="{{$answer['id']}}" style="display: none">
+                                                        <input type="text" class="form-control  col-9 titleOld"
                                                                value="{{$answer['title']}}"/>&nbsp;&nbsp;
 
-                                                        <input type="checkbox" id="myCheckEdit" class="statusEdit"
+                                                        <input type="checkbox" id="myCheckEdit" class="statusOld"
                                                                value="{{$answer['status']}}"
                                                                @if($answer['status'] === 1)
                                                                checked
@@ -111,11 +113,10 @@
                                                         />
                                                         <input type="text"
                                                                value="{{$answer['question_id']}}"
-                                                               class="questionIdEdit" style="display: none"/>
+                                                               class="questionIdOld" style="display: none"/>
                                                         <i name="remove" id="' + i + '" class="fa fa-trash btn_remove"
                                                            style="color: red" aria-hidden="true"></i>
                                                     </div><br>
-
                                                 @endforeach
                                             </div>
                                         </div>
@@ -125,7 +126,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="pb-3 pl-4 ml-5">
+                                <button type="button" class="btn btn-success text-center editAnswers">Edit Answers</button>
+                            </div>
+
                         </div>
+
                     </form>
                 </table>
             </div>

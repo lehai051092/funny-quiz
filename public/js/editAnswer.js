@@ -22,4 +22,86 @@ $(document).ready(function () {
     $(document).on('click', '#myCheckEdit', function () {
         $(this).val(1);
     });
+
+    //    Add Question
+    $(document).on('click', '.editQuestion', function () {
+        $('#editQuestion').hide();
+        $('#editAnswers').show();
+        let titleEdit = $('#titleEdit').val();
+        let descEdit = $('#descEdit').val();
+        let contentQuestionEdit = $('#contentQuestionEdit').val();
+        let category_id = $('#category_id').val();
+        let type_id = $('#type_id').val();
+        let id = $('#id').val();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/questions/' + id + '/edit',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                titleEdit: titleEdit,
+                descEdit: descEdit,
+                contentQuestionEdit: contentQuestionEdit,
+                category_id: category_id,
+                type_id: type_id,
+                id: id
+            },
+            success: function (result) {
+            },
+            error: function (e) {
+                alert(e.message)
+            }
+        });
+    });
+
+    // Add Answers
+    $(document).on('click', '.editAnswers', function () {
+        let idOld = document.querySelectorAll('.idOld');
+        let titleOld = document.querySelectorAll('.titleOld');
+        let statusOld = document.querySelectorAll('.statusOld');
+        let questionIdOld = document.querySelectorAll('.questionIdOld');
+        let listQuestionIdOld = Array.prototype.slice.call(questionIdOld);
+        let id = $('#id').val();
+        console.log(idOld[0].value);
+
+        let listAnswersOld = [];
+
+        for (let i = 0; i < titleOld.length; i++) {
+            listAnswersOld.push({
+                'id': idOld[i].value,
+                'title': titleOld[i].value,
+                'status': statusOld[i].value,
+                'question_id': listQuestionIdOld[0].value,
+            });
+        }
+        console.log(listAnswersOld);
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/answers/' + id + '/edit',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                listAnswersOld: listAnswersOld
+            },
+            success: function (result) {
+                result.message;
+            },
+            error: function (error) {
+                alert(error.message);
+            }
+        });
+    });
+
 });
