@@ -21,6 +21,17 @@ $(function(){
 
     $ans = 3;
 
+    $("#btn_").on('click', function () {
+        var checkbox_value = "";
+        $(":checkbox").each(function () {
+            var ischecked = $(this).is(":checked");
+            if (ischecked) {
+                checkbox_value += $(this).val() + "|";
+            }
+        });
+        alert(checkbox_value);
+        // your awesome code calling ajax
+    });
     $.fn.checking = function(ck) {
         if (ck != $ans)
             return 'INCORRECT';
