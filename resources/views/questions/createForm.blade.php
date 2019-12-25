@@ -114,6 +114,8 @@
                     <div class="pb-3 pl-5">
                         <button type="button" class="btn btn-primary text-center add" id="submit">Create Question
                         </button>
+                        <a href="{{route('admins.questionList')}}" class="btn btn-warning done"
+                           style="display: none">Done</a>
                     </div>
 
                 </table>

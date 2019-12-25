@@ -116,7 +116,7 @@ class QuestionController extends Controller
             foreach ($request->listAnswersOld as $item) {
                 DB::table('answers')->where('id', $item['id'])->update($item);
             }
-            return response()->json(['message' => toastr()->success('Add question to Quiz success')]);
+            return response()->json(['message' => toastr()->success('Update success')]);
         }
     }
 
