@@ -52,11 +52,15 @@ class QuizController extends Controller
         return view('questions.list', compact('quiz', 'questions', 'answers'));
     }
 
-    public function showResult(Request $request)
+    public function showResult(Request $request, $id)
     {
+
         $listAnswers = $request->answer;
+        $quiz=$this->quizService->findById($id);
+        $questions =$quiz->questions;
         $answers = $this->answerService->getAll();
-        return view('answers.result', compact('answers','listAnswers'));
+
+        return view('answers.result', compact('answers', 'listAnswers', 'questions'));
     }
 
 

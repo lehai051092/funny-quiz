@@ -19,17 +19,18 @@
                     <tr>
                         <td scope="col">Answer Right</td>
                         @foreach($answers as $answer)
-
-                            @if($answer->status === \App\StatusInterface::ISRIGHT)
+                            @foreach($questions as $question)
+                            @if($answer->status === \App\StatusInterface::ISRIGHT && $answer->question_id===$question->id)
 
                                 <td scope="col">{{$answer->title}}</td>
                             @endif
+                        @endforeach
                         @endforeach
                     </tr>
                     <tr>
                         <td scope="col">Your Answer</td>
                         @foreach($listAnswers as $answer )
-                            <td>{{$answer[0]}}</td>
+                            <td>{{$answer}}</td>
                             {{$i++}}
                         @endforeach
                     </tr>
