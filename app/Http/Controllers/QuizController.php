@@ -7,6 +7,7 @@ use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
+use App\StatusInterface;
 use Illuminate\Support\Facades\Session;
 
 
@@ -52,28 +53,42 @@ class QuizController extends Controller
         return view('questions.list', compact('quiz', 'questions', 'answers'));
     }
 
-    public function showResult(Request $request)
+    public function showResult(Request $request, $id)
     {
-        $listAnswers = $request->answer;
+        $answersRight = array();
+        $listAnswers = array();
+        foreach ($request->answer as $key => $answer) {
+           $newAnswer= explode(',',$answer);
+                array_push($listAnswers,$newAnswer);
+            if ($newAnswer[0] == StatusInterface::ISRIGHT) {
+                array_push($answersRight,$newAnswer);
+            }
+        }
+        $quiz = $this->quizService->findById($id);
+        $questions = $quiz->questions;
         $answers = $this->answerService->getAll();
-        return view('answers.result', compact('answers','listAnswers'));
+
+        return view('answers.result', compact('answers', 'listAnswers', 'questions', 'answersRight'));
     }
 
 
-    public function QuizDetail($id)
+    public
+    function QuizDetail($id)
     {
         $quiz = $this->quizService->findById($id);
         return view('quizzes.quizDetail', compact('quiz'));
     }
 
-    public function createQuizInCategory()
+    public
+    function createQuizInCategory()
     {
 
         $categories = $this->categoryService->getAll();
         return view('admins.quizzes.create', compact('categories'));
     }
 
-    public function store(BacsicInfoRequest $request)
+    public
+    function store(BacsicInfoRequest $request)
     {
         $this->quizService->store($request);
         toastr()->success('Create QUIZ success');
@@ -81,21 +96,24 @@ class QuizController extends Controller
         return redirect()->route('admins.quizList');
     }
 
-    public function delete($id)
+    public
+    function delete($id)
     {
         $this->quizService->delete($id);
         toastr()->success('delete success');
         return redirect()->back();
     }
 
-    public function edit($id)
+    public
+    function edit($id)
     {
         $quiz = $this->quizService->findById($id);
         $category = $quiz->category;
         return view('quizzes.editForm', compact('quiz', 'category'));
     }
 
-    public function update(Request $request, $id)
+    public
+    function update(Request $request, $id)
     {
         $this->quizService->update($request, $id);
         toastr()->success('Edit  QUIZ success');
