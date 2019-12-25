@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-{{--    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">--}}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
     <form method="post" action="{{route('session.result',$quiz->id)}}">
         @csrf
@@ -26,13 +26,16 @@
                                         <div class="blockG" id="rotateG_08"></div>
                                     </div>
                                 </div>
+
                                 @foreach($answers as $answer)
+                                    {{\Illuminate\Support\Facades\Session::put('answer', $answer->id)}}
                                     @if($question->id===$answer->question_id)
+
                                         <div class="quiz" id="quiz" data-toggle="buttons">
                                             <label class="element-animation1 btn btn-lg btn-success btn-block"><span
                                                     class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
                                                 <input
-                                                    type="checkbox" name="answer" value="{{$answer->title}}">{{$answer->title}}</label>
+                                                    type="checkbox" name="answer[]" value="{{$answer->title}}">{{$answer->title}}</label>
                                         </div>
                                     @endif
 
@@ -48,6 +51,8 @@
                     </div>
                 @endforeach
             </div>
-      <input type="submit" value="submit" >
+        <div>
+      <input type="submit" value="submit" class="btn btn-primary">
+        </div>
     </form>
 @endsection

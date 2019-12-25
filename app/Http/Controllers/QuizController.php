@@ -54,11 +54,16 @@ class QuizController extends Controller
 
     public function showResult(Request $request)
     {
+        $listAnswers = $request->answer;
         $answers = $this->answerService->getAll();
 
-        $result = $request->session()->get('answer', $request->answer);
-        Session::put($result);
-        return view('answers.result', compact('result', 'answers'));
+        return view('answers.result', compact('answers','listAnswers'));
+
+
+//        $result = Session::get('answer');
+//        dd($result);
+//        $request->session()->push('resultList',$result);
+//        $resultList=$request->session()->all();
     }
 
 
