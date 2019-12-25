@@ -26,7 +26,15 @@
     {{--    Ajax--}}
     <script src="{{asset("js/category.js")}}"></script>
 
-
+    <style>
+        .btn-success:not(:disabled):not(.disabled).active,
+        .btn-success:not(:disabled):not(.disabled):active,
+        .show > .btn-success.dropdown-toggle {
+            color: #fff;
+            background-color: red  !important;
+            border-color: #1c7430
+        }
+    </style>
 </head>
 <style>
     .parent {
@@ -71,7 +79,8 @@
                                 <ul style="list-style: none">
                                     <li class="nav-item dropdown"><a id="navbarDropdown"
                                                                      class="nav-link dropdown-toggle" href="#"
-                                                                     role="button" data-toggle="dropdown">@if(Auth::user()->image !== null)
+                                                                     role="button"
+                                                                     data-toggle="dropdown">@if(Auth::user()->image !== null)
                                                 <img
                                                     src="{{asset('storage/'.Auth::user()->image)}}"
                                                     style="width: 50px; height: 50px">
