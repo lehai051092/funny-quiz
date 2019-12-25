@@ -77,6 +77,7 @@ class QuestionServiceImpl implements QuestionServiceInterface
     public function addQuestionToQuiz($request, $id)
     {
         $item = $request->question;
+        dd($item);
 
         foreach ($item as $id) {
             $question = $this->questionRepository->findById($id);
