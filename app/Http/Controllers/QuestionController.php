@@ -127,6 +127,7 @@ class QuestionController extends Controller
         return redirect()->back();
     }
 
+
 //    ....................................................................
 
     public function updateQuiz(Request $request, $id)

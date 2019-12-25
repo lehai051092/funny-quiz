@@ -84,6 +84,7 @@ Route::prefix('questions')->group(function () {
     Route::get('{id}/edit', 'QuestionController@edit')->name('questions.edit');
     Route::post('{id}/edit', 'QuestionController@update')->name('questions.update');
     Route::post('{id}/editAnswers', 'QuestionController@updateAnswers')->name('answers.update');
+    Route::post('{id}/addAnswers', 'QuestionController@addAnswer')->name('answers.addAnswers');
     Route::get('{id}/deleteAnswer', 'QuestionController@deleteAnswer')->name('questions.deleteAnswer');
 //    ...........................
 });
