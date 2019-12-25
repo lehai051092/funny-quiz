@@ -19,6 +19,9 @@ $(document).ready(function () {
         }
     });
 
+    $(document).on('click', '#myCheckEdit', function () {
+        $(this).val(1);
+    });
 
     $('.statusOld').on('change', function () {
         if ($(this).prop("checked")) {
@@ -106,38 +109,37 @@ $(document).ready(function () {
         });
     });
 
-// // Add Answer
-//     $(document).on('click', '.create', function () {
-//         let title = document.querySelectorAll('.answer');
-//         let status = document.querySelectorAll('.status');
-//         let questionId = document.querySelectorAll('.questionId');
-//         let listQuestionId = Array.prototype.slice.call(questionId);
-//
-//
-//         let listAnswers = [];
-//
-//         for (let i = 0; i < title.length; i++) {
-//             listAnswers.push({
-//                 'title': title[i].value,
-//                 'status': status[i].value,
-//                 'question_id': listQuestionId[0].value,
-//             });
-//         }
-//         console.log(listAnswers);
-//
-//         $.ajax({
-//             url: 'http://127.0.0.1:8000/answers/create',
-//             method: 'POST',
-//             dataType: 'json',
-//             data: {
-//                 listAnswers: listAnswers
-//             },
-//             success: function (result) {
-//                 result.message;
-//             },
-//             error: function (error) {
-//                 alert(error.message);
-//             }
-//         });
-//     });
+// Add Answer
+    $(document).on('click', '.save', function () {
+        let title = document.querySelectorAll('.answerEdit');
+        let status = document.querySelectorAll('.statusEdit');
+        let question_id = $('#id').val();
+
+        let listAnswers = [];
+
+        for (let i = 0; i < title.length; i++) {
+            listAnswers.push({
+                'title': title[i].value,
+                'status': status[i].value,
+                'question_id': question_id,
+            });
+        }
+        console.log(status[0].value);
+        console.log(listAnswers);
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/questions/'+ question_id +'/addAnswers',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                listAnswers: listAnswers
+            },
+            success: function (result) {
+                result.message;
+            },
+            error: function (error) {
+                alert('error');
+            }
+        });
+    });
 });
