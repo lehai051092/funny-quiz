@@ -31,7 +31,7 @@
         .btn-success:not(:disabled):not(.disabled):active,
         .show > .btn-success.dropdown-toggle {
             color: #fff;
-            background-color: red  !important;
+            background-color: red !important;
             border-color: #1c7430
         }
     </style>
@@ -80,11 +80,15 @@
                                     <li class="nav-item dropdown"><a id="navbarDropdown"
                                                                      class="nav-link dropdown-toggle" href="#"
                                                                      role="button"
-                                                                     data-toggle="dropdown">@if(Auth::user()->image !== null)
-                                                <img
-                                                    src="{{asset('storage/'.Auth::user()->image)}}"
-                                                    style="width: 50px; height: 50px">
-                                                &nbsp;@endif{{ Auth::user()->name}}
+                                                                     data-toggle="dropdown">
+                                            <img
+                                                @if(Auth::user()->image === null)
+                                                src="{{asset('storage/img/bg-img/default.jpg')}}"
+                                                @else
+                                                src="{{asset('storage/'.Auth::user()->image)}}"
+                                                @endif
+                                                style="width: 50px; height: 50px" alt="avatar">
+                                            {{ Auth::user()->name}}
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
