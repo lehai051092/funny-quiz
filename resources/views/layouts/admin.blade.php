@@ -13,7 +13,9 @@
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('storage/admins/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{{asset('storage/admins/css/sb-admin-2.min.css')}}" rel="stylesheet">
@@ -24,16 +26,17 @@
 
     {{--    Ajax--}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
-{{--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--}}
-{{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>--}}
+    {{--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--}}
+    {{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>--}}
 </head>
 
 <body id="page-top">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
+    <!-- ------------------------------------------------------------------------------------------------------------------ -->
 
-    <!-- Sidebar -->
+
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
@@ -41,68 +44,86 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3"> Admin Funny Quiz</div>
+            <div class="sidebar-brand-text mx-3">Admin Funny Quiz</div>
         </a>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
 
-        <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-white-600 small">{{ Auth::user()->name}}</span>
-                <img class="img-profile rounded-circle" src="{{asset('storage/'.Auth::user()->image)}}">
-            </a>
-            <!-- Dropdown - User Information -->
-            <div class=" dropdown-menu-right shadow " aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{route('users.profile', Auth::user()->id)}}">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-white-400"></i>
-                    Profile
-                </a>
-                <a class="dropdown-item" href="{{route('users.list')}}">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-white-400"></i>
-                    List User
-                </a>
-                <a class="dropdown-item" href="{{route('index')}}" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-white-400"></i>
-                    Funny Quiz Home
-                </a>
-            </div>
-        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading mt-3">
+        <div class="sidebar-heading">
             Category
         </div>
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
+
+        <li class="nav-item active">
             <a class="nav-link" href="{{route('admins.getTables')}}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>List Category</span></a>
         </li>
+        <hr class="sidebar-divider">
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <!-- Nav Item - Pages Collapse Menu -->
+    {{--        <li class="nav-item">--}}
+    {{--            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">--}}
+    {{--                <i class="fas fa-fw fa-cog"></i>--}}
+    {{--                <span>Components</span>--}}
+    {{--            </a>--}}
+    {{--            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">--}}
+    {{--                <div class="bg-white py-2 collapse-inner rounded">--}}
+    {{--                    <h6 class="collapse-header">Custom Components:</h6>--}}
+    {{--                    <a class="collapse-item" href="buttons.html">Buttons</a>--}}
+    {{--                    <a class="collapse-item" href="cards.html">Cards</a>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </li>--}}
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+        <div class="sidebar-heading">
+            Quiz
+        </div>
+        <li class="nav-item active">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+               aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Quiz</span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Quiz Screens:</h6>
-                    <a class="collapse-item" href="{{route('admins.quizCreate')}}">Create Quiz</a>
-                    <a class="collapse-item" href="{{route('admins.quizList')}}">List Quiz</a>
+                    <a class="collapse-item" href="{{route('admins.quizCreate')}}"><i class="fas fa-fw fa-plus"></i>Create
+                        Quiz</a>
+                    <a class="collapse-item" href="{{route('admins.quizList')}}"><i class="fas fa-fw fa-table"></i>List
+                        Quiz</a>
                 </div>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('admins.questionList')}}">
-                <i class="fas fa-fw fa-table"></i>
-                <span>List Question</span></a>
-        </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('questions.create')}}">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Create Question</span></a>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Question
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item active">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+               aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Question</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Question Screens:</h6>
+                    <a class="collapse-item" href="{{route('questions.create')}}"><i class="fas fa-fw fa-plus"></i>Create
+                        Question</a>
+                    <a class="collapse-item" href="{{route('admins.questionList')}}"><i class="fas fa-fw fa-list"></i>List
+                        Question</a>
+                </div>
+            </div>
         </li>
 
         <!-- Divider -->
@@ -114,14 +135,53 @@
         </div>
 
     </ul>
-    <!-- End of Sidebar -->
 
-    <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
         <div id="content">
 
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- Nav Item - User Information -->
+
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-900 ">{{ Auth::user()->name}}</span>
+                            <img class="img-profile rounded-circle" src="{{asset('storage/'.Auth::user()->image)}}">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{route('users.profile', Auth::user()->id)}}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-black-400"></i>
+                                Profile
+                            </a>
+                            <a class="dropdown-item" href="{{route('users.list')}}">
+                                <i class="fas fa-list fa-sm fa-fw mr-2 text-black-400"></i>
+                                List User
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{route('index')}}" data-toggle="modal"
+                               data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-black-400"></i>
+                                Funny Quiz Home
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
             <div class="container-fluid pt-4">
@@ -141,32 +201,30 @@
             </div>
         </footer>
         <!-- End of Footer -->
-
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
 
-</div>
-<!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Back To Home" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="{{route('index')}}">Back To Home</a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Back To Home" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="{{route('index')}}">Back To Home</a>
+                </div>
             </div>
         </div>
     </div>
