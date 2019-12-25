@@ -7,6 +7,7 @@ use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
+use Illuminate\Support\Facades\Session;
 
 
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class QuizController extends Controller
         $this->quizService = $quizService;
         $this->categoryService = $categoryService;
         $this->questionService = $questionService;
-        $this->answerService=$answerService;
+        $this->answerService = $answerService;
     }
 
     public function QuizzesInCategory($id)
@@ -43,13 +44,20 @@ class QuizController extends Controller
         return view('quizzes.list-basic', compact('quizzes'));
     }
 
-    public function getAllQuestionsInCategory($id){
+    public function getAllQuestionsInCategory($id)
+    {
         $quiz = $this->quizService->findById($id);
         $questions = $quiz->questions;
         $answers = $this->answerService->getAll();
-        return view('questions.list', compact('quiz', 'questions','answers'));
+        return view('questions.list', compact('quiz', 'questions', 'answers'));
     }
 
+    public function showResult(Request $request)
+    {
+        $listAnswers = $request->answer;
+        $answers = $this->answerService->getAll();
+        return view('answers.result', compact('answers','listAnswers'));
+    }
 
 
     public function QuizDetail($id)
