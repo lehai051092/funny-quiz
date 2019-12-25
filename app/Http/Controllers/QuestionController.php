@@ -89,20 +89,46 @@ class QuestionController extends Controller
         return redirect()->back();
     }
 
+//  Edit up date Question & Answers
     public function edit($id)
     {
         $question = $this->questionService->findById($id);
         $categories = $this->categoryService->getAll();
+        $types = Type::all();
+        $answers = $question->answers;
 
-        return view('questions.editForm', compact('question', 'categories'));
+        return view('questions.editForm', compact('question', 'categories', 'types', 'answers'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $this->questionService->update($request, $id);
-        toastr()->success('Edit Question success');
-        return redirect()->route('admins.questionList');
+        if ($request->ajax()) {
+            $question = [
+                $this->questionService->update($request),
+            ];
+            return response()->json($question);
+        }
     }
+
+    public function updateAnswers(Request $request)
+    {
+        if ($request->ajax()) {
+            foreach ($request->listAnswersOld as $item) {
+                DB::table('answers')->where('id', $item['id'])->update($item);
+            }
+            return response()->json(['message' => toastr()->success('Update success')]);
+        }
+    }
+
+    public function deleteAnswer($id)
+    {
+        $this->answerService->delete($id);
+        toastr()->success('delete Question success');
+        return redirect()->back();
+    }
+
+
+//    ....................................................................
 
     public function updateQuiz(Request $request, $id)
     {
@@ -132,15 +158,15 @@ class QuestionController extends Controller
 
     public function addAnswer(Request $request)
     {
-          if ($request->ajax()) {
-              foreach ($request->listAnswers as $key => $value) {
-                  Answer::create($value);
-              }
-              $answers = [
-                  toastr()->success('Add Question && Answers Success')
-              ];
-              return response()->json($answers);
-          }
+        if ($request->ajax()) {
+            foreach ($request->listAnswers as $key => $value) {
+                Answer::create($value);
+            }
+            $answers = [
+                toastr()->success('Add Question && Answers Success')
+            ];
+            return response()->json($answers);
+        }
     }
 
     public function filter(Request $request)

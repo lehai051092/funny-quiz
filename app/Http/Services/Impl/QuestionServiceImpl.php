@@ -38,7 +38,6 @@ class QuestionServiceImpl implements QuestionServiceInterface
     {
         $question = new Question();
         $question->title = $request->title;
-//        $question->quiz_id=$request->quiz_id;
         return $this->questionRepository->store($question);
     }
 
@@ -48,13 +47,32 @@ class QuestionServiceImpl implements QuestionServiceInterface
         return $this->questionRepository->delete($question);
     }
 
-    function update($request, $id)
+    function update($request)
     {
+        $id = $request->id;
         $question = $this->questionRepository->findById($id);
-        $question->title = $request->title;
+        $question->title = $request->titleEdit;
+        $question->desc = $request->descEdit;
+        $question->content = $request->contentQuestionEdit;
         $question->category_id = $request->category_id;
-        return $this->questionRepository->update($question);
+        $question->type_id = $request->type_id;
+
+        $this->questionRepository->saveQ($question);
     }
+
+//    function updateAnswers($request)
+//    {
+//        foreach ($request->listAnswersOld as $key => $value) {
+//            $id = $value->id;
+//            $answer = $this->answerRepository->findById($id);
+//            $answer->title = $value->title;
+//            $answer->status = $value->status;
+//            $answer->question_id = $value->question_id;
+//
+//            $this->answerRepository->saveA($answer);
+//        }
+//
+//    }
 
     public function addQuestionToQuiz($request, $id)
     {
@@ -65,8 +83,6 @@ class QuestionServiceImpl implements QuestionServiceInterface
             $question->quiz_id = $request->id;
             $this->questionRepository->update($question);
         }
-//        $question->title = $request->title;
-
     }
 
     public function removeQuestionInQuiz($request, $id)
@@ -93,7 +109,5 @@ class QuestionServiceImpl implements QuestionServiceInterface
 
             $this->questionRepository->saveQ($question);
         }
-
-
     }
 }

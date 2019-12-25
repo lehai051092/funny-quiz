@@ -69,24 +69,31 @@ Route::prefix('questions')->group(function () {
 
     Route::get('create', 'QuestionController@createQuestion')->name('questions.createQuestion');
 
-    Route::get('create', 'QuestionController@create')->name('questions.create');
-//    add question and answer
-    Route::post('create', 'QuestionController@addQuestionAndAnswer')->name('questions.createQuestion');
 
+//    add question and answer ajax
+    Route::get('create', 'QuestionController@create')->name('questions.create');
+    Route::post('create', 'QuestionController@addQuestionAndAnswer')->name('questions.createQuestion');
 //    ...................
-//    Route::post('create', 'QuestionController@store')->name('questions.store');
+
     Route::get('{id}/list', 'QuizController@getAllQuestionsInCategory')->name('questions.basic.list');
     Route::post('{id}/add', 'QuestionController@updateQuiz')->name('questions.addQuestion');
     Route::post('{id}/remove', 'QuestionController@removeQuestion')->name('questions.removeQuestion');
     Route::get('{id}', 'QuestionController@questionsInQuiz')->name('questions.list');
 
     Route::get('{id}/delete', 'QuestionController@delete')->name('questions.delete');
+//    Edit question and answer ajax
     Route::get('{id}/edit', 'QuestionController@edit')->name('questions.edit');
     Route::post('{id}/edit', 'QuestionController@update')->name('questions.update');
+    Route::post('{id}/editAnswers', 'QuestionController@updateAnswers')->name('answers.update');
+    Route::post('{id}/addAnswers', 'QuestionController@addAnswer')->name('answers.addAnswers');
+    Route::get('{id}/deleteAnswer', 'QuestionController@deleteAnswer')->name('questions.deleteAnswer');
+//    ...........................
 });
 
 Route::prefix('answers')->group(function () {
+//    add question and answer ajax
     Route::post('create', 'QuestionController@addAnswer')->name('answers.addAnswer');
+//    ............................
     Route::get('{id}/create', 'AnswerController@create')->name('answers.create');
     Route::post('{id}/create', 'AnswerController@store')->name('answers.store');
     Route::get('{id}/delete', 'AnswerController@delete')->name('answers.delete');
