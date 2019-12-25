@@ -59,6 +59,8 @@ $(document).ready(function () {
 
     // Add Answer
     $(document).on('click', '.create', function () {
+        $('.done').show();
+        $(this).hide();
         let title = document.querySelectorAll('.answer');
         let status = document.querySelectorAll('.status');
         let questionId = document.querySelectorAll('.questionId');
