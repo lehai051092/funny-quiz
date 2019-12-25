@@ -56,14 +56,7 @@ class QuizController extends Controller
     {
         $listAnswers = $request->answer;
         $answers = $this->answerService->getAll();
-
         return view('answers.result', compact('answers','listAnswers'));
-
-
-//        $result = Session::get('answer');
-//        dd($result);
-//        $request->session()->push('resultList',$result);
-//        $resultList=$request->session()->all();
     }
 
 
