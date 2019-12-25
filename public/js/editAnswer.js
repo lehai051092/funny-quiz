@@ -124,8 +124,6 @@ $(document).ready(function () {
                 'question_id': question_id,
             });
         }
-        console.log(status[0].value);
-        console.log(listAnswers);
 
         $.ajax({
             url: 'http://127.0.0.1:8000/questions/'+ question_id +'/addAnswers',
