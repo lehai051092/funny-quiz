@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <div class="col-12">
                             <div class="row">
-                                <label class="col-2"><h4><i class="fa">Title Question</i></h4></label>
+                                <label class="col-2"><h4><i class="fa">Title</i></h4></label>
                                 <div class="col-9">
                                     <input type="text" class="form-control" name="title" id="title">
                                 </div>
@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <div class="col-12">
                             <div class="row">
-                                <label class="col-2"><h4><i class="fa">Desc Question</i></h4></label>
+                                <label class="col-2"><h4><i class="fa">Desc</i></h4></label>
                                 <div class="col-9">
                                     <textarea type="text" class="form-control" name="desc" id="desc"></textarea>
                                 </div>
@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <div class="col-12">
                             <div class="row">
-                                <label class="col-2"><h4><i class="fa">Content Question</i></h4></label>
+                                <label class="col-2"><h4><i class="fa">Content</i></h4></label>
                                 <div class="col-9">
                                     <textarea type="text" class="form-control" name="contentQuestion"
                                               id="contentQuestion"></textarea>
