@@ -39,7 +39,9 @@
 
             </div>
         </div>
-        <label>Bạn trả lời là đúng {{count($answersRight)}}/{{count($questions)}} câu.</label>
+<div class="text-center p-5">
+    <label ><h3><i class="fa fa-star" style="color: aqua"></i>Bạn trả lời là đúng <b style="color: rebeccapurple">{{count($answersRight)}}/{{count($questions)}}</b> câu.<i class="fa fa-star" style="color: aqua"></i></h3></label>
 
+</div>
     </div>
 @endsection

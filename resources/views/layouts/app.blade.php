@@ -167,8 +167,8 @@
                     <!-- Calling Info -->
                     <div class="calling-info">
                         <div class="call-center">
-                            <a href="tel:+654563325568889"><i class="icon-telephone-2"></i>
-                                <span>(+65) 456 332 5568 889</span></a>
+                            <a href="tel:+84358463366"><i class="icon-telephone-2"></i>
+                                <span>(+84) 35 846 3366</span></a>
                         </div>
                     </div>
                 </nav>
