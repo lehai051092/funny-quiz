@@ -186,9 +186,7 @@
                                 <a href="{{route('admins.questionList')}}" class="btn btn-warning done"
                                    style="display: none">Done</a>
                             </div>
-
                         </div>
-
                     </form>
                 </table>
             </div>
