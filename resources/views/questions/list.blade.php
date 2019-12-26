@@ -76,7 +76,7 @@
             @endforeach
                 <div style="text-align: center">
                     <form>
-                        <input id="send" value="Send" type="submit"  style="display: none"/>
+                        <input id="send" value="Nộp bài" type="submit"  style="display: none"/>
                     </form>
                 </div>
         </div>

@@ -112,8 +112,9 @@ Route::prefix('users')->group(function () {
     Route::get('{id}/delete', 'UserController@delete')->name('users.delete');
 });
 
-Route::prefix('admins')->group(function () {
+Route::prefix('admins')->group(function  () {
     Route::get('/', 'AdminController@getIndex')->name('admins.index');
+    Route::get('/filter-question', 'QuestionController@filter')->name('admins.filter');
     Route::get('/forgot-password', 'AdminController@getForgotPassword')->name('admins.getForgotPassword');
     Route::get('/login', 'AdminController@getLogin')->name('admins.getLogin');
     Route::get('/register', 'AdminController@getRegister')->name('admins.getRegister');
@@ -121,7 +122,6 @@ Route::prefix('admins')->group(function () {
     Route::get('create', 'QuizController@createQuizInCategory')->name('admins.quizCreate');
     Route::get('list-quiz', 'QuizController@getAll')->name('admins.quizList');
     Route::get('list-question', 'QuestionController@listAllQuestion')->name('admins.questionList');
-    Route::post('filter-question', 'QuestionController@filter')->name('admins.filter');
 });
 
 

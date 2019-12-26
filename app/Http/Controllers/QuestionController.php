@@ -143,13 +143,14 @@ class QuestionController extends Controller
         toastr()->success('Remove question success');
         return redirect()->back();
     }
-
+// add Question And Answer
     public function addQuestionAndAnswer(Request $request)
     {
         if ($request->ajax()) {
             if ($request->title) {
                 $question = [
                     $this->questionService->addQuestionAndAnswer($request),
+                    'id' => DB::table('questions')->max('id')
                 ];
                 return response()->json($question);
             }
@@ -171,17 +172,25 @@ class QuestionController extends Controller
 
     public function filter(Request $request)
     {
-        $query = Question::all();
-        if ($request->has('title') && $request->get('title') != '-1') {
-            $query = $query->where('id', $request->get('title'));
+        if ($request->ajax()){
+            $arrayQuestion=[];
+            $query = Question::all();
+            if ($request->has('title') && $request->get('title') != '-1') {
+                $query = $query->where('id', $request->get('title'));
+            }
+            if ($request->has('type_id') && $request->get('type_id') != '-1') {
+                $query = $query->where('type_id', $request->get('type_id'));
+            }
+            if ($request->has('category_id') && $request->get('category_id') != '-1') {
+                $query = $query->where('category_id', $request->get('category_id'));
+            }
+            $questions = $query->all();
+            foreach ($questions as $question)
+            {
+                array_push($arrayQuestion,$question);
+            }
+            return response()->json($arrayQuestion);
         }
-        if ($request->has('type_id') && $request->get('type_id') != '-1') {
-            $query = $query->where('type_id', $request->get('type_id'));
-        }
-        if ($request->has('category_id') && $request->get('category_id') != '-1') {
-            $query = $query->where('category_id', $request->get('category_id'));
-        }
-        $questions = $query->all();
-        return view('admins.questions.list', compact('questions'));
+
     }
 }

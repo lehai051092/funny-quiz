@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container p-5 ">
+
         <h1 class="p-5"><i class="fa fa-table"> {{$quiz->name}}</i></h1>
         <div class="row">
             <div class="col-8">
