@@ -147,11 +147,10 @@ class QuestionController extends Controller
     public function addQuestionAndAnswer(Request $request)
     {
         if ($request->ajax()) {
-
-
             if ($request->title) {
                 $question = [
                     $this->questionService->addQuestionAndAnswer($request),
+                    'id' => DB::table('questions')->max('id')
                 ];
                 return response()->json($question);
             }

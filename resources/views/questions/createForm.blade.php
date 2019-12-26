@@ -69,7 +69,7 @@
                             <div class="row">
                                 <label class="col-2"><h4><i class="fa">Type</i></h4></label>
                                 <div class="col-9">
-                                    <select class="form-control" name="types" id="type">
+                                    <select class="form-control type" name="types" id="type">
                                         <option value="">Select Type</option>
                                         @foreach($types as $type)
                                             <option value="{{$type->id}}">{{$type->name}}</option>
@@ -92,21 +92,14 @@
                                         <div class="col-2"><h4><i class="fa">Answer</i></h4></div>
                                         <div class="col-9">
                                             <div class="col-12">
+                                                <div id="trueFalse" style="display: none">
+
+                                                </div>
                                                 <div class="" id="dynamic_field">
-                                                    <div class="row">
-                                                        <input type="text" class="form-control  col-9 answer" value=""/>&nbsp;&nbsp;
-
-                                                        <input type="checkbox" id="myCheck" class="status" value="2"/>
-
-                                                        <input type="text"
-                                                               value="{{\Illuminate\Support\Facades\DB::table('questions')->max('id') + 1}}"
-                                                               class="questionId" style="display: none"/>
-                                                        <i name="remove" id="' + i + '" class="fa fa-trash btn_remove"
-                                                           style="color: red" aria-hidden="true"></i>
-                                                    </div>
+                                                    <input type="text" value="" id="questionsId" class="questionsId" style="display: none"/>
                                                 </div>
                                             </div>
-                                            <a id="insertAnswer" class="btn btn-link"><i class="fa fa-plus"
+                                            <a id="insertAnswer" style="display: none" class="btn btn-link"><i class="fa fa-plus"
                                                                                          aria-hidden="true"></i> Add
                                                 Answer</a>
                                         </div>
