@@ -2,7 +2,7 @@
 @section('content')
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-    <div class="container m-5">
+    <div class="container p-5">
         <div class="row m-5">
             <div class="col-12 m-5">
                 <div class="row">
