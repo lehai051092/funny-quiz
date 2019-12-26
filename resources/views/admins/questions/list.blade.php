@@ -10,8 +10,8 @@
 
             <div class="pt-3">
 
-                <form action="{{route('admins.filter')}}" method="post">
-                    @csrf
+{{--                <form action="{{route('admins.filter')}}" method="get">--}}
+{{--                    @csrf--}}
                     <div class="modal-body">
                         <div class="col-12">
                             <div class="row">
@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="list-group">
-                                        <select name="title"
+                                        <select name="title" id="title_id"
                                                 class="form-control w-100">
                                             <option value="-1">Title</option>
                                             @foreach($listQuestions as $question)
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-2">
                                     <div class="list-group">
-                                        <select name="type_id"
+                                        <select name="type_id" id="type_id"
                                                 class="form-control w-100">
                                             <option value="-1">Type</option>
                                             @foreach($types as $type)
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="col-2">
                                     <div class="list-group">
-                                        <select name="category_id"
+                                        <select name="category_id" id="category_id"
                                                 class="form-control w-100">
                                             <option value="-1">Category</option>
                                             @foreach($categories as $category)
@@ -57,16 +57,17 @@
                                 </div>
                                 <div class="col-1"></div>
                                 <div class="col-1">
-                                    <button type="submit" class="btn btn-primary">Filter</button>
+                                    <button type="button" class="btn btn-primary" id="filter">Filter</button>
+{{--                                    <button type="submit" class="btn btn-primary" id="filter">Filter</button>--}}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                </form>
+{{--                </form>--}}
             </div>
             <div class="text-center pt-3">
-                <h5><i class="fas fa-laugh-wink" style="color: green"></i> <i class="fa">Filter <b>{{count($questions)}}</b> results with your selection.</i></h5>
+                <h5><i class="fas fa-laugh-wink" style="color: green"></i> <i class="fa" id="count_filter">Filter <b>{{count($questions)}}</b> results with your selection.</i></h5>
             </div>
         </div>
         <div class="card-body">
@@ -82,17 +83,17 @@
                         <th>Action</th>
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                        <th>Question</th>
-                        <th>Desc</th>
-                        <th>Content</th>
-                        <th>Category</th>
-                        <th>Type</th>
-                        <th>Action</th>
-                    </tr>
-                    </tfoot>
-                    <tbody>
+{{--                    <tfoot>--}}
+{{--                    <tr>--}}
+{{--                        <th>Question</th>--}}
+{{--                        <th>Desc</th>--}}
+{{--                        <th>Content</th>--}}
+{{--                        <th>Category</th>--}}
+{{--                        <th>Type</th>--}}
+{{--                        <th>Action</th>--}}
+{{--                    </tr>--}}
+{{--                    </tfoot>--}}
+                    <tbody id="print_filter">
                     @foreach($questions as $question)
                         <tr>
                             <td><h5>{{$question->title}}</h5></td>
@@ -123,4 +124,5 @@
             </div>
         </div>
     </div>
+
 @endsection

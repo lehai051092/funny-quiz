@@ -265,6 +265,7 @@
 
 <script src="{{asset("js/answerInput.js")}}"></script>
 <script src="{{asset("js/editAnswer.js")}}"></script>
+<script src="{{asset("js/filter.js")}}"></script>
 {!! toastr()->render() !!}
 
 </body>
