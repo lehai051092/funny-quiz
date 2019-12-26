@@ -46,7 +46,7 @@ $(document).ready(function () {
                          <td><h5>${result[i].desc}</h5></td>
                          <td><h5>${result[i].content}</h5></td>
                          <td>
-                       ${category}
+                                    <h5>${category}</h5>
                         </td>
                             <td>
                                    <h5>${type}</h5>
