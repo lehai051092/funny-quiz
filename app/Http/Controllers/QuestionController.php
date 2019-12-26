@@ -143,10 +143,12 @@ class QuestionController extends Controller
         toastr()->success('Remove question success');
         return redirect()->back();
     }
-
+// add Question And Answer
     public function addQuestionAndAnswer(Request $request)
     {
         if ($request->ajax()) {
+
+
             if ($request->title) {
                 $question = [
                     $this->questionService->addQuestionAndAnswer($request),

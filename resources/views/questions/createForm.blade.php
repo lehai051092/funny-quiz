@@ -16,8 +16,15 @@
                             <div class="row">
                                 <label class="col-2"><h4><i class="fa">Title Question</i></h4></label>
                                 <div class="col-9">
-                                    <input type="text" class="form-control" name="title" id="title">
+                                    <input type="text" class="form-control" name="title" id="title"
+                                           @if($errors->has('title'))
+                                           style="border: solid red"
+                                        @endif>
+                                    @if($errors->has('title'))
+                                        <p class="text-danger">{{$errors->first('title')}}</p>
+                                    @endif
                                 </div>
+
                             </div>
                         </div>
                     </div>
