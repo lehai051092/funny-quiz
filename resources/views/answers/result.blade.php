@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <div class="container p-5 ">
         <h1 class="p-5"><i class="fa fa-table"> {{$quiz->name}}</i></h1>
         <div class="row">
@@ -20,7 +19,6 @@
                                 <tr>
                                     <th scope="row">{{++$key}}</th>
                                     <th scope="row">{{$answer->title}}</th>
-
                                 </tr>
                             @endif
                         @endforeach
@@ -37,17 +35,13 @@
                         @endif
                     @endforeach
                 </div>
-
             </div>
             <div class="col-4 result">
                 <div class="poin">
                     <p class="title">Your Point</p>
                     <p class="content">{{count($answersRight)}}/{{count($questions)}}</p>
                 </div>
-                {{--                <label>Điểm số của bạn {{count($answersRight)}}/{{count($questions)}}</label>--}}
-
             </div>
         </div>
-
     </div>
 @endsection
