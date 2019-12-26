@@ -301,6 +301,8 @@
 <!-- Profile js -->
 <script src="{{asset('storage/js/profile.js')}}"></script>
 <script src="{{asset('storage/js/answer.js')}}"></script>
+<script src="{{asset("js/result.js")}}"></script>
+
 </body>
 
 </html>
