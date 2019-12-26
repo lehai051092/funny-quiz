@@ -68,7 +68,7 @@ class QuizController extends Controller
         $questions = $quiz->questions;
         $answers = $this->answerService->getAll();
 
-        return view('answers.result', compact('answers', 'listAnswers', 'questions', 'answersRight'));
+        return view('answers.result', compact('answers', 'listAnswers', 'questions', 'answersRight','newAnswer','quiz'));
     }
 
 
