@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="container p-5 ">
-        <h1 class="p-5"><i class="fa fa-table"> Bảng thống kê kết quả thi của bạn</i></h1>
+        <h1 class="p-5"><i class="fa fa-table"> Statistics table of your exam results</i></h1>
         <div class="row">
             <div class="col-12">
                 <table class="table table-bordered table-danger" style="text-align: center">
@@ -40,7 +40,7 @@
             </div>
         </div>
 <div class="text-center p-5">
-    <label ><h3><i class="fa fa-star" style="color: aqua"></i>Bạn trả lời là đúng <b style="color: rebeccapurple">{{count($answersRight)}}/{{count($questions)}}</b> câu.<i class="fa fa-star" style="color: aqua"></i></h3></label>
+    <label ><h3><i class="fa fa-star" style="color: aqua"></i>Your answer is correct <b style="color: rebeccapurple">{{count($answersRight)}}/{{count($questions)}}</b> the <sentence>  </sentence>.<i class="fa fa-star" style="color: aqua"></i></h3></label>
 
 </div>
     </div>

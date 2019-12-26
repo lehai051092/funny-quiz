@@ -4,81 +4,69 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h3 class="m-0 font-weight-bold">
+            <h2 class="m-0 font-weight-bold">
                 List Question
-            </h3>
+            </h2>
 
             <div class="pt-3">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                    Filter question
-                </button>
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <form action="{{route('admins.filter')}}" method="post">
-                                @csrf
-                                <div class="modal-header">
-                                    <h5 class="modal-titless" id="exampleModalLabel">Filter Question</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+
+                <form action="{{route('admins.filter')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-1">
+
                                 </div>
-                                <div class="modal-body">
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="list-group">
-                                                    <h3>Title</h3>
-                                                    <select name="title"
-                                                            class="form-control w-100">
-                                                        <option value="-1">Title</option>
-                                                        @foreach($questions as $question)
-                                                            <option
-                                                                value="{{$question->id}}">{{$question->title}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="list-group">
-                                                    <h3>Type</h3>
-                                                    <select name="type_id"
-                                                            class="form-control w-100">
-                                                        <option value="-1">Type</option>
-                                                        @foreach($types as $type)
-                                                            <option
-                                                                value="{{$type->id}}">{{$type->name}}</option>
-                                                        @endforeach
-                                                    </select>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="list-group">
-                                                    <h3>Category</h3>
-                                                    <select name="category_id"
-                                                            class="form-control w-100">
-                                                        <option value="-1">Category</option>
-                                                        @foreach($categories as $category)
-                                                            <option
-                                                                value="{{$category->id}}">{{$category->name}}</option>
-                                                        @endforeach
-                                                    </select>
-
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="col-4">
+                                    <div class="list-group">
+                                        <select name="title"
+                                                class="form-control w-100">
+                                            <option value="-1">Title</option>
+                                            @foreach($listQuestions as $question)
+                                                <option
+                                                    value="{{$question->id}}">{{$question->title}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Load</button>
+                                <div class="col-2">
+                                    <div class="list-group">
+                                        <select name="type_id"
+                                                class="form-control w-100">
+                                            <option value="-1">Type</option>
+                                            @foreach($types as $type)
+                                                <option
+                                                    value="{{$type->id}}">{{$type->name}}</option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
                                 </div>
-                            </form>
+                                <div class="col-2">
+                                    <div class="list-group">
+                                        <select name="category_id"
+                                                class="form-control w-100">
+                                            <option value="-1">Category</option>
+                                            @foreach($categories as $category)
+                                                <option
+                                                    value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-1">
+                                    <button type="submit" class="btn btn-primary">Filter</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                </form>
+            </div>
+            <div class="text-center pt-3">
+                <h5><i class="fas fa-laugh-wink" style="color: green"></i> <i class="fa">Filter <b>{{count($questions)}}</b> results with your selection.</i></h5>
             </div>
         </div>
         <div class="card-body">
@@ -112,8 +100,8 @@
                             <td><h5>{{$question->content}}</h5></td>
                             <td>
                                 @if($question->category_id === $question->category['id'])
-                                <h5>{{$question->category['name']}}</h5>
-                                   @endif
+                                    <h5>{{$question->category['name']}}</h5>
+                                @endif
                             </td>
                             <td>
                                 @if($question->type_id === $question->type['id'])

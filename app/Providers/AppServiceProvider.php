@@ -27,6 +27,7 @@ use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
 use App\Http\Services\TestServiceInterface;
 use App\Http\Services\UserServiceInterface;
+use App\Question;
 use App\Quiz;
 use App\Type;
 use Illuminate\Support\Facades\View;
@@ -67,6 +68,9 @@ class AppServiceProvider extends ServiceProvider
 
         $types = Type::all();
         View::share('types',$types);
+
+        $listQuestions = Question::all();
+        View::share('listQuestions',$listQuestions);
 
     }
 }
