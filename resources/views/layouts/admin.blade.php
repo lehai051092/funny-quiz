@@ -156,7 +156,13 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-900 ">{{ Auth::user()->name}}</span>
-                            <img class="img-profile rounded-circle" src="{{asset('storage/'.Auth::user()->image)}}">
+                            <img class="img-profile rounded-circle"
+                                 @if(Auth::user()->image === null)
+                                 src="{{asset('storage/img/bg-img/default.jpg')}}"
+                                 @else
+                                 src="{{asset('storage/'.Auth::user()->image)}}"
+                                @endif
+                            >
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -259,6 +265,7 @@
 
 <script src="{{asset("js/answerInput.js")}}"></script>
 <script src="{{asset("js/editAnswer.js")}}"></script>
+<script src="{{asset("js/filter.js")}}"></script>
 {!! toastr()->render() !!}
 
 </body>

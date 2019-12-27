@@ -103,12 +103,12 @@
                             <hr>
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-2"><h4><i class="fa">Answer</i></h4></div>
+                                    <div class="col-2 mt-3"><h4><i class="fa">Answer</i></h4></div>
                                     <div class="col-9 mt-3">
                                         <div class="col-12">
-                                            <div class="" id="dynamic_edit">
-                                                @foreach($answers as $answer)
-                                                    @if($answer['question_id'] === $question->id)
+                                            @foreach($answers as $answer)
+                                                @if($answer['question_id'] === $question->id)
+                                                    <div class="" id="dynamic_edit" style="display:block;">
                                                         <div class="row">
                                                             <input type="text" class="idOld" value="{{$answer['id']}}"
                                                                    style="display: none">
@@ -129,10 +129,11 @@
                                                                     name="remove" id="' + i + '"
                                                                     class="fa fa-trash btn_remove"
                                                                     style="color: red" aria-hidden="true"></i></a>
-                                                        </div><br>
-                                                    @endif
-                                                @endforeach
-                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        @endif
+                                                        @endforeach
+                                                    </div>
                                         </div>
                                         <a id="editAnswer" class="btn btn-link"><i class="fa fa-plus"
                                                                                    aria-hidden="true"></i> Add New

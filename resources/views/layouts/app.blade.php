@@ -26,7 +26,15 @@
     {{--    Ajax--}}
     <script src="{{asset("js/category.js")}}"></script>
 
-
+    <style>
+        .btn-success:not(:disabled):not(.disabled).active,
+        .btn-success:not(:disabled):not(.disabled):active,
+        .show > .btn-success.dropdown-toggle {
+            color: #fff;
+            background-color: red !important;
+            border-color: #1c7430
+        }
+    </style>
 </head>
 <style>
     .parent {
@@ -71,11 +79,16 @@
                                 <ul style="list-style: none">
                                     <li class="nav-item dropdown"><a id="navbarDropdown"
                                                                      class="nav-link dropdown-toggle" href="#"
-                                                                     role="button" data-toggle="dropdown">@if(Auth::user()->image !== null)
-                                                <img
-                                                    src="{{asset('storage/'.Auth::user()->image)}}"
-                                                    style="width: 50px; height: 50px">
-                                                &nbsp;@endif{{ Auth::user()->name}}
+                                                                     role="button"
+                                                                     data-toggle="dropdown">
+                                            <img
+                                                @if(Auth::user()->image === null)
+                                                src="{{asset('storage/img/bg-img/default.jpg')}}"
+                                                @else
+                                                src="{{asset('storage/'.Auth::user()->image)}}"
+                                                @endif
+                                                style="width: 50px; height: 50px" alt="avatar">
+                                            {{ Auth::user()->name}}
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -154,8 +167,8 @@
                     <!-- Calling Info -->
                     <div class="calling-info">
                         <div class="call-center">
-                            <a href="tel:+654563325568889"><i class="icon-telephone-2"></i>
-                                <span>(+65) 456 332 5568 889</span></a>
+                            <a href="tel:+84358463366"><i class="icon-telephone-2"></i>
+                                <span>(+84) 35 846 3366</span></a>
                         </div>
                     </div>
                 </nav>
@@ -288,6 +301,8 @@
 <!-- Profile js -->
 <script src="{{asset('storage/js/profile.js')}}"></script>
 <script src="{{asset('storage/js/answer.js')}}"></script>
+<script src="{{asset("js/result.js")}}"></script>
+
 </body>
 
 </html>

@@ -2,7 +2,7 @@
 @section('content')
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-    <div class="container m-5">
+    <div class="container p-5">
         <div class="row m-5">
             <div class="col-12 m-5">
                 <div class="row">
@@ -43,6 +43,8 @@
                                         <div class="action">
                                            <a href="{{route('questions.basic.list',$quiz->id)}}"><button class="add-to-cart btn btn-danger" type="button">Làm Quiz!
                                             </button></a>
+                                            <a href="{{route('point.list',$quiz->id)}}"><button class="add-to-cart btn btn-danger" type="button">Thống kê điểm thi
+                                                </button></a>
                                         </div>
                                     </div>
                                 </div>

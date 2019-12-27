@@ -15,6 +15,7 @@
 @import url(css/answer-css.css);
 @import url(css/quizDetail.css);
 @import url(css/quiz-list.css);
+@import url(css/result.css);
 /* :: 3.0 Base CSS */
 * {
     margin: 0;

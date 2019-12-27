@@ -56,6 +56,7 @@ Route::prefix('quizzes')->group(function () {
 
     Route::get('{id?}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
     Route::get('{id}/detail', 'QuizController@QuizDetail')->name('quizzes.detail');
+    Route::post('{id}/result','QuizController@showResult')->name('session.result');
 //    Route::get('{id}/create', 'QuizController@create')->name('quizzes.create');
     Route::post('create', 'QuizController@store')->name('quizzes.store');
     Route::get('{id}/delete', 'QuizController@delete')->name('quizzes.delete');
@@ -84,6 +85,7 @@ Route::prefix('questions')->group(function () {
     Route::get('{id}/edit', 'QuestionController@edit')->name('questions.edit');
     Route::post('{id}/edit', 'QuestionController@update')->name('questions.update');
     Route::post('{id}/editAnswers', 'QuestionController@updateAnswers')->name('answers.update');
+    Route::post('{id}/addAnswers', 'QuestionController@addAnswer')->name('answers.addAnswers');
     Route::get('{id}/deleteAnswer', 'QuestionController@deleteAnswer')->name('questions.deleteAnswer');
 //    ...........................
 });
@@ -110,8 +112,9 @@ Route::prefix('users')->group(function () {
     Route::get('{id}/delete', 'UserController@delete')->name('users.delete');
 });
 
-Route::prefix('admins')->group(function () {
+Route::prefix('admins')->group(function  () {
     Route::get('/', 'AdminController@getIndex')->name('admins.index');
+    Route::get('/filter-question', 'QuestionController@filter')->name('admins.filter');
     Route::get('/forgot-password', 'AdminController@getForgotPassword')->name('admins.getForgotPassword');
     Route::get('/login', 'AdminController@getLogin')->name('admins.getLogin');
     Route::get('/register', 'AdminController@getRegister')->name('admins.getRegister');
@@ -119,5 +122,8 @@ Route::prefix('admins')->group(function () {
     Route::get('create', 'QuizController@createQuizInCategory')->name('admins.quizCreate');
     Route::get('list-quiz', 'QuizController@getAll')->name('admins.quizList');
     Route::get('list-question', 'QuestionController@listAllQuestion')->name('admins.questionList');
-    Route::post('filter-question', 'QuestionController@filter')->name('admins.filter');
 });
+
+Route::get('{id}/point','PointController@getPointsInQuiz')->name('point.list');
+
+
