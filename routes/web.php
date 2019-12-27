@@ -124,4 +124,6 @@ Route::prefix('admins')->group(function  () {
     Route::get('list-question', 'QuestionController@listAllQuestion')->name('admins.questionList');
 });
 
+Route::get('{id}/point','PointController@getPointsInQuiz')->name('point.list');
+
 

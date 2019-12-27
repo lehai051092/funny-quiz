@@ -50,7 +50,7 @@ $(document).ready(function () {
         $('#editAnswers').show();
         $('.cancel1').hide();
         let titleEdit = $('#titleEdit').val();
-        let descEdit = CKEDITOR.instances['editor1'].getData();
+        let descEdit = $('#descEdit').val();
         let contentQuestionEdit = $('#contentQuestionEdit').val();
         let category_id = $('#category_id').val();
         let type_id = $('#type_id').val();

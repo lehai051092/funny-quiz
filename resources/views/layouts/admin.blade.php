@@ -23,6 +23,7 @@
     <link href="{{asset('storage/admins/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+
     {{--    Ajax--}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--}}
@@ -265,9 +266,6 @@
 <script src="{{asset("js/answerInput.js")}}"></script>
 <script src="{{asset("js/editAnswer.js")}}"></script>
 <script src="{{asset("js/filter.js")}}"></script>
-<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-<script> CKEDITOR.replace('editor1'); </script>
-
 {!! toastr()->render() !!}
 
 </body>

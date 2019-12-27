@@ -7,6 +7,7 @@ use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
+use App\Point;
 use App\StatusInterface;
 use Illuminate\Support\Facades\Session;
 
@@ -19,17 +20,19 @@ class QuizController extends Controller
     protected $categoryService;
     protected $questionService;
     protected $answerService;
+    protected $point;
 
     public function __construct(QuizServiceInterface $quizService,
                                 CategoryServiceInteface $categoryService,
                                 QuestionServiceInterface $questionService,
-                                AnswerServiceInterface $answerService)
+                                AnswerServiceInterface $answerService,Point $point)
     {
         $this->middleware('auth');
         $this->quizService = $quizService;
         $this->categoryService = $categoryService;
         $this->questionService = $questionService;
         $this->answerService = $answerService;
+        $this->point=$point;
     }
 
     public function QuizzesInCategory($id)
@@ -55,6 +58,7 @@ class QuizController extends Controller
 
     public function showResult(Request $request, $id)
     {
+        $point= new Point();
         $answersRight = array();
         $listAnswers = array();
         foreach ($request->answer as $key => $answer) {
@@ -67,6 +71,9 @@ class QuizController extends Controller
         $quiz = $this->quizService->findById($id);
         $questions = $quiz->questions;
         $answers = $this->answerService->getAll();
+        $point->point= count($answersRight);
+        $point->quiz_id=$id;
+        $point->save();
 
         return view('answers.result', compact('answers', 'listAnswers', 'questions', 'answersRight','newAnswer','quiz'));
     }
