@@ -18,4 +18,8 @@ class Quiz extends Model
     public function resultsDetails() {
         return $this->hasMany('App\ResultDetail');
     }
+
+    public function points(){
+        return $this->hasMany('App\Point');
+    }
 }
