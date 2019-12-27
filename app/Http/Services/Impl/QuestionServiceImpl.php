@@ -110,4 +110,10 @@ class QuestionServiceImpl implements QuestionServiceInterface
             $this->questionRepository->saveQ($question);
         }
     }
+
+    function search($keyword)
+    {
+        return $this->questionRepository->search($keyword);
+
+    }
 }
