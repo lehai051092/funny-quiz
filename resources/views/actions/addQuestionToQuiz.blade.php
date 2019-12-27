@@ -62,7 +62,9 @@
                                         <h3 class="text-center">List question</h3>
                                     </div>
                                     <div class="card-body parent">
-
+                                        <form class="form-inline my-2 my-lg-0">
+                                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
+                                        </form>
 
                                         <form method="post"
                                               action="{{route('questions.addQuestion',$quiz->id)}}">
