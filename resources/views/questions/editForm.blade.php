@@ -30,7 +30,7 @@
                                 <label class="col-2"><h4><i class="fa">Desc Question</i></h4></label>
                                 <div class="col-9">
                                         <textarea type="text" class="form-control"
-                                                  name="desc" id="descEdit">{{$question->desc}}</textarea>
+                                                  name="desc" id="editor1">{{$question->desc}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -40,9 +40,9 @@
                             <div class="row">
                                 <label class="col-2"><h4><i class="fa">Content Question</i></h4></label>
                                 <div class="col-9">
-                                        <textarea type="text" class="form-control"
+                                        <input type="text" class="form-control"
                                                   name="contentQuestion"
-                                                  id="contentQuestionEdit">{{$question->content}}</textarea>
+                                                  id="contentQuestionEdit" value="{{$question->content}}" />
                                 </div>
                             </div>
                         </div>
@@ -108,42 +108,7 @@
                                         <div class="col-12">
                                             @foreach($answers as $answer)
                                                 @if($answer['question_id'] === $question->id)
-                                                    <div id="trueFalseEdit" style="display: none">
-                                                        <div class="row">
-                                                            <input type="text" class="form-control  col-9 titleOld"
-                                                                   value="{{$answer['title']}}"/>&nbsp;&nbsp;&nbsp;
-
-                                                            <input type="radio" id="myCheckRadio" name="statusOld"
-                                                                   class="status" value="{{$answer['status']}}"
-                                                                   @if($answer['status'] === 1)
-                                                                   checked
-                                                                @endif
-                                                            />
-                                                            <a href="{{route('questions.deleteAnswer', $answer['id'])}}"
-                                                               onclick="return confirm('Are You Sure Delete???')"><i
-                                                                    name="remove" id="' + i + '"
-                                                                    class="fa fa-trash btn_remove"
-                                                                    style="color: red" aria-hidden="true"></i></a>
-                                                        </div>
-                                                        <div class="row mt-3">
-                                                            <input type="text" class="form-control  col-9 titleOld"
-                                                                   value="{{$answer['title']}}"/>&nbsp;&nbsp;&nbsp;
-
-                                                            <input type="radio" id="myCheckRadio" name="statusOld"
-                                                                   class="status" value="{{$answer['status']}}"
-                                                                   @if($answer['status'] === 1)
-                                                                   checked
-                                                                @endif
-                                                            />
-                                                            <a href="{{route('questions.deleteAnswer', $answer['id'])}}"
-                                                               onclick="return confirm('Are You Sure Delete???')"><i
-                                                                    name="remove" id="' + i + '"
-                                                                    class="fa fa-trash btn_remove"
-                                                                    style="color: red" aria-hidden="true"></i></a>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="" id="dynamic_edit" style="display:none;">
+                                                    <div class="" id="dynamic_edit" style="display:block;">
                                                         <div class="row">
                                                             <input type="text" class="idOld" value="{{$answer['id']}}"
                                                                    style="display: none">
@@ -186,9 +151,7 @@
                                 <a href="{{route('admins.questionList')}}" class="btn btn-warning done"
                                    style="display: none">Done</a>
                             </div>
-
                         </div>
-
                     </form>
                 </table>
             </div>

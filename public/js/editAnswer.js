@@ -31,26 +31,13 @@ $(document).ready(function () {
         }
     });
 
-    $('#type').change(function () {
-        let arr = [$(this).find(':selected').val()];
-        console.log(arr)
-        if (arr[0] == 2) {
-            $('#trueFalse').show()
-            $('#insertAnswer').hide()
-        } else if (arr[0] == 1) {
-            $('#trueFalse').hide()
-            $('#insertAnswer').show()
-        }
-    });
-
-
     //    Edit Question
     $(document).on('click', '.editQuestion', function () {
         $('#editQuestion').hide();
         $('#editAnswers').show();
         $('.cancel1').hide();
         let titleEdit = $('#titleEdit').val();
-        let descEdit = $('#descEdit').val();
+        let descEdit = CKEDITOR.instances['editor1'].getData();
         let contentQuestionEdit = $('#contentQuestionEdit').val();
         let category_id = $('#category_id').val();
         let type_id = $('#type_id').val();
