@@ -30,7 +30,7 @@
                                 <label class="col-2"><h4><i class="fa">Desc Question</i></h4></label>
                                 <div class="col-9">
                                         <textarea type="text" class="form-control"
-                                                  name="desc" id="descEdit">{{$question->desc}}</textarea>
+                                                  name="desc" id="editor1">{{$question->desc}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -40,9 +40,9 @@
                             <div class="row">
                                 <label class="col-2"><h4><i class="fa">Content Question</i></h4></label>
                                 <div class="col-9">
-                                        <textarea type="text" class="form-control"
+                                        <input type="text" class="form-control"
                                                   name="contentQuestion"
-                                                  id="contentQuestionEdit">{{$question->content}}</textarea>
+                                                  id="contentQuestionEdit" value="{{$question->content}}" />
                                 </div>
                             </div>
                         </div>
@@ -151,9 +151,7 @@
                                 <a href="{{route('admins.questionList')}}" class="btn btn-warning done"
                                    style="display: none">Done</a>
                             </div>
-
                         </div>
-
                     </form>
                 </table>
             </div>
