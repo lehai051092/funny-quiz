@@ -31,19 +31,6 @@ $(document).ready(function () {
         }
     });
 
-    $('#type').change(function () {
-        let arr = [$(this).find(':selected').val()];
-        console.log(arr)
-        if (arr[0] == 2) {
-            $('#trueFalse').show()
-            $('#insertAnswer').hide()
-        } else if (arr[0] == 1) {
-            $('#trueFalse').hide()
-            $('#insertAnswer').show()
-        }
-    });
-
-
     //    Edit Question
     $(document).on('click', '.editQuestion', function () {
         $('#editQuestion').hide();

@@ -22,7 +22,6 @@ $(document).ready(function () {
 
     $('#type').change(function () {
         let arr = [$(this).find(':selected').val()];
-        console.log(arr)
         if (arr[0] == 2) {
             $('#trueFalse').show()
                 $('#insertAnswer').hide()
