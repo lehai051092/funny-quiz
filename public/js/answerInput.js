@@ -33,8 +33,8 @@ $(document).ready(function () {
                 ' <input type="text"\n' +
                 '    value=""\n' +
                 'class="questionId" style="display: none"/>' +
-                ' <idesc name="remove" id="\' + i + \'" class="fa fa-trash btn_remove"\n' +
-                '    style="color: red" aria-hidden="true"></idesc>' +
+                ' <i name="remove" id="\' + i + \'" class="fa fa-trash btn_remove"\n' +
+                '    style="color: red" aria-hidden="true"></i>' +
                 ' </div>' +
                 '<div class="row mt-3">' +
                 ' <input type="text" class="form-control  col-9 answer" value=""/>&nbsp;&nbsp;' +
@@ -65,17 +65,15 @@ $(document).ready(function () {
 
 //    Add Question
     $(document).on('click', '.add', function () {
-
         $('#display_answer').show();
         $('#display_form_answer').show();
         $('#submit').hide();
         let title = $('#title').val();
-        let desc = CKEDITOR.instances['editor1'].getData();
+        let desc = $('#desc').val();
         let contentQ = $('#contentQuestion').val();
         let category = $('#category').val();
         let type = $('#type').val();
 
-        console.log('d' + desc, 'c' + contentQ);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

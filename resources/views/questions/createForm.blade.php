@@ -33,7 +33,7 @@
                             <div class="row">
                                 <label class="col-2"><h4><i class="fa">Desc</i></h4></label>
                                 <div class="col-9">
-                                    <textarea type="text" class="form-control " name="desc"  id="editor1"></textarea>
+                                    <textarea type="text" class="form-control" name="desc" id="desc"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -43,8 +43,8 @@
                             <div class="row">
                                 <label class="col-2"><h4><i class="fa">Content</i></h4></label>
                                 <div class="col-9">
-                                    <input type="text" class="form-control" name="contentQuestion"
-                                              id="contentQuestion">
+                                    <textarea type="text" class="form-control" name="contentQuestion"
+                                              id="contentQuestion"></textarea>
                                 </div>
                             </div>
                         </div>

@@ -83,12 +83,21 @@
                         <th>Action</th>
                     </tr>
                     </thead>
-
+{{--                    <tfoot>--}}
+{{--                    <tr>--}}
+{{--                        <th>Question</th>--}}
+{{--                        <th>Desc</th>--}}
+{{--                        <th>Content</th>--}}
+{{--                        <th>Category</th>--}}
+{{--                        <th>Type</th>--}}
+{{--                        <th>Action</th>--}}
+{{--                    </tr>--}}
+{{--                    </tfoot>--}}
                     <tbody id="print_filter">
                     @foreach($questions as $question)
                         <tr>
                             <td><h5>{{$question->title}}</h5></td>
-                            <td><h5>{!! $question->desc !!}</h5></td>
+                            <td><h5>{{$question->desc}}</h5></td>
                             <td><h5>{{$question->content}}</h5></td>
                             <td>
                                 @if($question->category_id === $question->category['id'])
