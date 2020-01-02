@@ -46,6 +46,10 @@
     <form method="post" action="{{route('session.result',$quiz->id)}}">
         @csrf
         <div class="p-5">
+            <div  class="d-flex justify-content-center">
+                <label><h1>Exam Time</h1></label>
+            </div>
+            <div id="countdown" class="d-flex justify-content-center"></div>
             @foreach($questions as $key=>$question)
                 <div class="container-fluid" >
                     <div class="modal-dialog">
@@ -66,7 +70,6 @@
                                                     value="{{$answer->status}},{{$answer->title}}">{{$answer->title}}</label><br>
                                         </div>
                                     @endif
-
                                 @endforeach
                             </div>
 
