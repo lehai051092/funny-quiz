@@ -302,6 +302,7 @@
 <script src="{{asset('storage/js/profile.js')}}"></script>
 <script src="{{asset('storage/js/answer.js')}}"></script>
 <script src="{{asset("js/result.js")}}"></script>
+<script src="{{asset("js/countdown.js")}}"></script>
 
 </body>
 
