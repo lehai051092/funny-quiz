@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 
+
     {{--    Ajax--}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--}}
@@ -263,9 +264,12 @@
 <!-- Page level custom scripts -->
 <script src="{{asset('storage/admins/js/demo/datatables-demo.js')}}"></script>
 
+
 <script src="{{asset("js/answerInput.js")}}"></script>
 <script src="{{asset("js/editAnswer.js")}}"></script>
 <script src="{{asset("js/filter.js")}}"></script>
+<script src="https://cdn.tiny.cloud/1/q2t2ct0kudotpa7nznvhahz3ms2icyb0id7hnbi7ypc02a74/tinymce/5/tinymce.min.js"></script>
+<script>tinymce.init({selector:'textarea'});</script>
 {!! toastr()->render() !!}
 
 </body>
