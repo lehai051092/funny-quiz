@@ -43,8 +43,8 @@
                             <div class="row">
                                 <label class="col-2"><h4><i class="fa">Content</i></h4></label>
                                 <div class="col-9">
-                                    <textarea type="text" class="form-control" name="contentQuestion"
-                                              id="contentQuestion"></textarea>
+                                    <input type="text" class="form-control" name="contentQuestion"
+                                              id="contentQuestion">
                                 </div>
                             </div>
                         </div>
