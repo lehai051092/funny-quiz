@@ -125,7 +125,14 @@ Route::prefix('admins')->group(function  () {
 });
 
 Route::get('{id}/point','PointController@getPointsInQuiz')->name('point.list');
+
+// facebook
 Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
+
+// google
+Route::get('/redirect/{social}', 'AuthController@googleLoginUrl');
+Route::get('/callback/{social}', 'AuthController@googleLoginCallback');
+
 
 
