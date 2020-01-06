@@ -29,14 +29,128 @@
                 <h5>Result</h5>
                 <div>
                     @foreach($listAnswers as $key=>$answer)
-                        @if($answer[0]==\App\StatusInterface::ISRIGHT)
-                            <div class="true" {{value($answer[1])}}>{{++$key}} <i class="fa fa-check"></i></div>
-                        @elseif($answer[0]==\App\StatusInterface::ISWRONG)
-                            <div class="false" {{value($answer[1])}}>{{++$key}} <i class="fa fa-times"></i></div>
-                        @endif
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+
+                                <div class="card-header" id="heading_{{$key}}">
+                                    @if($answer[0]==\App\StatusInterface::ISRIGHT)
+
+                                        <h5 class="mb-0">
+                                            <button class="true" type="button" data-toggle="collapse"
+                                                    data-target="#collapse_{{$key}}"
+                                                    aria-expanded="false" aria-controls="collapse_{{$key}}">
+                                                {{++$key}}
+                                            </button>
+                                            <div>
+                                                @foreach($answers as $answer)
+                                                    @foreach($questions as $key=>$question)
+                                                        @if($answer->status === \App\StatusInterface::ISRIGHT && $answer->question_id===$question->id)
+                                                            <div id="collapse_{{$key}}" class="collapse"
+                                                                 aria-labelledby="heading_{{$key}}"
+                                                                 data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    {{$answer->title}}
+                                                                </div>
+
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
+                                            </div>
+                                        </h5>
+                                    @elseif($answer[0]==\App\StatusInterface::ISWRONG)
+                                        <h5 class="mb-0">
+                                            <button class="false" type="button" data-toggle="collapse"
+                                                    data-target="#collapse_{{$key}}"
+                                                    aria-expanded="false" aria-controls="collapse_{{$key}}">
+                                                {{++$key}}
+                                            </button>
+                                            <div>
+                                                @foreach($answers as $answer)
+                                                    @foreach($questions as $key=>$question)
+                                                        @if($answer->status === \App\StatusInterface::ISRIGHT && $answer->question_id===$question->id)
+                                                            <div id="collapse_{{$key}}" class="collapse"
+                                                                 aria-labelledby="heading_{{$key}}"
+                                                                 data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    {{$answer->title}}
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
+                                            </div>
+                                        </h5>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 </div>
+
+{{--                <div class="container mt-3">--}}
+{{--                    @foreach($listAnswers as $key=>$answer)--}}
+{{--                        <div class="accordion" id="accordionExample">--}}
+{{--                            <div class="card">--}}
+
+{{--                                <div class="card-header" id="heading_{{$key}}">--}}
+{{--                                    @if($answer[0]==\App\StatusInterface::ISRIGHT)--}}
+
+{{--                                        <h5 class="mb-0">--}}
+{{--                                            <button class="true" type="button" data-toggle="collapse"--}}
+{{--                                                    data-target="#collapse_{{$key}}"--}}
+{{--                                                    aria-expanded="false" aria-controls="collapse_{{$key}}">--}}
+{{--                                                {{++$key}}--}}
+{{--                                            </button>--}}
+{{--                                            <div>--}}
+{{--                                                @foreach($answers as $answer)--}}
+{{--                                                    @foreach($questions as $key=>$question)--}}
+{{--                                                        @if($answer->status === \App\StatusInterface::ISRIGHT && $answer->question_id===$question->id)--}}
+{{--                                                            <div id="collapse_{{$key}}" class="collapse"--}}
+{{--                                                                 aria-labelledby="heading_{{$key}}"--}}
+{{--                                                                 data-parent="#accordionExample">--}}
+{{--                                                                <div class="card-body">--}}
+{{--                                                                    {{$answer->title}}--}}
+{{--                                                                </div>--}}
+
+{{--                                                            </div>--}}
+{{--                                                        @endif--}}
+{{--                                                    @endforeach--}}
+{{--                                                @endforeach--}}
+{{--                                            </div>--}}
+{{--                                        </h5>--}}
+{{--                                    @elseif($answer[0]==\App\StatusInterface::ISWRONG)--}}
+{{--                                        <h5 class="mb-0">--}}
+{{--                                            <button class="false" type="button" data-toggle="collapse"--}}
+{{--                                                    data-target="#collapse_{{$key}}"--}}
+{{--                                                    aria-expanded="false" aria-controls="collapse_{{$key}}">--}}
+{{--                                                {{++$key}}--}}
+{{--                                            </button>--}}
+{{--                                            <div>--}}
+{{--                                                @foreach($answers as $answer)--}}
+{{--                                                    @foreach($questions as $key=>$question)--}}
+{{--                                                        @if($answer->status === \App\StatusInterface::ISRIGHT && $answer->question_id===$question->id)--}}
+{{--                                                            <div id="collapse_{{$key}}" class="collapse"--}}
+{{--                                                                 aria-labelledby="heading_{{$key}}"--}}
+{{--                                                                 data-parent="#accordionExample">--}}
+{{--                                                                <div class="card-body">--}}
+{{--                                                                    {{$answer->title}}--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
+{{--                                                        @endif--}}
+{{--                                                    @endforeach--}}
+{{--                                                @endforeach--}}
+{{--                                            </div>--}}
+{{--                                        </h5>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+
+{{--                </div>--}}
             </div>
+
             <div class="col-4 result">
                 <div class="poin">
                     <p class="title">Your Point</p>
