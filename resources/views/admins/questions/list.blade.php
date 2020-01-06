@@ -15,9 +15,6 @@
                 <div class="modal-body">
                     <div class="col-12">
                         <div class="row">
-                            <div class="col-1">
-
-                            </div>
                             <div class="col-4">
                                 <div class="list-group">
                                     <select name="title" id="title_id"
@@ -55,18 +52,15 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-1"></div>
                             <div class="col-1">
                                 <button type="button" class="btn btn-primary" id="filter">Filter</button>
-                                {{--                                    <button type="submit" class="btn btn-primary" id="filter">Filter</button>--}}
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {{--                </form>--}}
             </div>
-            <div class="text-center pt-3">
+            <div class=" pt-3">
                 <h5><i class="fas fa-laugh-wink" style="color: green"></i> <i class="fa" id="count_filter">Filter
                         <b>{{count($questions)}}</b> results with your selection.</i></h5>
             </div>
