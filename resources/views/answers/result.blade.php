@@ -1,48 +1,57 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container p-5 ">
+    <div class="container p-5">
+        <div class="container p-5">
+            <div class="col-12">
+                <div class="row">
+                @foreach($listAnswers as $key=>$answer)
 
-        <h1 class="p-5"><i class="fa fa-table"> {{$quiz->name}}</i></h1>
-        <div class="row">
-            <div class="col-8">
-                <h5>Answer Right</h5>
-                <table class="table table-bordered table-success" style="text-align: center">
-                    <thead>
-                    <tr>
-                        <th scope="col">Question No</th>
-                        <th scope="col">Answer Right</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($answers as $answer)
-                        @foreach($questions as $key=>$question)
-                            @if($answer->status === \App\StatusInterface::ISRIGHT && $answer->question_id===$question->id)
-                                <tr>
-                                    <th scope="row">{{++$key}}</th>
-                                    <th scope="row">{{$answer->title}}</th>
-                                </tr>
-                            @endif
-                        @endforeach
+                    {{--                    @if($answer[0]==\App\StatusInterface::ISRIGHT)--}}
+                    <!-- Button trigger modal -->
+                        <button type="button" class="true" data-toggle="modal" data-target="#exampleModal{{$key}}">
+                            {{$answer}}
+                        </button>
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal{{$key}}" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @foreach($isRightAnswers as $keyAns=>$isRightAnswer)
+                                            @foreach($listQuestion as $keyQues=>$question)
+                                                @if($question==$isRightAnswer->question_id&&$key===$keyQues)
+                                                    {{$isRightAnswer->title}}
+                                                    {{--                                                    @break--}}
+                                                    {{--                                        @break--}}
+                                                @endif
+                                                {{--                                                @break--}}
+                                            @endforeach
+
+                                        @endforeach
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{--                        @endif--}}
                     @endforeach
-                    </tbody>
-                </table>
-                <h5>Result</h5>
-                <div>
-                    @foreach($listAnswers as $key=>$answer)
-                        @if($answer[0]==\App\StatusInterface::ISRIGHT)
-                            <div class="true" {{value($answer[1])}}>{{++$key}} <i class="fa fa-check"></i></div>
-                        @elseif($answer[0]==\App\StatusInterface::ISWRONG)
-                            <div class="false" {{value($answer[1])}}>{{++$key}} <i class="fa fa-times"></i></div>
-                        @endif
-                    @endforeach
-                </div>
-            </div>
-            <div class="col-4 result">
-                <div class="poin">
-                    <p class="title">Your Point</p>
-                    <p class="content">{{count($answersRight)}}/{{count($questions)}}</p>
+
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
+
