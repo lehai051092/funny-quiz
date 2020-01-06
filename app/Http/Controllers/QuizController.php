@@ -52,30 +52,28 @@ class QuizController extends Controller
     {
         $quiz = $this->quizService->findById($id);
         $questions = $quiz->questions;
-        $answers = $this->answerService->getAll();
+        dd($questions);
+
+
         return view('questions.list', compact('quiz', 'questions', 'answers'));
     }
 
-    public function showResult(Request $request, $id)
+    public function showResult(Request $request)
     {
         $point= new Point();
-        $answersRight = array();
-        $listAnswers = array();
-        foreach ($request->answer as $key => $answer) {
-           $newAnswer= explode(',',$answer);
-                array_push($listAnswers,$newAnswer);
-            if ($newAnswer[0] == StatusInterface::ISRIGHT) {
-                array_push($answersRight,$newAnswer);
-            }
-        }
-        $quiz = $this->quizService->findById($id);
-        $questions = $quiz->questions;
-        $answers = $this->answerService->getAll();
-        $point->point= count($answersRight);
-        $point->quiz_id=$id;
-        $point->save();
+        $listAnswers =[];
+        $listQuestion=[];
+        $answers = $request->answer;
+        $questions = $request->question;
+        $answersAll=$this->answerService->getAll();
 
-        return view('answers.result', compact('answers', 'listAnswers', 'questions', 'answersRight','newAnswer','quiz'));
+        for ($i = 0; $i < count($answers); $i++) {
+            array_push($listAnswers, $answers[$i]);
+            array_push($listQuestion, $questions[$i]);
+        }
+        dd($questions);
+
+        return view('answers.result',compact('listAnswers','answersAll'));
     }
 
 

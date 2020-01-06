@@ -43,7 +43,7 @@
         }
     </style>
 <div class=" p-5">
-    <form method="post" action="{{route('session.result',$quiz->id)}}">
+    <form method="post" action="{{route('session.result')}}">
         @csrf
         <div class="p-5">
             <div  class="d-flex justify-content-center">
@@ -59,6 +59,7 @@
                                 </h3>
                             </div>
                             <div class="modal-body">
+
                                 @foreach($answers as $answer)
                                     {{\Illuminate\Support\Facades\Session::put('answer', $answer->id)}}
                                     @if($question->id===$answer->question_id)
@@ -67,7 +68,10 @@
                                                     class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
                                                 <input
                                                     type="checkbox" name="answer[]" class="myCheckResult"
-                                                    value="{{$answer->status}},{{$answer->title}}">{{$answer->title}}</label><br>
+                                                    value="{{$answer->status}}">{{$answer->title}}</label><br>
+                                            <input
+                                                type="text" name="question[]"
+                                                value="{{$question->id}}" style="display: none" >
                                         </div>
                                     @endif
                                 @endforeach
