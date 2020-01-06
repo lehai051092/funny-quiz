@@ -125,5 +125,7 @@ Route::prefix('admins')->group(function  () {
 });
 
 Route::get('{id}/point','PointController@getPointsInQuiz')->name('point.list');
+Route::get('/redirect/{social}', 'SocialAuthController@redirect');
+Route::get('/callback/{social}', 'SocialAuthController@callback');
 
 
