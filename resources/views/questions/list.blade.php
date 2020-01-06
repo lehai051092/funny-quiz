@@ -2,7 +2,7 @@
 @section('content')
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <style>
-        input[type=submit]{
+        input[type=submit] {
             margin-left: 0.5em;
             height: 2.5em;
             padding: 0.2em 1em 0.2em 2.25em;
@@ -18,6 +18,7 @@
             cursor: pointer;
             transition: all 0.3s ease 0s;
         }
+
         input[type="submit"]:hover {
             color: #fff;
             background-color: #EAA502;
@@ -27,12 +28,14 @@
             -ms-transition: all 0.3s ease;
             transition: all 0.3s ease;
         }
+
         input[type="submit"]:focus {
             background-position: 2em -4em;
             -webkit-transition: all 0.3s ease;
             -ms-transition: all 0.3s ease;
             transition: all 0.3s ease;
         }
+
         /* Webfonts */
 
         @font-face {
@@ -42,52 +45,52 @@
             src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://themes.googleusercontent.com/static/fonts/opensans/v8/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
         }
     </style>
-<div class=" p-5">
-    <form method="post" action="{{route('session.result')}}">
-        @csrf
-        <div class="p-5">
-            <div  class="d-flex justify-content-center">
-                <label><h1>Exam Time</h1></label>
-            </div>
-            <div id="countdown" class="d-flex justify-content-center"></div>
-            @foreach($questions as $key=>$question)
-                <div class="container-fluid" >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3><span class="label label-warning" id="qid">{{1+$key}}</span> {{$question->title}}
-                                </h3>
-                            </div>
-                            <div class="modal-body">
+    <div class=" p-5">
+        <form method="post" action="{{route('session.result',$quiz->id)}}">
+            @csrf
+            <div class="p-5">
+                <div class="d-flex justify-content-center">
+                    <label><h1>Exam Time</h1></label>
+                </div>
+                <div id="countdown" class="d-flex justify-content-center"></div>
+                @foreach($questions as $key=>$questionQuiz)
+                    <div class="container-fluid">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3><span class="label label-warning"
+                                              id="qid">{{1+$key}}</span> {{$questionQuiz->title}}
+                                    </h3>
+                                </div>
+                                <div class="modal-body">
+                                    <input name="question[]" value="{{$questionQuiz->id}}">
+                                    @foreach($answers as $answer)
+                                        @if($questionQuiz->id===$answer->question_id)
 
-                                @foreach($answers as $answer)
-                                    {{\Illuminate\Support\Facades\Session::put('answer', $answer->id)}}
-                                    @if($question->id===$answer->question_id)
-                                        <div class="quiz" id="quiz" data-toggle="buttons">
-                                            <label class="element-animation1 btn btn-lg btn-success btn-block"><span
-                                                    class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
-                                                <input
-                                                    type="checkbox" name="answer[]" class="myCheckResult"
-                                                    value="{{$answer->status}}">{{$answer->title}}</label><br>
-                                            <input
-                                                type="text" name="question[]"
-                                                value="{{$question->id}}" style="display: none" >
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </div>
+                                            <div class="quiz" id="quiz" data-toggle="buttons">
+                                                <label class="element-animation1 btn btn-lg btn-success btn-block"><span
+                                                        class="btn-label"><i
+                                                            class="glyphicon glyphicon-chevron-right"></i></span>
+                                                    <input
+                                                        type="checkbox" name="answer[]" class="myCheckResult"
+                                                        value="{{$answer->status}}">{{$answer->title}}
+                                                </label><br>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
                 <div style="text-align: center">
                     <form>
-                        <input id="send" value="Send" type="submit"  style="display: none"/>
+                        <input id="send" value="Send" type="submit" style="display: none"/>
                     </form>
                 </div>
-        </div>
-    </form>
+            </div>
+        </form>
 
-</div>
+    </div>
 @endsection

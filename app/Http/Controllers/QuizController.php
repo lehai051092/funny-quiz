@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Http\Requests\BacsicInfoRequest;
 use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\CategoryServiceInteface;
@@ -25,14 +26,14 @@ class QuizController extends Controller
     public function __construct(QuizServiceInterface $quizService,
                                 CategoryServiceInteface $categoryService,
                                 QuestionServiceInterface $questionService,
-                                AnswerServiceInterface $answerService,Point $point)
+                                AnswerServiceInterface $answerService, Point $point)
     {
         $this->middleware('auth');
         $this->quizService = $quizService;
         $this->categoryService = $categoryService;
         $this->questionService = $questionService;
         $this->answerService = $answerService;
-        $this->point=$point;
+        $this->point = $point;
     }
 
     public function QuizzesInCategory($id)
@@ -52,28 +53,31 @@ class QuizController extends Controller
     {
         $quiz = $this->quizService->findById($id);
         $questions = $quiz->questions;
-        dd($questions);
-
-
+        $listIdQuestion = [];
+        foreach ($questions as $value) {
+            array_push($listIdQuestion, ['id' => $value->id]);
+        }
+        $answers = $this->answerService->getAll();
         return view('questions.list', compact('quiz', 'questions', 'answers'));
     }
 
     public function showResult(Request $request)
     {
-        $point= new Point();
-        $listAnswers =[];
-        $listQuestion=[];
-        $answers = $request->answer;
+        $point = new Point();
+        $listAnswers = [];
+        $listQuestion = [];
         $questions = $request->question;
-        $answersAll=$this->answerService->getAll();
+        $isRightAnswers = Answer::where('status', '=', StatusInterface::ISRIGHT)
+    ->get();
+        $answers = $request->answer;
 
         for ($i = 0; $i < count($answers); $i++) {
             array_push($listAnswers, $answers[$i]);
             array_push($listQuestion, $questions[$i]);
         }
-        dd($questions);
 
-        return view('answers.result',compact('listAnswers','answersAll'));
+        return view('answers.result', compact('listAnswers', 'answers', 'listQuestion', 'isRightAnswers'));
+
     }
 
 
