@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <div class="col-12">
                             <div class="row">
-                                <label class="col-2"><h4><i class="fa">Title Question</i></h4></label>
+                                <label class="col-2"><h4><i class="fa">Title</i></h4></label>
                                 <div class="col-9">
                                     <input style="display: none" id="id" value="{{$question->id}}"
                                            data-id="{{$question->id}}">
@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <div class="col-12">
                             <div class="row">
-                                <label class="col-2"><h4><i class="fa">Desc Question</i></h4></label>
+                                <label class="col-2"><h4><i class="fa">Desc</i></h4></label>
                                 <div class="col-9">
                                         <textarea type="text" class="form-control"
                                                   name="desc" id="descEdit">{{$question->desc}}</textarea>
@@ -38,11 +38,11 @@
                     <div class="form-group">
                         <div class="col-12">
                             <div class="row">
-                                <label class="col-2"><h4><i class="fa">Content Question</i></h4></label>
+                                <label class="col-2"><h4><i class="fa">Content</i></h4></label>
                                 <div class="col-9">
-                                        <textarea type="text" class="form-control"
+                                        <input type="text" class="form-control"
                                                   name="contentQuestion"
-                                                  id="contentQuestionEdit">{{$question->content}}</textarea>
+                                                  id="contentQuestionEdit" value="{{$question->content}}">
                                 </div>
                             </div>
                         </div>

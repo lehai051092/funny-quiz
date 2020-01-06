@@ -57,7 +57,7 @@ Route::prefix('quizzes')->group(function () {
 
     Route::get('{id?}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
     Route::get('{id}/detail', 'QuizController@QuizDetail')->name('quizzes.detail');
-    Route::post('{id}/result','QuizController@showResult')->name('session.result');
+    Route::post('result','QuizController@showResult')->name('session.result');
 //    Route::get('{id}/create', 'QuizController@create')->name('quizzes.create');
     Route::post('create', 'QuizController@store')->name('quizzes.store');
     Route::get('{id}/delete', 'QuizController@delete')->name('quizzes.delete');
@@ -126,5 +126,14 @@ Route::prefix('admins')->group(function  () {
 });
 
 Route::get('{id}/point','PointController@getPointsInQuiz')->name('point.list');
+
+// facebook
+Route::get('/redirect/{social}', 'SocialAuthController@redirect');
+Route::get('/callback/{social}', 'SocialAuthController@callback');
+
+// google
+Route::get('/redirect/{social}', 'AuthController@googleLoginUrl');
+Route::get('/callback/{social}', 'AuthController@googleLoginCallback');
+
 
 

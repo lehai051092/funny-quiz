@@ -107,7 +107,7 @@
                                    class="btn btn-danger text-white delete-category" style="color: red"
                                    onclick="return confirm('Are you want delete ?')">Del</a>
                                 <a href="{{route('questions.edit',$question->id)}}"
-                                   class="btn btn-primary text-white delete-category" style="color: red"
+                                   class="btn btn-secondary text-white" style="color: red"
                                 >Edit</a>
                             </td>
                         </tr>
