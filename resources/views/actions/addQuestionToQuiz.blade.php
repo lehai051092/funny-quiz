@@ -62,21 +62,21 @@
                                         <h3 class="text-center">List question</h3>
                                     </div>
                                     <div class="card-body parent">
-                                        <form class="form-inline my-2 my-lg-0">
+                                        <div class="form-inline my-2 my-lg-0">
                                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
-                                        </form>
+                                        </div>
 
                                         <form method="post"
                                               action="{{route('questions.addQuestion',$quiz->id)}}">
                                             @csrf
-                                            <div class="p-3 ">
+                                            <div class="p-3 " id="list-search-question">
                                                 @foreach($listQuestion as $question)
                                                     @if($question->quiz_id==null)
                                                         {{--                                        <input type="text" class="form-check-input" id="exampleCheck1"--}}
                                                         {{--                                               style="display: block" name="title" value="{{$question->title}}">--}}
-                                                        <div class="form-group form-check pl-5">
+                                                        <div class="form-group form-check pl-5" >
                                                             <input name="id" value="{{$quiz->id}}"
-                                                                   style="display: none">
+                                                                   style="display: none" id="id-quiz">
                                                             <input type="checkbox" class="form-check-input"
                                                                    id="exampleCheck1"
                                                                    name="question[]"

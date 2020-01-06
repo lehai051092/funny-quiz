@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#filter').click(function () {
         let title = $('#title_id').val();
         let type = $('#type_id').val();
@@ -14,7 +15,6 @@ $(document).ready(function () {
                 category_id: category,
             },
             success: function (result) {
-                console.log(result);
                 let printHtml = "";
                 for (let i = 0; i < result.length; i++) {
 
@@ -42,9 +42,11 @@ $(document).ready(function () {
                     }
                     printHtml += `
                    <tr>
-                           <td><h5>${result[i].title}</h5></td>
-                         <td><h5>${result[i].desc}</h5></td>
-                         <td><h5>${result[i].content}</h5></td>
+                            <td><a class="showDetailQuestion" data-toggle="modal" data-target="#exampleModal">
+                                    <h5 style="color:black;">${result[i].title}</h5>
+                                </a></td>
+                         <td style="display: none"><h5 >${result[i].desc}</h5></td>
+                         <td style="display: none"><h5 >${result[i].content}</h5></td>
                          <td>
                                     <h5>${category}</h5>
                         </td>
@@ -71,5 +73,14 @@ $(document).ready(function () {
             },
 
         })
+    })
+    $('.showDetailQuestion').click(function () {
+        let question = $(this).parent("td").text();
+        let desc = $(this).parent("td").next('td').text();
+        let content = $(this).parent("td").next('td').next('td').text();
+
+        $('#questionDetail').val(question);
+        $('#descDetail').val(desc);
+        $('#contentDetail').val(content);
     })
 });
