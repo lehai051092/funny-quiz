@@ -15,4 +15,6 @@ interface QuestionRepositoryInterface
     function delete($obj);
 
     function update($obj);
+
+    function saveQ($question);
 }

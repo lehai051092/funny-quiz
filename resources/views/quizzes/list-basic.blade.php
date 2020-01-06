@@ -80,7 +80,7 @@
                                    class="btn btn-danger text-white delete-category" style="color: red"
                                    onclick="return confirm('Are you want delete ?')">Del</a>
                                 <a href="{{route('quizzes.edit',$quiz->id)}}"
-                                   class="btn btn-primary text-white delete-category" style="color: red"
+                                   class="btn btn-secondary text-white delete-category" style="color: red"
                                 >Edit</a>
                             </td>
                         </tr>

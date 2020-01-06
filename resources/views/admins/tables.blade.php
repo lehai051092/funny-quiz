@@ -12,7 +12,7 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">
                 <a href="{{route('categories.create')}}" class="btn text-white"
-                   style="background: linear-gradient(to right,#61ba6d, #83c331)">Create</a>
+                   style="background: linear-gradient(to right,#61ba6d, #83c331)"><i class="fas fa-fw fa-plus"></i>Create Category</a>
             </h6>
         </div>
         <div class="card-body">

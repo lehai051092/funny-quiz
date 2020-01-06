@@ -39,4 +39,9 @@ class AnswerRepositoryEloquent implements AnswerRepositoryInterface
     {
       $obj->save();
     }
+
+    function saveA($answer)
+    {
+        $answer->save();
+    }
 }

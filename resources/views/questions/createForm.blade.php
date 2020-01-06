@@ -10,92 +10,114 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <form method="post" action="{{route('questions.store')}}">
-                        @csrf
-                        <div class="form-group">
-                            <div class="col-12">
-                                <div class="row">
-                                    <label class="col-2"><h4><i class="fa">Title Question</i></h4></label>
-                                    <div class="col-9">
-                                        <input type="text" class="form-control" name="title">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-12">
-                                <div class="row">
-                                    <label class="col-2"><h4><i class="fa">Desc Question</i></h4></label>
-                                    <div class="col-9">
-                                        <textarea type="text" class="form-control" name="desc"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-12">
-                                <div class="row">
-                                    <label class="col-2"><h4><i class="fa">Content Question</i></h4></label>
-                                    <div class="col-9">
-                                        <textarea type="text" class="form-control" name="contentQuestion"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-12">
-                                <div class="row">
-                                    <label class="col-2"><h4><i class="fa">Category</i></h4></label>
-                                    <div class="col-9">
-                                        <select class="form-control" name="category_id">
-                                            <option value="">Select Category</option>
-                                            <option value="">1</option>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-12">
-                                <div class="row">
-                                    <label class="col-2"><h4><i class="fa">Type</i></h4></label>
-                                    <div class="col-9">
-                                        <select class="form-control" name="">
-                                            <option value="">Select Type</option>
-                                            <option value="">1</option>
-                                            <option value="">2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-12">
-                                <div class="row">
-                                    <a  id="insertAnswer" class="btn btn-link">Add Answer</a>
-                                    <div class="col-1">
-                                        <a href=""><i class="fa fa-check" aria-hidden="true"></i></a>&nbsp;
-                                        <a href=""><i class="fa fa-trash" style="color: red" aria-hidden="true"></i></a>
-                                    </div>
-                                    <div class="form-group">
-                                            <div class="table-responsive">
-                                                <table class="" id="dynamic_field">
-                                                    <tr>
-                                                        <td><input type="text" name="name[]"  class="form-control name_list" /></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                    </div>
+                    <div class="form-group">
+                        <div class="col-12">
+                            <div class="row">
+                                <label class="col-2"><h4><i class="fa">Title</i></h4></label>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" name="title" id="title"
+                                           @if($errors->has('title'))
+                                           style="border: solid red"
+                                        @endif>
+                                    @if($errors->has('title'))
+                                        <p class="text-danger">{{$errors->first('title')}}</p>
+                                    @endif
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12">
+                            <div class="row">
+                                <label class="col-2"><h4><i class="fa">Desc</i></h4></label>
+                                <div class="col-9">
+                                    <textarea type="text" class="form-control" name="desc" id="desc"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="pl-3">
-                            <button type="submit" class="btn btn-success text-center ">Create</button>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12">
+                            <div class="row">
+                                <label class="col-2"><h4><i class="fa">Content</i></h4></label>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" name="contentQuestion"
+                                              id="contentQuestion">
+                                </div>
+                            </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12">
+                            <div class="row">
+                                <label class="col-2"><h4><i class="fa">Category</i></h4></label>
+                                <div class="col-9">
+                                    <select class="form-control" name="category" id="category">
+                                        <option value="">Select Category</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12">
+                            <div class="row">
+                                <label class="col-2"><h4><i class="fa">Type</i></h4></label>
+                                <div class="col-9">
+                                    <select class="form-control type" name="types" id="type">
+                                        <option value="">Select Type</option>
+                                        @foreach($types as $type)
+                                            <option value="{{$type->id}}">{{$type->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="display_form_answer" style="display: none">
+                        <form id="add_name" method="post">
+                            @csrf
+                            <hr/>
+                            <hr/>
+                            <hr/>
+                            <div class="form-group">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-2"><h4><i class="fa">Answer</i></h4></div>
+                                        <div class="col-9">
+                                            <div class="col-12">
+                                                <div id="trueFalse" style="display: none">
+
+                                                </div>
+                                                <div class="" id="dynamic_field">
+                                                    <input type="text" value="" id="questionsId" class="questionsId" style="display: none"/>
+                                                </div>
+                                            </div>
+                                            <a id="insertAnswer" style="display: none" class="btn btn-link"><i class="fa fa-plus"
+                                                                                         aria-hidden="true"></i> Add
+                                                Answer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button style="display: none" id="display_answer" class="btn btn-primary text-center create"
+                                    type="button">Create Answers Of Question
+                            </button>
+                        </form>
+                    </div>
+                    <div class="pb-3 pl-5">
+                        <button type="button" class="btn btn-primary text-center add" id="submit">Create Question
+                        </button>
+                        <a href="{{route('admins.questionList')}}" class="btn btn-warning done"
+                           style="display: none">Done</a>
+                    </div>
+
                 </table>
             </div>
         </div>

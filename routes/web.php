@@ -56,6 +56,7 @@ Route::prefix('quizzes')->group(function () {
 
     Route::get('{id?}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
     Route::get('{id}/detail', 'QuizController@QuizDetail')->name('quizzes.detail');
+    Route::post('{id}/result','QuizController@showResult')->name('session.result');
 //    Route::get('{id}/create', 'QuizController@create')->name('quizzes.create');
     Route::post('create', 'QuizController@store')->name('quizzes.store');
     Route::get('{id}/delete', 'QuizController@delete')->name('quizzes.delete');
@@ -67,19 +68,32 @@ Route::prefix('questions')->group(function () {
     Route::get('basic', 'QuestionController@getAll')->name('questions.basic');
 
     Route::get('create', 'QuestionController@createQuestion')->name('questions.createQuestion');
+
+
+//    add question and answer ajax
     Route::get('create', 'QuestionController@create')->name('questions.create');
-    Route::post('create', 'QuestionController@store')->name('questions.store');
+    Route::post('create', 'QuestionController@addQuestionAndAnswer')->name('questions.createQuestion');
+//    ...................
+
     Route::get('{id}/list', 'QuizController@getAllQuestionsInCategory')->name('questions.basic.list');
     Route::post('{id}/add', 'QuestionController@updateQuiz')->name('questions.addQuestion');
     Route::post('{id}/remove', 'QuestionController@removeQuestion')->name('questions.removeQuestion');
     Route::get('{id}', 'QuestionController@questionsInQuiz')->name('questions.list');
 
     Route::get('{id}/delete', 'QuestionController@delete')->name('questions.delete');
+//    Edit question and answer ajax
     Route::get('{id}/edit', 'QuestionController@edit')->name('questions.edit');
     Route::post('{id}/edit', 'QuestionController@update')->name('questions.update');
+    Route::post('{id}/editAnswers', 'QuestionController@updateAnswers')->name('answers.update');
+    Route::post('{id}/addAnswers', 'QuestionController@addAnswer')->name('answers.addAnswers');
+    Route::get('{id}/deleteAnswer', 'QuestionController@deleteAnswer')->name('questions.deleteAnswer');
+//    ...........................
 });
 
 Route::prefix('answers')->group(function () {
+//    add question and answer ajax
+    Route::post('create', 'QuestionController@addAnswer')->name('answers.addAnswer');
+//    ............................
     Route::get('{id}/create', 'AnswerController@create')->name('answers.create');
     Route::post('{id}/create', 'AnswerController@store')->name('answers.store');
     Route::get('{id}/delete', 'AnswerController@delete')->name('answers.delete');
@@ -98,8 +112,9 @@ Route::prefix('users')->group(function () {
     Route::get('{id}/delete', 'UserController@delete')->name('users.delete');
 });
 
-Route::prefix('admins')->group(function () {
+Route::prefix('admins')->group(function  () {
     Route::get('/', 'AdminController@getIndex')->name('admins.index');
+    Route::get('/filter-question', 'QuestionController@filter')->name('admins.filter');
     Route::get('/forgot-password', 'AdminController@getForgotPassword')->name('admins.getForgotPassword');
     Route::get('/login', 'AdminController@getLogin')->name('admins.getLogin');
     Route::get('/register', 'AdminController@getRegister')->name('admins.getRegister');
@@ -108,3 +123,9 @@ Route::prefix('admins')->group(function () {
     Route::get('list-quiz', 'QuizController@getAll')->name('admins.quizList');
     Route::get('list-question', 'QuestionController@listAllQuestion')->name('admins.questionList');
 });
+
+Route::get('{id}/point','PointController@getPointsInQuiz')->name('point.list');
+Route::get('/redirect/{social}', 'SocialAuthController@redirect');
+Route::get('/callback/{social}', 'SocialAuthController@callback');
+
+

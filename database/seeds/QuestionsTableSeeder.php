@@ -14,29 +14,29 @@ class QuestionsTableSeeder extends Seeder
         $question=new \App\Question();
         $question->title='Mark your answers on your answers sheet.';
         $question->quiz_id=1;
-        $question->type=1;
-        $question->type = 1;
+        $question->type_id=2;
+        $question->category_id= 1;
         $question->save();
 
         $question=new \App\Question();
         $question->title='Who are you?';
         $question->quiz_id=1;
-        $question->type=1;
-        $question->type = 1;
+        $question->type_id=1;
+        $question->category_id = 1;
         $question->save();
 
         $question=new \App\Question();
         $question->title='What is this?';
         $question->quiz_id=2;
-        $question->type=1;
-        $question->type = 1;
+        $question->type_id=1;
+        $question->category_id = 2;
         $question->save();
 
         $question=new \App\Question();
-        $question->title='Whatare you doing?';
+        $question->title='What are you doing?';
         $question->quiz_id=3;
-        $question->type=2;
-        $question->type = 1;
+        $question->type_id=2;
+        $question->category_id = 2;
         $question->save();
     }
 }

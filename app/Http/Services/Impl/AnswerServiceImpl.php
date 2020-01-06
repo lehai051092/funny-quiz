@@ -49,4 +49,9 @@ class AnswerServiceImpl implements AnswerServiceInterface
         $answer->status=$request->status;
         return $this->answerRepository->update($answer);
     }
+
+    function save($answer)
+    {
+        $this->answerRepository->saveA($answer);
+    }
 }
