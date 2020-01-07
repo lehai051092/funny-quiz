@@ -4,6 +4,12 @@ $(document).ready(function () {
         let title = $('#title_id').val();
         let type = $('#type_id').val();
         let category = $('#category_id').val();
+        let titleTextResult= $('#title_id option:selected').text();
+        let titleText = (titleTextResult!=='Title')?titleTextResult:" ";
+        let typeTextResult = $('#type_id option:selected').text();
+        let typeText = (typeTextResult!=='Type')?typeTextResult:" ";
+        let categoryTextResult = $('#category_id option:selected').text();
+        let categoryText = (categoryTextResult!=='Category')?categoryTextResult:" ";
         // console.log(title,type,category)
         $.ajax({
             url: 'http://127.0.0.1:8000/admins/filter-question',
@@ -65,8 +71,9 @@ $(document).ready(function () {
                     `
                 }
 
-                $("#print_filter").html(printHtml);
-                $("#count_filter").html(`Filter <b>${result.length}</b> results with your selection.`);
+                    $("#print_filter").html(printHtml);
+                    $("#count_filter").html(`Filter <b>${result.length}</b> results with your selection <b style="color: red">Title</b>: ${titleText} , <b style="color: red">Type</b>: ${typeText}, <b style="color: red">Category</b>: ${categoryText}.`);
+
             },
             errors: function (errors) {
 
