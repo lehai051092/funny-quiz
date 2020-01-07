@@ -34,30 +34,27 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
+                                        <div class="modal-body" style="padding-top: 35px">
                                             @foreach($isRightAnswers as $keyAns=>$isRightAnswer)
                                                 @foreach($listQuestion as $keyQues=>$question)
                                                     @if($question==$isRightAnswer->question_id&&$key===$keyQues)
-                                                        <div>
-                                                            Đáp án là: {{$isRightAnswer->title}}
-                                                        </div>
-                                                        <div>
+                                                        <div class="resultChoose">
                                                             @if($answer[0]==\App\StatusInterface::ISRIGHT)
 
-                                                                Đáp án của bạn chính xác <i class="fa fa-check"></i>
+                                                                Đáp án của bạn chính xác
+                                                                <div><i class="fa fa-check iconRight"></i></div>
                                                             @elseif($answer[0]==\App\StatusInterface::ISWRONG)
-                                                                Đáp án của bạn không chính xác <i
-                                                                    class="fa fa-times"></i>
+                                                                Đáp án của bạn không chính xác
+                                                                <div> <i class="fa fa-times iconWrong" ></i></div>
                                                             @endif
                                                         </div>
+                                                        <div class="resultRight">
+                                                            Đáp án là: {{$isRightAnswer->title}}
+                                                        </div>
+
                                                     @endif
                                                 @endforeach
                                             @endforeach
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                                            </button>
-
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +85,7 @@
                                         @foreach($answer as $item)
                                             @if($item->question_id==$question->id)
                                                 <div>
-                                                    <ul>
+                                                    <ul class="p-2">
                                                         @foreach($listAnswersUserChoose as $userChoose)
                                                             @if($userChoose == $item->id)
                                                                <li  style="color: red"><i class="fa fa-angle-double-right"></i>
