@@ -72,7 +72,7 @@ $(document).ready(function () {
                 }
 
                     $("#print_filter").html(printHtml);
-                    $("#count_filter").html(`Filter <b>${result.length}</b> results with your selection <b style="color: red">Title</b>: ${titleText} , <b style="color: red">Type</b>: ${typeText}, <b style="color: red">Category</b>: ${categoryText}.`);
+                    $("#count_filter").html(`Filter <b>${result.length}</b> results with your selection <b style="color: ">Title</b>: <b style="color: red">${titleText}</b> , <b style="color: ">Type</b>: <b style="color: red">${typeText}</b>, <b style="color: ">Category</b>: <b style="color: red">${categoryText}</b>.`);
 
             },
             errors: function (errors) {
