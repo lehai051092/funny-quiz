@@ -85,6 +85,14 @@ class QuizController extends Controller
                 array_push($listAnswersRight, $answersStatus[$i]);
             }
         }
+
+        $listAnswersUserChoose = [];
+        foreach ($answersStatus as $key => $answerS) {
+            $newAnswer= explode(',',$answerS);
+            array_push($listAnswersUserChoose,$newAnswer[1]);
+        }
+
+
         $quiz = Quiz::find($id);
         $questionsQuiz = $quiz->questions;
 
@@ -106,7 +114,8 @@ class QuizController extends Controller
             'listAnswersRight',
             'questionsQuiz',
             'quiz',
-            'notifications'));
+            'notifications',
+            'listAnswersUserChoose'));
 
     }
 

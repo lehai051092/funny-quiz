@@ -73,7 +73,7 @@
                                                             class="glyphicon glyphicon-chevron-right"></i></span>
                                                     <input
                                                         type="checkbox" name="answer[]" class="myCheckResult"
-                                                        value="{{$answer->status}}">{{$answer->title}}
+                                                        value="{{$answer->status}}, {{$answer->id}}">{{$answer->title}}
                                                 </label><br>
                                             </div>
                                         @endif

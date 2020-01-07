@@ -75,20 +75,25 @@
                 </div>
 
                 <div class="card-body">
+                    <h3>Answer you choose</h3>
                     @if(count($notifications))
                         @foreach($notifications as $keyNotify=> $notice)
 
                             @if((count($notifications)-1)==$keyNotify)
                                 @foreach(json_decode($notice->data)->listQuestion as $key=> $question)
-                                    <div>
-                                        {{++$key}} . {{$question->title}}
+                                    <div class="question p-3">
+                                        Câu {{++$key}} . {{$question->title}}
                                     </div>
                                     @foreach(json_decode($notice->data)->listAnswer as $answer)
                                         @foreach($answer as $item)
                                             @if($item->question_id==$question->id)
                                                 <div>
                                                     <ul>
-                                                        <li style="list-style-type: circle">
+                                                        @foreach($listAnswersUserChoose as $userChoose)
+                                                            @if($userChoose == $item->id)
+                                                               <li  style="color: red"><i class="fa fa-angle-double-right"></i>
+                                                                @endif
+                                                            @endforeach
                                                             {{$item->title}}
                                                         </li>
                                                     </ul>
