@@ -296,7 +296,6 @@
 <script src="{{asset("js/answerInput.js")}}"></script>
 <script src="{{asset("js/editAnswer.js")}}"></script>
 <script src="{{asset("js/category.js")}}"></script>
-<script src="{{asset("js/questionDetail.js")}}"></script>
 <script src="{{asset("js/filter.js")}}"></script>
 <script src="https://cdn.tiny.cloud/1/q2t2ct0kudotpa7nznvhahz3ms2icyb0id7hnbi7ypc02a74/tinymce/5/tinymce.min.js"></script>
 <script>tinymce.init({

@@ -31,7 +31,7 @@ $(document).ready(function () {
                 '<input type="radio" id="myCheckRadio" name="status" class="status" value="2"/>' +
                 ' <input type="text"\n' +
                 '    value=""\n' +
-                'class="questionId" style="display: none"/>' +
+                'class="questionId" style="display: none"/>&nbsp;&nbsp;' +
                 ' <i name="remove" id="\' + i + \'" class="fa fa-trash btn_remove"\n' +
                 '    style="color: red" aria-hidden="true"></i>' +
                 ' </div>' +
@@ -40,21 +40,21 @@ $(document).ready(function () {
                 '<input type="radio" id="myCheckRadio" name="status" class="status" value="2"/>' +
                 '<input type="text"\n' +
                 '    value=""\n' +
-                'class="questionId" style="display: none"/>' +
+                'class="questionId" style="display: none"/>&nbsp;&nbsp;' +
                 '<i name="remove" id="\' + i + \'" class="fa fa-trash btn_remove"\n' +
                 '    style="color: red" aria-hidden="true"></i>' +
                 ' </div>'
             );
         } else if (arr[0] == 1) {
-            $('#trueFalse').hide()
-            $('#insertAnswer').show()
+            $('#trueFalse').hide();
+            $('#insertAnswer').show();
             $("#insertAnswer").click(function () {
 
                 i++;
                 $('#dynamic_field').append('<br>' +
                     '<div id="row' + i + '" class="row">' +
                     '<input type="text" class="form-control name_list col-9 answer"/>&nbsp;&nbsp;' +
-                    '<input type="checkbox" value="2" class="status" id="myCheck"/> ' +
+                    '<input type="checkbox" value="2" class="status p-5 " id="myCheck"/>&nbsp;&nbsp; ' +
                     '<i name="remove" id="' + i + '" class="fa fa-trash btn_remove"  style="color: red" aria-hidden="true">' +
                     '</i>' +
                     '</div>');
@@ -74,7 +74,6 @@ $(document).ready(function () {
         let contentQ = $('#contentQuestion').val();
         let category = $('#category').val();
         let type = $('#type').val();
-console.log(desc);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

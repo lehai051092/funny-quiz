@@ -33,7 +33,7 @@
                             <div class="row">
                                 <label class="col-2"><h4><i class="fa">Desc</i></h4></label>
                                 <div class="col-9">
-                                    <textarea type="text" class="form-control desc" name="desc" id="desc"></textarea>
+                                    <textarea type="text" class="form-control" name="desc" id="desc"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -88,6 +88,12 @@
                             <hr/>
                             <div class="form-group">
                                 <div class="col-12">
+                                    <div>
+                                        <p>Please check on checkbox <i class="fa fa-check" aria-hidden="true" style="color: greenyellow"></i> to chose the right question.<br>
+                                            And please check on <i class="fa fa-trash" aria-hidden="true" style="color: red"></i> if you want to delete that answer.
+                                        </p>
+
+                                    </div>
                                     <div class="row">
                                         <div class="col-2"><h4><i class="fa">Answer</i></h4></div>
                                         <div class="col-9">
