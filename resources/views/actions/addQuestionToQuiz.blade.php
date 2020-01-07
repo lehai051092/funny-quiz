@@ -21,17 +21,15 @@
                                                 <div class="col-sm-10">
                                                     <h3><input type="text" readonly
                                                                class="form-control-plaintext"
-                                                               id="staticEmail"
                                                                value="{{$quiz->name}}">
                                                     </h3>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label"><h5>Desc</h5></label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" readonly
-                                                           class="form-control-plaintext" id="staticEmail"
-                                                           value="{{$quiz->desc}}">
+                                                <div class="col-2"><h5>Desc</h5></div>
+                                                <div class="col-10">
+                                                    <p type="text"
+                                                        id="staticEmail" style="margin-top: -16px;">{!! $quiz->desc !!}</p>
                                                 </div>
                                             </div>
                                             <h5>Các câu hỏi đã có trong Quiz :</h5>

@@ -67,12 +67,14 @@ $(document).ready(function () {
         $('#display_answer').show();
         $('#display_form_answer').show();
         $('#submit').hide();
+
+
         let title = $('#title').val();
         let desc = $('#desc').val();
         let contentQ = $('#contentQuestion').val();
         let category = $('#category').val();
         let type = $('#type').val();
-
+console.log(desc);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -107,7 +107,7 @@
     {{--            </div>--}}
     {{--        </li>--}}
 
-    <!-- Nav Item - Utilities Collapse Menu -->
+        <!-- Nav Item - Utilities Collapse Menu -->
         <div class="sidebar-heading">
             Quiz
         </div>
@@ -186,11 +186,11 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-900 ">{{ Auth::user()->name}}</span>
                             <img class="img-profile rounded-circle"
-                                 @if(Auth::user()->image === null)
-                                 src="{{asset('storage/img/bg-img/default.jpg')}}"
-                                 @else
-                                 src="{{asset('storage/'.Auth::user()->image)}}"
-                                @endif
+                        @if(Auth::user()->image === null)
+                                src="{{asset('storage/img/bg-img/default.jpg')}}"
+                        @else
+                                src="{{asset('storage/'.Auth::user()->image)}}"
+                            @endif
                             >
                         </a>
                         <!-- Dropdown - User Information -->
@@ -299,7 +299,16 @@
 <script src="{{asset("js/questionDetail.js")}}"></script>
 <script src="{{asset("js/filter.js")}}"></script>
 <script src="https://cdn.tiny.cloud/1/q2t2ct0kudotpa7nznvhahz3ms2icyb0id7hnbi7ypc02a74/tinymce/5/tinymce.min.js"></script>
-<script>tinymce.init({selector:'textarea'});</script>
+<script>tinymce.init({
+        selector: "textarea",
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+</script>
+
 {!! toastr()->render() !!}
 
 </body>

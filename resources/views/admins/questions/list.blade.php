@@ -9,10 +9,6 @@
             </h2>
 
             <div class="pt-3">
-
-                {{--                <form action="{{route('admins.filter')}}" method="get">--}}
-                {{--                    @csrf--}}
-                <div class="modal-body">
                     <div class="col-12">
                         <div class="row">
                             <div class="col-4">
@@ -58,11 +54,11 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
             <div class=" pt-3">
                 <h5><i class="fas fa-laugh-wink" style="color: green"></i> <i class="fa" id="count_filter">Filter
-                        <b>{{count($questions)}}</b> results with your selection.</i></h5>
+                        <b>{{count($questions)}}</b> results with your selection.</i>
+
+                </h5>
             </div>
         </div>
         <div class="card-body">
@@ -84,7 +80,7 @@
                             <td><a class="showDetailQuestion" data-toggle="modal" data-target="#exampleModal">
                                     <h5 style="color:black;">{{$question->title}}</h5>
                                 </a></td>
-                            <td style="display: none"><h5>{{$question->desc}}</h5></td>
+                            <td style="display: none"><h5>{!! $question->desc !!}</h5></td>
                             <td style="display: none"><h5>{{$question->content}}</h5></td>
                             <td>
                                 @if($question->category_id === $question->category['id'])
