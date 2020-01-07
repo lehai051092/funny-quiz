@@ -8,7 +8,11 @@ use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
+use App\Notification;
+use App\Notifications\SaveResultExample;
 use App\Point;
+use App\Question;
+use App\Quiz;
 use App\StatusInterface;
 use Illuminate\Support\Facades\Session;
 
@@ -61,22 +65,48 @@ class QuizController extends Controller
         return view('questions.list', compact('quiz', 'questions', 'answers'));
     }
 
-    public function showResult(Request $request)
+    public function showResult(Request $request, $id)
     {
         $point = new Point();
         $listAnswers = [];
-        $listQuestion = [];
-        $questions = $request->question;
-        $isRightAnswers = Answer::where('status', '=', StatusInterface::ISRIGHT)
-    ->get();
-        $answers = $request->answer;
+        $listAnswersRight = [];
 
-        for ($i = 0; $i < count($answers); $i++) {
-            array_push($listAnswers, $answers[$i]);
-            array_push($listQuestion, $questions[$i]);
+        $listQuestionId = $request->question;
+        $isRightAnswers = Answer::where('status', '=', StatusInterface::ISRIGHT)
+            ->get();
+        $answersStatus = $request->answer;
+
+        $listQuestion = [];
+
+        for ($i = 0; $i < count($answersStatus); $i++) {
+            array_push($listAnswers, $answersStatus[$i]);
+            array_push($listQuestion, $listQuestionId[$i]);
+            if ($answersStatus[$i] == StatusInterface::ISRIGHT) {
+                array_push($listAnswersRight, $answersStatus[$i]);
+            }
+        }
+        $quiz = Quiz::find($id);
+        $questionsQuiz = $quiz->questions;
+
+        $listAnswer = [];
+        foreach ($questionsQuiz as $question) {
+            array_push($listAnswer, $question->answers);
         }
 
-        return view('answers.result', compact('listAnswers', 'answers', 'listQuestion', 'isRightAnswers'));
+        \auth()->user()->notify(new SaveResultExample($questionsQuiz, $listAnswer));
+        $notifications = Notification::where('type', '=', 'App\Notifications\SaveResultExample')->get();
+        $point->point = count($listAnswersRight);
+        $point->quiz_id = $id;
+        $point->save();
+
+        return view('answers.result', compact('listAnswers',
+            'answersStatus',
+            'listQuestion',
+            'isRightAnswers',
+            'listAnswersRight',
+            'questionsQuiz',
+            'quiz',
+            'notifications'));
 
     }
 

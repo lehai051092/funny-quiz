@@ -63,7 +63,7 @@
                                     </h3>
                                 </div>
                                 <div class="modal-body">
-                                    <input name="question[]" value="{{$questionQuiz->id}}">
+                                    <input name="question[]" value="{{$questionQuiz->id}}" style="display: none">
                                     @foreach($answers as $answer)
                                         @if($questionQuiz->id===$answer->question_id)
 
