@@ -48,7 +48,7 @@
     <div class="container">
         <div class="col-12">
             <div class="row">
-                <div class="col-9">
+                <div class="col-10">
                     <form method="post" action="{{route('session.result',$quiz->id)}}">
                         @csrf
                         <div id="timeUp">
@@ -63,7 +63,6 @@
                                         <div class="card-header" style="font-size: 25px; ">
                                             {{$questionQuiz->title}}
                                         </div>
-                                        {{--                                        <ul class="list-group list-group-flush mt-2">--}}
                                         <div class="pl-2">
                                             <input name="question[]" value="{{$questionQuiz->id}}" style="display: none">
                                             @foreach($answers as $answer)
@@ -80,20 +79,19 @@
 
                                                 @endif
                                             @endforeach
-                                            {{--                                        </ul>--}}
                                         </div>
                                     </div>
                                 @endforeach
 
                             </div>
                         </div>
-                        <div style="text-align: center">
+                        <div style="text-align: center; padding-bottom: 20px">
                             <form>
                                 <input id="send" value="Send" type="submit" style="display: none"/>
                             </form>
                         </div>
-                        <div id="reload" class="justify-content-center" style="display:none; text-align: center">
-                            <h1>Time Up</h1>
+                        <div id="reload" class="justify-content-center" style="display:none; text-align: center; padding-top: 50px;padding-bottom: 25px">
+                            <h1>Time Out</h1>
                             <a href="{{route('quizzes.detail',$quiz->id)}}" class="btn btn-warning">Reload</a>
                         </div>
                     </form>
@@ -101,9 +99,9 @@
 
                 </div>
 
-                <div class="col-3 p-5">
-                    <div class="d-flex justify-content-center" style="position: fixed">Thời gian làm bài là 60s</div>
-                    <div class="item html mt-5" style="position: fixed">
+                <div class="col-2 p-5" id="time">
+                    <div  class="d-flex justify-content-center" style="position: fixed; font-size: 20px; padding-top: 200px; color: red">Thời gian làm bài 60 giây</div>
+                    <div class="item html mt-5" style="position: fixed" id="1">
                         <h2 id="abc">0</h2>
                         <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
                             <g>

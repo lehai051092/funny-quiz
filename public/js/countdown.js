@@ -25,6 +25,9 @@ var interval = setInterval(function() {
         $('#reload').show();
         $('#send').hide();
         $('#timeUp').hide();
+        $('#circle').hide();
+        $('#abc').hide();
+        $('#time').hide();
 
         return;
     }
