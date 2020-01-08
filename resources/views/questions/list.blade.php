@@ -63,7 +63,7 @@
                                     </h3>
                                 </div>
                                 <div class="modal-body">
-                                    <input name="question[]" value="{{$questionQuiz->id}}">
+                                    <input name="question[]" value="{{$questionQuiz->id}}" style="display: none">
                                     @foreach($answers as $answer)
                                         @if($questionQuiz->id===$answer->question_id)
 
@@ -73,7 +73,7 @@
                                                             class="glyphicon glyphicon-chevron-right"></i></span>
                                                     <input
                                                         type="checkbox" name="answer[]" class="myCheckResult"
-                                                        value="{{$answer->status}}">{{$answer->title}}
+                                                        value="{{$answer->status}}, {{$answer->id}}">{{$answer->title}}
                                                 </label><br>
                                             </div>
                                         @endif
