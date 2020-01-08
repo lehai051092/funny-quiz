@@ -45,57 +45,77 @@
             src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://themes.googleusercontent.com/static/fonts/opensans/v8/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
         }
     </style>
-    <div class=" p-5">
-        <form method="post" action="{{route('session.result',$quiz->id)}}">
-            @csrf
-            <div class="p-5">
-                <div >
-{{--                    <div class="d-flex justify-content-center">--}}
-{{--                        <label><h1>Exam Time</h1></label>--}}
-{{--                    </div>--}}
-                    <div id="countdown" class="d-flex justify-content-center">
+    <div class="container">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-9">
+                    <form method="post" action="{{route('session.result',$quiz->id)}}">
+                        @csrf
+                        <div id="timeUp">
 
-                    </div>
-                </div>
-
-                @foreach($questions as $key=>$questionQuiz)
-                    <div class="container-fluid">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3><span class="label label-warning"
-                                              id="qid">{{1+$key}}</span> {{$questionQuiz->title}}
-                                    </h3>
+                            <div class="card" style="width: 100%;background-color: white; border: none">
+                                <div class="card-header questionQuiz" style="background: linear-gradient(to right, #61ba6d, #83c331);"  >
+                                    <h2 style="color: white">Question {{$quiz->name}}</h2>
                                 </div>
-                                <div class="modal-body">
-                                    <input name="question[]" value="{{$questionQuiz->id}}" style="display: none">
-                                    @foreach($answers as $answer)
-                                        @if($questionQuiz->id===$answer->question_id)
+                                @foreach($questions as $key=>$questionQuiz)
 
-                                            <div class="quiz" id="quiz" data-toggle="buttons">
-                                                <label class="element-animation1 btn btn-lg btn-success btn-block"><span
-                                                        class="btn-label"><i
-                                                            class="glyphicon glyphicon-chevron-right"></i></span>
-                                                    <input
-                                                        type="checkbox" name="answer[]" class="myCheckResult"
-                                                        value="{{$answer->status}}, {{$answer->id}}">{{$answer->title}}
-                                                </label><br>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
+                                    <div class="card mt-2" style="width: 100%;background-color: white; ">
+                                        <div class="card-header" style="font-size: 25px; ">
+                                            {{$questionQuiz->title}}
+                                        </div>
+                                        {{--                                        <ul class="list-group list-group-flush mt-2">--}}
+                                        <div class="pl-2">
+                                            <input name="question[]" value="{{$questionQuiz->id}}" style="display: none">
+                                            @foreach($answers as $answer)
+                                                @if($questionQuiz->id===$answer->question_id)
+                                                    <div class="mt-4 pl-5" style="font-size: 20px">
+                                                        <input
+                                                            @if($questionQuiz->type_id==\App\TypeInterface::MANYANSWERS)
+                                                            type="checkbox"
+                                                            @endif
+                                                            type="radio"
+                                                            name="answer[]" class="myCheckResult"
+                                                            value="{{$answer->status}}, {{$answer->id}}">{{$answer->title}}
+                                                    </div>
+
+                                                @endif
+                                            @endforeach
+                                            {{--                                        </ul>--}}
+                                        </div>
+                                    </div>
+                                @endforeach
 
                             </div>
                         </div>
-                    </div>
-                @endforeach
-                <div style="text-align: center">
-                    <form>
-                        <input id="send" value="Send" type="submit" style="display: none"/>
+                        <div style="text-align: center">
+                            <form>
+                                <input id="send" value="Send" type="submit" style="display: none"/>
+                            </form>
+                        </div>
+                        <div id="reload" class="justify-content-center" style="display:none; text-align: center">
+                            <h1>Time Up</h1>
+                            <a href="{{route('quizzes.detail',$quiz->id)}}" class="btn btn-warning">Reload</a>
+                        </div>
                     </form>
-                </div>
-            </div>
-        </form>
 
+
+                </div>
+
+                <div class="col-3 p-5">
+                    <div class="d-flex justify-content-center" style="position: fixed">Thời gian làm bài là 60s</div>
+                    <div class="item html mt-5" style="position: fixed">
+                        <h2 id="abc">0</h2>
+                        <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <title>Layer 1</title>
+                                <circle id="circle" class="circle_animation" r="69.85699" cy="81" cx="81" stroke-width="8" stroke="#6fdb6f" fill="none"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
+
 @endsection
