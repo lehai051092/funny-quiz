@@ -22,7 +22,7 @@
                                     <div class="list-group">
                                         <select name="title" id="title_id"
                                                 class="form-control w-100">
-                                            <option value="-1">Title</option>
+                                            <option value="-1">Select Title</option>
                                             @foreach($listQuestions as $question)
                                                 <option
                                                     value="{{$question->id}}">{{$question->title}}</option>
@@ -34,7 +34,7 @@
                                     <div class="list-group">
                                         <select name="type_id" id="type_id"
                                                 class="form-control w-100">
-                                            <option value="-1">Type</option>
+                                            <option value="-1">Select Type</option>
                                             @foreach($types as $type)
                                                 <option
                                                     value="{{$type->id}}">{{$type->name}}</option>
@@ -47,7 +47,7 @@
                                     <div class="list-group">
                                         <select name="category_id" id="category_id"
                                                 class="form-control w-100">
-                                            <option value="-1">Category</option>
+                                            <option value="-1">Select Category</option>
                                             @foreach($categories as $category)
                                                 <option
                                                     value="{{$category->id}}">{{$category->name}}</option>
