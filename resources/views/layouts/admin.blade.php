@@ -154,6 +154,18 @@
                 </div>
             </div>
         </li>
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Statistics
+        </div>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="{{route('admins.chart')}}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Statistics</span></a>
+        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -308,10 +320,6 @@
     });
 </script>
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 
 {!! toastr()->render() !!}

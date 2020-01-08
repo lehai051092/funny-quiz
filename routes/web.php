@@ -123,6 +123,7 @@ Route::prefix('admins')->group(function  () {
     Route::get('create', 'QuizController@createQuizInCategory')->name('admins.quizCreate');
     Route::get('list-quiz', 'QuizController@getAll')->name('admins.quizList');
     Route::get('list-question', 'QuestionController@listAllQuestion')->name('admins.questionList');
+    Route::get('chart', 'ChartController@index')->name('admins.chart');
 });
 
 Route::get('{id}/point','PointController@getPointsInQuiz')->name('point.list');

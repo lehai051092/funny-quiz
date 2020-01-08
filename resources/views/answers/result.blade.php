@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    {{--        {{dd(json_decode(\App\Notification::all()[0]->data)->listAnswer)}}--}}
+{{--            {{dd(json_decode(\App\Notification::all()[0]->data))}}--}}
     <div class="container p-5">
         <div class="container p-5">
             <div class="card" style="width: 100%; background-color: white">

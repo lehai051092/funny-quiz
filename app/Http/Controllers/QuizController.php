@@ -88,25 +88,26 @@ class QuizController extends Controller
 
         $listAnswersUserChoose = [];
         foreach ($answersStatus as $key => $answerS) {
-            $newAnswer= explode(',',$answerS);
-            array_push($listAnswersUserChoose,$newAnswer[1]);
+            $newAnswer = explode(',', $answerS);
+            array_push($listAnswersUserChoose, $newAnswer[1]);
         }
 
 
         $quiz = Quiz::find($id);
         $questionsQuiz = $quiz->questions;
-
         $listAnswer = [];
         foreach ($questionsQuiz as $question) {
             array_push($listAnswer, $question->answers);
         }
-
-        \auth()->user()->notify(new SaveResultExample($questionsQuiz, $listAnswer));
-        $notifications = Notification::where('type', '=', 'App\Notifications\SaveResultExample')->get();
+        $pointRight = count($listAnswersRight);
+        $countQuestion = count($questionsQuiz);
+        $score = floor($pointRight / $countQuestion * 100);
         $point->point = count($listAnswersRight);
         $point->quiz_id = $id;
         $point->save();
 
+        \auth()->user()->notify(new SaveResultExample($questionsQuiz, $listAnswer, $score));
+        $notifications = Notification::where('type', '=', 'App\Notifications\SaveResultExample')->get();
         return view('answers.result', compact('listAnswers',
             'answersStatus',
             'listQuestion',
