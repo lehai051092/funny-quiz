@@ -53,6 +53,7 @@ Route::prefix('tests')->group(function () {
 
 Route::prefix('quizzes')->group(function () {
     Route::get('{id}/add', 'QuestionController@addQuestionToQuiz')->name('quizzes.add');
+    Route::get('{id}/add/search', 'QuestionController@search')->name('quizzes.search');
 
     Route::get('{id?}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
     Route::get('{id}/detail', 'QuizController@QuizDetail')->name('quizzes.detail');

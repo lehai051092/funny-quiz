@@ -33,6 +33,34 @@
 
 <body id="page-top">
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Question detail</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Question</label>
+                    <input type="text" class="form-control" id="questionDetail" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" class="form-control" id="descDetail" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <input type="text" class="form-control" id="contentDetail" readonly="readonly">
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Page Wrapper -->
 <div id="wrapper">
     <!-- ------------------------------------------------------------------------------------------------------------------ -->
@@ -79,7 +107,7 @@
     {{--            </div>--}}
     {{--        </li>--}}
 
-    <!-- Nav Item - Utilities Collapse Menu -->
+        <!-- Nav Item - Utilities Collapse Menu -->
         <div class="sidebar-heading">
             Quiz
         </div>
@@ -158,11 +186,11 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-900 ">{{ Auth::user()->name}}</span>
                             <img class="img-profile rounded-circle"
-                                 @if(Auth::user()->image === null)
-                                 src="{{asset('storage/img/bg-img/default.jpg')}}"
-                                 @else
-                                 src="{{asset('storage/'.Auth::user()->image)}}"
-                                @endif
+                        @if(Auth::user()->image === null)
+                                src="{{asset('storage/img/bg-img/default.jpg')}}"
+                        @else
+                                src="{{asset('storage/'.Auth::user()->image)}}"
+                            @endif
                             >
                         </a>
                         <!-- Dropdown - User Information -->
@@ -267,9 +295,25 @@
 
 <script src="{{asset("js/answerInput.js")}}"></script>
 <script src="{{asset("js/editAnswer.js")}}"></script>
+<script src="{{asset("js/category.js")}}"></script>
 <script src="{{asset("js/filter.js")}}"></script>
 <script src="https://cdn.tiny.cloud/1/q2t2ct0kudotpa7nznvhahz3ms2icyb0id7hnbi7ypc02a74/tinymce/5/tinymce.min.js"></script>
-<script>tinymce.init({selector:'textarea'});</script>
+<script>tinymce.init({
+        selector: "textarea",
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
 {!! toastr()->render() !!}
 
 </body>
