@@ -49,10 +49,15 @@
         <form method="post" action="{{route('session.result',$quiz->id)}}">
             @csrf
             <div class="p-5">
-                <div class="d-flex justify-content-center">
-                    <label><h1>Exam Time</h1></label>
+                <div >
+{{--                    <div class="d-flex justify-content-center">--}}
+{{--                        <label><h1>Exam Time</h1></label>--}}
+{{--                    </div>--}}
+                    <div id="countdown" class="d-flex justify-content-center">
+
+                    </div>
                 </div>
-                <div id="countdown" class="d-flex justify-content-center"></div>
+
                 @foreach($questions as $key=>$questionQuiz)
                     <div class="container-fluid">
                         <div class="modal-dialog">
