@@ -86,11 +86,23 @@
         </div>
 
         <li class="nav-item active">
+            <a class="nav-link" href="{{route('users.list')}}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>List User</span></a>
+        </li>
+        <hr class="sidebar-divider">
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Category
+        </div>
+
+        <li class="nav-item active">
             <a class="nav-link" href="{{route('admins.getTables')}}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>List Category</span></a>
         </li>
         <hr class="sidebar-divider">
+
 
         <!-- Nav Item - Pages Collapse Menu -->
     {{--        <li class="nav-item">--}}
@@ -309,6 +321,7 @@
 <script src="{{asset("js/editAnswer.js")}}"></script>
 <script src="{{asset("js/category.js")}}"></script>
 <script src="{{asset("js/filter.js")}}"></script>
+<script src="{{asset("js/chart.js")}}"></script>
 <script src="https://cdn.tiny.cloud/1/q2t2ct0kudotpa7nznvhahz3ms2icyb0id7hnbi7ypc02a74/tinymce/5/tinymce.min.js"></script>
 <script>tinymce.init({
         selector: "textarea",
