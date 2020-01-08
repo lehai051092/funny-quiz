@@ -18,12 +18,13 @@ class SaveResultExample extends Notification
      */
     protected $listQuestion;
     protected $listAnswer;
-//    protected $listAnswerChoose;
+    protected $scoreQuiz;
 
-    public function __construct($listQuestion, $listAnswer)
+    public function __construct($listQuestion, $listAnswer, $scoreQuiz)
     {
         $this->listAnswer = $listAnswer;
         $this->listQuestion = $listQuestion;
+        $this->scoreQuiz = $scoreQuiz;
 //        $this->listAnswerChoose = $listAnswerChoose;
     }
 
@@ -51,7 +52,7 @@ class SaveResultExample extends Notification
         return [
             'listQuestion' => $this->listQuestion,
             'listAnswer' => $this->listAnswer,
-//            'listAnswerChoose' => $this->listAnswerChoose,
+            'score' => $this->scoreQuiz
         ];
     }
 
