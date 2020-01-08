@@ -39,7 +39,7 @@
                                             </div>
                                             <span class="review-no">41 reviews</span>
                                         </div>
-                                        <p class="product-description">{{$quiz->desc}}</p>
+                                        <p class="product-description">{!! $quiz->desc !!}</p>
                                         <div class="action">
                                            <a href="{{route('questions.basic.list',$quiz->id)}}"><button class="add-to-cart btn btn-danger" type="button">Làm Quiz!
                                             </button></a>

@@ -193,4 +193,13 @@ class QuestionController extends Controller
         }
 
     }
+
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $keyword = $request->keyword;
+            $questions = $this->questionService->search($keyword);
+            return response()->json($questions);
+        }
+    }
 }

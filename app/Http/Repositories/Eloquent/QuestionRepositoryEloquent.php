@@ -44,4 +44,10 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
     {
         $question->save();
     }
+
+    function search($keyword)
+    {
+        return $this->question->where('title', 'LIKE', "%$keyword%")->get();
+
+    }
 }
