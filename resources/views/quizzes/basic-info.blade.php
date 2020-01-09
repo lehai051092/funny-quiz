@@ -8,7 +8,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <form enctype="multipart/form-data" method="post" action="{{route('quizzes.store')}}">
+                        <form enctype="multipart/form-data" method="post" action="{{route('quizzes.store')}}" novalidate>
                             @csrf
                             <div class="form-group">
                                 <label><h5>Title</h5></label>

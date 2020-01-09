@@ -53,10 +53,11 @@ Route::prefix('tests')->group(function () {
 
 Route::prefix('quizzes')->group(function () {
     Route::get('{id}/add', 'QuestionController@addQuestionToQuiz')->name('quizzes.add');
+    Route::get('{id}/add/search', 'QuestionController@search')->name('quizzes.search');
 
     Route::get('{id?}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
     Route::get('{id}/detail', 'QuizController@QuizDetail')->name('quizzes.detail');
-    Route::post('result','QuizController@showResult')->name('session.result');
+    Route::post('{id}/result','QuizController@showResult')->name('session.result');
 //    Route::get('{id}/create', 'QuizController@create')->name('quizzes.create');
     Route::post('create', 'QuizController@store')->name('quizzes.store');
     Route::get('{id}/delete', 'QuizController@delete')->name('quizzes.delete');
@@ -122,6 +123,7 @@ Route::prefix('admins')->group(function  () {
     Route::get('create', 'QuizController@createQuizInCategory')->name('admins.quizCreate');
     Route::get('list-quiz', 'QuizController@getAll')->name('admins.quizList');
     Route::get('list-question', 'QuestionController@listAllQuestion')->name('admins.questionList');
+    Route::get('chart', 'ChartController@index')->name('admins.chart');
 });
 
 Route::get('{id}/point','PointController@getPointsInQuiz')->name('point.list');

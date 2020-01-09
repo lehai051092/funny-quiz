@@ -7,67 +7,56 @@
             <h2 class="m-0 font-weight-bold">
                 List Question
             </h2>
-
             <div class="pt-3">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="list-group">
+                                    <select name="title" id="title_id"
+                                            class="form-control w-100">
+                                        <option value="-1">Title</option>
+                                        @foreach($listQuestions as $question)
+                                            <option
+                                                value="{{$question->id}}">{{$question->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="list-group">
+                                    <select name="type_id" id="type_id"
+                                            class="form-control w-100">
+                                        <option value="-1">Type</option>
+                                        @foreach($types as $type)
+                                            <option
+                                                value="{{$type->id}}">{{$type->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-{{--                <form action="{{route('admins.filter')}}" method="get">--}}
-{{--                    @csrf--}}
-                    <div class="modal-body">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-1">
-
+                            </div>
+                            <div class="col-2">
+                                <div class="list-group">
+                                    <select name="category_id" id="category_id"
+                                            class="form-control w-100">
+                                        <option value="-1">Category</option>
+                                        @foreach($categories as $category)
+                                            <option
+                                                value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <div class="col-4">
-                                    <div class="list-group">
-                                        <select name="title" id="title_id"
-                                                class="form-control w-100">
-                                            <option value="-1">Select Title</option>
-                                            @foreach($listQuestions as $question)
-                                                <option
-                                                    value="{{$question->id}}">{{$question->title}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="list-group">
-                                        <select name="type_id" id="type_id"
-                                                class="form-control w-100">
-                                            <option value="-1">Select Type</option>
-                                            @foreach($types as $type)
-                                                <option
-                                                    value="{{$type->id}}">{{$type->name}}</option>
-                                            @endforeach
-                                        </select>
-
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="list-group">
-                                        <select name="category_id" id="category_id"
-                                                class="form-control w-100">
-                                            <option value="-1">Select Category</option>
-                                            @foreach($categories as $category)
-                                                <option
-                                                    value="{{$category->id}}">{{$category->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-1"></div>
-                                <div class="col-1">
-                                    <button type="button" class="btn btn-primary" id="filter">Filter</button>
-{{--                                    <button type="submit" class="btn btn-primary" id="filter">Filter</button>--}}
-                                </div>
+                            </div>
+                            <div class="col-1">
+                                <button type="button" class="btn btn-primary" id="filter">Filter</button>
                             </div>
                         </div>
                     </div>
-
-{{--                </form>--}}
-            </div>
-            <div class="text-center pt-3">
-                <h5><i class="fas fa-laugh-wink" style="color: green"></i> <i class="fa" id="count_filter">Filter <b>{{count($questions)}}</b> results with your selection.</i></h5>
+                </div>
+            <div class=" pt-3">
+                <h5><i class="fas fa-laugh-wink" style="color: green"></i> <i class="fa" id="count_filter">Filter
+                        <b>{{count($questions)}}</b> results with your selection.</i>
+                </h5>
             </div>
         </div>
         <div class="card-body">
@@ -76,29 +65,21 @@
                     <thead>
                     <tr>
                         <th>Question</th>
-                        <th>Desc</th>
-                        <th>Content</th>
+                        <th style="display: none">Desc</th>
+                        <th style="display: none">Content</th>
                         <th>Category</th>
                         <th>Type</th>
                         <th>Action</th>
                     </tr>
                     </thead>
-{{--                    <tfoot>--}}
-{{--                    <tr>--}}
-{{--                        <th>Question</th>--}}
-{{--                        <th>Desc</th>--}}
-{{--                        <th>Content</th>--}}
-{{--                        <th>Category</th>--}}
-{{--                        <th>Type</th>--}}
-{{--                        <th>Action</th>--}}
-{{--                    </tr>--}}
-{{--                    </tfoot>--}}
                     <tbody id="print_filter">
                     @foreach($questions as $question)
                         <tr>
-                            <td><h5>{{$question->title}}</h5></td>
-                            <td><h5>{{$question->desc}}</h5></td>
-                            <td><h5>{{$question->content}}</h5></td>
+                            <td><a class="showDetailQuestion" data-toggle="modal" data-target="#exampleModal">
+                                    <h5 style="color:black;">{{$question->title}}</h5>
+                                </a></td>
+                            <td style="display: none"><h5>{!! $question->desc !!}</h5></td>
+                            <td style="display: none"><h5>{{$question->content}}</h5></td>
                             <td>
                                 @if($question->category_id === $question->category['id'])
                                     <h5>{{$question->category['name']}}</h5>
