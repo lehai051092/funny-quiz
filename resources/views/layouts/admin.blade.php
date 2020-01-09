@@ -82,7 +82,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Category
+            User
         </div>
 
         <li class="nav-item active">
