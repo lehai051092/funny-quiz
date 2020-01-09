@@ -60,8 +60,8 @@
                                 @foreach($questions as $key=>$questionQuiz)
 
                                     <div class="card mt-2" style="width: 100%;background-color: white; ">
-                                        <div class="card-header" style="font-size: 25px; ">
-                                            {{$questionQuiz->title}}
+                                        <div class="card-header" style="font-size: 25px; background-color: honeydew" >
+                                            {{++$key . ': ' .$questionQuiz->title}}
                                         </div>
                                         <div class="pl-2">
                                             <input name="question[]" value="{{$questionQuiz->id}}" style="display: none">
@@ -70,9 +70,9 @@
                                                     <div class="mt-4 pl-5" style="font-size: 20px">
                                                         <input
                                                             @if($questionQuiz->type_id==\App\TypeInterface::MANYANSWERS)
-                                                            type="checkbox"
-                                                            @endif
                                                             type="radio"
+                                                            @endif
+                                                            type="checkbox"
                                                             name="answer[]" class="myCheckResult"
                                                             value="{{$answer->status}}, {{$answer->id}}">{{$answer->title}}
                                                     </div>
@@ -92,7 +92,7 @@
                         </div>
                         <div id="reload" class="justify-content-center" style="display:none; text-align: center; padding-top: 50px;padding-bottom: 25px">
                             <h1>Time Out</h1>
-                            <a href="{{route('quizzes.detail',$quiz->id)}}" class="btn btn-warning">Reload</a>
+                            <a href="{{route('quizzes.detail',$quiz->id)}}" class="btn btn-warning">Do it again</a>
                         </div>
                     </form>
 
@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="col-2 p-5" id="time">
-                    <div  class="d-flex justify-content-center" style="position: fixed; font-size: 20px; padding-top: 200px; color: red">Thời gian làm bài 60 giây</div>
+                    <div  class="d-flex justify-content-center" style="position: fixed; font-size: 20px; padding-top: 200px; color: red">Time to do 60 seconds</div>
                     <div class="item html mt-5" style="position: fixed" id="1">
                         <h2 id="abc">0</h2>
                         <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
