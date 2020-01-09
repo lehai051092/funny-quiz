@@ -7,7 +7,6 @@
             <h2 class="m-0 font-weight-bold">
                 List Question
             </h2>
-
             <div class="pt-3">
                     <div class="col-12">
                         <div class="row">
@@ -33,8 +32,8 @@
                                                 value="{{$type->id}}">{{$type->name}}</option>
                                         @endforeach
                                     </select>
-
                                 </div>
+
                             </div>
                             <div class="col-2">
                                 <div class="list-group">
@@ -57,7 +56,6 @@
             <div class=" pt-3">
                 <h5><i class="fas fa-laugh-wink" style="color: green"></i> <i class="fa" id="count_filter">Filter
                         <b>{{count($questions)}}</b> results with your selection.</i>
-
                 </h5>
             </div>
         </div>
