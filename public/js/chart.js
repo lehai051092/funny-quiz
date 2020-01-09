@@ -3,5 +3,6 @@ $(document).ready(function () {
         if ($(this).val() != -1) {
             $('#displayUser').show();
         }
+
     })
 });

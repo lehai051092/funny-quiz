@@ -20,7 +20,7 @@
                     <!-- Content Row -->
                     <div class="row">
 
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-12 col-lg-12">
 
                             <!-- Area Chart -->
                             <div class="card shadow mb-4">
@@ -49,30 +49,6 @@
                                 </div>
                             </div>
 
-                        </div>
-
-                        <!-- Donut Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div id="displayUser" style="display: none">
-                                    <input>
-                                </div>
-                               <div id="totalStatistic" >
-                                   <div class="card-header py-3">
-                                       <h6 class="m-0 font-weight-bold text-primary">Statistics of each player</h6>
-                                   </div>
-                                   <!-- Card Body -->
-                                   <div class="card-body">
-                                       <select class="choseUser" style="width: 100%;border-radius: 50px">
-                                           <option value="-1">Select User</option>
-                                           @foreach($listUser as $user)
-                                               <option value="{{$user->id}}">{{$user->name}}</option>
-                                           @endforeach
-                                       </select>
-                                   </div>
-                               </div>
-                            </div>
                         </div>
                     </div>
 
