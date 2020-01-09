@@ -1,19 +1,7 @@
-$(document).ready(function () {
-    let timeLeft = 500;
-    let doingTimer = setInterval(function(){
-        document.getElementById("countdown").innerHTML = '<h3>' + timeLeft + " seconds remaining" + '</h3>';
-        timeLeft -= 1;
-        if(timeLeft < 0){
-            clearInterval(doingTimer);
 
-        }
-    }, 1000);
-});
-
-
-var time = 60;
-var initialOffset = '440';
-var i = 1;
+let time = 60;
+let initialOffset = '440';
+let i = 1;
 
 /* Need initial run as interval hasn't yet occured... */
 $('.circle_animation').css('stroke-dashoffset', initialOffset-(1*(initialOffset/time)));
@@ -26,7 +14,6 @@ var interval = setInterval(function() {
         $('#send').hide();
         $('#timeUp').hide();
         $('#circle').hide();
-        $('#abc').hide();
         $('#time').hide();
 
         return;

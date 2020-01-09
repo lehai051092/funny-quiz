@@ -104,7 +104,7 @@ $(document).ready(function () {
         let status = document.querySelectorAll('.status');
         let questionId = document.getElementById('questionsId');
 
-        console.log(questionId.value);
+        console.log(status[1].value);
         let listAnswers = [];
 
         for (let i = 0; i < title.length; i++) {
