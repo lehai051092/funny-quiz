@@ -16,6 +16,7 @@ $(document).ready(function () {
         }
     });
 
+
     $(document).on('click', '#myCheck', function () {
         $(this).val(1);
     });
@@ -74,13 +75,15 @@ $(document).ready(function () {
         let contentQ = $('#contentQuestion').val();
         let category = $('#category').val();
         let type = $('#type').val();
+
+        console.log(title, desc, contentQ, category, type)
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
         $.ajax({
-            url: 'http://127.0.0.1:8000/questions/create',
+            url: 'http://localhost:8000/questions/create',
             type: 'POST',
             dataType: 'json',
             data: {
@@ -116,7 +119,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: 'http://127.0.0.1:8000/answers/create',
+            url: 'http://localhost:8000/answers/create',
             method: 'POST',
             dataType: 'json',
             data: {

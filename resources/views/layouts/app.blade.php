@@ -111,6 +111,10 @@
                                                     <a href="{{route('users.profile', Auth::user()->id)}}"
                                                        class="dropdown-item">Profile</a>
                                                 </li>
+                                                <li>
+                                                    <a href="{{route('statistical')}}"
+                                                       class="drop'down-item">Statistical</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </li>

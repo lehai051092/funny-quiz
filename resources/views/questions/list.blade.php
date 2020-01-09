@@ -70,9 +70,9 @@
                                                     <div class="mt-4 pl-5" style="font-size: 20px">
                                                         <input
                                                             @if($questionQuiz->type_id==\App\TypeInterface::MANYANSWERS)
-                                                            type="radio"
-                                                            @endif
                                                             type="checkbox"
+                                                            @endif
+                                                            type="radio"
                                                             name="answer[]" class="myCheckResult"
                                                             value="{{$answer->status}}, {{$answer->id}}">{{$answer->title}}
                                                     </div>

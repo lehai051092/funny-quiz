@@ -136,5 +136,8 @@ Route::get('/callback/{social}', 'SocialAuthController@callback');
 Route::get('/redirect/{social}', 'AuthController@googleLoginUrl');
 Route::get('/callback/{social}', 'AuthController@googleLoginCallback');
 
-
+//statistical
+Route::prefix('statistical')->group(function (){
+    Route::get('/','StatisticalController@getQuiz')->name('statistical');
+});
 
