@@ -34,6 +34,7 @@ use App\Http\Services\UserServiceInterface;
 use App\Question;
 use App\Quiz;
 use App\Type;
+use App\User;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -75,6 +76,10 @@ class AppServiceProvider extends ServiceProvider
 
         $listQuestions = Question::all();
         View::share('listQuestions', $listQuestions);
+
+        $listUser = User::all();
+        View::share('listUser', $listUser);
+
 
     }
 }

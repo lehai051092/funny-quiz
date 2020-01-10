@@ -18,7 +18,7 @@
                                                     <div class="card-body text-center">
                                                         <img class=" img-fluid" src="{{asset('storage/'.$quiz->image)}}" alt="card image">
                                                         <h4 class="card-title">{{$quiz->name}}</h4>
-                                                        <p class="card-text">{{$quiz->desc}}</p>
+                                                        <p class="card-text">{!! $quiz->desc !!}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -26,7 +26,7 @@
                                                 <div class="card">
                                                     <div class="card-body text-center mt-4">
                                                        <a href="{{route('quizzes.detail',$quiz->id)}}"> <h4 class="card-title">{{$quiz->name}}</h4></a>
-                                                        <p class="card-text">{{$quiz->desc}}</p>
+                                                        <p class="card-text">{!! $quiz->desc !!}</p>
 {{--                                                        @can('crud-users')--}}
 {{--                                                        <a href="{{route('quizzes.delete',$quiz->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure delete???')"><i class="fa fa-trash-alt"></i>Delete</a>--}}
 {{--                                                        <a href="{{route('quizzes.edit',$quiz->id)}}" class="btn btn-warning" >Edit</a>--}}

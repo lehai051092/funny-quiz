@@ -17,4 +17,7 @@ interface QuestionRepositoryInterface
     function update($obj);
 
     function saveQ($question);
+
+    function search($keyword);
+
 }

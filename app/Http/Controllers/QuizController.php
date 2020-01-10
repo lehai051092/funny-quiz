@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Http\Requests\BacsicInfoRequest;
 use App\Http\Services\AnswerServiceInterface;
 use App\Http\Services\CategoryServiceInteface;
 use App\Http\Services\QuestionServiceInterface;
 use App\Http\Services\QuizServiceInterface;
+use App\Notification;
+use App\Notifications\SaveResultExample;
 use App\Point;
+use App\Question;
+use App\Quiz;
 use App\StatusInterface;
 use Illuminate\Support\Facades\Session;
 
@@ -25,14 +30,14 @@ class QuizController extends Controller
     public function __construct(QuizServiceInterface $quizService,
                                 CategoryServiceInteface $categoryService,
                                 QuestionServiceInterface $questionService,
-                                AnswerServiceInterface $answerService,Point $point)
+                                AnswerServiceInterface $answerService, Point $point)
     {
         $this->middleware('auth');
         $this->quizService = $quizService;
         $this->categoryService = $categoryService;
         $this->questionService = $questionService;
         $this->answerService = $answerService;
-        $this->point=$point;
+        $this->point = $point;
     }
 
     public function QuizzesInCategory($id)
@@ -52,30 +57,67 @@ class QuizController extends Controller
     {
         $quiz = $this->quizService->findById($id);
         $questions = $quiz->questions;
+        $listIdQuestion = [];
+        foreach ($questions as $value) {
+            array_push($listIdQuestion, ['id' => $value->id]);
+        }
         $answers = $this->answerService->getAll();
         return view('questions.list', compact('quiz', 'questions', 'answers'));
     }
 
     public function showResult(Request $request, $id)
     {
-        $point= new Point();
-        $answersRight = array();
-        $listAnswers = array();
-        foreach ($request->answer as $key => $answer) {
-           $newAnswer= explode(',',$answer);
-                array_push($listAnswers,$newAnswer);
-            if ($newAnswer[0] == StatusInterface::ISRIGHT) {
-                array_push($answersRight,$newAnswer);
+        $point = new Point();
+        $listAnswers = [];
+        $listAnswersRight = [];
+
+        $listQuestionId = $request->question;
+        $isRightAnswers = Answer::where('status', '=', StatusInterface::ISRIGHT)
+            ->get();
+        $answersStatus = $request->answer;
+
+        $listQuestion = [];
+
+        for ($i = 0; $i < count($answersStatus); $i++) {
+            array_push($listAnswers, $answersStatus[$i]);
+            array_push($listQuestion, $listQuestionId[$i]);
+            if ($answersStatus[$i] == StatusInterface::ISRIGHT) {
+                array_push($listAnswersRight, $answersStatus[$i]);
             }
         }
-        $quiz = $this->quizService->findById($id);
-        $questions = $quiz->questions;
-        $answers = $this->answerService->getAll();
-        $point->point= count($answersRight);
-        $point->quiz_id=$id;
+
+        $listAnswersUserChoose = [];
+        foreach ($answersStatus as $key => $answerS) {
+            $newAnswer = explode(',', $answerS);
+            array_push($listAnswersUserChoose, $newAnswer[1]);
+        }
+
+        $quiz = Quiz::find($id);
+        $questionsQuiz = $quiz->questions;
+        $listAnswer = [];
+        foreach ($questionsQuiz as $question) {
+            array_push($listAnswer, $question->answers);
+        }
+        $pointRight = count($listAnswersRight);
+        $countQuestion = count($questionsQuiz);
+        $score = floor($pointRight / $countQuestion * 100);
+        $point->point = count($listAnswersRight);
+        $point->quiz_id = $id;
         $point->save();
 
-        return view('answers.result', compact('answers', 'listAnswers', 'questions', 'answersRight','newAnswer','quiz'));
+        \auth()->user()->notify(new SaveResultExample($questionsQuiz, $listAnswer, $score, $quiz, $listAnswersUserChoose));
+        $notifications = Notification::where('type', '=', 'App\Notifications\SaveResultExample')->get();
+
+        return view('answers.result', compact('listAnswers',
+            'answersStatus',
+            'listQuestion',
+            'isRightAnswers',
+            'listAnswersRight',
+            'questionsQuiz',
+            'quiz',
+            'notifications',
+            'listAnswersUserChoose'));
+
     }
 
 

@@ -53,6 +53,7 @@ Route::prefix('tests')->group(function () {
 
 Route::prefix('quizzes')->group(function () {
     Route::get('{id}/add', 'QuestionController@addQuestionToQuiz')->name('quizzes.add');
+    Route::get('{id}/add/search', 'QuestionController@search')->name('quizzes.search');
 
     Route::get('{id?}/', 'QuizController@QuizzesInCategory')->name('quizzes.list');
     Route::get('{id}/detail', 'QuizController@QuizDetail')->name('quizzes.detail');
@@ -122,10 +123,22 @@ Route::prefix('admins')->group(function  () {
     Route::get('create', 'QuizController@createQuizInCategory')->name('admins.quizCreate');
     Route::get('list-quiz', 'QuizController@getAll')->name('admins.quizList');
     Route::get('list-question', 'QuestionController@listAllQuestion')->name('admins.questionList');
+    Route::get('chart', 'ChartController@index')->name('admins.chart');
 });
 
 Route::get('{id}/point','PointController@getPointsInQuiz')->name('point.list');
+
+// facebook
 Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
+// google
+Route::get('/redirect/{social}', 'AuthController@googleLoginUrl');
+Route::get('/callback/{social}', 'AuthController@googleLoginCallback');
+
+//statistical
+Route::prefix('statistical')->group(function (){
+    Route::get('/','StatisticalController@getQuiz')->name('statistical');
+    Route::get('{id}/detail','StatisticalController@findDetailQuizUser')->name('statistical.detail');
+});
 

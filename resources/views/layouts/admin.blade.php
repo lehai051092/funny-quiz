@@ -33,6 +33,34 @@
 
 <body id="page-top">
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Question detail</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Question</label>
+                    <input type="text" class="form-control" id="questionDetail" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" class="form-control" id="descDetail" readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <input type="text" class="form-control" id="contentDetail" readonly="readonly">
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Page Wrapper -->
 <div id="wrapper">
     <!-- ------------------------------------------------------------------------------------------------------------------ -->
@@ -54,6 +82,17 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
+            User
+        </div>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="{{route('users.list')}}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>List User</span></a>
+        </li>
+        <hr class="sidebar-divider">
+        <!-- Heading -->
+        <div class="sidebar-heading">
             Category
         </div>
 
@@ -63,6 +102,7 @@
                 <span>List Category</span></a>
         </li>
         <hr class="sidebar-divider">
+
 
         <!-- Nav Item - Pages Collapse Menu -->
     {{--        <li class="nav-item">--}}
@@ -79,7 +119,7 @@
     {{--            </div>--}}
     {{--        </li>--}}
 
-    <!-- Nav Item - Utilities Collapse Menu -->
+        <!-- Nav Item - Utilities Collapse Menu -->
         <div class="sidebar-heading">
             Quiz
         </div>
@@ -126,6 +166,18 @@
                 </div>
             </div>
         </li>
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Statistics
+        </div>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="{{route('admins.chart')}}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Statistics</span></a>
+        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -158,11 +210,11 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-900 ">{{ Auth::user()->name}}</span>
                             <img class="img-profile rounded-circle"
-                                 @if(Auth::user()->image === null)
-                                 src="{{asset('storage/img/bg-img/default.jpg')}}"
-                                 @else
-                                 src="{{asset('storage/'.Auth::user()->image)}}"
-                                @endif
+                        @if(Auth::user()->image === null)
+                                src="{{asset('storage/img/bg-img/default.jpg')}}"
+                        @else
+                                src="{{asset('storage/'.Auth::user()->image)}}"
+                            @endif
                             >
                         </a>
                         <!-- Dropdown - User Information -->
@@ -267,9 +319,22 @@
 
 <script src="{{asset("js/answerInput.js")}}"></script>
 <script src="{{asset("js/editAnswer.js")}}"></script>
+<script src="{{asset("js/category.js")}}"></script>
 <script src="{{asset("js/filter.js")}}"></script>
+<script src="{{asset("js/chart.js")}}"></script>
 <script src="https://cdn.tiny.cloud/1/q2t2ct0kudotpa7nznvhahz3ms2icyb0id7hnbi7ypc02a74/tinymce/5/tinymce.min.js"></script>
-<script>tinymce.init({selector:'textarea'});</script>
+<script>tinymce.init({
+        selector: "textarea",
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+</script>
+
+
+
 {!! toastr()->render() !!}
 
 </body>

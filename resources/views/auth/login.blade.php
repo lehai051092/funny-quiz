@@ -88,7 +88,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="social-icons">
                         <ul>
                             <li><a href="redirect/facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li><a href="redirect/google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                     <input type="submit" value="">

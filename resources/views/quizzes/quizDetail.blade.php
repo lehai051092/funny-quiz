@@ -39,11 +39,11 @@
                                             </div>
                                             <span class="review-no">41 reviews</span>
                                         </div>
-                                        <p class="product-description">{{$quiz->desc}}</p>
+                                        <p class="product-description">{!! $quiz->desc !!}</p>
                                         <div class="action">
-                                           <a href="{{route('questions.basic.list',$quiz->id)}}"><button class="add-to-cart btn btn-danger" type="button">Làm Quiz!
+                                           <a href="{{route('questions.basic.list',$quiz->id)}}"><button class="add-to-cart btn btn-danger" type="button">Do the Quiz!
                                             </button></a>
-                                            <a href="{{route('point.list',$quiz->id)}}"><button class="add-to-cart btn btn-danger" type="button">Thống kê điểm thi
+                                            <a href="{{route('point.list',$quiz->id)}}" style="display: none"><button class="add-to-cart btn btn-danger" type="button">Thống kê điểm thi
                                                 </button></a>
                                         </div>
                                     </div>
