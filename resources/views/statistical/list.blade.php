@@ -5,23 +5,27 @@
             <div class="row">
                 <div class="card" style="width: 100%;">
                     <div class="card-header" style=" font-size: 25px">
-                        Statistical tables
+                        User History
                     </div>
                     <table class="table table-striped">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Quiz</th>
+                            <th scope="col">Time Did</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            @foreach($notifications as $key=>$notification)
-                            <th scope="row"></th>
-                                @endforeach
-                        </tr>
+{{--                        @if()--}}
+                            @foreach($quizzesUser as $key => $quizUser)
+                                <tr>
+{{--                                    {{dd($quizUser)}}--}}
+                                    <td scope="row">{{++$key}}</td>
+                                    <td scope="row"><a href="{{route('statistical.detail', $quizUser['id'])}}">{{$quizUser['name']}}</a></td>
+                                    <td>{{$quizUser['created_at']}}</td>
+                                </tr>
+                            @endforeach
+{{--                        @endif--}}
                         </tbody>
                     </table>
                 </div>
@@ -29,4 +33,4 @@
         </div>
     </div>
 
-    @endsection
+@endsection
