@@ -11,12 +11,14 @@ class StatisticalController extends Controller
 {
     public function getQuiz()
     {
-        $notifications= \App\Notification::all();
-        foreach ($notifications as $notification){
-            $data=json_decode($notification->data);
-
+        $notifications = \App\Notification::all();
+        foreach ($notifications as $notification) {
+            $datas = json_decode($notification->data);
         }
-        dd($data);
-        return view('statistical.list',compact('notifications'));
+//        foreach ($datas as $data) {
+//            $quiz = json_decode($data->quiz);
+//        }
+        dd($datas);
+        return view('statistical.list', compact('notifications', 'datas'));
     }
 }

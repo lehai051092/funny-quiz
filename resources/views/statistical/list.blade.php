@@ -10,16 +10,14 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">STT</th>
                             <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            @foreach($notifications as $key=>$notification)
-                            <th scope="row"></th>
+                            @foreach($notifications as $key=>$natification)
+                            <th scope="row">{{++$key}}</th>
                                 @endforeach
                         </tr>
                         </tbody>
