@@ -99,7 +99,7 @@
                                                 </li>
                                                 @can('crud-users')
                                                     <li>
-                                                        <a href="{{route('admins.index')}}"
+                                                        <a href="{{route('admins.chart')}}"
                                                            class="dropdown-item">Admins</a>
                                                     </li>
                                                 @endcan

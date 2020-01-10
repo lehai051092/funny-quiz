@@ -139,5 +139,6 @@ Route::get('/callback/{social}', 'AuthController@googleLoginCallback');
 //statistical
 Route::prefix('statistical')->group(function (){
     Route::get('/','StatisticalController@getQuiz')->name('statistical');
+    Route::get('{id}/detail','StatisticalController@findDetailQuizUser')->name('statistical.detail');
 });
 
