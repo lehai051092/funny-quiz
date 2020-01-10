@@ -4,8 +4,8 @@
         <div class="col-12">
             <div class="row">
                 <div class="card" style="width: 100%;">
-                    <div class="card-header" style=" font-size: 25px">
-                        User History
+                    <div class="card-header" style=" font-size: 25px; background: linear-gradient(to right, #61ba6d, #83c331);">
+                        <h2 class="text-white">User History</h2>
                     </div>
                     <table class="table table-striped">
                         <thead>

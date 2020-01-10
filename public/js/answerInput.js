@@ -16,6 +16,12 @@ $(document).ready(function () {
             }
         });
 
+        $(document).on('click', '#myCheck', function () {
+            $(this).val(1);
+        });
+        $(document).on('click', '#myCheckRadio', function () {
+            $(this).val(1);
+        });
 
         $('#type').change(function () {
             let arr = [$(this).find(':selected').val()];
