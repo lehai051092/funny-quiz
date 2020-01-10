@@ -108,6 +108,7 @@ class QuizController extends Controller
 
         \auth()->user()->notify(new SaveResultExample($questionsQuiz, $listAnswer, $score, $quiz));
         $notifications = Notification::where('type', '=', 'App\Notifications\SaveResultExample')->get();
+
         return view('answers.result', compact('listAnswers',
             'answersStatus',
             'listQuestion',
