@@ -22,26 +22,26 @@ $(document).ready(function () {
             if (arr[0] == 2) {
                 $('#trueFalse').show()
                 $('#insertAnswer').hide()
-                // $('#trueFalse').append(
-                //     '<div class="row mt-3">' +
-                //     ' <input type="text" class="form-control  col-9 answer" value=""/>&nbsp;&nbsp;' +
-                //     '<input type="radio" id="myCheckRadio" name="statusRadio" class="statusRadio" value="2"/>' +
-                //     ' <input type="text"\n' +
-                //     '    value=""\n' +
-                //     'class="questionId" style="display: none"/>&nbsp;&nbsp;' +
-                //     ' <i name="remove" id="\' + i + \'" class="fa fa-trash btn_remove"\n' +
-                //     '    style="color: red" aria-hidden="true"></i>' +
-                //     ' </div>' +
-                //     '<div class="row mt-3">' +
-                //     ' <input type="text" class="form-control  col-9 answer" value=""/>&nbsp;&nbsp;' +
-                //     '<input type="radio" id="myCheckRadio" name="statusRadio" class="statusRadio" value="2"/>' +
-                //     '<input type="text"\n' +
-                //     '    value=""\n' +
-                //     'class="questionId" style="display: none"/>&nbsp;&nbsp;' +
-                //     '<i name="remove" id="\' + i + \'" class="fa fa-trash btn_remove"\n' +
-                //     '    style="color: red" aria-hidden="true"></i>' +
-                //     ' </div>'
-                // );
+                $('#trueFalse').append(
+                    '<div class="row mt-3">' +
+                    ' <input type="text" class="form-control  col-9 answer" value=""/>&nbsp;&nbsp;' +
+                    '<input type="radio" id="myCheckRadio" name="statusRadio" class="status" value="2"/>' +
+                    ' <input type="text"\n' +
+                    '    value=""\n' +
+                    'class="questionId" style="display: none"/>&nbsp;&nbsp;' +
+                    ' <i name="remove" id="\' + i + \'" class="fa fa-trash btn_remove"\n' +
+                    '    style="color: red" aria-hidden="true"></i>' +
+                    ' </div>' +
+                    '<div class="row mt-3">' +
+                    ' <input type="text" class="form-control  col-9 answer" value=""/>&nbsp;&nbsp;' +
+                    '<input type="radio" id="myCheckRadio" name="statusRadio" class="status" value="2"/>' +
+                    '<input type="text"\n' +
+                    '    value=""\n' +
+                    'class="questionId" style="display: none"/>&nbsp;&nbsp;' +
+                    '<i name="remove" id="\' + i + \'" class="fa fa-trash btn_remove"\n' +
+                    '    style="color: red" aria-hidden="true"></i>' +
+                    ' </div>'
+                );
             } else if (arr[0] == 1) {
                 $('#trueFalse').hide();
                 $('#insertAnswer').show();
@@ -112,6 +112,7 @@ $(document).ready(function () {
                     'question_id': questionId.value,
                 });
             }
+            console.log(listAnswers);
 
             $.ajax({
                 url: 'http://127.0.0.1:8000/answers/create',
