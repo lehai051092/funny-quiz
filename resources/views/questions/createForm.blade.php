@@ -99,7 +99,18 @@
                                         <div class="col-9">
                                             <div class="col-12">
                                                 <div id="trueFalse" style="display: none">
-
+                                                    <div class="row">
+                                                        <input type="text" class="form-control name_list col-9 answer"/>&nbsp;&nbsp;
+                                                        <div class="m-2">
+                                                            <input type="radio" value="2" class="status" name="myCheck" id="myCheck"/>
+                                                        </div>
+                                                    </div><br>
+                                                    <div class="row">
+                                                        <input type="text" class="form-control name_list col-9 answer"/>&nbsp;&nbsp;
+                                                        <div class="m-2">
+                                                            <input type="radio" value="2" class="status" name="myCheck" id="myCheck"/>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="" id="dynamic_field">
                                                     <input type="text" value="" id="questionsId" class="questionsId" style="display: none"/>
