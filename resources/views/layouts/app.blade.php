@@ -113,7 +113,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="{{route('statistical')}}"
-                                                       class="drop'down-item">Statistical</a>
+                                                       class="dropdown-item">Statistical</a>
                                                 </li>
                                             </ul>
                                         </div>
