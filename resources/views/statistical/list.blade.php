@@ -10,22 +10,38 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
+
+                            <th scope="col">STT</th>
                             <th scope="col">Quiz</th>
                             <th scope="col">Time Did</th>
                         </tr>
                         </thead>
                         <tbody>
-{{--                        @if()--}}
-                            @foreach($quizzesUser as $key => $quizUser)
-                                <tr>
-{{--                                    {{dd($quizUser)}}--}}
-                                    <td scope="row">{{++$key}}</td>
-                                    <td scope="row"><a href="{{route('statistical.detail', $quizUser['id'])}}">{{$quizUser['name']}}</a></td>
-                                    <td>{{$quizUser['created_at']}}</td>
-                                </tr>
-                            @endforeach
-{{--                        @endif--}}
+                        {{--                        @if()--}}
+                        @foreach($quizzesUser as $key => $quizUser)
+                            <tr>
+                                {{--                                    {{dd($quizUser)}}--}}
+                                <td scope="row">{{1+$key}}</td>
+                                <td scope="row"><a
+                                        @foreach($notifications as $keyNotifi=>$notification)
+                                        @if($keyNotifi==$key)
+                                        href="{{route('statistical.detail', $notification->uid)}}"
+                                        @endif
+                                        @endforeach
+
+                                    >{{$quizUser['name']}}</a>
+                                </td>
+                                <td>
+                                    @foreach($notifications as $keyNotifi=>$notification)
+                                        @if($keyNotifi==$key)
+                                            {{$notification->created_at}}
+                                        @endif
+                                    @endforeach
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        {{--                        @endif--}}
                         </tbody>
                     </table>
                 </div>

@@ -14,18 +14,22 @@ class StatisticalController extends Controller
 {
     public function getQuiz()
     {
+
         $notifications = DB::table('notifications')->where('notifiable_id','=', Auth::user()->id)->get();
         $quizzesUser = [];
-        foreach ($notifications as $notification){
+        $dataNotification=[];
+
+        foreach ($notifications as $key => $notification){
             $data=json_decode($notification->data);
-            array_push($quizzesUser,  Quiz::find($data->listQuestion[0]->quiz_id));
+            array_push($quizzesUser,  Quiz::find($data->listQuestion[$key]->quiz_id));
         }
         return view('statistical.list',compact('notifications', 'quizzesUser' ));
     }
 
-    public function findDetailQuizUser($id) {
-        $quiz = Quiz::findOrFail($id);
-
-        return view('statistical.detail', compact('quiz'));
+    public function findDetailQuizUser($uid) {
+        $notifications=Notification::where('uid','=',$uid)->get();
+        $notification=$notifications[0];
+        $data=json_decode($notification->data);
+        return view('statistical.detail', compact( 'notification','data'));
     }
 }

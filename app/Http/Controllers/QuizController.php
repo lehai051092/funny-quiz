@@ -92,7 +92,6 @@ class QuizController extends Controller
             array_push($listAnswersUserChoose, $newAnswer[1]);
         }
 
-
         $quiz = Quiz::find($id);
         $questionsQuiz = $quiz->questions;
         $listAnswer = [];
@@ -106,7 +105,7 @@ class QuizController extends Controller
         $point->quiz_id = $id;
         $point->save();
 
-        \auth()->user()->notify(new SaveResultExample($questionsQuiz, $listAnswer, $score, $quiz));
+        \auth()->user()->notify(new SaveResultExample($questionsQuiz, $listAnswer, $score, $quiz, $listAnswersUserChoose));
         $notifications = Notification::where('type', '=', 'App\Notifications\SaveResultExample')->get();
 
         return view('answers.result', compact('listAnswers',
